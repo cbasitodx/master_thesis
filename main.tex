@@ -1,0 +1,195 @@
+%%***********************************************
+%% Plantilla para TFG.
+%% Escuela Técnica Superior de Ingenieros Informáticos. UPM.
+%%***********************************************
+\documentclass[a4paper,11pt, openany]{book}
+
+%%-----------------------------------------------
+%% Importar Preámbulo:
+\input{include/preambulo}
+
+%% -----------------------------------------------
+%% Cargar datos relativos al TFG:
+%% (actualizar estos datos en ./datos_tfg.tex)
+\input{datos_tfm}
+
+%% -----------------------------------------------
+%% Importación de otros paquetes de LaTeX a usar en el desarrollo del TFG:
+%% (veanse algunos ejemplos como listings (para incluir código), todonotes (para poner anotaciones al margen con cosas por hacer), et).
+%%-----------------------------------------------
+\usepackage{color}
+
+\usepackage{listings}
+
+\definecolor{commentcolor}{rgb}{.804,0,0}
+\definecolor{keywordcolor}{rgb}{.608,.19,1}
+\definecolor{stringcolor}{rgb}{0,.545,0}
+\lstdefinestyle{color}{
+  identifierstyle=\itshape,
+  commentstyle=\itshape\color{commentcolor},
+  keywordstyle=\bfseries\color{keywordcolor},
+  stringstyle=\color{stringcolor},
+  emphstyle=\bfseries
+}
+
+\lstdefinestyle{nocolor}{
+  identifierstyle=\itshape,
+  commentstyle=\itshape,
+  keywordstyle=\bfseries,
+  stringstyle=,
+  emphstyle=\itshape
+}
+
+\lstset{
+  basicstyle=\ttfamily,
+  style=color,
+  extendedchars=true,
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {ñ}{~n}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1
+  {¿}{{?`}}1 {¡}{{!`}}1 {‘}{`}1 {’}{'}1
+  {·}{.}1
+}
+
+% Para anotaciones y TODO's
+\usepackage[textwidth=2.5cm, textsize=smaller]{todonotes}
+\setlength{\marginparwidth}{2.5cm}
+
+% Para generar dummy text (no usado)
+\usepackage{lipsum}
+
+% Para ajustar el tamano de letra relativo al tamano actual
+\usepackage{relsize}
+
+% Para la sección con la Lista de Símbolos (no usado)
+\usepackage{nomencl}
+\makenomenclature
+
+% Nombre de la sección con la Lista de Símbolos (no usado)
+\renewcommand{\nomname}{Lista de Símbolos}
+
+% Para símbolos matemáticos
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+% Para enumerate
+\usepackage{enumitem}
+
+% Para graficos (2D y 3D)
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{arrows.meta}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{patchplots}
+
+% Para cajas donde agrupar resultados
+\usepackage{mdframed}
+
+% Para control de figuras y otros elementos flotantes
+\usepackage{float}
+
+% Para anexar pdfs como figuras
+\usepackage{graphicx}
+
+% Para crear rectángulos sin bordes (usado en citas en la introducción)
+%\usepackage{tcolorbox}
+%\tcbuselibrary{skins}  % Mejora el diseño del tcolorbox
+
+%% -----------------------------------------------
+% Entornos matemáticos
+%% -----------------------------------------------
+\theoremstyle{definition}
+\newtheorem{Definicion}{Definición}[chapter]
+
+\theoremstyle{plain}
+\newtheorem{Teorema}{Teorema}[chapter]
+\newtheorem{Proposicion}{Proposición}[chapter]
+\newtheorem{Lema}[Teorema]{Lema}
+\newtheorem{Corolario}[Teorema]{Corolario}
+
+\theoremstyle{remark}
+\newtheorem{Observacion}{Observación}[chapter]
+
+% Estilo: Cambia el simbolo de QED por un cuadrado negro
+\renewcommand{\qedsymbol}{$\blacksquare$}
+%% -----------------------------------------------
+%% Comandos personalizados
+%%-----------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+%%-----------------------------------------------
+%% Documento:
+\begin{document}
+
+\input{include/portada}
+
+%%-----------------------------------------------
+%% Numeración romana:
+\frontmatter
+
+%% -----------------------------------------------
+\input{include/resumen}
+\input{include/agradecimientos}
+\tableofcontents
+
+%%%% TODO: PONER AQUI PAGINA EN BLANCO! %%%% 
+
+%%-----------------------------------------------
+%% Numeración arábiga:
+\mainmatter
+
+%%-----------------------------------------------
+%% Contenido del TFG
+%\input{include/simbolos}
+%\printnomenclature
+%\addcontentsline{toc}{chapter}{Lista de Símbolos}
+
+%\input{secciones/intro}
+\input{secciones/introduccion}
+
+% \input{secciones/desarrollo}
+\input{secciones/cap_preliminares}
+\input{secciones/cap_semigrupos}
+\input{secciones/cap_cauchy}
+\input{secciones/cap_timoshenko}
+
+% \input{secciones/impacto}
+
+\input{secciones/conclusiones}
+
+%%-----------------------------------------------
+%% Bibliografía
+\cleardoublepage
+\phantomsection
+%\todo{ORDENAR LA BIBLIOGRAFÍA POR ORDEN ALFABÉTICO}
+\addcontentsline{toc}{chapter}{Bibliografía}
+\nocite{*}
+\bibliographystyle{IEEEtran}
+\bibliography{secciones/biblio}
+
+%% -----------------------------------------------
+%% Anexos
+\appendix
+\part*{Anexos}
+\addcontentsline{toc}{part}{Anexos}
+\input{secciones/anexo1}
+
+%% ---------------------------------------------------------
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
