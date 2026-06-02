@@ -29,7 +29,7 @@ Empezamos entonces por definir los tipos de soluciones que puede tener el proble
         \frac{d^+}{dt}e(t) = \lim_{h \rightarrow 0^+} \frac{e(t+h) - e(t)}{h}
         \end{align}
 
-        existe, se satisface \eqref{ch:cauchy:section:noHom:eqBasica} con $\displaystyle\frac{d}{dt}e(t)$ sustituida por $\displaystyle\frac{d^+}{dt}e(t)$ y $t \mapsto \frac{d^+}{dt}e(t)$ es continua donde lo sea $f$. Nótese que se $t \mapsto f(t)$ es una función continua y $t \mapsto e(t)$ es una solución fuerte de \eqref{ch:cauchy:section:noHom:eqBasica}, entonces $t \mapsto e(t0$ es continuamente diferenciable y \eqref{ch:cauchy:section:noHom:eqBasica} se verifica para cada $t \in (t_0, t_1)$.
+        existe, se satisface \eqref{ch:cauchy:section:noHom:eqBasica} con $\displaystyle\frac{d}{dt}e(t)$ sustituida por $\displaystyle\frac{d^+}{dt}e(t)$ y $t \mapsto \frac{d^+}{dt}e(t)$ es continua donde lo sea $f$. Nótese que se $t \mapsto f(t)$ es una función continua y $t \mapsto e(t)$ es una solución fuerte de \eqref{ch:cauchy:section:noHom:eqBasica}, entonces $t \mapsto e(t)$ es continuamente diferenciable y \eqref{ch:cauchy:section:noHom:eqBasica} se verifica para cada $t \in (t_0, t_1)$.
 
         \item Una \textit{solución débil} de \eqref{ch:cauchy:section:noHom:eqBasica} en $[t_0, t_1)$ es una función continua $e : [t_0, t_1) \rightarrow E_0$ tal que $e(t_0) = e_0$ y para todo $e^* \in D(A^*)$, $t\mapsto \langle e^*, e(t) \rangle$ tiene derivada por la derecha y
 
@@ -212,7 +212,7 @@ Adentrándonos más en el terreno de las soluciones al problema de Cauchy abstra
 
     Como lo anterior es cierto para todo $e^* \in D(A^*)$, entonces $U(t^*) =0$ y así $u(s) = 0$ para todo $s \in (t_0, t_1)$. Esto prueba entonces la unicidad de soluciones y, junto con el punto tercero, también prueba el segundo punto.
 
-    Concluimos probando el cuarto y último punto. Sea $e(\cdot)$ una solución débil dada por \eqref{ch:cauchy:section:noHom:th:solDebilYFuerteRels:2}, entonces para $t_0 \leq t < t + h \leq t$:
+    Concluimos probando el cuarto y último punto. Sea $e(\cdot)$ una solución débil dada por \eqref{ch:cauchy:section:noHom:th:solDebilYFuerteRels:2}, entonces para $t_0 \leq t < t + h \leq t_1$:
 
     \begin{align*}
         &\frac{e(t+h) - e(t)}{h}\\
