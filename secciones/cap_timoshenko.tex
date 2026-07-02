@@ -195,7 +195,7 @@ obtenemos el \textit{sistema de vigas de Timoshenko}
 
 Asumiremos entonces que la viga está fija en los extremos $\{0,L\}$, lo que nos lleva a considerar las siguientes \textit{condiciones de fronteras}:
 
-\[\varphi(0,t) = \varphi(L,t), \ \psi(0,t) = \psi(L,t) = 0, \ t \geq 0.\]
+\[\varphi(0,t) = \varphi(L,t) = 0, \ \psi(0,t) = \psi(L,t) = 0, \ t \geq 0.\]
 
 Asimismo, para $t = 0$ consideramos las \textit{condiciones iniciales}:
 
@@ -276,7 +276,7 @@ Dado que estamos manejando una única dimensión espacial, el hecho de que $\psi
 \begin{align*}
     \left (\int_0^L |\psi_x(x,t)| \, dx \right )^2 &= \left (\int_0^L |1 \cdot \psi_x(x,t)| \, dx \right )^2\\
     \text{(Cauchy–Schwarz)} &\leq \left (\int_0^L |\psi_x(x,t)|^2 \, dx \right ) \left (\int_0^L dx \right )\\
-    &= \frac{L}{2} \int_0^L |\psi_x(x,t)|^2 \, dx < \infty.
+    &= L \int_0^L |\psi_x(x,t)|^2 \, dx < \infty.
 \end{align*}
 
 Asimismo, por \textcolor{green}{LEMA 8.2 BREZIS} se puede definir una función $v$:
