@@ -1,7 +1,240 @@
 \chapter{Problema Abstracto de Cauchy}
 \label{ch:cauchy}
+\todo[inline]{HABLAR DE LOS TIEMPOS, PORQUE A VECES ES $t_0 < t < t_1$ Y A VECES $0 < t_0 < t$}
+La utilidad de la teoría de semigrupos de operadores lineales radica, entre otras cosas, en su utilidad como lenguaje para estudiar la dinámica en espacios funcionales; en concreto, en espacios de Banach. 
 
-\textcolor{red}{UNA PEQUEÑA INTRODUCCIÓN}
+A primera vista, esto pudiese parecer una cuestión limitada a la matemática abstracta, e incluso uno podría llegar a pensar que es necesario hacer un esfuerzo para concebir problemas de evolución típicos en las ciencias aplicadas como una dinámica en un espacio funcional. La realidad no podría ser más distinta, y es que, en realidad, muchas de las ecuaciones en derivadas parciales (que se encuentran, como disciplina, en un lugar cómodo entre la difusa línea de la matemática aplicada y fundamental) que se conocen se pueden plantear como una ecuación de evolución en un espacio funcional. 
+
+Veamos un ejemplo. Consideremos el problema de valor inicial y de frontera asociado a la ecuación de onda:
+
+\begin{align}
+\label{eqOnda}
+    \begin{cases}
+        u_{tt}(x,t) = c^2 \nabla^2 u(x,t), \ &(x,t) \in \Omega \times \mathbb{R}^+,\\
+        u(x,0) = u_0(x), \ &x \in \Omega,\\
+        u_t(x,0)  = u_1(x) \ &x \in \Omega,\\
+        u(x,t) = 0 \ &(x,t) \in \partial \Omega \times \mathbb{R}^+ 
+    \end{cases}
+\end{align}
+
+Si consideramos el cambio de variable:
+
+\[v(x,t) = u_t(x,t),\]
+
+entonces el problema anterior se puede reescribir como el sistema:
+
+\begin{align}
+\label{eqOndaCambioDeVar}
+    \begin{cases}
+        u_{tt}(x,t) = c^2 \nabla^2 u(x,t), \ &(x,t) \in \Omega \times \mathbb{R}^+,\\
+        v(x,t) = u_t(x,t), \ &(x,t) \in \Omega \times \mathbb{R}^+,\\
+        u(x,0) = u_0(x), \ &x \in \Omega,\\
+        v(x,0)  = v_0(x) \ &x \in \Omega,\\
+        u(x,t) = 0 \ &(x,t) \in \partial \Omega \times \mathbb{R}^+,
+    \end{cases}
+\end{align}
+
+donde (por una argumentación que ahora mismo no es constructiva para nuestro ejemplo) se tiene que:
+
+\[u(\cdot, t) \in H_0^1(\Omega), \ v(\cdot, t) \in L^2(\Omega).\]
+
+Ahora definimos:
+
+\begin{align*}
+    U(t) &= \big(u(\cdot, t), v(\cdot, t)\big) \in H_0^1(\Omega) \times L^2(\Omega)\\
+    U(0) &= U_0
+\end{align*}
+
+y tenemos que el sistema anterior se puede reescribir en términos de $U$ y un operador lineal $A$ con
+
+\[A = 
+    \begin{pmatrix}
+    0 & I \\
+    c^2\nabla^2 & 0
+    \end{pmatrix},
+\]
+
+como un sistema dinámico en un espacio funcional. Entiéndase:
+
+\begin{align}
+    \label{eqOndaFuncional}
+    U_t &= AU, \quad t \in \mathbb{R}^+,\\
+    U(0) &= U_0 \in H_0^1(\Omega) \times L^2(\Omega).
+\end{align}
+
+Vemos entonces que, mediante simple manipulación, hemos sido capaces de reescribir uno de los problemas más clásicos en las ciencias aplicadas (como lo es la ecuación de onda) en un problema de evolución en un espacio funcional. La utilidad de la teoría de semigrupos se presentará cuando el operador $A$ del sistema anterior (y, en general, de cualquier sistema con dicha forma) sea el generador infinitesimal de un semigrupo de operadores lineales. Cuando ese sea el caso, tendremos derecho a usar todos los resultados discutidos en capítulos anteriores que, entre otras cosas, nos permitirán demostrar la existencia y unicidad de soluciones a estos problemas de evolución.
+
+Dicho todo esto y habiendo entendido el uso que haremos de la teoría de semigrupos, demos inicio a la primera sección de este capítulo formalizando qué entendemos por un \textit{problema de Cauchy homogéneo} en un espacio de Banach, cómo definimos sus soluciones y un breve estudio de cómo podemos probar la existencia y unicidad de las mismas.
+
+\section{Introducción: Problema de Cauchy homogéneo}
+\label{ch:cauchy:section:Hom}
+
+En primer lugar, recordemos que un problema de Cauchy es, en teoría de ecuaciones diferenciales ordinarias, un problema de valor inicial. Así, pues, un problema de Cauchy abstracto (o, simplemente, problema de Cauchy) homogéneo en un espacio de Banach $E_0$ tiene la forma:
+
+\begin{align}
+    \label{ch:cauchy:section:Hom:eqBasica}
+    \frac{de}{dt} &= Ae, \quad 0 \leq t_0 < t\\
+    e(t_0) &= e_0 \in E_0,
+\end{align}
+
+donde $A$ es el generador infinitesimal de un semigrupo fuertemente continuo $\{T(t) ; t \geq 0\} \subset L(E_0)$.
+
+Damos ahora la definición de una solución del problema \eqref{ch:cauchy:section:Hom:eqBasica}. En realidad, podremos distinguir dos tipos de soluciones, una \textit{solución fuerte} y una \textit{solución débil}:\\
+
+\begin{Definicion}{(Soluciones al problema de Cauchy homogéneo)}
+    \label{ch:cauchy:section:Hom:def:soluciones}
+
+    \begin{enumerate}[label=\alph*)]
+        \item Se define una \textit{solución fuerte} de \eqref{ch:cauchy:section:Hom:eqBasica} como una función $e : [0,\infty) \rightarrow E_0$ tal que verifica \eqref{ch:cauchy:section:Hom:eqBasica}, $e(t_0) = e_0$, $e$ es continuamente diferenciable y $e(t) \in D(A)$ para $t > 0$.
+
+        \item Por otro lado, \textit{solución débil} de \eqref{ch:cauchy:section:Hom:eqBasica} es una función continua $e : [0,\infty) \rightarrow E_0$ tal que $e(t_0) = e_0$ y para todo $e^* \in D(A^*)$ se verifica que
+
+        \[\frac{d^+}{dt}\langle e^*, e(t) \rangle = \langle A^*e^*, e(t)\rangle.\]
+    \end{enumerate}
+\end{Definicion}
+
+La definición anterior nos revela casi trivialmente que una solución fuerte es también una solución débil. Veamos ahora la forma que podría tomar una de estas soluciones débiles.
+
+Para ello, consideramos la aplicación
+
+\[e(t) = T(t-t_0)e_0,\]
+
+donde $e_0 \in E_0$ y $T(t)$ es el semigrupo del cual $A$ es generador. Comprobemos ahora que $e(t)$ es una solución débil. Para ello, tomamos $e^* \in E_0^*$ y desarrollamos $\displaystyle\frac{d}{dt}\langle e^*, e(t)\rangle$:
+
+\begin{align*}
+    \frac{d}{dt}\langle e^*, e(t)\rangle &= \frac{d}{dt}\langle e^*, T(t-t_0)e_0\rangle\\
+    &= \frac{d}{dt}\Big\langle \big(T(t-t_0)\big)^*e^*, e_0\Big\rangle,
+\end{align*}
+
+donde \textcolor{red}{SEMIGRUPO DUAL...} y, como $e^* \in D(A^*)$, entonces
+
+\begin{align*}
+    \frac{d}{dt}\langle e^*, e(t)\rangle &= \frac{d}{dt}\Big\langle \big(T(t-t_0)\big)^*e^*, e_0\Big\rangle\\
+    &= \left \langle\frac{d}{dt}\big(T(t-t_0)\big)^*e^*, e_0 \right\rangle\\
+    &= \Big\langle A^*\big(T(t-t_0)\big)^*e^*, e_0\Big\rangle\\
+    &= \Big\langle \big(T(t-t_0)\big)^*A^*e^*, e_0\Big\rangle\\
+    &=\langle A^*e^*, T(t-t_0)e_0\rangle\\
+    &=\langle A^*e^*, e(t) \rangle.
+\end{align*}
+
+Por lo tanto, $e(t)$ es una solución débil. Veamos ahora que esta solución es única, probando así que todas las soluciones débiles (y, en consecuencia, las fuertes pues estas también son débiles) son de la forma $e(t) = T(t-t_0)e_0$. Para ello, sean $e_1(t)$ y $e_2(t)$ dos soluciones débiles al problema homogéneo, entonces
+
+\[u(t) = e_1(t) - e_2(t)\]
+
+es también una solución al problema homogéneo con dato inicial
+
+\[u(t_0) = e_1(t_0) - e(t_1) = e_0 - e_0 = 0,\]
+
+pues
+
+\begin{align*}
+    \frac{d^+}{dt}\langle e^*, u(t) \rangle &= \frac{d^+}{dt}\langle e^*, e_1(t)\rangle - \frac{d^+}{dt}\langle e^*, e_2(t)\rangle\\
+    &= \langle e^* Ae_1(t)\rangle - \langle e^* Ae_2(t)\rangle\\
+    &= \langle e^*, u(t) \rangle.
+\end{align*}
+
+Construyamos ahora una función con más regularidad. Para ello, definimos
+
+\[U(t) = \int_{t_0}^t u(s) \, ds,\]
+
+donde $U$ es de clase $C^1$ y claramente
+
+\[\frac{d^+}{dt}U(t) = u(t).\]
+
+Entonces:
+
+\begin{align*}
+    \langle e^*, u(t) \rangle &= \int_{t_0}^t \frac{d^+}{dt}\langle e^*, u(s)\rangle \, ds\\
+    &= \int_{t_0}^t \langle e^*, Au(s)\rangle \, ds\\
+    &= \int_{t_0}^t \langle A^*e^*, u(s)\rangle \, ds\\
+    &= \left \langle A^*e^*, \int_{t_0}^t u(s) \, ds\right \rangle\\
+    &= \langle A^*e^*, U(t) \rangle,
+\end{align*}
+
+y así
+
+\[\langle e^*, u(t) \rangle = \left \langle e^*, \frac{d^+}{dt}U(t)\right \rangle = \langle A^*e^*, U(t) \rangle.\]
+
+Construimos ahora la función auxiliar
+
+\[t \mapsto \langle e^*, T(t^* - t)U(t) \rangle,\]
+
+donde $t_0 \leq t \leq t^*$ y $t^*$ es un instante arbitrario. Ahora derivamos la función anterior y obtenemos:
+
+\begin{align*}
+    \frac{d^+}{dt}\langle e^*, T(t^* - t)U(t) \rangle &= \frac{d^+}{dt}\Big \langle \big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle\\
+    &= \left \langle \frac{d^+}{dt} \big (T(t^* - t)\big)^*e^*, U(t) \right\rangle + \left\langle \big (T(t^* - t)\big)^*e^*, \frac{d^+}{dt}U(t) \right\rangle\\
+    &= -\Big\langle A^*\big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle + \left\langle \big (T(t^* - t)\big)^*e^*, \frac{d^+}{dt}U(t) \right\rangle.
+\end{align*}
+
+Para continuar, queremos usar sobre el término
+
+\[\left\langle \big (T(t^* - t)\big)^*e^*, \frac{d^+}{dt}U(t) \right\rangle\]
+
+la igualdad
+
+\[\left \langle e^*, \frac{d^+}{dt}U(t)\right \rangle = \langle A^*e^*, U(t) \rangle.\]
+
+Para ello, hay que probar que $\big(T(t^*-t)\big)^*e^*\in D(A^*)$, donde $e^* \in D(A^*)$. Tomando $e \in D(A)$:
+
+\[\Big\langle \big(T(t^*-t)\big)^*e^*, Ae \Big\rangle = \langle e^*, T(t^* - t)Ae \rangle = \langle A^*e^*, T(t^*-t)e\rangle,\]
+
+y así, por definición de $D(A^*)$, se tiene que $\big(T(t^*-t)\big)^*e^*\in D(A^*)$ para cualquier $e^* \in D(A^*)$.
+
+Dicho eso, aplicamos la igualdad mencionada y obtenemos:
+
+\begin{align*}
+    \frac{d^+}{dt}\langle e^*, T(t^* - t)U(t) \rangle &= -\Big\langle A^*\big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle + \left\langle \big (T(t^* - t)\big)^*e^*, \frac{d^+}{dt}U(t) \right\rangle\\
+    &= -\Big\langle A^*\big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle + \Big\langle A^*\big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle\\
+    &= 0,
+\end{align*}
+
+por lo que la función $t \mapsto \langle e^*, T(t^* - t)U(t) \rangle$ es constante y, como $U(t_0) = 0$, entonces es nula. Evaluándola en $t^* > t_0$ arbitrario:
+
+\[\langle e^*, T(t^* - t^*)U(t^*)\rangle = \langle e^*, U(t^*) \rangle = 0 \ ; \ t^* \in (t_0, \infty).\]
+
+Por ser cierto para todo $e^* \in D(A^*)$, lo anterior implica que $U(t^*) = 0$ para todo $t^* \in [t_0, \infty)$ (hace falta una sutileza argumentativa en este punto que se puede encontrar en la prueba del Teorema \eqref{ch:cauchy:section:noHom:th:solDebilYFuerteRels}; sin embargo, dado que estamos en una introducción, nos permitimos seguir sin ella). Así, $u(s) = 0$ para todo $s \in [t_0, \infty)$, lo cual prueba la unicidad de soluciones.
+
+De todo lo anterior se obtiene entonces que, de existir, tanto las soluciones débiles como las fuertes del problema \eqref{ch:cauchy:section:Hom:eqBasica} son de la forma 
+
+\begin{align}
+    \label{Hom:FormaSoluciones}
+    e(t) = T(t-t_0)e_0,
+\end{align}
+
+donde $T(t)$ es el semigrupo fuertemente continuo generado por $A$ y $e_0$ el dato inicial del problema homogéneo. 
+
+Nos hacemos ahora la siguiente pregunta sobre la regularidad de las soluciones débiles: ¿Bajo qué condiciones una solución débil pasa a ser una solución fuerte? Veamos que una solución débil es, en realidad, una solución fuerte cuando el dato inicial $e_0$ pertenece a $D(A)$.
+
+Para ello, debemos comprobar que si $e$ es una solución débil al problema, entonces $e(t) \in D(A)$ para todo instante $t$, $e$ satisface \eqref{ch:cauchy:section:Hom:eqBasica} y $e$ es continuamente diferenciable.
+
+Que $e(t) \in D(A)$ para todo instante $t$ es trivial, pues sabemos por \eqref{Hom:FormaSoluciones} que $e(t) = T(t-t_0)e_0$, y como $e_0 \in D(A)$ entonces se tiene el resultado. Por otro lado, $t \mapsto e(t)$ es continua por continuidad del semigrupo $T(t)$. Veamos ahora que $e$ satisface \eqref{ch:cauchy:section:Hom:eqBasica}:
+
+\begin{align*}
+    \frac{d^+}{dt}e(t) = \frac{d^+}{dt}T(t-t_0)e_0 = AT(t-t_0)e_0 = Ae(t),
+\end{align*}
+
+por lo que $e$ satisface \eqref{ch:cauchy:section:Hom:eqBasica}. Por último, debemos comprobar que la derivada de $e$ es continua. Para ello, usamos la conmutatividad del semigrupo con el generador y obtenemos:
+
+\[\frac{d^+}{dt}e(t) = AT(t-t_0)e_0 = T(t-t_0)Ae_0,\]
+
+y como $Ae_0 \in E_0$ es un elemento del espacio cualquiera, entonces volvemos a invocar la continuidad del semigrupo y se tiene inexorablemente que la derivada es continua. En consecuencia, una solución débil con un dato inicial regular dan como resultado una solución fuerte.
+
+Habiendo definido qué entendemos por soluciones del problema \eqref{ch:cauchy:section:Hom:eqBasica} y qué formas pueden tener dichas soluciones, damos fin a esta sección estudiando bajo qué condiciones podemos demostrar la existencia y unicidad de soluciones fuertes, pues la de las soluciones débiles se desprende (como ya vimos anteriormente) del hecho de que $A$ sea el generador infinitesimal de un semigrupo fuertemente continuo; es decir, el problema homogéneo \eqref{ch:cauchy:section:Hom:eqBasica} posee soluciones débiles si y sólo si $A$ es el generador infinitesimal de un semigrupo fuertemente continuo.
+
+Exigiendo menos propiedades del operador $A$, en \textcolor{green}{[PAZY CAPÍTULO 4.1]} se comenta cómo podemos obtener soluciones incluso en ecuaciones de evolución de la forma \eqref{ch:cauchy:section:Hom:eqBasica} donde $A$ no es el generador infinitesimal de un semigrupo fuertemente continuo; sin embargo, y continuando con la cita al texto referenciado, para obtener la existencia y unicidad de soluciones diferenciables en $[0, \infty)$ cuyo dato inicial $e_0$ pertenezca a $D(A)$, es necesario asumir que $A$ es el generador infinitesimal de un semigrupo fuertemente continuo. Esto, junto con todo el estudio anterior, da pie al siguiente teorema:\\
+
+\begin{Teorema}{(Existencia y unicidad de soluciones del problema de Cauchy homogéneo)}
+    \label{cauchy:hom:ExistenciaYUnicidadFuerte}
+
+    Sea $A$ un operador lineal densamente definido con conjunto resolvente $\rho(A)$ no vacío. El problema de valor inicial \eqref{ch:cauchy:section:Hom:eqBasica} tiene, para cada dato inicial $e_0 \in D(A)$, una única solución $e(t)$ que es continuamente diferenciable en $[0, \infty)$ si y sólo si $A$ es el generador infinitesimal de un semigrupo fuertemente continuo.
+\end{Teorema}
+
+\begin{proof}
+    Si asumimos que $A$ es el generador infinitesimal de un semigrupo fuertemente continuo, entonces la prueba de la implicación es, esencialmente, todo la discusión sostenida anteriormente. La otra implicación se puede encontrar en \textcolor{green}{[PAZY CAPÍTULO 4.1]} y la omitimos pues no resulta demasiado relevante para este texto.
+\end{proof}
+
+Como se podrá ver en lo sucesivo, durante este capítulo estaremos repitiendo una estructura clara entre secciones: definición de los tipos de soluciones, forma de las soluciones débiles y resultados o bien de regularidad o de existencia y unicidad. 
 
 \section{Problema de Cauchy no homogéneo}
 \label{ch:cauchy:section:noHom}
@@ -29,7 +262,7 @@ Empezamos entonces por definir los tipos de soluciones que puede tener el proble
         \frac{d^+}{dt}e(t) = \lim_{h \rightarrow 0^+} \frac{e(t+h) - e(t)}{h}
         \end{align}
 
-        existe, se satisface \eqref{ch:cauchy:section:noHom:eqBasica} con $\displaystyle\frac{d}{dt}e(t)$ sustituida por $\displaystyle\frac{d^+}{dt}e(t)$ y $t \mapsto \frac{d^+}{dt}e(t)$ es continua donde lo sea $f$. Nótese que se $t \mapsto f(t)$ es una función continua y $t \mapsto e(t)$ es una solución fuerte de \eqref{ch:cauchy:section:noHom:eqBasica}, entonces $t \mapsto e(t0$ es continuamente diferenciable y \eqref{ch:cauchy:section:noHom:eqBasica} se verifica para cada $t \in (t_0, t_1)$.
+        existe, se satisface \eqref{ch:cauchy:section:noHom:eqBasica} con $\displaystyle\frac{d}{dt}e(t)$ sustituida por $\displaystyle\frac{d^+}{dt}e(t)$ y $t \mapsto \frac{d^+}{dt}e(t)$ es continua donde lo sea $f$. Nótese que se $t \mapsto f(t)$ es una función continua y $t \mapsto e(t)$ es una solución fuerte de \eqref{ch:cauchy:section:noHom:eqBasica}, entonces $t \mapsto e(t)$ es continuamente diferenciable y \eqref{ch:cauchy:section:noHom:eqBasica} se verifica para cada $t \in (t_0, t_1)$.
 
         \item Una \textit{solución débil} de \eqref{ch:cauchy:section:noHom:eqBasica} en $[t_0, t_1)$ es una función continua $e : [t_0, t_1) \rightarrow E_0$ tal que $e(t_0) = e_0$ y para todo $e^* \in D(A^*)$, $t\mapsto \langle e^*, e(t) \rangle$ tiene derivada por la derecha y
 
@@ -53,7 +286,7 @@ Veamos ahora dos definiciones que nos serán útiles tanto en el estudio de la e
     Por otro lado, el \textit{anulador} $S^\perp \subset E^*_0$ de un subconjunto $S \subset E_0$ es el conjunto de todos los elementos $e^* \in E_0^*$ tales que $\langle e^*, e \rangle = 0 \ \forall e \in S$. Sabemos que $S \subset E_0$ es un espacio vectorial, por lo que $(S^\perp)^\perp = \overline{S}$\textcolor{red}{DEMOSTRAR} \textcolor{green}{(EL LIBRO INDICA H. Br´ezis. Analyse fonctionnelle)}
 \end{Definicion}
 
-Continuamos ahora con un Lema que nos permitirá clasificar el dominio del adjunto de un operador como total. \textcolor{red}{PARA QUE SE USA ESTO????}\\
+Continuamos ahora con un Lema que nos permitirá clasificar el dominio del adjunto de un operador como total.\\
 
 \begin{Lema}{(Condición suficiente para que el dominio del adjunto sea total)}
     \label{ch:cauchy:section:noHom:lema:dominioAdjTotal}
@@ -96,15 +329,15 @@ Adentrándonos más en el terreno de las soluciones al problema de Cauchy abstra
     \begin{align*}
         \frac{d^+}{dt}\langle e^*, \mathrm{e}^{At}e \rangle &= \left \langle e^*, \frac{d^+}{dt}\mathrm{e}^{At}e \right \rangle\\
         &= \langle e^*, A\mathrm{e}^{At}e \rangle\\
-        &= \langle A^* e^*, \mathrm{e}^{At}e \rangle.
+        &= \langle A^* e^*, \mathrm{e}^{At}e \rangle,
     \end{align*}
 
-    Así, por el Teorema fundamental del cálculo:
+    donde hemos considerado $e \in D(A)$ y luego, por densidad, extendemos para un $e \in E_0$ cualquiera. Así, por el Teorema fundamental del cálculo:
 
     \[\langle e^*, \mathrm{e}^{At}e \rangle - \langle e^*, e \rangle = \int_0^t \langle A^* e^*, \mathrm{e}^{As}e \rangle \, ds\]
 
     para $e \in D(A)$. Como $D(A)$ es denso en $E_0$, y por continuidad del semigrupo $\mathrm{e}^{At}$ y los funcionales $e^*$ y $A^*e^*$, entonces la expresión anterior es válida para $e \in E_0$.\footnotemark
-    \footnotetext{Esto nos permite, en el desarrollo que ocurre en las siguientes líneas, poder derivar sin temor a que el dato inicial $e_0$ esté en el dominio de $A$.}
+    \footnotetext{Esto nos permite, en el desarrollo que ocurre en las siguientes líneas, poder derivar sin temor a que el dato inicial $e_0$ no esté en el dominio de $A$.}
 
     Asumimos ahora que
     
@@ -114,7 +347,7 @@ Adentrándonos más en el terreno de las soluciones al problema de Cauchy abstra
 
     \begin{align*}
         \frac{d^+}{dt} \Big \langle e^*, e(t) \Big \rangle &= \frac{d^+}{dt} \left \langle e^*, \mathrm{e}^{A(t-t_0)}e_0 \right \rangle + \frac{d^+}{dt}\left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds \right \rangle\\
-        &=\frac{d^+}{dt} \left( \cancelto{0}{\langle e^*, e_0 \rangle} + \int_0^t \langle A^* e^*, \mathrm{e}^{A(t-t_0)}e_0 \rangle \, ds \right) + \frac{d^+}{dt}\left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds \right \rangle\\
+        &=\frac{d^+}{dt} \left( \cancelto{0}{\langle e^*, e_0 \rangle} + \int_0^t \langle A^* e^*, \mathrm{e}^{A(s-t_0)}e_0 \rangle \, ds \right) + \frac{d^+}{dt}\left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds \right \rangle\\
         &=\langle A^* e^*, \mathrm{e}^{A(t-t_0)}e_0 \rangle + \frac{d^+}{dt}\left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds \right \rangle.
     \end{align*}
 
@@ -199,18 +432,23 @@ Adentrándonos más en el terreno de las soluciones al problema de Cauchy abstra
     Armados con todas estas igualdades, tomamos la derivada de $\langle e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle$:
 
     \begin{align*}
-        \frac{d}{dt} \langle e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle &= - \langle e^*, A \mathrm{e}^{A(t^* - t)}U(t) \rangle + \left \langle e^*, \mathrm{e}^{A(t^* - t)} \frac{d}{dt}U(t)\right \rangle\\
-        &= - \langle e^*, A \mathrm{e}^{A(t^* - t)}U(t) \rangle + \langle e^*, A \mathrm{e}^{A(t^* - t)}U(t) \rangle\\
+        \frac{d}{dt} \langle e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle &= \frac{d}{dt}\Big\langle \big(\mathrm{e}^{A(t^*-t)} \big)^*e^*,U(t)\Big\rangle \\
+        &= \left \langle \frac{d}{dt}\big(\mathrm{e}^{A(t^*-t)} \big)^*e^*, U(t) \right \rangle + \left\langle \big(\mathrm{e}^{A(t^*-t)} \big)^*e^*,\frac{d}{dt}U(t)\right\rangle\\
+        &= \left \langle - A^*\big(\mathrm{e}^{A(t^*-t)} \big)^*e^*, U(t) \right \rangle + \left\langle \big(\mathrm{e}^{A(t^*-t)} \big)^*e^*, u(t)\right\rangle \\
+        &= - \langle A^* e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle + \langle e^*, \mathrm{e}^{A(t^* - t)} u(t) \rangle\\
+        &= - \langle A^* e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle + \langle A^* e^*, \mathrm{e}^{A(t^* - t)} U(t) \rangle\\
         &= 0
     \end{align*}
 
     para $t_0 \leq t \leq t^*$.
 
-    Finalmente, tenemos por un lado que $U(t_0) = 0$ y, por otro, que la función $\langle e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle$ es contante para $t_0 \leq t \leq t^*$. Como $U(t_0) = 0$, entonces dicha función debe ser nula también. Así, para $t = t^*$:
+    Finalmente, tenemos por un lado que $U(t_0) = 0$ y, por otro, que la función $\langle e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle$ es contante para $t_0 \leq t \leq t^*$. Como $U(t_0) = 0$, entonces dicha función debe ser nula también en $t = t_0$. Así, para $t = t^*$:
 
     \[\langle e^*, \mathrm{e}^{A(t^* - t^*)}U(t^*) \rangle = \langle e^*, U(t^*) \rangle = 0 \ ; \ t^* \in (t_0, t_1).\]
 
-    Como lo anterior es cierto para todo $e^* \in D(A^*)$, entonces $U(t^*) =0$ y así $u(s) = 0$ para todo $s \in (t_0, t_1)$. Esto prueba entonces la unicidad de soluciones y, junto con el punto tercero, también prueba el segundo punto.
+    Como lo anterior es cierto para todo $e^* \in D(A^*)$, entonces $U(t^*) =0$. Esto lo sabemos porque $A$ es cerrado (pues es el generador de un semigrupo fuertemente continuo e invocando el teorema de Hille-Yosida \eqref{ch:semigrupos:th:HilleYosida}) se sigue que esto implica que es cerrado) y densamente definido. Ambas cosas implican, por el Lema \eqref{ch:cauchy:section:noHom:lema:dominioAdjTotal}, que $D(A^*)$ es total, por lo que $U(t^*) = 0$.
+    
+    Así, $u(s) = 0$ para todo $s \in (t_0, t_1)$. Esto prueba entonces la unicidad de soluciones y, junto con el punto tercero, también prueba el segundo punto.
 
     Concluimos probando el cuarto y último punto. Sea $e(\cdot)$ una solución débil dada por \eqref{ch:cauchy:section:noHom:th:solDebilYFuerteRels:2}, entonces para $t_0 \leq t < t + h \leq t$:
 
@@ -325,7 +563,7 @@ Dada la definición anterior, enunciamos un Teorema análogo al Teorema \eqref{c
     \begin{enumerate}
         \item Si $e : [t_0, t_1) \rightarrow E_0$ es una solución fuerte de \eqref{ch:cauchy:section:semilineal:eqBasica}, entonces es también una solución débil de \eqref{ch:cauchy:section:semilineal:eqBasica}.
 
-        \item Una solución débil $e : [t_0, t_1) \rightarrow E_0$ de \eqref{ch:cauchy:section:semilineal:eqBasica} es también una solución fuerte sí y sólo si es continuamente diferenciable en $(t_0, t_1)$ sí y sólo si $e(t) \in D(A)$ con $t \mapsto Ae(t)$ es continua en $(t_0, t_1)$.
+        \item Una solución débil $e : [t_0, t_1) \rightarrow E_0$ de \eqref{ch:cauchy:section:semilineal:eqBasica} es también una solución fuerte si y sólo si es continuamente diferenciable en $(t_0, t_1)$ si y sólo si $e(t) \in D(A)$ con $t \mapsto Ae(t)$ es continua en $(t_0, t_1)$.
 
         \item Si $e : [t_0, t_1) \rightarrow E_0$ es una solución débil de \eqref{ch:cauchy:section:semilineal:eqBasica}, entonces
 

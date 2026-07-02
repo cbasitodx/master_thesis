@@ -1,0 +1,651 @@
+\chapter{Sistema de Timoshenko con dos disipaciones friccionales}
+\label{ch:TimoshenkoFric}
+
+En el capitulo anterior \eqref{ch:teoriaVigas} estudiamos dos modelos de vigas: en primer lugar, un modelo básico donde sólo se considera el desplazamiento vertical $\varphi$. Este es el modelo de Euler-Bernoulli, y es el punto de ataque inicial a la hora de enfrentarse a la teoría de vigas. En segundo lugar, estudiamos un modelo más complejo desarrollado por el ingeniero Stephen Timoshenko. Este modelo refina un poco más las hipótesis del modelo de Euler-Bernoulli e introduce otra variable: el ángulo de rotación de la sección trasversal $\psi$.
+
+Sin embargo, tal y como se pudo ver, el modelo básico de Timoshenko posee una peculiaridad que lo hace inviable cuando se trata de estudiar sistemas físicos de la realidad; y es que, según hemos demostrado (véase la Proposición \ref{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasico} y la Proposición \ref{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasicoRelajado}), el modelo es conservativo. En otras palabras, es incapaz de disipar la energía, lo cual se traduce físicamente en una viga que oscila infinitamente, intercambiando energía potencial por energía cinética eternamente. 
+
+Esto revela una cosa sobre el modelo, y es que no ha sido capaz de considerar los \textit{mecanismos de amortiguamiento} presentes en todo el sistema. Entre estos mecanismos se encuentra la fricción interna del material, el rozamiento de la viga con el medio que le rodea (aire o agua, por ejemplo), el amortiguamiento proporcionado por el borde en el que se encuentra empotrada la viga (dadas las condiciones de borde que hemos estado considerando), entre otros.
+
+Así, la concepción de un modelo que incorpore estos mecanismos de amortiguamiento consistirá en añadir términos de disipación friccional lineal (a los cuales también nos referiremos como \textit{amortiguamiento viscoso}) al sistema básico de Timoshenko trabajado en el capítulo anterior. Por supuesto, estos términos no capturan cada uno de los fenómenos físicos individualmente y de manera excesivamente realista (eso daría lugar a términos no lineales y, en general, a una complejidad altísima que no es viable ni para el estudio matemático ni para su aplicación práctica). La incorporación de estos términos funciona entonces como una agregación de todos los fenómenos discutidos previamente, y en la praxis se traduce a un ajuste de parámetros según el escenario en el que sea necesario el modelo. 
+
+Durante este capítulo presentaremos el modelo con amortiguamiento viscoso, demostraremos que su energía decae con el tiempo, probaremos la existencia y unicidad de soluciones y estudiaremos el comportamiento asintótico de la solución.
+
+\section{Presentación del modelo}
+\label{ch:TimoshenkoFric:section:modelo}
+
+De acuerdo con lo discutido antes, los términos de amortiguamiento viscoso que estaremos incorporando al sistema clásico \eqref{eqTimoshenkoBasico} para lograr la disipación de la energía son $\alpha\varphi_t$ y $\beta\psi_t$, con $\alpha, \beta \geq 0$. Estos términos representan, respectivamente, una disipación friccional en la vibración vertical y  en el ángulo de rotación. Así, el \textit{modelo de vigas de Timoshenko con dos disipaciones friccionales} es:
+
+\begin{equation}
+\label{eqTimoshenkoDosDispFracc}
+\begin{cases}
+\rho_1 \varphi_{tt} - k(\varphi_x + \psi)_x + \alpha\varphi_t = 0 \, &\text{en } (0,L) \times (0, \infty),\\
+\rho_2 \psi_{tt} - b\psi_{xx} + k(\varphi_x + \psi) + \beta\psi_t = 0 \, &\text{en } (0,L) \times (0, \infty).
+\end{cases}
+\end{equation}
+
+Considerando las mismas condiciones iniciales y de frontera que en el modelo básico \eqref{eqTimoshenkoBasico}, obtenemos entonces el \textit{problema de valor inicial y de frontera}:
+
+\begin{equation}
+\label{pviTimoshenkoDosDispFracc}
+\begin{cases}
+\rho_1 \varphi_{tt} - k(\varphi_x + \psi)_x + \alpha\varphi_t = 0 \, &\text{en } (0,L) \times (0, \infty),\\
+\rho_2 \psi_{tt} - b\psi_{xx} + k(\varphi_x + \psi) + \beta\psi_t = 0 \, &\text{en } (0,L) \times (0, \infty), \\
+\varphi(x,0) = \varphi_0(x), \varphi_t(x,0) = \varphi_1(x) \, &\text{en } (0, L) \times \{0\}, \\
+\psi(x,0) = \psi_0(x), \psi_t(x,0) = \psi_1(x) \, &\text{en } (0, L) \times \{0\}, \\
+\varphi(0,t) = \varphi(L,t) = 0 \, &\text{en } \{0, L\} \times [0, \infty),\\
+\psi(0,t) = \psi(L,t) = 0 \, &\text{en } \{0, L\} \times [0, \infty).
+\end{cases}
+\end{equation}
+
+Planteemos ahora el problema como una ecuación de evolución en un espacio funcional; es decir, como un problema de Cauchy abstracto. Para ello, y al igual que en el capítulo anterior, consideramos el vector de estado
+
+\begin{align*}
+    U(t) &= \big(\varphi(\cdot, t), \varphi_t(\cdot, t), \psi(\cdot, t), \psi_t(\cdot,t) \big),\\
+    U_t(t) &= \big(\varphi_t(\cdot, t), \varphi_{tt}(\cdot, t), \psi_t(\cdot, t), \psi_{tt}(\cdot,t) \big)\\
+    U(0) &= \big(\varphi_0(\cdot), \varphi_1(\cdot), \psi_0(\cdot), \psi_1(\cdot) \big).
+\end{align*}
+
+Luego, se tiene que podemos asociar el mismo funcional de energía que en el modelo clásico reutilizando la argumentación física. Este es:
+
+\begin{equation}
+    \label{timoshenkoDosAmortig:funcionalEnergia}
+    \begin{aligned}
+        E(t) \ = \  &\frac{1}{2} \Bigg[ \rho_1 \int_0^L \big(\varphi_t(x,t) \big)^2 \, dx + \rho_2 \int_0^L \big(\psi_t(x,t) \big)^2 \, dx + b\int_0^L \big(\psi_x(x,t) \big)^2 \, dx\\
+        &+ k\int_0^L \big(\varphi_x(x,t) + \psi(x,t) \big)^2 \, dx \Bigg], \quad t \geq 0.
+    \end{aligned}
+\end{equation}
+
+En consecuencia, el espacio de fases es:
+
+\begin{align}
+    \mathcal{H} = H_0^1(0,L) \times L^2(0,L) \times H_0^1(0,L) \times L^2(0,L),\label{espacioDeFaseTimoshenkoDosDisip}
+\end{align}
+
+por el mismo motivo explicado en el capítulo anterior (es decir, imponiendo que $E(t) < \infty$ para todo instante $t$); asimismo, sabemos también por las discusiones llevadas a cabo en el capítulo anterior que $\mathcal{H}$ es un espacio de Hilbert, y que existe una norma y producto interno (equivalentes a los usuales) que vienen inducidos por el funcional de energía (véase la Proposición \ref{ch:teoriaVigas:prop:NormaEnergia} y la Proposición \ref{ch:teoriaVigas:prop:ProdInternoEnergia}). Por último, haber definido un espacio de fases nos permite imponer que
+
+\[U(t) \in \mathcal{H} \ \forall t > 0.\]
+
+Finalmente, y previo a plantear la dinámica como un problema abstracto de Cauchy, definimos el operador lineal diferencial $A : D(A) \rightarrow \mathcal{H}$ como
+
+\begin{align}
+    \label{operadorATimoDosAmortig}
+    A = 
+    \begin{pmatrix}
+        0 & I & 0 & 0\\
+        \frac{k}{\rho_1}\partial_{xx} & -\frac{\alpha}{\rho_1}I & \frac{k}{\rho_1}\partial_x & 0\\
+        0 & 0 & 0 & I\\
+        -\frac{k}{\rho_2}\partial_x & 0 & \frac{b}{\rho_2}\partial_{xx} - \frac{k}{\rho_2} & -\frac{\beta}{\rho_2}
+    \end{pmatrix}.
+\end{align}
+
+El dominio de $A$ se obtiene de la misma manera que en el capítulo anterior, pues los nuevos términos de amortiguamiento viscoso no imponen ni relajan ninguna de las restricciones existentes. En consecuencia, se tiene que
+
+\[
+    D(A) = \Big(H^2(0,L) \cap H_0^1(0,L) \Big) \times H_0^1(0,L) \times \Big(H^2(0,L) \cap H_0^1(0,L) \Big) \times H_0^1(0,L).
+\]
+
+Adicionalmente, se tiene que el operador $A$ es densamente definido por lo demostrado en \eqref{ch:teoriaVigas:prop:AesDensamenteDef}; esto pues la prueba no depende del operador, sino de su dominio. 
+
+Con todo lo anterior, el sistema \eqref{pviTimoshenkoDosDispFracc} se plantea entonces como el siguiente problema abstracto de Cauchy homogéneo:
+
+\begin{align}
+    \label{probCauchyHomTimoDosAmortigDesglosado}
+    \begin{cases}
+        \begin{pmatrix}
+            \varphi_{t}(\cdot, t)\\
+            \varphi_{tt}(\cdot, t)\\
+            \psi_{t}(\cdot, t)\\
+            \psi_{tt}(\cdot, t)
+        \end{pmatrix} &= 
+        \begin{pmatrix}
+        0 & I & 0 & 0\\
+        \frac{k}{\rho_1}\partial_{xx} & -\frac{\alpha}{\rho_1}I & \frac{k}{\rho_1}\partial_x & 0\\
+        0 & 0 & 0 & I\\
+        -\frac{k}{\rho_2}\partial_x & 0 & \frac{b}{\rho_2}\partial_{xx} - \frac{k}{\rho_2} & -\frac{\beta}{\rho_2}
+        \end{pmatrix}
+        \begin{pmatrix}
+            \varphi(\cdot, t)\\
+            \varphi_{t}(\cdot, t)\\
+            \psi(\cdot, t)\\
+            \psi_{t}(\cdot, t)
+        \end{pmatrix}, \ t > 0,\\ \\
+        \begin{pmatrix}
+            \varphi_{t}(\cdot, 0)\\
+            \varphi_{tt}(\cdot, 0)\\
+            \psi_{t}(\cdot, 0)\\
+            \psi_{tt}(\cdot, 0)
+        \end{pmatrix} &=
+        \begin{pmatrix}
+            \varphi_0(\cdot)\\
+            \varphi_1(\cdot)\\
+            \psi_0(\cdot)\\
+            \psi_1(\cdot)
+        \end{pmatrix}.
+    \end{cases}
+\end{align}
+
+Habiendo formalizado el marco funcional en el que estaremos trabajando este problema, pasemos ahora discutir la energía del sistema.
+
+\section{Energía del sistema}
+\label{ch:TimoshenkoFric:section:energia}
+
+En esta sección nos dedicaremos a probar que el sistema \eqref{pviTimoshenkoDosDispFracc} es un sistema \textit{disipativo} (contrario al del capítulo anterior, que era \textit{conservativo}). Esta es una propiedad sobre el funcional de energía, y significa que este decrece con cada instante de tiempo. Tal y como se comentaba al inicio de este capítulo, este es un comportamiento más realista y que corrige los problemas del primer modelo presentado. Así, pues, demos paso al primer gran resultado de este capítulo:
+
+\begin{Proposicion}[(Disipación de la energía en la viga de Timoshenko amortiguada)]
+\label{ch:timoshenkoFric:prop:DisipacionEnergia}
+
+    Para el sistema \eqref{pviTimoshenkoDosDispFracc}, el funcional de energía definido en \eqref{timoshenkoDosAmortig:funcionalEnergia} verifica:
+
+    \[\frac{d}{dt}E(t) = -\alpha\int_0^L \big(\varphi_t(x, t)\big)^2 \, dx -\beta\int_0^L \big(\psi_t(x, t)\big)^2 \, dx \leq 0,\]
+
+    donde $\alpha, \beta \geq 0$.
+\end{Proposicion}
+
+Al igual que en el capítulo anterior, nos reservamos la discusión sobre la existencia y unicidad de soluciones para la siguiente sección y nos tomamos la libertad de asumir que, para cada dato inicial $U_0 \in D(A)$ existe un funcional $U(t) \in D(A) \ \forall t \geq 0$ tal que $U$ satisface el problema homogéneo \eqref{probCauchyHomTimoDosAmortigDesglosado} y $U \in C^1\big([0,\infty);\mathcal{H}\big) \cap C\big([0,\infty);D(A)\big)$. Dicho eso, se presenta a continuación la prueba de la Proposición anterior:
+
+\todo[inline]{Chequear el tema de que las funciones sean reales o complejas}
+\begin{proof}
+    Empezamos multiplicando las dos ecuaciones del sistema \eqref{eqTimoshenkoDosDispFracc} por $\varphi_t$ y $\psi_t$ respectivamente e integramos en $(0,L)$, obteniendo así:
+
+    \begin{align*}
+        \rho_1 \int_0^L \varphi_t\varphi_{tt}\, dx - k\int_0^L\varphi_t(\varphi_x + \psi)_x \, dx + \alpha\int_0^L(\varphi_t)^2 \, dx &= 0,\\
+        \rho_2 \int_0^L\psi_t\psi_{tt} \, dx - b\int_0^L \psi_t\psi_{xx} \, dx + k \int_0^L \psi_t(\varphi_x + \psi) \, dx + \beta\int_0^L (\psi_t)^2 &= 0.\\
+    \end{align*}
+
+    Dado que $U \in D(A)$, podemos integrar por partes los términos con derivadas espaciales. Considerando las condiciones de borde obtenemos que:
+
+    \begin{align*}
+        \int_0^L\varphi_t(\varphi_x + \psi)_x \, dx &= \cancelto{0}{[\varphi_t(\varphi_x + \psi)]_0^L} - \int_0^L(\varphi_x + \psi)\varphi_{tx} \, dx,\\
+        \int_0^L \psi_t\psi_{xx} \, dx &= \cancelto{0}{[\psi_t\psi_x]_0^L} - \int_0^L \psi_x \psi_{tx} \, dx.
+    \end{align*}
+
+    Ahora, sustituyendo estas expresiones en las dos ecuaciones anteriores:
+
+    \begin{align*}
+        \rho_1 \int_0^L \varphi_t\varphi_{tt}\, dx + k\int_0^L(\varphi_x + \psi)\varphi_{tx} \, dx + \alpha\int_0^L(\varphi_t)^2 \, dx &= 0,\\
+        \rho_2 \int_0^L\psi_t\psi_{tt} \, dx + b\int_0^L \psi_x \psi_{tx} \, dx + k \int_0^L \psi_t(\varphi_x + \psi) \, dx + \beta\int_0^L (\psi_t)^2 &= 0.\\
+    \end{align*}
+
+    Sumando ambas ecuaciones y agrupando términos convenientemente:
+
+    \begin{align*}
+        \rho_1 \int_0^L \varphi_t\varphi_{tt}\, dx + \rho_2 \int_0^L\psi_t\psi_{tt} \, dx &+ b\int_0^L \psi_x \psi_{tx} \, dx + k \int_0^L (\varphi_x + \psi)(\varphi_{tx} + \psi_t) \, dx\\
+        &+ \alpha\int_0^L(\varphi_t)^2 \, dx + \beta\int_0^L (\psi_t)^2 = 0.
+    \end{align*}
+
+    Recordemos ahora las igualdades planteadas en la demostración de la Proposición \ref{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasico}:
+
+    \begin{align*}
+        (\varphi_x + \psi)(\varphi_{tx} + \psi_t) &= \frac{1}{2}\frac{\partial}{\partial t}(\varphi_x + \psi)^2,\\
+        \varphi_{tt}\varphi_t &= \frac{1}{2}\frac{\partial}{\partial t}(\varphi_t)^2,\\
+        \psi_{tt}\psi_t &= \frac{1}{2}\frac{\partial}{\partial t}(\psi_t)^2,\\
+        \psi_x \psi_{tx} &= \frac{1}{2}\frac{\partial}{\partial t}(\psi_x)^2,
+    \end{align*}
+
+    donde en la primera igualdad se ha utilizado la conmutatividad de las derivadas distribucionales \textcolor{green}{(``Teorema de Schwarz'')}. 
+
+    Sustituyendo ahora en la igualdad anterior, obtenemos que:
+
+    \begin{align*}
+        \frac{d}{dt}\frac{1}{2}\Bigg[\rho_1 \int_0^L (\varphi_t)^2\, dx + \rho_2 \int_0^L(\psi_t)^2 \, dx &+ b\int_0^L (\psi_x)^2 \, dx + k \int_0^L (\varphi_x + \psi)^2 \, dx\Bigg]\\
+        &= -\alpha\int_0^L(\varphi_t)^2 \, dx - \beta\int_0^L (\psi_t)^2.
+    \end{align*}
+
+    Es decir,
+
+    \[\frac{d}{dt}E(t) = -\alpha\int_0^L(\varphi_t)^2 \, dx - \beta\int_0^L (\psi_t)^2 \leq 0,\]
+
+    que es exactamente lo que queríamos probar.
+\end{proof}
+
+Tal y como en el capítulo anterior, podemos relajar las hipótesis sobre el vector solución $U$ y aún así obtener el mismo resultado sobre el decaimiento de la energía. Sin embargo, esta vez ya no es tan sencillo como utilizar un argumento de densidad (así como se hizo en el capítulo anterior), y será necesario utilizar otras técnicas ligeramente más sofisticadas. En consecuencia, reservamos esta discusión para el final del capítulo (pues es relevante para hablar de la dinámica a largo plazo de la solución) y cerramos con ello esta sección. En la siguiente sección estudiaremos, como ya se ha mencionado, la existencia y unicidad de soluciones del problema homogéneo.
+
+\section{Existencia y unicidad de soluciones}
+\label{ch:TimoshenkoFric:section:existUnicidad}
+
+A estas alturas del texto, el mecanismo para probar la existencia y unicidad de soluciones al problema homogéneo \eqref{probCauchyHomTimoDosAmortigDesglosado} ya se puede inferir: probaremos, mediante el Teorema de Lumer-Phillips \eqref{ch:semigrupos:th:LumerPhillips}, que $A$ es el generador infinitesimal de un $C_0$-semigrupo de contracciones. Para ello, y al igual que en el capítulo anterior, debemos probar que $A$ es densamente definido (que, como ya hemos mencionado en la sección anterior, está demostrado en la Proposición \eqref{ch:teoriaVigas:prop:AesDensamenteDef} por no depender de $A$ sino de su dominio), que $A$ es un operador disipativo y que $I-A$ es un operador sobreyectivo. Sabiendo entonces que $A$ es un generador infinitesimal, la existencia y unicidad sigue inmediatamente.
+
+Empezamos probando que $A$ es disipativo.
+
+\begin{Proposicion}{(El operador $A$ es disipativo)}
+    \label{ch:TimoshenkoFric:prop:AesDisipativo}
+
+    El operador $A : D(A) \rightarrow \mathcal{H}$ \eqref{operadorATimoDosAmortig} es disipativo.
+\end{Proposicion}
+
+\begin{proof}
+    \textcolor{red}{ACABAR!}
+\end{proof}
+
+\textcolor{red}{TEXTO...}
+
+\begin{Proposicion}{(El operador $(I - A)$ es sobreyectivo)}
+\label{ch:TimoshenkoFric:prop:ResolventeEsSobreyect}
+    El operador $(I-A) : D(A) \rightarrow \mathcal{H}$ (véase en \eqref{operadorATimoDosAmortig} la definición del operador $A$) es sobreyectivo, o lo que es lo mismo, $R(I-A) = \mathcal{H}$.
+\end{Proposicion}
+
+\begin{proof}
+    Para probar la proposición basta con demostrar que la ecuación
+
+    \[(I-A)U = F,\]
+
+    donde $U=(\varphi, \varphi_t, \psi, \psi_t) \in D(A)$ y $F = (f_1, f_2, f_3, f_4) \in \mathcal{H}$, tiene una única solución. 
+
+    En efecto, escribamos el sistema desglosado:
+
+    \begin{equation}
+        \label{opSobreyectEq1D}
+        \begin{cases}
+            \varphi - \varphi_t &= f_1\\
+            -\frac{k}{\rho_1}\varphi_{xx} + \varphi_t - \frac{k}{\rho_1}\psi_x &= f_2\\
+            \psi - \psi_t &= f_2\\
+            \frac{k}{\rho_2}\varphi_x - \frac{b}{\rho_2}\psi_{xx} + \frac{k}{\rho_2}\psi + \psi_t &= f_4.
+        \end{cases}
+    \end{equation}
+
+    De la primera y tercera ecuación despejamos $\varphi_t$ y $\psi_t$ respectivamente en función de $\varphi$ y $f_1$, y en función de $\psi$ y $f_3$:
+
+    \begin{align*}
+        \varphi_t &= \varphi - f_1\\
+        \psi_t &= \psi - f_3.
+    \end{align*}
+
+    Sustituyendo en \eqref{opSobreyectEq1D}:
+
+    \begin{equation*}
+        \begin{cases}
+            -\frac{k}{\rho_1}\varphi_{xx} + \varphi - f_1 - \frac{k}{\rho_1}\psi_x &= f_2\\
+            \frac{k}{\rho_2}\varphi_x - \frac{b}{\rho_2}\psi_{xx} + \frac{k}{\rho_2}\psi + \psi - f_3 &= f_4.
+        \end{cases}
+    \end{equation*}
+
+    Manipulamos algebráicamente el sistema anterior y obtenemos:
+
+    \begin{equation}
+        \label{opSobreyectEq2D}
+        \begin{cases}
+            \rho_1\varphi - k(\varphi_x + \psi)_x &= \rho_1(f_1 + f_2)\\
+            \rho_2\psi - b\psi_{xx} + k(\varphi_x + \psi) &= \rho_2(f_3 + f_4).
+        \end{cases}
+    \end{equation}
+
+    Observamos entonces que en el sistema anterior no hay manifestaciones de las derivadas temporales de $\varphi$ ni de $\psi$. Así, estamos ante un sistema elíptico acoplado y, dado que $U \in D(A)$, entonces la solución $(\varphi, \psi)$ que buscamos debe satisfacer:
+
+    \[(\varphi, \psi) \in H_0^1(0,L) \times H_0^1(0,L).\]
+
+    \textcolor{red}{ACABAR!}
+\end{proof}
+
+\begin{Teorema}{(Existencia y unicidad de soluciones)}
+\label{ch:TimoshenkoFric:prop:existenciaYUnicidad}
+    El problema de valor inicial \eqref{pviTimoshenkoDosDispFracc} (planteado también en \eqref{probCauchyHomTimoDosAmortigDesglosado} como un problema abstracto de Cauchy homogéneo) posee una única solución débil
+
+    \[U(t) = \big(\varphi(\cdot, t), \varphi_t(\cdot, t), \psi(\cdot, t), \psi_t(\cdot, t)\big) \in C\big([0,\infty);\mathcal{H}\big)\]
+
+    para cada dato inicial $U(0) = U_0$. Adicionalmente, si dicho dato inicial verifica que
+
+    \[U_0 \in D(A),\]
+
+    entonces la solución $U(t)$ es continuamente diferenciable; es decir,
+
+    \[U(t) \in C^1\big([0,\infty);\mathcal{H}\big) \cap C\big([0,\infty) ; D(A)\big),\]
+
+    donde el operador $A$ es el que se ha definido en \eqref{operadorATimoDosAmortig}. 
+    
+    Por último, sin importar la regularidad de la solución se tiene que esta es de la forma
+
+    \[U(T) = T(t)U_0,\]
+
+    donde $T(t)$ es el semigrupo generado por $A$.
+\end{Teorema}
+
+\begin{proof}
+    \textcolor{red}{ACABAR!}
+    Utilizando el segundo punto del Teorema de Lumer-Phillips \eqref{ch:semigrupos:th:LumerPhillips} tenemos que, gracias a la Proposición \eqref{ch:teoriaVigas:prop:AesDisipativo} ($A$ es disipativo) y a la Proposición \eqref{ch:teoriaVigas:prop:ResolventeEsSobreyect} ($(I-A)$ es sobreyectivo), entonces $A$ es el generador infinitesimal de un semigrupo fuertemente continuo de contracciones.
+
+    Dado que $A$ es el generador de un semigrupo fuertemente continuo de contracciones, y gracias a que el sistema de Timoshenko \eqref{pviTimoshenkoBasico} se puede plantear como un problema abstracto de Cauchy homogéneo tenemos, por lo discutido en la introducción del capítulo sobre problemas abstractos de Cauchy (véase \ref{ch:cauchy:section:Hom}), que este siempre posee soluciones débiles (es decir, de clase $C\big([0,\infty);\mathcal{H}\big)$) únicas (por cada dato inicial del problema homogéneo $U_0$) de la forma 
+
+    $U(t) = T(t)U_0,$
+
+    donde $T(t)$ es el semigrupo generado por $A$. Asimismo, si $U_0 \in D(A)$, entonces el Teorema \eqref{cauchy:hom:ExistenciaYUnicidadFuerte} garantiza que existe una única solución fuerte (entiéndase, de clase $C^1\big([0,\infty);\mathcal{H}\big) \cap C\big([0,\infty) ; D(A)\big)$) por cada dato inicial. 
+\end{proof}
+
+\section{Comportamiento asintótico de la solución}
+\label{ch:TimoshenkoFric:section:compAsintotico}
+
+\textcolor{red}{TEXTO...}
+
+\begin{Teorema}{(Estabilidad exponencial del sistema)}
+\label{ch:TimoshenkoFric:th:compExponencial}
+
+    Supongamos $\rho_1, \rho_2, b, k > 0$ y $\alpha, \beta > 0$. Considerando el funcional de energía $E(t)$ definido en \eqref{timoshenkoDosAmortig:funcionalEnergia}, entonces se tiene que existe una constante $\gamma_0 > 0$, independiente de los datos iniciales, tal que:
+
+    \[E(t) \leq 3E(0)\mathrm{e}^{-\gamma_0t}, \ t \geq 0.\]
+
+    Es decir, el sistema \eqref{probCauchyHomTimoDosAmortigDesglosado} es \textit{exponencialmente estable}.
+\end{Teorema}
+
+\begin{proof}
+    Para esta prueba estaremos considerando una solución fuerte del problema homogéneo \eqref{probCauchyHomTimoDosAmortigDesglosado}, la cual sabemos que existe por el Teorema \eqref{ch:TimoshenkoFric:prop:existenciaYUnicidad} de la sección anterior. Extenderemos luego el resultado a cualquier tipo de solución mediante un argumento de densidad; sin embargo, por el momento nos limitamos a soluciones fuertes para poder derivar con propiedad los funcionales que estaremos estudiando. Así, pues, empezamos por definir el funcional:
+
+    \todo[inline]{Signifcado físico?}
+    \begin{align}
+    \label{funcionalAuxiliarXi}
+        \xi(t) = \rho_1\int_0^L \varphi(x,t) \varphi_t(x,t) \, dx + \rho_2 \int_0^L \psi(x,t) \psi_t(x,t) \, dx, \ t \geq 0,
+    \end{align}
+
+    y, para todo $\varepsilon > 0$, definimos también el \textit{funcional de energía perturbada} como
+
+    \begin{align}
+        \label{dosDisip:energiaPerturbada}
+        E_{\varepsilon}(t) = E(t) + \varepsilon\xi(t), \ t \geq 0.
+    \end{align}
+
+    Veamos, en primer lugar, que para $\varepsilon > 0$ lo suficientemente pequeño se tiene que
+
+    \begin{align}
+        \label{afirmacion1}
+        \frac{1}{2}E(t) \leq E_\varepsilon(t) \leq \frac{3}{2}E(t), \ t \geq 0.
+    \end{align}
+
+    En efecto,
+
+    \begin{align*}
+        \lvert E_\varepsilon(t) - E(t)\lvert &= \lvert \varepsilon \xi(t) \lvert\\
+        &=\varepsilon\left\lvert \rho_1\int_0^L \varphi\varphi_t \, dx + \rho_2 \int_0^L \psi\psi_t \, dx \right\lvert\\
+        \text{(des. triangular)}&\leq \varepsilon\Bigg(\left\lvert \rho_1\int_0^L \varphi\varphi_t \, dx\right\lvert + \left\lvert\rho_2 \int_0^L \psi\psi_t \, dx \right\lvert\Bigg)\\
+        \text{(des. Cauchy-Schwarz)}&\leq \varepsilon\Bigg( \rho_1 \lVert \varphi \lVert_{L^2} \lVert \varphi_t \lVert_{L^2} + \rho_2 \lVert\psi\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg)\\
+        \text{(des. Poincaré)}&\leq \varepsilon\Bigg( \rho_1L \lVert \varphi_x \lVert_{L^2} \lVert \varphi_t \lVert_{L^2} + \rho_2L\lVert\psi_x\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg),
+    \end{align*}
+
+    ahora escribimos $\lVert \varphi_x\lVert_{L^2}$ como $\lVert (\varphi_x - \psi) + (-\psi)\lVert_{L^2}$ y seguimos acotando (utilizando la desigualdad triangular de la norma) la expresión que veníamos trabajando:
+
+    \begin{align*}
+        \lvert E_\varepsilon(t) - E(t)\lvert &= \lvert \varepsilon \xi(t) \lvert\\
+        &\leq \varepsilon\Bigg( \rho_1L \lVert \varphi_x \lVert_{L^2} \lVert \varphi_t \lVert_{L^2} + \rho_2L\lVert\psi_x\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg)\\
+        \text{(des. triangular)} &\leq \varepsilon\Bigg( \rho_1 L \big(\lVert\varphi_x + \psi\lVert_{L^2} + \lVert\psi\lVert_{L^2}\big)\lVert \varphi_t\lVert_{L^2} + \rho_2L\lVert\psi_x\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg)\\
+        \text{(des. Poincaré)} &\leq \varepsilon\Bigg( \rho_1 L \big(\lVert\varphi_x + \psi\lVert_{L^2} + L\lVert\psi_x\lVert_{L^2}\big)\lVert \varphi_t\lVert_{L^2} + \rho_2L\lVert\psi_x\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg)\\
+        &\leq \varepsilon\Bigg( \rho_1 L \lVert \varphi_t\lVert_{L^2}\lVert\varphi_x + \psi\lVert_{L^2} + \rho_1L^2\lVert \varphi_t\lVert_{L^2}\lVert\psi_x\lVert_{L^2} + \rho_2L\lVert\psi_x\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg).\\
+    \end{align*}
+
+    Recordemos ahora la \textcolor{green}{desigualdad de Young}. Sean $a,b\geq0$ dos números reales no negativos; entonces, si $p,q>1$ son números reales tales que $p^{-1} + q^{-1}=1$, entonces
+
+    \[ab \leq \frac{a^p}{p} + \frac{b^q}{q}.\]
+
+    Así, en la última desigualdad obtenida consideramos cada sumando por separado como el producto de dos números reales no negativos y tomamos $p=q=2$. Esto nos permite entonces aplicar la \textcolor{green}{desigualdad de Young} y obtener:
+
+    \begin{align*}
+        \lvert E_\varepsilon(t) - E(t)\rvert &= \lvert \varepsilon \xi(t) \rvert\\
+        \text{(des. Young)}&\leq \varepsilon\Bigg(
+        \begin{aligned}[t]
+            &\rho_1L\left(\frac{1}{2}\lVert \varphi_t\rVert^2_{L^2} + \frac{1}{2}\lVert\varphi_x + \psi\rVert^2_{L^2} \right) + \rho_1L^2\left(\frac{1}{2}\lVert \varphi_t\rVert^2_{L^2} + \frac{1}{2}\lVert\psi_x\rVert^2_{L^2}\right) + \\
+            &\rho_2L\left(\frac{1}{2}\lVert\psi_x\rVert^2_{L^2} + \frac{1}{2}\lVert\psi_t\rVert^2_{L^2}\right)\Bigg)
+        \end{aligned}\\
+        &\leq \varepsilon\Bigg(\frac{\rho_1}{2}(L + L^2)\lVert \varphi_t(t)\rVert^2_{L^2} + \frac{\rho_2}{2}L\lVert\psi_t\rVert^2_{L^2} + \frac{b}{b}\frac{\rho_1L^2 + \rho_2L}{2}\lVert \psi_x\rVert^2_{L^2} + \frac{k}{k}\frac{\rho_1}{2}L\lVert \varphi_x + \psi \rVert^2_{L^2}\Bigg).
+    \end{align*}
+
+    Tomando ahora
+
+    \begin{align}
+        \label{defC}
+        C = \max \left\{(L + L^2), L, \frac{\rho_1L^2 + \rho_2L}{b}, \frac{\rho_1}{k}L \right\},
+    \end{align}
+
+    entonces, para todo $\varepsilon > 0$ se tiene que:
+
+    \begin{align*}
+        \lvert E_\varepsilon(t) - E(t)\rvert &= \lvert \varepsilon \xi(t) \rvert\\
+        &\leq \varepsilon C \Bigg(\frac{\rho_1}{2}\lVert \varphi_t(t)\rVert^2_{L^2} + \frac{\rho_2}{2}\lVert\psi_t\rVert^2_{L^2} + \frac{b}{2}\lVert \psi_x\rVert^2_{L^2} + \frac{k}{2}\lVert \varphi_x + \psi \rVert^2_{L^2}\Bigg)\\
+        &\leq \varepsilon C E(t).
+    \end{align*}
+
+    Luego, para todo $\varepsilon > 0$ tenemos:
+
+    \begin{alignat*}{3}
+        &\lvert E_\varepsilon(t) - E(t)\rvert &{}\leq{}& \varepsilon C E(t)\\
+        \iff\quad &-\varepsilon C E(t) &{}\leq{}& E_\varepsilon(t) - E(t) &{}\leq{}& \varepsilon C E(t)\\
+        \iff\quad &(1-\varepsilon C)E(t) &{}\leq{}& E_\varepsilon(t) &{}\leq{}& (1+\varepsilon C)E(t).
+    \end{alignat*}
+
+    Así, escogiendo $\varepsilon$ tal que $\frac{1}{2} \leq 1 - \varepsilon C$ se tiene que
+
+    \[\frac{1}{2} \leq 1 - \varepsilon C \implies \varepsilon C \leq \frac{1}{2} \implies 1 + \varepsilon C \leq \frac{3}{2},\]
+
+    y por lo tanto:
+
+    \[\frac{1}{2}E(t) \leq E_\varepsilon(t) \leq \frac{3}{2}E(t),\]
+
+    que es lo que pretendíamos probar. 
+
+    Para continuar con la prueba, ahora debemos demostrar otro resultado auxiliar que dicta lo siguiente: existen constantes $C_1$ y $C_2 > 0$ tales que
+
+    \begin{align}
+        \label{afirmacion2}
+        \xi^\prime(t) \leq C_1\lVert \varphi_t(t)\rVert^2_{L^2} + C_2\lVert \psi_t(t)\lVert^2_{L^2} - \frac{k}{2}\lVert \varphi_x(t) + \psi(t)\rVert^2_{L^2} - \frac{b}{2}\lVert \psi_x \rVert_{L^2}^2, \ t \geq 0.
+    \end{align}
+
+    Para probar esto, empezando tomando la derivada de $\xi$ según como se ha definido en \eqref{funcionalAuxiliarXi}:
+
+    \begin{align*}
+        \xi^\prime(t) &= \rho_1\frac{d}{dt} \int_0^L \varphi(t)\varphi_t(t) \, dx + \rho_2\frac{d}{dt}\int_0^L\psi(t) \psi_t(t) \, dx\\
+        &= \rho_1 \int_0^L \frac{d}{dt}\varphi(t)\varphi_t(t) \, dx + \rho_2\int_0^L \frac{d}{dt}\psi(t) \psi_t(t) \, dx\\
+        &= \rho_1\int_0^L \big(\varphi_t(t)\big)^2 + \varphi(t)\varphi_{tt}(t) \, dx + \rho_2\int_0^L \big(\psi_t(t)\big)^2 + \psi(t)\psi_{tt}(t) \, dx\\
+        &=\rho_1\lVert \varphi_t(t)\rVert^2_{L^2} + \rho_2\lVert \psi_t(t)\rVert^2_{L^2} + \rho_1\int_0^L\varphi(t)\varphi_{tt}(t) \, dx + \rho_2\int_0^L\psi(t)\psi_{tt}(t) \, dx.
+    \end{align*}
+
+    Ahora despejamos $\rho_1\varphi_{tt}$ y $\rho_2\psi_{tt}$ de las ecuaciones del sistema \eqref{eqTimoshenkoDosDispFracc} y sustituimos en la expresión anterior, obteniendo así:
+
+    \begin{align*}
+        &\xi^\prime(t)\\
+        &=\begin{aligned}[t]
+            &\rho_1\lVert \varphi_t(t)\rVert^2_{L^2} + \rho_2\lVert \psi_t(t)\rVert^2_{L^2} + k\int_0^L\varphi(t)\big(\varphi_x(t) + \psi(t)\big)_x \, dx + b\int_0^L\psi(t)\psi_{xx}(t) \, dx\\
+            -&k\int_0^L\psi(t)\big(\varphi_x(t) + \psi(t)\big) \, dx - \alpha\int_0^L\varphi(t)\varphi_t(t) \, dx - \beta\int_0^L\psi(t)\psi_t(t)\, dx.
+        \end{aligned}
+    \end{align*}
+    
+    Ahora integramos por partes los términos
+
+    \[\int_0^L\varphi(t)\big(\varphi_x(t) + \psi(t)\big)_x \, dx, \ \int_0^L\psi(t)\psi_{xx}(t) \, dx,\]
+
+    y obtenemos:
+
+    \begin{align*}
+        \int_0^L\varphi(t)\big(\varphi_x(t) + \psi(t)\big)_x \, dx &= \cancelto{0}{\Big[\varphi(t)\big(\varphi_x(t) + \psi(t)\big)\Big]_0^L} - \int_0^L\big(\varphi_x(t) + \psi(t)\big)\varphi_x(t) \, dx\\
+        \int_0^L\psi(t)\psi_{xx}(t) \, dx &= \cancelto{0}{[\psi(t)\psi_x(t)]_0^L} - \int_0^L \big(\psi_x(t)\big)^2 \, dx = \lVert \psi_x(t) \rVert_{L^2}^2.
+    \end{align*}
+
+    Sustituyendo en la expresión de $\xi^\prime$ que hemos estado trabajando se obtiene:
+
+    \begin{align}
+        \label{funcionalXiDerivada}
+        &\xi^\prime(t)\\
+        =&\begin{aligned}[t]
+            &\rho_1\lVert \varphi_t(t)\rVert^2_{L^2} + \rho_2\lVert \psi_t(t)\rVert^2_{L^2} -b\lVert \psi_x(t) \rVert_{L^2}^2 -k\int_0^L\big(\varphi_x(t) + \psi(t)\big)^2 \, dx\\
+            -&\alpha\int_0^L\varphi(t)\varphi_t(t) \, dx - \beta\int_0^L\psi(t)\psi_t(t)\, dx\\
+        \end{aligned}\\      
+        =&\begin{aligned}[t]
+            &\rho_1\lVert \varphi_t(t)\rVert^2_{L^2} + \rho_2\lVert \psi_t(t)\rVert^2_{L^2} -b\lVert \psi_x(t) \rVert_{L^2}^2 -k\lVert\varphi_x(t) + \psi(t)\rVert^2_{L^2}\\
+        -&\alpha\int_0^L\varphi(t)\varphi_t(t) \, dx - \beta\int_0^L\psi(t)\psi_t(t)\, dx.\\
+        \end{aligned}
+    \end{align}
+
+    Ahora definimos
+
+    \[I_1 := -\alpha\int_0^L\varphi_t(t)\varphi(t) \, dx \ \ \text{y} \ \ I_2 := -\beta\int_0^L\psi_t(t)\psi(t) \, dx,\]
+
+    y tenemos que
+
+    \begin{align*}
+        \lvert I_1 \rvert &= \left\lvert-\alpha\int_0^L\varphi_t\varphi \, dx\right\lvert\\
+        \text{(des. Cauchy-Schwarz)}&\leq \alpha\lVert\varphi_t\lVert_{L^2}\lVert\varphi\lVert_{L^2}\\
+        \text{(des. Poincaré)}&\leq \alpha L\lVert\varphi_t\lVert_{L^2}\lVert\varphi_x\lVert_{L^2}\\
+        \text{(des. triangular)}&\leq \alpha L \lVert\varphi_t\lVert_{L^2}\big(\lVert \varphi_x + \psi\lVert_{L^2}  + \lVert \psi \lVert_{L^2}\big)\\
+        &=\alpha L\lVert\varphi_t\lVert_{L^2}\lVert \varphi_x + \psi\lVert_{L^2} + \alpha L \lVert\varphi_t\lVert_{L^2}\lVert \psi \lVert_{L^2}\\
+        \text{(des. Poincaré)}&\leq \alpha L\lVert\varphi_t\lVert_{L^2}\lVert \varphi_x + \psi\lVert_{L^2} + \alpha L^2\lVert\varphi_t\lVert_{L^2}\lVert \psi_x \lVert_{L^2}.
+    \end{align*}
+
+    Para acotar el último termino utilizamos la \textcolor{green}{desigualdad de Young generalizada}, que establece lo siguiente: para dos números reales $a,b \geq 0$ no negativos, y dos números $p,q > 0$ tales que $p^{-1} + q^{-1} = 1$, se verifica para todo $\varepsilon > 0$:
+
+    \[ab \leq \frac{a^2}{2\varepsilon} + \frac{\varepsilon b^2}{2},\]
+
+    y tomando $\varepsilon = \frac{1}{2\eta}$ con $\eta > 0$ se obtiene:
+
+    \[ab \leq \eta a^2 + \frac{b^2}{4\eta},\]
+
+    que es la desigualdad que estaremos usando. Entonces, considerando en el primer sumando de la última expresión a la que hemos llegado
+
+    \[a = \lVert \varphi_x + \psi\lVert_{L^2} ,\ b = \alpha L\lVert\varphi_t\lVert_{L^2},\]
+
+    y en el segundo sumando
+
+    \[a = \lVert \psi_x \lVert_{L^2}, \ b= \alpha L^2\lVert\varphi_t\lVert_{L^2},\]
+
+    se tiene:
+
+    \begin{align*}
+        \lvert I_1 \rvert &= \left\lvert-\alpha\int_0^L\varphi_t\varphi \, dx\right\lvert\\
+        \text{(des. Young generalizada)}&\leq \eta_1\lVert \varphi_x + \psi\lVert^2_{L^2} + \frac{\alpha^2 L^2}{4\eta_1}\lVert\varphi_t\lVert^2_{L^2}  + \eta_2\lVert \psi_x \lVert^2_{L^2} + \frac{\alpha^2 L^4}{4\eta_2}\lVert\varphi_t\lVert^2_{L^2},
+    \end{align*}
+
+    donde escogemos
+
+    \[\eta_1 = \frac{k}{2} \ \ \text{y} \ \ \eta_2 = \frac{b}{4},\]
+
+    y así se obtiene:
+
+    \begin{align}
+        \label{cotaI1}
+        \lvert I_1 \rvert &= \left\lvert-\alpha\int_0^L\varphi_t\varphi \, dx\right\lvert\\
+        &\leq \frac{k}{2}\lVert \varphi_x + \psi\lVert^2_{L^2} + \frac{\alpha^2 L^2}{2k}\lVert\varphi_t\lVert^2_{L^2}  + \frac{b}{4}\lVert \psi_x \lVert^2_{L^2} + \frac{\alpha^2 L^4}{b}\lVert\varphi_t\lVert^2_{L^2}\\
+        &\leq \frac{k}{2}\lVert \varphi_x + \psi\lVert^2_{L^2} + \frac{b}{4}\lVert \psi_x \lVert^2_{L^2} + \left(\frac{\alpha^2 L^4}{b} + \frac{\alpha^2 L^2}{2k}\right)\lVert\varphi_t\lVert^2_{L^2}.
+    \end{align}
+
+    Análogamente, se puede deducir también que:
+
+    \[\lvert I_2 \lvert \leq \eta_3 \lVert \psi_x\lVert^2_{L^2} + \frac{\beta^2L^2}{4\eta_3}\lVert \psi_t \lVert^2_{L^2},\]
+
+    donde escogiendo
+
+    \[\eta_3 = \frac{b}{4}\]
+
+    se obtiene:
+
+    \begin{align}
+        \label{cotaI2}
+        \lvert I_2 \lvert \leq \frac{b}{4} \lVert \psi_x\lVert^2_{L^2} + \frac{\beta^2L^2}{b}\lVert \psi_t \lVert^2_{L^2}.
+    \end{align}
+
+    Finalmente, sustituyendo \eqref{cotaI1} y \eqref{cotaI2} en \eqref{funcionalXiDerivada} conseguimos:
+
+    \begin{align*}
+        &\xi^\prime(t)\\   
+        =&\begin{aligned}[t]
+            &\rho_1\lVert \varphi_t\rVert^2_{L^2} + \rho_2\lVert \psi_t\rVert^2_{L^2} -b\lVert \psi_x \rVert_{L^2}^2 -k\lVert\varphi_x + \psi\rVert^2_{L^2}\\
+            -&\alpha\int_0^L\varphi\varphi_t \, dx - \beta\int_0^L\psi\psi_t\, dx.\\
+        \end{aligned}\\
+        \leq&\begin{aligned}[t]
+            &\rho_1\lVert \varphi_t\rVert^2_{L^2} + \rho_2\lVert \psi_t\rVert^2_{L^2} -b\lVert \psi_x \rVert_{L^2}^2 -k\lVert\varphi_x + \psi\rVert^2_{L^2} + \frac{k}{2}\lVert \varphi_x + \psi\lVert^2_{L^2}\\
+            +& \frac{b}{4}\lVert \psi_x \lVert^2_{L^2} + \left(\frac{\alpha^2 L^4}{b} + \frac{\alpha^2 L^2}{2k}\right)\lVert\varphi_t\lVert^2_{L^2} + \frac{b}{4} \lVert \psi_x\lVert^2_{L^2} + \frac{\beta^2L^2}{b}\lVert \psi_t \lVert^2_{L^2}\\
+        \end{aligned}\\
+        \leq&\begin{aligned}[t]
+            &\left(\rho_1 + \frac{\alpha^2 L^4}{b} + \frac{\alpha^2 L^2}{2k}\right)\lVert \varphi_t\rVert^2_{L^2} + \left(\rho_2 + \frac{\beta^2L^2}{b} \right)\lVert \psi_t\rVert^2_{L^2} - \frac{k}{2}\lVert \varphi_x + \psi\lVert_{L^2}^2 - \frac{b}{2}\lVert \psi_x\lVert_{L^2}^2,\\
+        \end{aligned}
+    \end{align*}
+
+    y basta con tomar
+
+    \begin{align}
+        \label{C1yC2}
+        C_1 = \rho_1 + \frac{\alpha^2L^4}{b} + \frac{\alpha^2L^2}{2k} > 0 \ \ \text{y} \ \ C_2 = \rho_2 + \frac{\beta L^2}{b} > 0,
+    \end{align}
+
+    para concluir la segunda afirmación. Es decir, que existen constantes $C_1, C_2 > 0$ tales que
+
+    \[\xi^\prime(t) \leq C_1\lVert \varphi_t(t)\rVert^2_{L^2} + C_2\lVert \psi_t(t)\lVert^2_{L^2} - \frac{k}{2}\lVert \varphi_x(t) + \psi(t)\rVert^2_{L^2} - \frac{b}{2}\lVert \psi_x \rVert_{L^2}^2, \ t \geq 0.\]
+
+    El tercer y último resultado auxiliar que debemos probar el siguiente: Para $\varepsilon > 0$ lo suficientemente pequeño, existe $\gamma > 0$ dependiente de $\varepsilon$ tal que
+
+    \begin{align}
+        \label{afirmacion3}
+        E_\varepsilon^\prime(t) \leq -\gamma E(t), \ t > 0.
+    \end{align}
+
+    Para probar este resultado, empecemos por recordar la Proposición \eqref{ch:timoshenkoFric:prop:DisipacionEnergia}. Esta dicta que:
+
+    \[\frac{d}{dt}E(t) = -\alpha\int_0^L \big(\varphi_t(x, t)\big)^2 \, dx -\beta\int_0^L \big(\psi_t(x, t)\big)^2 \, dx \leq 0.\]
+
+    Luego, dado que $E_\varepsilon(t) = E(t) + \varepsilon\xi(t)$ por definición del funcional de energía perturbado \eqref{dosDisip:energiaPerturbada}, entonces al derivar respecto al tiempo se obtiene que:
+
+    \[E^\prime_\varepsilon(t) = \frac{d}{dt}E(t) + \varepsilon\xi^\prime(t),\]
+
+    y, utilizando la Proposición \eqref{ch:timoshenkoFric:prop:DisipacionEnergia} y la cota dada en la afirmación anterior \eqref{afirmacion2}, se deduce:
+
+    \begin{align*}
+        E'_\varepsilon(t) &\leq -\alpha \lVert \varphi_t \rVert^2_{L^2} -\beta \lVert \psi_t \rVert^2_{L^2} \\
+        &\quad + \varepsilon \Biggl(C_1 \lVert \varphi_t(t) \rVert^2_{L^2} + C_2 \lVert \psi_t(t) \rVert^2_{L^2} - \frac{k}{2} \lVert \varphi_x(t) + \psi(t) \rVert^2_{L^2} - \frac{b}{2} \lVert \psi_x \rVert^2_{L^2} \Biggr) \\
+        &\leq (-\alpha + \varepsilon C_1)\lVert \varphi_t \rVert^2_{L^2} + ( -\beta + \varepsilon C_2)\lVert \psi_t \rVert^2_{L^2} - \varepsilon \frac{k}{2} \lVert \varphi_x(t) + \psi(t) \rVert^2_{L^2} - \varepsilon \frac{b}{2} \lVert \psi_x \rVert^2_{L^2}.
+    \end{align*}
+
+    Ahora escogemos $\varepsilon > 0$ tal que
+
+    \[\alpha - \varepsilon C_1 \geq \frac{\alpha}{2} \iff 0< \varepsilon \leq \frac{\alpha}{2C_1},\]
+
+    y
+
+    \[\beta - \varepsilon C_2 \geq \frac{\beta}{2} \iff 0< \varepsilon \leq \frac{\beta}{2C_2}.\]
+
+    Es decir, escogemos $\varepsilon > 0$ tal que
+
+    \[\varepsilon = \min \left \{\frac{\alpha}{2C_1} ,\frac{\beta}{2C_2}\right \} > 0.\]
+
+    Así, tenemos
+
+    \begin{align*}
+        E'_\varepsilon(t) &\leq -\frac{\alpha}{2}\lVert \varphi_t \rVert^2_{L^2} - \frac{\beta}{2}\lVert \psi_t \rVert^2_{L^2} - \varepsilon \frac{k}{2} \lVert \varphi_x(t) + \psi(t) \rVert^2_{L^2} - \varepsilon \frac{b}{2} \lVert \psi_x \rVert^2_{L^2}\\
+        &\leq -\frac{\alpha}{2}\frac{\rho_1}{\rho_1}\lVert \varphi_t \rVert^2_{L^2} - \frac{\beta}{2}\frac{\rho_2}{\rho_2}\lVert \psi_t \rVert^2_{L^2} - \varepsilon \frac{k}{2} \lVert \varphi_x(t) + \psi(t) \rVert^2_{L^2} - \varepsilon \frac{b}{2} \lVert \psi_x \rVert^2_{L^2}.
+    \end{align*}
+
+    Fijando ahora
+
+    \begin{align}
+        \label{defGamma}
+        \gamma = \min \left\{\frac{\alpha}{\rho_1}, \frac{\beta}{\rho_2}, \varepsilon \right\} > 0,
+    \end{align}
+
+    se tiene
+
+    \begin{align*}
+        E'_\varepsilon(t) &\leq -\gamma \left[\frac{\rho_1}{2}\lVert \varphi_t \rVert^2_{L^2} + \frac{\rho_2}{2}\lVert \psi_t \rVert^2_{L^2} + \frac{k}{2} \lVert \varphi_x(t) + \psi(t) \rVert^2_{L^2} + \frac{b}{2} \lVert \psi_x \rVert^2_{L^2}\right]\\
+        &= -\gamma E(t),
+    \end{align*}
+
+    para $t > 0$. Esto concluye la prueba de nuestra tercera afirmación.
+
+    Utilicemos ahora los resultados auxiliares que hemos ido demostrando para probar el Teorema. Tomemos $\varepsilon > 0$ satisfaciendo
+
+    \[\varepsilon = \min\left\{\frac{\alpha}{2C_1}, \frac{\beta}{2C_2}, \frac{1}{2C} \right\} > 0,\]
+
+    donde $C, C_1$ y $C_2$ son los definidos en \eqref{defC} y \eqref{C1yC2} respectivamente. Luego, considerando además $\gamma > 0$ según \eqref{defGamma} tenemos, invocando la primera afirmación \eqref{afirmacion1} y la tercera afirmación \eqref{afirmacion3}, que:
+
+    \begin{align*}
+        E^\prime_\varepsilon(t) \leq -\gamma E(t) &\implies E^\prime_\varepsilon(t) \leq -\gamma\frac{2}{3} E_\varepsilon(t)\\
+        &\implies E^\prime_\varepsilon(t) + \gamma\frac{2}{3} E_\varepsilon(t) \leq 0\\
+        &\implies \mathrm{e}^{\frac{2}{3}\gamma t}E^\prime_\varepsilon(t) + \mathrm{e}^{\frac{2}{3}\gamma t}\gamma\frac{2}{3} E_\varepsilon(t) \leq 0\\
+        &\implies \frac{d}{dt}\left[\mathrm{e}^{\frac{2}{3}\gamma t}E_\varepsilon(t)\right] \leq 0\\
+        &\implies \mathrm{e}^{\frac{2}{3}\gamma t}E_\varepsilon(t) \leq E_\varepsilon(0)\\
+        &\implies E_\varepsilon(t) \leq \mathrm{e}^{-\frac{2}{3}\gamma t}E_\varepsilon(0).
+    \end{align*}
+
+    Considerando nuevamente la primera afirmación \eqref{afirmacion1} y el resultado recién obtenido, se tiene:
+
+    \[\frac{1}{2}E(t) \leq E_\varepsilon(t) \leq \mathrm{e}^{-\frac{2}{3}\gamma t}E_\varepsilon(0) \leq \frac{3}{2}\mathrm{e}^{-\frac{2}{3}\gamma t}E(0), \ t > 0.\]
+
+    Por lo tanto,
+
+    \[E(t) \leq 3E(0)\mathrm{e}^{-\frac{2}{3}\gamma t},\]
+
+    y escogiendo $\displaystyle\gamma_0 = \frac{2}{3}\gamma > 0$ se prueba el Teorema.
+    
+    \textcolor{red}{Extender a soluciones débiles.}
+\end{proof}

@@ -1,9 +1,9 @@
-\chapter{Teoría de Semigrupos}
+\chapter{Preliminares: Teoría de Semigrupos}
 \label{ch:semigrupos}
 
 \textcolor{red}{UNA PEQUEÑA INTRODUCCIÓN}
 
-\section{Definiciones y Resultados Básicos}
+\section{Definiciones y resultados básicos}
 \label{ch:semigrupos:section:basico}
 
 Empecemos por fijar la notación que estaremos usando a lo largo de este capítulo. En primer lugar, sean $E_0$ y $F_0$ dos espacios de Banach sobre un cuerpo $\mathbb{K}$, donde $\mathbb{K} = \R$ o bien $\mathbb{K} = \C$. Denotamos por $L(E_0, F_0)$ al espacio de los operadores lineales y continuos que van de $E_0$ en $F_0$ con la norma usual; es decir, para un operador $T \in L(E_0, F_0)$, se define la norma de $T$ como:
@@ -383,11 +383,11 @@ Terminamos esta sección con un resultado de unicidad:\\
     \end{enumerate}
 \end{Teorema}
 
-Antes de dar la demostración, definamos formalmente un tipo particular de $C_0$ semigrupos: los \textit{semigrupos de contracciones}.\\
+Antes de dar la demostración, definamos formalmente un tipo particular de $C_0$-semigrupos: los \textit{semigrupos de contracciones}.\\
 
-\begin{Definicion}[$C_0$ semigrupo de contracciones]
+\begin{Definicion}[$C_0$-semigrupo de contracciones]
     \label{ch:semigrupos:def:semigrupoContract}
-    Un $C_0$ semigrupo $\{T(t) : t \geq 0\}$ se dice que es un \textit{semigrupo de contracciones} si:
+    Un $C_0$-semigrupo $\{T(t) : t \geq 0\}$ se dice que es un \textit{semigrupo de contracciones} si:
 
     \[||T(t)||_{L(E_0)} \leq 1, \ \forall t \geq 0.\]
 \end{Definicion}
@@ -404,7 +404,7 @@ Dada la definición anterior, estamos ya en posición de continuar con la demost
         &\leq ||e||_{E_0} \frac{1}{\lambda - \omega}, \text{ si } \lambda > \omega.
     \end{align*}
 
-    Ahora veamos la implicación $2. \implies 1.$ Sea $T(t)$ un $C_0$ semigrupo que satisface que $||T(t)||_{L(E_0)} \leq \mathrm{e}^{\omega t}, \forall t \geq 0$. Consideremos $T_1(t) = \mathrm{e}^{-\omega t}T(t)$; es inmediato comprobar que $T_1(t)$ es un semigrupo. Luego, si $A$ es el generador infinitesimal de $T(t)$, entonces $A_1 = A - \omega$ es el de $T_1(t)$ pues
+    Ahora veamos la implicación $2. \implies 1.$ Sea $T(t)$ un $C_0$-semigrupo que satisface que $||T(t)||_{L(E_0)} \leq \mathrm{e}^{\omega t}, \forall t \geq 0$. Consideremos $T_1(t) = \mathrm{e}^{-\omega t}T(t)$; es inmediato comprobar que $T_1(t)$ es un semigrupo. Luego, si $A$ es el generador infinitesimal de $T(t)$, entonces $A_1 = A - \omega$ es el de $T_1(t)$ pues
 
     \begin{align*}
         A_1 e &= \lim_{t \rightarrow 0^+} \frac{T_1(t)e - e}{t}\\

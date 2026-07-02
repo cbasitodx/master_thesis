@@ -1,0 +1,1134 @@
+\chapter{Teoría de vigas}
+\label{ch:teoriaVigas}
+\todo[inline]{PONER TODO CON LOS REALES. ELIMINAR CUALQUIER RASTRO DE $\mathbb{C}$}
+
+\textcolor{red}{UNA PEQUEÑA INTRODUCCIÓN}
+
+\section{Modelos básicos de vigas}
+\label{ch:teoriaVigas:section:primerosmodelos}
+
+Para dar inicio a esta primera sección, haremos un \textit{tour} por la teoría básica de vigas. Esto cumplirá dos propósitos: el primero será el de contextualizar el sistema de Timoshenko que presentaremos al final de la sección (dado que su origen viene motivado por trabajos previos sobre la dinámica de vigas), y el segundo será el de esclarecer (ligeramente) la física que se oculta tras las ecuaciones. Continuando con lo anterior, no se pretende dar una deducción física extensa, y se asume familiaridad de parte del lector con los conceptos básicos de mecánica de medios continuos. Existen numerosos textos capaces de proveer al lector interesado de dichos conocimientos, como por ejemplo \textcolor{red}{[CITA]}.
+
+Con todo lo anterior, pasaremos ahora a deducir la ecuación de vigas de Euler-Bernoulli.
+
+\subsection{Ecuación de vigas de Euler-Bernoulli}
+\label{ch:teoriaVigas:section:primerosmodelos:subsection:eulerbernoulli}
+
+Comenzamos entonces enunciando las hipótesis del modelo:
+
+\begin{enumerate}
+    \item Una \textit{viga} es un prisma recto cuya longitud es mayor que sus otras dimensiones; así, esta teoría es especialmente adecuada para vigas esbeltas.
+
+    \textcolor{red}{DIBUJO}
+
+    \item La viga está hecha de un material \textit{linealmente elástico}. Es decir, obedece la ley de Hooke
+
+    \item Las secciones transversales de la viga son \textit{simétricas} con respecto a los planos verticales\footnotemark. Luego, la \textit{línea} o \textit{eje neutro} (que separa, imaginariamente, la zona comprimida de la traccionada) corta a estas secciones y es perpendicular a ellas.
+
+    \footnotetext{La simetría hace que el producto de inercia sea cero, eliminando el acoplamiento entre flexiones en distintos planos.}
+    \textcolor{red}{DIBUJO}
+
+    \item Los planos perpendiculares a la línea neutra permanecen planos y perpendiculares tras la deformación. Es decir, no se produce una \textit{deformación por cortante}.
+
+    \item Se desprecian los efectos de la \textit{inercia rotacional}.
+
+    \textcolor{red}{DIBUJO}
+
+    \item Se supone que el ángulo de rotación es pequeño, por lo que se adopta la hipótesis de pequeñas \textit{deformaciones}.
+
+    \textcolor{red}{DIBUJO}
+
+    \item El material de la viga es homogéneo e isótropo (sus propiedades físicas son iguales en todas las direcciones), con una densidad $\rho$.
+\end{enumerate}
+
+\textcolor{red}{DIBUJO}
+
+Ahora fijemos algo de notación. Dado que en esta teoría despreciamos las deformaciones por cortante, los efectos de la inercia rotatoria de las secciones y además asumimos que las secciones transversales permanecen planas y perpendiculares al eje neutro deformado, entonces se tiene que la respuesta de la viga ante una \textit{carga} queda descrita únicamente por la flexión. 
+
+De esta manera, si denotamos por $(X,Y,Z)$ a un punto sobre la viga (a lo que nos referiremos como sus \textit{coordenadas materiales}), y suponemos que la longitud de la viga se extiende por el eje $X$, su altura por el $Y$ y su anchura por el $Z$, lo anterior nos permite colapsar la información de cada sección transversal al eje neutro (el cual se sitúa en la coordenada $Y=0$), por lo que todas nuestras funciones dependerán exclusivamente de la coordenada material $X$. 
+
+Nuestro interés será entonces modelizar la deformación del eje neutro, y en consecuencia definimos como $\varphi(X, t)$ al \textit{desplazamiento} de dicho eje en la posición $X$, con $X \in [0,L]$ siendo $L$ la longitud de la viga, en el instante de tiempo $t$. Consideraremos que la función $\varphi(X,t)$ es negativa cuando la deformación se produce en el sentido positivo del eje $Y$, y positiva en el caso contrario. 
+
+Por último, modelizaremos la carga mencionada anteriormente como una función $q(X)$, que representa la fuerza distribuida por unidad de longitud, y la cual puede hacer referencia tanto al peso de la propia viga, como a fuerzas externas que actúen sobre la misma.
+
+\textcolor{red}{DIBUJO}
+
+Hagamos ahora un estudio del estado de equilibrio de la viga. Es decir, una vez ocurrida la deformación, cuando las fuerzas se han equilibrado. Veamos entonces un diagrama de la viga deformada:
+
+\textcolor{red}{DIBUJO}
+
+Dado que haremos un estudio de la deformación una vez alcanzado el equilibrio, vamos a considerar la función $\varphi: [0,L] \rightarrow \mathbb{R}$, que será la que modelice la curva que define el eje neutro deformado.
+
+En la figura anterior, tenemos que $\varrho$ es el radio de curvatura de la curva $x \mapsto \Big(x, \varphi(x)\Big)$. Así:
+
+\[\frac{1}{\varrho} = \frac{\varphi^{\prime \prime}(x)}{\Big(\sqrt{1 + \big(\varphi^{\prime}(x) \big)^2} \Big)^3} \approx \varphi^{\prime \prime}(x),\]
+
+donde hemos hecho uso de la hipótesis de desplazamientos pequeños para obtener una aproximación de $\frac{1}{\varrho}$.
+
+Recordemos ahora, con algo más de formalidad, el concepto de \textit{deformación}. En su versión más general, se entiende por deformación al cambio de un cuerpo respecto a una configuración inicial. Así, en este caso, la deformación será el cambio respecto a una longitud de arco inicial (recuérdese que, como consecuencia de nuestras hipótesis, el eje neutro no cambia su longitud. Sin embargo, las fibras en un entorno del mismo si). Entonces, si la longitud de arco inicial de una fibra es
+
+\[L_0 = (\varrho - Y)d\theta \ \text{ (la misma que la del eje neutro)},\]
+
+y la longitud de arco de la fibra deformado es
+
+\[L = \varrho d\theta,\]
+
+entonces la deformación $\varepsilon$ será
+
+\[\varepsilon = \frac{L - L_0}{L_0} = \frac{\varrho d\theta - (\varrho - Y)d\theta}{\varrho d\theta} = \frac{Y}{\varrho}.\]
+
+Este resultado es coherente con la discusión llevada a cabo hasta el momento: En primer lugar, cuando $Y = 0$, obtenemos $\varepsilon = 0$; es decir, el eje neutro no sufre un cambio de longitud, su longitud permanece la misma. Por otro lado, ese cambio relativo a una posición inicial se hace (linealmente) más ``brusco'' en el resto de fibras según mayor sea la distancia vertical (en valor absoluto) al eje neutro.
+
+Revisemos ahora el concepto de \textit{tensión}. Se define tensión (a veces también llamada \textit{estrés} o \textit{esfuerzo}) a la representación de la fuerza por unidad de área en el entorno de un punto material sobre una superficie de un medio continuo. Se produce a consecuencia de las fuerzas exteriores.
+
+De manera intuitiva, conviene entonces pensar en las tensiones de un material como fuerzas internas que surgen dentro del mismo por la acción de fuerzas externas. Esta intuición es entonces congruente con la tercera ley de Newton.
+
+Luego, como (por hipótesis) estamos ante un material elástico lineal, con deformaciones pequeñas, homogéneo e isótropo, entonces la ley de Hooke nos indica que la tensión viene dada por:
+
+\[\sigma = E \varepsilon = E \frac{Y}{\varrho},\]
+
+donde $E$ es una constante (para materiales linealmente elásticos) denominada \textit{módulo de Young}, la cual caracteriza la rigidez de un material frente a la flexión. Como una pequeña nota técnica, se recuerda que tanto la tensión como la deformación no son, en general, magnitudes escalares, sino magnitudes tensoriales. En este caso, por nuestras hipótesis y el tipo de cargas que asumimos, la única tensión presente es la tensión normal en la dirección del eje $X$; es decir, $\sigma_{XX} = \sigma(Y) = E \frac{Y}{\varrho}$. En consecuencia, podemos hablar de tensión y deformación como una magnitud puramente escalar.
+
+Calculemos ahora el momento $M$ con relación al eje de simetría producido por la fuerza de tensión:
+
+\[M = \int_A \sigma Y \, dA = \int_A E \frac{Y^2}{\varrho} \, dA = \frac{E}{\varrho} \int_A Y^2 \, dA = \frac{E I}{\varrho},\]
+
+donde $A$ es el área de una sección transversal\footnotemark e $I = \int_A Y^2 \, dA$ es el momento de inercia. Considerando ahora la aproximación hecha de $\frac{1}{\varrho}$, se tiene que:
+
+\footnotetext{A lo largo de este texto, salvo que se indique lo contrario, estaremos asumiendo que el área de las secciones transversales se mantiene constante. Sin embargo, la teoría no es limitante en este aspecto. El único objetivo de considerar el área constante es el de simplificar las ecuaciones.}
+\[\frac{E I}{\varrho} = EI \varphi^{\prime \prime}(X)\]
+
+\textcolor{red}{DIBUJO}
+\textcolor{red}{DIBUJO}
+
+Si denotamos ahora por $S$ al esfuerzo cortante o de cizallamiento, entonces, llevando a cabo un equilibrio de fuerzas obtenemos:
+
+$(M + dM) - M - (S + dS)dX - q dX (\frac{dX}{2}) = 0.$
+
+A pesar de que no estamos considerando deformaciones por cizallamiento, por simple estática es necesario tomar en consideración estos esfuerzos. Luego, despreciando los productos de diferenciales:
+
+\[dM - SdX = 0 \implies \frac{dM}{dX} = S.\]
+
+Ahora planteamos el equilibrio de fuerzas verticales:
+
+\[S - (S + dS) + q dX = 0 \implies \frac{dS}{dX} = q.\]
+
+Juntando ambas relaciones y sustituyendo por la expresión hallada de $M$ se obtiene la \textit{ecuación en estática de Euler-Bernoulli}:
+
+\begin{align*}
+    \label{eq::eulerbernoulliestatica}
+    EI \frac{d^4\varphi}{dX^4} &= q
+\end{align*}
+
+Para el caso de una viga oscilante, en la que no se alcanza el equilibrio de las fuerzas verticales, debemos aplicar la segunda ley de Newton. En este caso consideramos $\varphi(X,t)$ y un trozo de viga de longitud $\Delta X$, donde el área de su sección transversal es $A$. Así,
+
+\begin{align*}
+    \sum F_{\text{verticales}} &= m a\\
+    \implies S - (S + dS) + q\Delta X &= \int_{X}^{X + \Delta X} A \rho \frac{\partial^2 \varphi}{\partial t^2} \, dX\\
+    \implies -dS + q\Delta X &= \int_{X}^{X + \Delta X} A \rho \frac{\partial^2 \varphi}{\partial t^2} \, dX.
+\end{align*}
+
+Dividiendo por $\Delta X$ los dos extremos de la igualdad, y tomando el límite cuando $\Delta X \rightarrow 0$ se obtiene:
+
+\[A \rho \frac{\partial^2 \varphi}{\partial t^2} = -\frac{dS}{dX} + q,\]
+
+e incorporando la relación $\frac{dS}{dX} = EI \frac{\partial^4 \varphi}{\partial X^4}$ derivada anteriormente, obtenemos la \textit{ecuación de evolución de Euler-Bernoulli}:
+
+\begin{align*}
+    %\label{eq::eulerbernoullievolucion}
+    A \rho \frac{\partial^2 \varphi}{\partial t^2} + EI \frac{\partial^4 \varphi}{\partial X^4} = q.
+\end{align*}
+
+\subsection{Introducción al sistema de Timoshenko}
+\label{ch:teoriaVigas:section:primerosmodelos:subsection:timoshenko}
+
+Como se ha ido asomando a lo largo de la sección anterior, la ecuación de vigas de Euler-Bernoulli es adecuada para describir el comportamiento de ciertas vigas esbeltas, hechas de un material lo suficientemente homogéneo y ``bien portado''. Sin embargo, las hipótesis asumidas son, quizás, demasiado simples para el comportamiento de algunos sistemas de vigas que se presentan en la realidad. Por ejemplo, cuando se trata de vigas cortas o profundas en las que la deformación por cortante se vuelve relevante, cuando se tienen vigas de materiales no elásticos o no lineales (por ejemplificar alguno, los materiales compuestos son anisotrópicos, lo que quiere decir que, como conjunto, no presentan un comportamiento lineal), cuando las secciones transversales se distorsionan con la deformación, cuando se estudian vibraciones de alta frecuencia, entre otros. 
+
+Debido a la necesidad de describir vigas con comportamientos más complejos y realistas, el ingeniero ucraniano \textit{Sthephen P. Timoshenko} (1878-1972) postula un sistema de ecuaciones en derivadas parciales que describe la dinámica de una viga teniendo en consideración el desplazamiento vertical y la rotación de la sección transversal respecto al eje neutro, permitiendo que esta no permanezca necesariamente perpendicular al eje de la viga. El desarrollo original de este sistema se puede encontrar en los trabajos de Timoshenko \textcolor{red}{[CITA]}.
+
+La viga planteada por Timoshenko conserva entonces algunas de las hipótesis planteadas para la viga de Euler-Bernoulli. Más explícitamente, la viga de Timoshenko está hecha de un material linealmente elástico, las secciones transversales son simétricas respecto a los planos verticales (lo que permite la existencia de un eje neutro), se asumen deformaciones pequeñas y el material de la viga es homogéneo e isótropo. Asimismo, se relajan o eliminan algunas de las hipótesis. El cambio más notable respecto a la viga de Euler-Bernoulli es que la viga de Timoshenko no asume que las secciones perpendiculares al eje neutro permanecen planas y perpendiculares tras la deformación. Luego, si se consideran los efectos de la inercia rotacional y se relaja la hipótesis de la longitud frente al resto de dimensiones de la viga (ahora se permiten vigas más cortas o profundas).
+
+Ahora fijamos, una vez más, algo de notación: En una viga de longitud $L$, denotaremos al \textit{desplazamiento vertical} y al \textit{ángulo de rotación de una sección transversal respecto a la normal al eje neutro} por $\varphi = \varphi(X,t)$ y $\psi = \psi(X,t)$ respectivamente, dependiendo ambas aplicaciones de una posición $X \in [0, L]$ y un tiempo $t \geq 0$. Véase entonces la siguiente figura:
+
+\textcolor{red}{DIBUJO}
+
+Es importante recalcar que, respecto al modelo de Euler-Bernoulli, se ha introducido una nueva variable, que es la \textit{rotación de la sección transversal} $\psi$. Como se ha relajado la hipótesis que dicta que las secciones planas y normales al eje neutro permanecen planas y normales tras la deformación, entonces se sigue que $\psi \neq \frac{\partial \varphi}{\partial X}$. 
+
+A partir de este momento, dejaremos de referirnos a las coordenadas materiales como $(X,Y,Z)$ y empezaremos a referirnos a ellas como $(x,y,z)$ con el fin de aligerar la notación. 
+
+Siguiendo entonces con el desarrollo de Timoshenko \textcolor{red}{[CITA]}, se tiene que las \textit{ecuaciones de equilibrio dinámico} para un elemento diferencial de viga, que relacionan los esfuerzos internos con las aceleraciones traslacionales y rotacionales, se expresan como:
+
+\begin{align}
+    \rho A \varphi_{tt} &= S_x, \label{timoshenkoBasico:equilDinamicoCortante}\\
+    \rho I \psi_{tt} &= M_x - S, \label{timoshenkoBasico:equilDinamicoFlector}
+\end{align}
+
+donde (al igual que en el modelo de la sección anterior) $\rho$ es la \textit{densidad de masa}, $A$\footnotemark e $I$ son el área y el momento de inercia de una sección transversal de la viga, respectivamente; $S$ es el esfuerzo de cizallamiento (que ahora, debido a las nuevas hipótesis, no es despreciable) y $M$ el momento flector.  
+
+\footnotetext{Nuevamente, asumimos el área constante.}
+
+Por otra parte, las \textit{relaciones constitutivas elásticas} para el esfuerzo cortante (de cizallamiento) y el momento flector vienen dadas por:
+
+\begin{align}
+    S &= k^{\prime}GA(\varphi_x + \psi), \label{timoshenkoBasico:relConstitutivasCortante}\\
+    M &= EI \psi_x, \label{timoshenkoBasico:relConstitutivasFlector}
+\end{align}
+
+y se tiene que $k^{\prime}$ es el \textit{factor de corrección por cortante}, mientras que $G$ y $E$ son el \textit{módulo de elasticidad transversal} (o bien \textit{módulo de cizalladura/cortadura}) --que caracteriza la rigidez de un material frente a esfuerzos de cizallamiento-- y el \textit{módulo de Young}, respectivamente. 
+
+El factor de corrección $k^{\prime}$ se introduce porque de las hipótesis planteadas anteriormente se deduce que el esfuerzo cortante es uniforme en toda la sección transversal (los desarrollos originales de Timoshenko \textcolor{red}{[CITA]} contemplan la deducción e implicaciones de este hecho. Dado que el interés de este texto no radica en la física, sólo hemos de mencionar los detalles más relevantes); sin embargo, esto no es cierto en general, dado que el esfuerzo por cizallamiento va decayendo desde el centro de la viga hacia los extremos. Por ejemplo, en vigas con secciones rectangulares se conoce que el esfuerzo por cortadura sigue una distribución parabólica. Entender de manera intuitiva el esfuerzo por cizallamiento como aquel que surge por la resistencia al deslizamiento de las capas (fibras) internas del material en respuesta a una fuerza puede resultar esclarecedor, pues la cara superior e inferior no tienen fibras por encima o por debajo de ellas que las ``empujen'' o ``frenen'', mientras que las fibras más centrales tienen todas las capas por encima y por debajo ``empujando'' y ``frenando'' (tracción y compresión).
+
+\textcolor{red}{DIBUJO}
+
+Sustituyendo \eqref{timoshenkoBasico:relConstitutivasCortante}-\eqref{timoshenkoBasico:relConstitutivasFlector} en \eqref{timoshenkoBasico:equilDinamicoCortante}-\eqref{timoshenkoBasico:equilDinamicoFlector} y abreviando las constantes como
+
+\[\rho_1 = \rho A, \ \rho_2 = \rho I, \ k = k^{\prime}GA, \ b = EI,\]
+
+obtenemos el \textit{sistema de vigas de Timoshenko}
+
+\begin{equation}
+\label{eqTimoshenkoBasico}
+\begin{cases}
+\rho_1 \varphi_{tt} - k(\varphi_x + \psi)_x = 0 \, &\text{en } (0,L) \times (0, \infty),\\
+\rho_2 \psi_{tt} - b\psi_{xx} + k(\varphi_x + \psi) = 0 \, &\text{en } (0,L) \times (0, \infty).
+\end{cases}
+\end{equation}
+
+Asumiremos entonces que la viga está fija en los extremos $\{0,L\}$, lo que nos lleva a considerar las siguientes \textit{condiciones de fronteras}:
+
+\[\varphi(0,t) = \varphi(L,t), \ \psi(0,t) = \psi(L,t) = 0, \ t \geq 0.\]
+
+Asimismo, para $t = 0$ consideramos las \textit{condiciones iniciales}:
+
+\[\varphi(x,0) = \varphi_0(x), \ \varphi_t(x,0) = \varphi_1(x), \ \psi(x,0) = \psi_0(x), \ \psi_t(x,0) = \psi_1(x), \ x \in (0, L).\]
+
+Lo anterior resulta entonces en el \textit{problema de valor inicial y de frontera}:
+
+\begin{equation}
+\label{pviTimoshenkoBasico}
+\begin{cases}
+\rho_1 \varphi_{tt} - k(\varphi_x + \psi)_x = 0 \, &\text{en } (0,L) \times (0, \infty),\\
+\rho_2 \psi_{tt} - b\psi_{xx} + k(\varphi_x + \psi) = 0 \, &\text{en } (0,L) \times (0, \infty), \\
+\varphi(x,0) = \varphi_0(x), \varphi_t(x,0) = \varphi_1(x) \, &\text{en } (0, L) \times \{0\}, \\
+\psi(x,0) = \psi_0(x), \psi_t(x,0) = \psi_1(x) \, &\text{en } (0, L) \times \{0\}, \\
+\varphi(0,t) = \varphi(L,t) = 0 \, &\text{en } \{0, L\} \times [0, \infty),\\
+\psi(0,t) = \psi(L,t) = 0 \, &\text{en } \{0, L\} \times [0, \infty).
+\end{cases}
+\end{equation}
+
+\subsection{La energía en el sistema de Timoshenko}
+\label{ch:teoriaVigas:section:primerosmodelos:subsection:timoshenkoEnergia}
+
+Al problema de valor inicial y de frontera \eqref{pviTimoshenkoBasico} visto anteriormente se le puede asociar el siguiente funcional de energía definido por:
+
+\begin{equation}
+    \label{timoshenkoBasico:funcionalEnergia}
+    \begin{aligned}
+        E(t)\footnotemark \ = \  &\frac{1}{2} \Bigg[ \rho_1 \int_0^L \big(\varphi_t(x,t) \big)^2 \, dx + \rho_2 \int_0^L \big(\psi_t(x,t) \big)^2 \, dx + b\int_0^L \big(\psi_x(x,t) \big)^2 \, dx\\
+        &+ k\int_0^L \big(\varphi_x(x,t) + \psi(x,t) \big)^2 \, dx \Bigg], \quad t \geq 0
+    \end{aligned}
+\end{equation}
+
+\footnotetext{\color{red} Dado el marco funcional en el que se estudiará este problema, todas las integrales presentadas en este funcional y en el resto del documento se interpretan en el sentido de Lebesgue.}
+
+\textcolor{red}{PONER DEDUCCIÓN FÍSICA DEL FUNCIONAL}
+
+Para poder describir el estado del sistema utilizaremos un vector $U$ definido de la siguiente manera:
+
+\begin{align}
+    U(t) &= \Big(\varphi(\cdot, t), \varphi_t(\cdot, t), \psi(\cdot, t), \psi_t(\cdot, t)\Big)^T,
+    \label{vectorEstadoTimoBasico}
+\end{align}
+
+tal que
+
+\begin{align*}
+    U_t(t) &= \Big(\varphi_t(\cdot, t), \varphi_{tt}(\cdot, t), \psi_t(\cdot, t), \psi_{tt}(\cdot, t)\Big)^T,\\
+    U(0) &= \Big(\varphi_0(\cdot), \varphi_1(\cdot), \psi_0(\cdot), \psi_1(\cdot)\Big)^T = U_0.
+\end{align*}
+
+La elección de este vector como estado del sistema no es arbitraria, y a lo largo de este texto se nos presentarán varias oportunidades para justificarla. Por adelantarnos a esto: tenemos que, desde una perspectiva física, el estado del sistema viene determinado por su configuración y sus velocidades iniciales (``funciones posición'' y sus derivadas). En efecto, en mecánica, conocer únicamente la posición no es suficiente para predecir la evolución, siendo necesario especificar también las velocidades.
+
+Desde un punto de vista matemático (y aunque se ahondará más al respecto en la sigueinte sección \textcolor{red}{[PONER CITA PROX SECCIÓN]}), ahora mismo bastará con decir que esta elección nos permitirá hacer una descripción de la dinámica del sistema apta para la maquinaría matemática que se pretende utilizar: la teoría de semigrupos de operadores lineales. 
+
+Así pues, dado que el sistema de Timoshenko \eqref{pviTimoshenkoBasico} es de segundo orden en tiempo, los datos iniciales naturales vienen dados por las variables y sus derivadas temporales. La introducción de estas últimas permitirá reformular el sistema como una ecuación de evolución de primer orden en un espacio de Hilbert adecuado. Veremos además que esta elección es coherente con el funcional de energía asociado \eqref{timoshenkoBasico:funcionalEnergia}.
+
+Habiendo asumido el vector $U$ como vector de estado, entonces, y debido a una necesidad física, hemos de imponer que
+
+\[E(t) < \infty.\]
+
+Es decir, debemos imponer que la energía exista y sea finita. Esto nos permite motivar la elección de un \textit{espacio de fase}, que es el espacio al que pertenecerá el vector $U$. Así, se ve implicado que:
+
+\begin{align}
+    &\int_0^L \big(\varphi_t(x,t) \big)^2 \, dx < \infty,\label{varphi_tL2}\\
+    &\int_0^L \big(\psi_t(x,t) \big)^2 \, dx < \infty,\label{psi_tL2}\\
+    &\int_0^L \big(\psi_x(x,t) \big)^2 \, dx < \infty,\label{psiH01}\\
+    &\int_0^L \big(\varphi_x(x,t) + \psi(x,t) \big)^2 \, dx < \infty\label{varphiH01}.
+\end{align}
+
+En consecuencia, para cada $t \geq 0$, de \eqref{varphi_tL2} y \eqref{psi_tL2} se deduce que
+
+\[
+\varphi_t(\cdot,t)\in L^2(0,L), \quad \psi_t(\cdot,t)\in L^2(0,L).
+\]
+
+Además, de \eqref{psiH01} se obtiene que
+
+\[
+\psi_x(\cdot,t)\in L^2(0,L).
+\]
+
+Dado que estamos manejando una única dimensión espacial, el hecho de que $\psi_x \in L^2(0,L)$, junto con la condición de contorno $\psi(0,t) = 0$, nos permite hacer el siguiente desarrollo:
+
+\begin{align*}
+    \left (\int_0^L |\psi_x(x,t)| \, dx \right )^2 &= \left (\int_0^L |1 \cdot \psi_x(x,t)| \, dx \right )^2\\
+    \text{(Cauchy–Schwarz)} &\leq \left (\int_0^L |\psi_x(x,t)|^2 \, dx \right ) \left (\int_0^L dx \right )\\
+    &= \frac{L}{2} \int_0^L |\psi_x(x,t)|^2 \, dx < \infty.
+\end{align*}
+
+Asimismo, por \textcolor{green}{LEMA 8.2 BREZIS} se puede definir una función $v$:
+
+\[v(x) = \int_0^x \psi_x(x,t) \, dx, \ x \in [0,L],\]
+
+y $v \in C(0,L)$. Además, 
+
+\[\int_0^L v \phi ' \, dx = - \int_0^L \psi_x \phi \, dx, \ \forall \phi \in C_0^\infty(0,L).\]
+
+Luego, necesariamente $v = \psi$ y así se tiene entonces que $\psi \in C(0,L)$ y que $\psi(x,t) = \int_0^x \psi_x(x,t) \, dx $. 
+
+Procedemos ahora a acotar la norma de $\psi$ de la siguiente manera:
+
+\[
+|\psi(x,t)|^2 = \left| \int_0^x \psi_x(s,t) \, ds \right|^2 \leq \left( \int_0^x 1^2 \, ds \right) \left( \int_0^x |\psi_x(s,t)|^2 \, ds \right) \leq x \int_0^L |\psi_x(s,t)|^2 \, ds.
+\]
+
+Integrando esta expresión en $x$ sobre el intervalo $(0,L)$, obtenemos
+
+\[
+\int_0^L |\psi(x,t)|^2 \, dx \leq \frac{L^2}{2} \int_0^L |\psi_x(x,t)|^2 \, dx < \infty.
+\]
+
+Esta es, de hecho, una demostración directa de la \textit{desigualdad de Poincaré} en dimensión uno. Por tanto, se concluye que $\psi(\cdot,t) \in L^2(0,L)$. Al tener $\psi$ y $\psi_x$ en $L^2(0,L)$ junto con las condiciones de contorno nulas, se sigue que
+\[
+\psi(\cdot,t)\in H_0^1(0,L).
+\]
+Por otro lado, de \eqref{varphiH01} se tiene que
+\[
+\varphi_x(\cdot,t)+\psi(\cdot,t)\in L^2(0,L).
+\]
+Como el espacio $L^2(0,L)$ es un espacio vectorial y ya hemos demostrado que $\psi(\cdot,t)\in L^2(0,L)$, deducimos inmediatamente que $\varphi_x(\cdot,t)\in L^2(0,L)$. De nuevo, valiéndonos de la condición de contorno $\varphi(0,t) = 0$ y repitiendo el argumento integral anterior, garantizamos que $\varphi(\cdot,t) \in L^2(0,L)$. Por consiguiente,
+\[
+\varphi(\cdot,t)\in H_0^1(0,L).
+\]
+
+Con esta caracterización, resulta natural definir el espacio de fase para el sistema de Timoshenko como el espacio de Hilbert\footnotemark:
+
+\footnotetext{Una demostración de que la suma directa de espacios de Hilbert es también un espacio de Hilbert puede ser hayada en \textcolor{green}{CONWAY: A COURSE IN FUNCTIONAL ANALYSIS. CAP 1.6}}
+
+\begin{align}
+    \mathcal{H} = H_0^1(0,L) \times L^2(0,L) \times H_0^1(0,L) \times L^2(0,L),\label{espacioDeFaseTimoshenko}
+\end{align}
+de modo que, para cada $t \geq 0$, el vector de estado satisfaga $U(t) \in \mathcal{H}$.
+
+Es importante hacer una precisión sobre el sentido en el que deben entenderse las derivadas espaciales (como $\varphi_x$ y $\psi_x$) que aparecen tanto en el funcional \eqref{timoshenkoBasico:funcionalEnergia} como en la definición del espacio de fase. 
+
+Originalmente, el sistema \eqref{pviTimoshenkoBasico} se deduce bajo la suposición de que las variables de estado son lo suficientemente regulares como para admitir derivadas en el sentido clásico. Sin embargo, exigir este nivel de regularidad (soluciones clásicas) resulta ser demasiado restrictivo desde el punto de vista matemático, ya que el espacio de las funciones continuamente diferenciables no es completo bajo las normas integrales de espacios funcionales como $L^2$. Esto significa que el límite de una sucesión de funciones suaves podría dejar de ser diferenciable en el sentido clásico, impidiendo usar herramientas como la teoría de semigrupos.
+
+Para sortear esta dificultad y garantizar la existencia de soluciones, es necesario relajar el concepto de derivada. Por lo tanto, en el marco de los espacios de Sobolev $H_0^1(0,L)$ y $L^2(0,L)$, todas las derivadas espaciales se entienden en el sentido débil o distribucional. Es decir, decimos que $\varphi_x \in L^2(0,L)$ es la derivada débil de $\varphi \in L^2(0,L)$ si satisface la fórmula de integración por partes:
+
+\[
+\int_0^L \varphi(x) \phi'(x) \, dx = - \int_0^L \varphi_x(x) \phi(x) \, dx, \quad \text{para toda función de prueba } \phi \in C_c^\infty(0,L).
+\]
+
+Esta formulación débil es precisamente la que fundamenta la estructura del espacio de Hilbert $\mathcal{H}$ y dota de sentido riguroso al estado del sistema, abarcando configuraciones que, aunque no sean derivables clásicamente en todo punto, son físicamente admisibles.
+
+Dicho todo lo anterior, veamos ahora una de las propiedades más relevantes del modelo de vigas de Timoshenko. Propiedad que influenciará casi por completo lo que resta de este texto.\\
+
+\begin{Proposicion}{(Conservación de la energía en la viga de Timoshenko)}
+    \label{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasico}
+
+    El funcional de energía definido en \eqref{timoshenkoBasico:funcionalEnergia} verifica:
+
+    \[\frac{d}{dt}E(t) = 0, \ \ \forall t > 0.\]
+\end{Proposicion}
+
+\begin{proof}
+    En primer lugar, consideramos $\varphi, \varphi_t, \psi$ y $\psi_t$ en los espacios funcionales descritos anteriormente. Ahora, empezamos multiplicando la primera ecuación del sistema \eqref{pviTimoshenkoBasico} por $\varphi_t$ y la segunda por $\psi_t$, e integramos en $(0,L)$:
+
+    \begin{equation*}
+    \begin{cases}
+    \displaystyle \rho_1 \int_0^L \varphi_{tt} \varphi_t \, dx - k \int_0^L (\varphi_x + \psi)_x \varphi_t \, dx = 0\\
+    \displaystyle \rho_2 \int_0^L \psi_{tt} \psi_t \, dx - b\int_0^L \psi_{xx}\psi_t \, dx + k \int_0^L (\varphi_x + \psi) \psi_t \, dx = 0
+    \end{cases}
+    \end{equation*}
+
+    Ahora, realizamos integración por partes en los términos $\int_0^L (\varphi_x + \psi)_x \varphi_t \, dx$ y $\int_0^L \psi_{xx}\psi_t \, dx$:
+
+    \begin{align*}
+        &\int_0^L (\varphi_x + \psi)_x \varphi_t \, dx = \cancelto{0}{\varphi_t(\varphi_x + \psi)\Big|_0^L} - \int_0^L(\varphi_x + \psi) \varphi_{tx} \, dx,\\
+        &\int_0^L \psi_{xx}\psi_t \, dx = \cancelto{0}{\psi_t \psi_x\Big|_0^L} - \int_0^L \psi_x \psi_{tx} \, dx.
+    \end{align*}
+
+    Sustituyendo lo anterior y sumando ambas ecuaciones:
+
+    \[\rho_1 \int_0^L\varphi_{tt}\varphi_t \, dx + \rho_2 \int_0^L \psi_{tt}\psi_t \, dx + b\int_0^L \psi_x \psi_{tx} \, dx + k \int_0^L (\varphi_x + \psi)(\varphi_{tx} + \psi_t) \, dx = 0.\]
+
+    Considerando ahora las igualdades
+
+    \begin{align*}
+        (\varphi_x + \psi)(\varphi_{tx} + \psi_t) &= \frac{1}{2}\frac{\partial}{\partial t}(\varphi_x + \psi)^2,\\
+        \varphi_{tt}\varphi_t &= \frac{1}{2}\frac{\partial}{\partial t}(\varphi_t)^2,\\
+        \psi_{tt}\psi_t &= \frac{1}{2}\frac{\partial}{\partial t}(\psi_t)^2,\\
+        \psi_x \psi_{tx} &= \frac{1}{2}\frac{\partial}{\partial t}(\psi_x)^2,
+    \end{align*}
+
+    donde en la primera igualdad hemos utilizado la conmutatividad de las derivadas distribucionales (``Teorema de Schwarz'').
+
+    Sustituimos estas relaciones en la expresión hallada anteriormente y obtenemos:
+
+    \begin{align*}
+        &\frac{d}{dt}\frac{1}{2}\left [\rho_1 \int_0^L(\varphi_t)^2 \, dx + \rho_2 \int_0^L (\psi_t)^2 \, dx + b\int_0^L (\psi_x)^2 \, dx + k \int_0^L (\varphi_x + \psi)^2 \, dx \right] = 0\\
+        \iff&\frac{d}{dt}E(t) = 0,
+    \end{align*}
+
+    que es exactamente lo que se quería demostrar.
+\end{proof}
+
+Nótese entonces que el resultado anterior implica que la energía del sistema no decrece con el tiempo, lo que quiere decir que el sistema es \textit{conservativo}. A nivel físico, esto es una limitación importante: un no-decaimiento de la energía se traduce en oscilaciones infinitas, lo cual es imposible debido a la fricción interna, efectos termoelásticos, viscoelasticidad, interacción con el entorno, pérdidas en apoyos, microestructura, entre otros. Así, pues, el modelo \eqref{eqTimoshenkoBasico} es incapaz de capturar ninguno de estos comportamientos.
+
+Sin embargo, desde un punto de vista matemático si resulta interesante estudiar el modelo \eqref{eqTimoshenkoBasico}, pues nos permitirá ensayar técnicas que utilizaremos para enfrentarnos a modelos más complejos (es decir, capaces de capturar comportamientos como los previamente mencionados). 
+
+Damos paso entonces a la siguiente sección, donde nos dedicaremos a desarrollar los métodos (arraigados, por supuesto, en el análisis funcional y la teoría de semigrupos de operadores lineales) que usaremos en lo que resta de texto. En la siguiente sección también aportaremos los matices necesarios para dar una descripción matemáticamente rigurosa tanto del modelo básico \eqref{eqTimoshenkoBasico} como de cualquiera de los próximos; tal descripción es la que hemos venido asomando a lo largo de todo este capítulo.
+
+\section{El sistema de Timoshenko: marco funcional}
+\label{ch:teoriaVigas:section:timoshenkoFunc}
+
+\textcolor{red}{Unas palabras???}
+
+\subsection{Problema abstracto de Cauchy homogéneo}
+\label{ch:teoriaVigas:section:timoshenkoFunc:subsection:cauchyHom}
+
+Para empezar a dar verdadero rigor matemático a todo lo discutido hasta el momento, comenzamos por reescribir el sistema \eqref{pviTimoshenkoBasico} como un \textit{problema abstracto de Cauchy homogéneo} de la siguiente forma:
+
+Empezamos por considerar el vector $U$ discutido en la sección anterior:
+
+\begin{align*}
+    U(t) = \Big(\varphi(\cdot, t), \varphi_t(\cdot, t), \psi(\cdot, t), \psi_t(\cdot, t)\Big)^T,
+\end{align*}
+
+donde dicho vector verifica que
+
+\begin{align*}
+    U(t) \in \mathcal{H},\\
+\end{align*}
+
+y $\mathcal{H}$ es el espacio de Hilbert
+
+\[\mathcal{H} = H_0^1(0,L) \times L^2(0,L) \times H_0^1(0,L) \times L^2(0,L).\]
+
+con producto interno $(\cdot, \cdot)_{\mathcal{H}} : \mathcal{H}\times \mathcal{H} \rightarrow \mathbb{C}$ y norma $\lVert \, \cdot \, \lVert_{\mathcal{H}} : \mathcal{H} \rightarrow \mathbb{R}$ definidos, respectivamente, como:
+
+\begin{align}
+    (U, \hat{U})_{\mathcal{H}} &= (\varphi, \hat{\varphi})_{H_0^1} + (\varphi_t, \hat{\varphi_t})_{L^2} + (\psi, \hat{\psi})_{H_0^1} + (\psi_t, \hat{\psi_t})_{L^2},\label{prodEscalarHTimoBasico}\\
+    \lVert U \lVert_{\mathcal{H}}^2 &= \lVert \varphi \lVert_{H_0^1}^2 + \lVert \varphi_t \lVert_{L^2}^2 + \lVert \psi \lVert_{H_0^1}^2 + \lVert \psi_t \lVert_{L^2}^2.\label{normaHTimoBasico}
+\end{align}
+
+Así, el problema abstracto de Cauchy homogéneo se obtiene como:
+
+\begin{align}
+    \label{probCauchyHomTimoBasico}
+    \begin{cases}
+        U_t = AU, \ t > 0,\\
+        U(0) = U_0
+    \end{cases}
+\end{align}
+
+donde $A$ es un operador lineal diferencial definido como:
+
+\begin{align}
+    \label{operadorATimoBasico}
+    A = 
+    \begin{pmatrix}
+        0 & I & 0 & 0\\
+        \frac{k}{\rho_1}\partial_{xx} & 0 & \frac{k}{\rho_1}\partial_x & 0\\
+        0 & 0 & 0 & I\\
+        -\frac{k}{\rho_2}\partial_x & 0 & \frac{b}{\rho_2}\partial_{xx} - \frac{k}{\rho_2} & 0
+    \end{pmatrix}.
+\end{align}
+
+Obtengamos ahora el dominio del operador $A \in L(\mathcal{H})$. Para ello, consideramos $U \in \mathcal{H}$ y se debe verificar que $AU \in \mathcal{H}$. Es decir,
+
+\[AU = 
+\begin{pmatrix}
+    \varphi_t\\
+    \frac{k}{\rho_1}\varphi_{xx} + \frac{k}{\rho_1}\psi_{x}\\ 
+    \psi_t\\
+    -\frac{k}{\rho_2}\varphi_x + \frac{b}{\rho_2}\psi_{xx} - \frac{k}{\rho_2}\psi
+\end{pmatrix} \in H_0^1(0,L) \times L^2(0,L) \times H_0^1(0,L) \times L^2(0,L).\]
+
+Sabemos, debido a que $U \in \mathcal{H}$, que $\varphi, \psi \in H_0^1(0,L)$, lo que implica (por definición de $H_0^1(0,L)$) que $\varphi_{x}, \psi_{x} \in L^2(0,L)$. Luego, de la expresión de $AU$ dada anteriormente, deducimos también que $\varphi_t, \psi_t \in H_0^1(0,L)$. Teniendo en cuenta esto, imponer que $AU$ pertenezca a $\mathcal{H}$ implica también que
+
+\[
+    \frac{k}{\rho_1}\varphi_{xx} + \frac{k}{\rho_1}\psi_{x} \in L^2(0,L),
+\]
+
+y dado que $\psi_{x} \in L^2(0,L)$ por lo discutido anteriormente, se sigue que $\varphi_{xx}$ también pertenece a $L^2(0,L)$. Luego, esto se traduce en que $\varphi \in H^2(0,L)$, por lo que finalmente 
+
+\[\varphi \in \left(H^2(0,L) \cap H_0^1(0,L) \right).\]
+
+Asimismo, un razonamiento similar sobre la condición
+
+\[
+    -\frac{k}{\rho_2}\varphi_x + \frac{b}{\rho_2}\psi_{xx} - \frac{k}{\rho_2}\psi \in L^2(0,L),
+\]
+
+implica que $\psi_{xx} \in L^2(0,L)$. Así, $\psi \in H^2(0,L)$ y finalmente se tiene que:
+
+\[\psi \in \left(H^2(0,L) \cap H_0^1(0,L) \right).\]
+
+Por lo tanto, el dominio de $A$ es
+
+\begin{align}
+    \label{DomOperadorATimoBasico}
+    D(A) = \Big(H^2(0,L) \cap H_0^1(0,L) \Big) \times H_0^1(0,L) \times \Big(H^2(0,L) \cap H_0^1(0,L) \Big) \times H_0^1(0,L).
+\end{align}
+
+Teniendo en cuenta lo anterior, finalmente el problema abstracto de Cauchy homogéneo queda desglosado como:
+
+\begin{align}
+    \label{probCauchyHomTimoBasicoDesglosado}
+    \begin{cases}
+        \begin{pmatrix}
+            \varphi_{t}(\cdot, t)\\
+            \varphi_{tt}(\cdot, t)\\
+            \psi_{t}(\cdot, t)\\
+            \psi_{tt}(\cdot, t)
+        \end{pmatrix} &= 
+        \begin{pmatrix}
+        0 & I & 0 & 0\\
+        \frac{k}{\rho_1}\partial_{xx} & 0 & \frac{k}{\rho_1}\partial_x & 0\\
+        0 & 0 & 0 & I\\
+        -\frac{k}{\rho_2}\partial_x & 0 & \frac{b}{\rho_2}\partial_{xx} - \frac{k}{\rho_2} & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+            \varphi(\cdot, t)\\
+            \varphi_{t}(\cdot, t)\\
+            \psi(\cdot, t)\\
+            \psi_{t}(\cdot, t)
+        \end{pmatrix}, \ t > 0,\\ \\
+        \begin{pmatrix}
+            \varphi_{t}(\cdot, 0)\\
+            \varphi_{tt}(\cdot, 0)\\
+            \psi_{t}(\cdot, 0)\\
+            \psi_{tt}(\cdot, 0)
+        \end{pmatrix} &=
+        \begin{pmatrix}
+            \varphi_0(\cdot)\\
+            \varphi_1(\cdot)\\
+            \psi_0(\cdot)\\
+            \psi_1(\cdot)
+        \end{pmatrix}.
+    \end{cases}
+\end{align}
+
+Dado el espacio de Hilbert $(\mathcal{H}, (\cdot, \cdot)_{\mathcal{H}}, \lVert \, \cdot \, \lVert_{\mathcal{H}})$ descrito anteriormente, podemos reescribir el funcional de energía $E(t) = E(U(t)) = E(U)$ \eqref{timoshenkoBasico:funcionalEnergia} en términos de la norma del espacio como:
+
+\begin{align}
+    \label{timoshenkoBasico:funcionalEnergiaNorma}
+    E(U) = \frac{1}{2}\left( \rho_1 \lVert \varphi_t \lVert^2_{L^2} + \rho_2 \lVert \psi_t \lVert_{L^2}^2 + b \lVert \psi \lVert_{H_0^1}^2 + k \lVert \varphi_x + \psi \lVert_{L^2}^2 \right).
+\end{align}
+
+Esta reformulación no es una simple curiosidad matemática. En efecto, 
+probaremos que la norma usual de \(\mathcal{H}\) es equivalente a la 
+norma inducida por el funcional de energía. Asimismo, determinaremos 
+un producto interno que induce dicha norma energética y que, por tanto, 
+es equivalente al producto interno usual de \(\mathcal{H}\). Esta 
+caracterización de la norma y del producto interno en términos de la 
+energía facilitará los desarrollos posteriores de esta sección.\\
+
+\begin{Proposicion}{(Producto interno asociado al funcional de energía)}
+    \label{ch:teoriaVigas:prop:ProdInternoEnergia}
+
+    La aplicación $(\cdot, \cdot)_{E} : \mathcal{H} \times \mathcal{H} \rightarrow \mathbb{C}$ definida como
+
+    \begin{align}
+        \label{prodInternoEnergiaH}
+        (U, \hat{U})_{E} = \rho_1 (\varphi_t, \hat{\varphi_t})_{L^2} + \rho_2 (\psi_t, \hat{\psi_t})_{L^2} + b (\psi, \hat{\psi})_{H_0^1} + k (\varphi_x + \psi, \hat{\varphi_x} + \hat{\psi})_{L^2}
+    \end{align}
+
+    es un producto interno en $\mathcal{H}$.
+\end{Proposicion}
+
+\begin{proof}
+    \textcolor{red}{ACABAR!}
+\end{proof}
+
+Veamos ahora una norma asociada al funcional de energía equivalente a la norma del espacio.\\
+
+\begin{Proposicion}{(Norma asociada al funcional de energía)}
+    \label{ch:teoriaVigas:prop:NormaEnergia}
+
+    La aplicación $\lVert \, \cdot \, \lVert_{E} : \mathcal{H} \rightarrow \mathbb{R}$ definida como
+
+    \begin{align}
+        \label{normaEnergiaH}
+        \lVert \, U \, \lVert^2_{E} = \rho_1 \lVert \varphi_t \lVert^2_{L^2} + \rho_2 \lVert \psi \lVert_{L^2}^2 + b \lVert \psi \lVert_{H_0^1}^2 + k \lVert \varphi_x + \psi \lVert_{L^2}^2 = 2E(U)
+    \end{align}
+    
+    es una norma del espacio $\mathcal{H}$.
+
+    Adicionalmente, la norma usual del espacio $\mathcal{H}$ es equivalente a la norma \eqref{normaEnergiaH}.
+\end{Proposicion}
+
+\begin{proof}
+    \textcolor{red}{ACABAR!}
+\end{proof}
+
+Por último, acabamos esta sub-sección con una observación.\\
+
+\begin{Observacion}{(Producto interno y norma en $\mathcal{H}$)}
+    \label{ch:teoriaVigas:obs:nuevaNorma}
+
+    El producto interno discutido en la Proposición \eqref{ch:teoriaVigas:prop:ProdInternoEnergia} induce la norma asociada al funcional de energía definida en la Proposición \eqref{ch:teoriaVigas:prop:NormaEnergia}. En consecuencia, el producto interno usual de $\mathcal{H}$ y el de la Proposición \eqref{ch:teoriaVigas:prop:ProdInternoEnergia} son equivalentes.
+\end{Observacion}
+
+A partir de este momento utilizaremos el producto interno y la norma de las Proposiciones \eqref{ch:teoriaVigas:prop:ProdInternoEnergia} y \eqref{ch:teoriaVigas:prop:NormaEnergia} respectivamente. Además, la notación que usaremos para referirnos a ellos será $\lVert \, \cdot \, \lVert_{\mathcal{H}}$ y $(\cdot , \cdot)_{\mathcal{H}}$.
+
+\subsection{Revisitando el funcional de energía}
+\label{ch:teoriaVigas:section:timoshenkoFunc:subsection:energia}
+Cuando se planteó la Proposición \eqref{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasico}, la demostración asumió que el funcional de energía es derivable respecto al tiempo, y esto no es necesariamente cierto. Por ejemplo, si quisiéramos derivar 
+
+\[\int_0^L \big(\varphi_t(x,t)\big)^2 \, dx,\]
+
+podríamos esperar algo como
+
+\begin{align}
+\label{integralFuncionalEnergia}
+\frac{d}{dt}\int_0^L \big(\varphi_t(x,t)\big)^2 \, dx = 2\int_0^L \varphi_t(x,t) \varphi_{tt}(x,t) \, dx.
+\end{align}
+
+Dicha integral sólo puede existir bajo unas condiciones de regularidad mínimas. Considerando la desigualdad de \textcolor{green}{Cauchy-Schwarz}, tenemos que la integral existirá si $\varphi_t,\varphi_{tt} \in L^2(0,L)$. 
+
+Podemos satisfacer esta condición considerando el problema abstracto de Cauchy homogéneo \eqref{probCauchyHomTimoBasicoDesglosado}. En concreto, la ecuación
+
+\[\varphi_{tt} = \frac{k}{\rho_1}\varphi_{xx} + \frac{k}{\rho_1}\psi_x.\]
+
+Como ya se discutió durante el estudio del dominio del operador $A$, si $U \in D(A)$, entonces
+
+\[\frac{k}{\rho_1}\varphi_{xx} + \frac{k}{\rho_1}\psi_x \in L^2(0,L),\]
+
+y así
+
+\[\varphi_{tt} \in L^2(0,L).\]
+
+Por otra parte, y una vez más gracias a considerar que $U \in D(A)$, se tiene que $\varphi_t \in H_0^1(0,L)$. Luego, considerando las \textcolor{green}{inmersiones de Sobolev}, se tiene que 
+
+\[\varphi_t \in L^2(0,L).\]
+
+En consecuencia, la derivada de la integral \eqref{integralFuncionalEnergia} existe cuando consideramos $U \in D(A)$. Repitiendo un análisis similar con cada uno de los sumandos del funcional de energía, llegamos a la siguiente observación.\\
+
+\begin{Observacion}{(Condición para derivar el funcional de energía)}
+    \label{ch:teoriaVigas:obs:CondicionDerivadaFuncEnergia}
+    
+    La Proposición \eqref{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasico} sólo tiene sentido cuando se considera $U \in D(A)$.
+\end{Observacion}
+
+La observación anterior es importante, pues si nos valemos únicamente de la Proposición \eqref{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasico} para demostrar que la energía del sistema permanece constante, entonces estamos restringiéndonos a soluciones fuertes (en el mismo sentido que la Definición \eqref{ch:cauchy:section:noHom:def:soluciones}) del problema \ref{probCauchyHomTimoBasicoDesglosado}. Aunque es cierto que todavía ni siquiera hemos discutido las soluciones del problema (reservamos esto para la siguiente sub-sección \ref{ch:teoriaVigas:section:timoshenkoFunc:subsection:existenciaYUnicidad}), debemos relajar las hipótesis de la Proposición y demostrar que, si consideramos un vector solución débil $U(t)$ cualquiera (de nuevo, en el sentido de la Definición \eqref{ch:cauchy:section:noHom:def:soluciones}), entonces la energía del sistema no cambia con el tiempo.\\
+
+\begin{Proposicion}{(Conservación de la energía en la viga de Timoshenko)}
+\label{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasicoRelajado}
+
+    Dado un vector solución débil de \eqref{probCauchyHomTimoBasicoDesglosado} $U(t) \in \mathcal{H}$ cualquiera (es decir, un vector $U \in C\big([0, \infty); \mathcal{H} \big)$ tal que $U(0) = U_0$ y que satisface la ecuación \eqref{probCauchyHomTimoBasicoDesglosado}), se tiene que el funcional de energía $E(t)$ \eqref{timoshenkoBasico:funcionalEnergia} verifica que
+
+    \[E(t) = E(0) \ \  \forall t \geq 0.\]
+\end{Proposicion}
+
+Antes de probar la Proposición anterior, necesitamos demostrar que $A$ es densamente definido en $\mathcal{H}$.\\
+
+\begin{Proposicion}{(El operador $A$ es densamente definido en $\mathcal{H}$)}
+\label{ch:teoriaVigas:prop:AesDensamenteDef}
+
+    El operador $A$ \eqref{operadorATimoBasico} es densamente definido en $\mathcal{H}$ \eqref{espacioDeFaseTimoshenko}. Es decir,
+
+    \[\overline{D(A)}^{\mathcal{H}} = \mathcal{H}.\]
+\end{Proposicion}
+
+\begin{proof}
+
+    Por aligerar notación, nos referiremos a los espacios $H_0^1(0,L)$ como $H_0^1$, a $L^2(0,L)$ como $L^2$, a $H^2(0,L)$ como $H^2$ y a $C_0^{\infty}(0,L)$ como $C_0^{\infty}$.
+
+    Recordemos ahora la definición de nuestros espacios:
+
+    \begin{align}
+        \mathcal{H} &= H_0^1 \times L^2 \times H_0^1 \times L^2\\
+        D(A) &= \big(H^2 \cap H_0^1\big) \times H_0^1 \times \big(H^2 \cap H_0^1\big) \times H_0^1.
+    \end{align}
+    
+    Nos bastará entonces con probar la densidad componente a componente. Así, en primer lugar, dado que (por definición de $H_0^1$)
+
+    \[\overline{C_0^{\infty}}^{H_0^1} = H_0^1,\]
+
+    entonces
+
+    \[C_0^{\infty} \subset H_0^1.\]
+
+    Por otro lado, si $u \in C_0^{\infty}$, entonces $u_x, u_{xx}$ también pertenecen a $C_0^{\infty}$; y, en particular, dado que (de nuevo, por definición de $L^2$)
+
+    \[\overline{C_0^{\infty}}^{L^2} = L^2,\]
+
+    entonces $u, u_x, u_{xx} \in L^2$. Por lo tanto, $u \in H^2$ y así
+
+    \[C_0^{\infty} \subset H^2.\]
+
+    Por lo tanto,
+
+    \[C_0^{\infty} \subset H^2 \cap H_0^1 \subset H_0^1.\]
+
+    Así, como $C_0^\infty$ es denso en $H_0^1$, entonces por conservación de la densidad en la inclusión tenemos que
+
+    \begin{alignat*}{3}
+        &C_0^{\infty} 
+        &&\subset{} H^2 \cap H_0^1 
+        &&\subset{} H_0^1\\
+        \implies{}& \overline{C_0^{\infty}}^{H^1_0} 
+        &&\subset{} \overline{H^2 \cap H_0^1}^{H^1_0} 
+        &&\subset{} H_0^1\\
+        \implies{}& H^1_0 
+        &&\subset{} \overline{H^2 \cap H_0^1}^{H^1_0} 
+        &&\subset{} H_0^1,
+    \end{alignat*}
+
+    por lo que $H^2 \cap H_0^1$ es denso en $H_0^1$.
+
+    Por otro lado, sabemos también que, por las \textcolor{green}{inmersiones de Sobolev},
+
+    \[H_0^1 \subset L^2.\]
+
+    Así, repitiendo el argumento de la inclusión anterior, llegamos a que $H_0^1$ es denso en $L^2$.
+
+    Ahora tomemos un elemento $U \in \mathcal{H}$. Es decir,
+
+    \[U = (\varphi, \varphi_t, \psi, \psi_t)^T \in H_0^1 \times L^2 \times H_0^1 \times L^2.\]
+
+    Como $H^2 \cap H_0^1$ es denso en $H_0^1$, entonces existen $(\varphi^{(n)}), (\psi^{(n)}) \subset H^2 \cap H_0^1$ tales que
+
+    \begin{align*}
+        \varphi^{(n)} &\rightarrow \varphi\\
+        \psi^{(n)} & \rightarrow \psi.
+    \end{align*}
+
+    Asimismo, por densidad de $H_0^1$ en $L^2$, podemos hallar dos sucesiones $(\varphi_t^{(n)}), (\psi_t^{(n)}) \subset H_0^1$ que verifiquen
+
+    \begin{align*}
+        \varphi_t^{(n)} &\rightarrow \varphi\\
+        \psi_t^{(n)} & \rightarrow \psi.
+    \end{align*}
+
+    Considerando ahora 
+    
+    \[U^{(n)} = (\varphi^{(n)}, \varphi_t^{(n)}, \psi^{(n)}, \psi_t^{(n)})^T \in D(A),\]
+
+    tenemos que (empleando la norma usual de $\mathcal{H}$, que sabemos es equivalente a la inducida por el funcional de energía debido a la Proposición \ref{timoshenkoBasico:funcionalEnergiaNorma}):
+
+    \[\lVert U - U^{(n)}\lVert_{\mathcal{H}} = \lVert \varphi - \varphi^{(n)}\lVert_{H_0^1} + \lVert \varphi_t - \varphi_t^{(n)}\lVert_{L^2} + \lVert \psi - \psi^{(n)}\lVert_{H_0^1} + \lVert \psi_t - \psi_t^{(n)}\lVert_{H_0^1} \rightarrow 0,\]
+
+    por lo tanto,
+
+    \[U^{(n)} \rightarrow U \text{ en } \mathcal{H}.\]
+
+    Esto prueba entonces que 
+
+    \[\overline{D(A)}^{\mathcal{H}} = \mathcal{H},\]
+
+    que es lo que deseábamos.
+\end{proof}
+
+Demostrado entonces que $A$ es un operador densamente definido en $\mathcal{H}$, procedemos a probar la Proposición \eqref{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasicoRelajado}. 
+
+Para ello, nos tomaremos la libertad de asumir que $A$ es el generador infinitesimal de un semigrupo fuertemente continuo $T(t)$ y que, para cada dato inicial $U_0 \in D(A)$, existe una única solución del problema \eqref{probCauchyHomTimoBasicoDesglosado} $U \in C^1\big([0,\infty); \mathcal{H}\big) \cap C\big([0,\infty); D(A)\big)$, donde $U(t) = T(t)U_0 \in D(A) \ \forall t \geq 0$. Podemos tomarnos esta licencia dado que en la siguiente sub-sección probaremos dicho resultado (véase \eqref{ch:teoriaVigas:prop:existenciaYUnicidad}). Así, pues, damos pie a la demostración.
+
+\begin{proof}
+    De acuerdo a la Proposición \eqref{ch:teoriaVigas:prop:AesDensamenteDef}, se tiene que $A$ es densamente definido. En consecuencia, $D(A)$ es denso en $\mathcal{H}$ y eso significa que existe una sucesión $\Big(U_0^{(n)}\Big) \subset D(A)$ tal que $U^{(n)} \rightarrow U_0 \in \mathcal{H}$. Asimismo, para cada $U_0^{(n)}$ existe una solución al problema \eqref{probCauchyHomTimoBasicoDesglosado} $U^{(n)} \in C^1\big([0,\infty); \mathcal{H}\big) \cap C\big([0,\infty); D(A) \big)$.
+
+    Por la Proposición \eqref{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasico}, tenemos que
+
+    \[\frac{d}{dt}E\big(U^{(n)}(t)\big) = 0 \ \forall t \geq 0,\]
+
+    lo que quiere decir que
+
+    \[E\big(U^{(n)}(t)\big) = E\big(U^{(n)}_0\big) \ \forall t \geq 0.\]
+
+    Utilizando la norma asociada al funcional de energía \eqref{ch:teoriaVigas:prop:NormaEnergia}, se desprende entonces de la igualdad anterior que
+
+    \[\big\lVert U^{(n)}(t)\big)\lVert_{\mathcal{H}} = \big\lVert U^{(n)}_0\big\lVert_{\mathcal{H}} \ \forall t \geq 0.\]
+
+    Veamos ahora que la sucesión $\big(U^{(n)}\big)$ converge a $U$. Para ello, empecemos por ver que es Cauchy: Por ser el sistema de Timoshenko \eqref{eqTimoshenkoBasico} un sistema lineal y homogéneo, tenemos que
+
+    \[W^{(n,m)} = U^{(n)} - U^{(m)}\]
+
+    es también una solución de clase $C^1\big([0,\infty); \mathcal{H}\big) \cap C\big([0,\infty); D(A) \big)$ con dato inicial
+
+    \[W^{(n,m)}_0 = U^{(n)}_0 - U^{(m)}_0.\]
+
+    Por el razonamiento anterior, la energía de $W^{(n,m)}$ también se conserva. Tal y como se vió:
+
+    \[\big \lVert W^{(n,m)}\big \lVert_{\mathcal{H}} = \big \lVert W^{(n,m)}_0 \big \lVert_{\mathcal{H}} \implies \big \lVert U^{(n)} - U^{(m)} \big \lVert_{\mathcal{H}} = \big \lVert  U^{(n)}_0 - U^{(m)}_0 \big \lVert_{\mathcal{H}}.\]
+
+    Como la sucesión $\big(U^{(n)}_0 \big)$ converge a $U_0$, entonces dado $\varepsilon > 0$ existe $N$ tal que para todo $n,m > N$ se verifica que
+
+    \[\big \lVert  U^{(n)}_0 - U^{(m)}_0 \big \lVert_{\mathcal{H}} < \varepsilon,\]
+
+    y por lo tanto
+
+    \[\big \lVert U^{(n)}(t) - U^{(m)}(t) \big \lVert_{\mathcal{H}} < \varepsilon, \ \forall t \geq 0.\]
+
+    En consecuencia, $\big( U^{(n)}\big)$ es Cauchy. Luego, teniendo en cuenta que $U^{(n)}(t) = T(t)U_0^{(n)}$, se tiene que:
+
+    \[\big\lVert U^{(n)}(t) - U(t)\big\lVert_{\mathcal{H}} = \big\lVert T(t)U_0^{(n)} - U(t)\big\lVert_{\mathcal{H}} \rightarrow 0\]
+
+    cuando $n \rightarrow \infty$, pues $U_0^{(n)} \rightarrow U_0$ y, por unicidad de las soluciones, $T(t)U_0^{(n)} \rightarrow T(t)U_0 = U(t)$. Luego, por unicidad del límite y por ser Cauchy la sucesión, hemos logrado probar que
+
+    \[U^{(n)}(t) \rightarrow U(t)\]
+    
+    para todo instante $t$. Finalmente, tenemos (por todo lo visto anteriormente) que:
+
+    \[\big\lVert U^{(n)}(t)\big)\lVert_{\mathcal{H}} = \big\lVert U^{(n)}_0\big\lVert_{\mathcal{H}} \implies \lim_{n\rightarrow \infty}\big\lVert U^{(n)}(t)\big)\lVert_{\mathcal{H}} = \lim_{n\rightarrow \infty}\big\lVert U^{(n)}_0\big\lVert_{\mathcal{H}} \implies \big\lVert U(t)\big)\lVert_{\mathcal{H}} = \big\lVert U_0\big\lVert_{\mathcal{H}}\footnotemark \ \forall t \geq 0,\]
+    \footnotetext{Esto prueba que la norma de $U$ se preserva en el tiempo. Una vez más, la matemática conspirando con la física para hablar sobre cómo este modelo intercambia, eternamente, energía cinética con energía potencial.}
+    lo cual es equivalente (por la norma inducida por el funcional de energía) a que:
+
+    \[E(t) = E(0) \ \forall t \geq 0,\]
+
+    que es lo que deseábamos probar.
+\end{proof}
+
+\subsection{Existencia y unicidad de soluciones}
+\label{ch:teoriaVigas:section:timoshenkoFunc:subsection:existenciaYUnicidad}
+
+Una vez formalizado el marco funcional en el que estaremos trabajando, y habiendo aportado el debido rigor a los asuntos que rodean al funcional de energía, podemos pasar ahora, finalmente, a discutir la existencia y unicidad de soluciones del problema \eqref{probCauchyHomTimoBasicoDesglosado}.
+
+En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéneo, las soluciones al mismo son, simplemente, las de la Definición \eqref{ch:cauchy:section:Hom:def:soluciones}. Ahora, para probar la existencia y unicidad de dichas soluciones, debemos probar que el operador $A$ es el generador infinitesimal de un semigrupo fuertemente continuo (que resultará ser de contracciones). Para ello, usamos las siguientes Proposiciones:
+
+\begin{Proposicion}{(El operador $A$ es disipativo)}
+\label{ch:teoriaVigas:prop:AesDisipativo}
+
+    El operador $A : D(A) \rightarrow \mathcal{H}$ \eqref{operadorATimoBasico} es disipativo.
+\end{Proposicion}
+
+\begin{proof}
+    Sea $U \in D(A)$, queremos probar que existe $U^* \in J(U)$ tal que
+
+    \[\operatorname{Re}\langle U^*, AU\rangle \leq 0.\]
+
+    Por el \textcolor{green}{Teorema de representación de Riesz-Frechet}, tenemos que para cada $x^* \in \mathcal{H}^*$ se verifica que existe un vector $y \in \mathcal{H}$ tal que
+
+    \[\langle x^*, x \rangle = (x, y)_{\mathcal{H}} \ \forall x \in \mathcal{H}.\]
+
+    Además, se verifica que $\lVert x^* \lVert_{\mathcal{H}^*} = \lVert y \lVert_{\mathcal{H}}$. Si ahora consideramos que $x^* \in J(x)$, tenemos:
+
+    \[\operatorname{Re} \langle x^*, x \rangle = \operatorname{Re} (x,y)_{\mathcal{H}} = \lVert x \lVert^2_{\mathcal{H}}.\]
+
+    Ahora, usando la \textcolor{green}{desigualdad de Cauchy-Schwarz},
+
+    \[\operatorname{Re}(x,y)_{\mathcal{H}} \leq \lvert (x,y)_{\mathcal{H}} \lvert \leq \lVert x \lVert_{\mathcal{H}} \, \lVert y \lVert_{\mathcal{H}},\]
+
+    y como $\lVert x \lVert_{\mathcal{H}} = \lVert x^* \lVert_{\mathcal{H^*}} = \lVert y \lVert_{\mathcal{H}}$, entonces
+
+    \[\lVert x \lVert^2_{\mathcal{H}} = \operatorname{Re}(x,y)_{\mathcal{H}} \leq \lvert (x,y)_{\mathcal{H}} \lvert \leq \lVert x \lVert^2_{\mathcal{H}},\]
+
+    por lo que
+
+    \[\lvert (x,y)_{\mathcal{H}}\lvert = \lVert x \lVert^2_{\mathcal{H}}.\]
+
+    Esto implica que $y$ es un múltiplo de $x$. Sin embargo, la condición sobre la parte real nos permite concluir que
+
+    \[x = y.\]
+
+    En consecuencia, $J(x) = \{(x, \cdot)_{\mathcal{H}}\}$; y así, la condición de disipatividad se puede reescribir como:
+
+    \[A \text{ es disipativo } \iff \forall U \in D(A), \operatorname{Re}(U, AU)_{\mathcal{H}} \leq 0.\]
+
+    Desarrollamos ahora la expresión $(U,AU)_{\mathcal{H}}$ usando el producto interno inducido por el funcional de energía \eqref{prodInternoEnergiaH}. Para ello, veamos primero lo siguiente: si
+
+    \[U = (\varphi, \varphi_t, \psi, \psi_t),\]
+
+    entonces
+
+    \[AU = \left(\varphi_t, \frac{k}{\rho_1}\varphi_{xx} + \frac{k}{\rho_1}\psi_x, \psi_t, -\frac{k}{\rho_2}\varphi_x + \frac{b}{\rho_2}\psi{xx} - \frac{k}{\rho_2}\psi \right).\]
+
+    Tomando esto en cuenta, se tiene que
+
+    \begin{align*}
+        (U,AU)_{\mathcal{H}} &=\\
+        &=\rho_1\left(\varphi_t, \frac{k}{\rho_1}\varphi_{xx} + \frac{k}{\rho_1}\psi_x \right)_{L^2(0,L)} + \rho_2\left(\psi_t, -\frac{k}{\rho_2}\varphi_x + \frac{b}{\rho_2}\psi_{xx} - \frac{k}{\rho_2}\psi \right)_{L^2(0,L)}
+        \\&+ b(\psi, \psi_t)_{H_0^1(0,L)} + k(\varphi_x + \psi, \varphi_{tx} + \psi_t)_{L^2(0,L)}\\\\
+        &=k\left(\varphi_t, \varphi_{xx} + \psi_x \right)_{L^2(0,L)} + \left(\psi_t, -k\varphi_x + b\psi_{xx} - k\psi \right)_{L^2(0,L)}
+        \\&+ b(\psi, \psi_t)_{H_0^1(0,L)} + k(\varphi_x + \psi, \varphi_{tx} + \psi_t)_{L^2(0,L)}.\\
+    \end{align*}
+
+    Ahora tomamos la parte real de $(U,AU)_{\mathcal{H}}$ y desarrollamos los productos internos como integrales:
+
+    \begin{align*}
+        \operatorname{Re}(U,AU)_{\mathcal{H}} &=\\
+        &= k\int_0^L \varphi_t \varphi_{xx} \, dx + k\int_0^L\varphi_t \psi_x \, dx\\
+        &- \cancel{k\int_0^L\psi_t \varphi_x \, dx} - \cancel{k\int_0^L \psi_t \psi \, dx}\\
+        &+ b\int_0^L \psi_t \psi_{xx} \, dx + b \int_0^L \psi_x \psi_{tx} \, dx\\
+        &+ k\int_0^L \varphi_x \varphi_{tx} \, dx + \cancel{k\int_0^L\varphi_x \psi_t \, dx}\\
+        &= k\int_0^L \psi \varphi_{tx} \, dx + \cancel{k\int_0^L \psi \psi_t \, dx}.
+    \end{align*}
+
+    A continuación, integramos por partes los términos restantes considerando las condiciones de borde:
+
+    \begin{align*}
+        \int_0^L \varphi_t \varphi_{xx} \, dx &= \cancelto{0}{[\varphi_t \varphi_x]_0^L} - \int_0^L \varphi_x \varphi_{tx} \, dx,\\
+        \int_0^L\varphi_t \psi_x \, dx &= \cancelto{0}{[\varphi_t \psi]_0^L} - \int_0^L \psi \varphi_{tx} \, dx,\\
+        \int_0^L \psi_t \psi_{xx} \, dx &= \cancelto{0}{[\psi_t \psi_x]_0^L} - \int_0^L \psi_x \psi_{tx} \, dx.
+    \end{align*}
+
+    Sustituyendo en la expresión de $\operatorname{Re}(U,AU)_{\mathcal{H}}$ se comprueba que se anulan todos los términos. En consecuencia:
+
+    \[\operatorname{Re}(U,AU)_{\mathcal{H}} = 0,\]
+
+    y así $A$ es disipativo, que es lo que queríamos probar.
+\end{proof}
+
+\begin{Proposicion}{(El operador $(I - A)$ es sobreyectivo)}
+\label{ch:teoriaVigas:prop:ResolventeEsSobreyect}
+    El operador $(I-A) : D(A) \rightarrow \mathcal{H}$ es sobreyectivo, o lo que es lo mismo, $R(I-A) = \mathcal{H}$.
+\end{Proposicion}
+
+\begin{proof}
+    Para probar la proposición basta con demostrar que la ecuación
+
+    \[(I-A)U = F,\]
+
+    donde $U=(\varphi, \varphi_t, \psi, \psi_t) \in D(A)$ y $F = (f_1, f_2, f_3, f_4) \in \mathcal{H}$, tiene una única solución. 
+
+    En efecto, escribamos el sistema desglosado:
+
+    \begin{equation}
+        \label{opSobreyectEq1}
+        \begin{cases}
+            \varphi - \varphi_t &= f_1\\
+            -\frac{k}{\rho_1}\varphi_{xx} + \varphi_t - \frac{k}{\rho_1}\psi_x &= f_2\\
+            \psi - \psi_t &= f_2\\
+            \frac{k}{\rho_2}\varphi_x - \frac{b}{\rho_2}\psi_{xx} + \frac{k}{\rho_2}\psi + \psi_t &= f_4.
+        \end{cases}
+    \end{equation}
+
+    De la primera y tercera ecuación despejamos $\varphi_t$ y $\psi_t$ respectivamente en función de $\varphi$ y $f_1$, y en función de $\psi$ y $f_3$:
+
+    \begin{align*}
+        \varphi_t &= \varphi - f_1\\
+        \psi_t &= \psi - f_3.
+    \end{align*}
+
+    Sustituyendo en \eqref{opSobreyectEq1}:
+
+    \begin{equation*}
+        \begin{cases}
+            -\frac{k}{\rho_1}\varphi_{xx} + \varphi - f_1 - \frac{k}{\rho_1}\psi_x &= f_2\\
+            \frac{k}{\rho_2}\varphi_x - \frac{b}{\rho_2}\psi_{xx} + \frac{k}{\rho_2}\psi + \psi - f_3 &= f_4.
+        \end{cases}
+    \end{equation*}
+
+    Manipulamos algebráicamente el sistema anterior y obtenemos:
+
+    \begin{equation}
+        \label{opSobreyectEq2}
+        \begin{cases}
+            \rho_1\varphi - k(\varphi_x + \psi)_x &= \rho_1(f_1 + f_2)\\
+            \rho_2\psi - b\psi_{xx} + k(\varphi_x + \psi) &= \rho_2(f_3 + f_4).
+        \end{cases}
+    \end{equation}
+
+    Observamos entonces que en el sistema anterior no hay manifestaciones de las derivadas temporales de $\varphi$ ni de $\psi$. Así, estamos ante un sistema elíptico acoplado y, dado que $U \in D(A)$, entonces la solución $(\varphi, \psi)$ que buscamos debe satisfacer:
+
+    \[(\varphi, \psi) \in H_0^1(0,L) \times H_0^1(0,L).\]
+
+    Hallemos ahora la formulación variacional del problema (teniendo en cuenta las condiciones de frontera originales). Para ello, consideramos las funciones de prueba
+
+    \[w, z \in C_0^\infty(0,L).\]
+
+    Multiplicando la primera ecuación de \eqref{opSobreyectEq2} por $w$, la segunda por $z$ e integrando sobre $(0,L)$:
+
+    \begin{equation}
+        \label{opSobreyectEq3}
+        \begin{cases}
+            \displaystyle \rho_1 \int_0^L \varphi w \, dx - k \int_0^L(\varphi_x + \psi)_x w \, dx &= \displaystyle\rho_1 \int_0^L (f_1 + f_2) w \, dx\\
+            \displaystyle \rho_2\int_0^L \psi z \, dx - b \int_0^L \psi_{xx} z \, dx + k \int_0^L (\varphi_x + \psi) z \, dx &= \displaystyle\rho_2 \int_0^L (f_3 + f_4) z \, dx.
+        \end{cases}
+    \end{equation}
+
+    Integramos por partes los términos con derivadas espaciales:
+
+    \begin{align*}
+        \int_0^L (\varphi_x + \psi)_x w \, dx &= \cancelto{0}{[w(\varphi_x + \psi)]_0^L} - \int_0^L(\varphi_x + \psi) w_x \, dx\\
+        \int_0^L\psi_{xx}z \, dx &= \cancelto{0}{[z \psi_x]_0^L} - \int_0^L \psi_x z_x \, dx. 
+    \end{align*}
+
+    Ahora sustituimos en \eqref{opSobreyectEq3}:
+
+    \begin{equation*}
+        \begin{cases}
+            \displaystyle \rho_1 \int_0^L \varphi w \, dx + k \int_0^L(\varphi_x + \psi) w_x \, dx &= \displaystyle\rho_1 \int_0^L (f_1 + f_2) w \, dx\\
+            \displaystyle \rho_2\int_0^L \psi z \, dx + b \int_0^L \psi_{x} z_x \, dx + k \int_0^L (\varphi_x + \psi) z \, dx &= \displaystyle\rho_2 \int_0^L (f_3 + f_4) z \, dx.
+        \end{cases}
+    \end{equation*}
+
+    Ahora, sumamos ambas ecuaciones y agrupamos de manera conveniente:
+
+    \begin{align*}
+        \rho_1 \int_0^L \varphi w \, dx + \rho_2\int_0^L \psi z \, dx &+ b \int_0^L \psi_{x} z_x \, dx + k\int_0^L(\varphi_x + \psi)(w_x + z) \, dx\\ 
+        &= \rho_1\int_0^L (f_1 + f_2) w \, dx + \rho_2 \int_0^L (f_3 + f_4) z \, dx.
+    \end{align*}
+
+    Esta es, finalmente, la formulación variacional del problema \eqref{opSobreyectEq2}. Para hallar la solución del problema variacional, usaremos el \textcolor{green}{Teorema de Lax-Milgram}. Para ello, necesitamos plantear la formulación variacional de Hilbert. Así, basándonos en los términos usados en la igualdad anterior, fijamos
+
+    \[(w,z) \in H_0^1(0,L) \times H_0^1(0,L).\]
+
+    Podemos hacer esto sin alterar el hilo argumental dado hasta el momento, simplemente por la densidad de $C_0^\infty(0,L)$ en $H_0^1(0,L)$.
+
+    Dicho eso, definimos el funcional $a : \big(H_0^1(0,L) \times H_0^1(0,L)\big) \times \big(H_0^1(0,L) \times H_0^1(0,L)\big) \rightarrow \mathbb{C}$ como
+
+    \[a\big((w,z),(\varphi, \psi) \big) = \rho_1 \int_0^L \varphi w \, dx + \rho_2\int_0^L \psi z \, dx + b \int_0^L \psi_{x} z_x \, dx + k\int_0^L(\varphi_x + \psi)(w_x + z) \, dx,\]
+
+    y el funcional $h : H_0^1(0,L) \times H_0^1(0,L) \rightarrow \mathbb{C}$ como:
+
+    \[h(w,z) = \rho_1\int_0^L (f_1 + f_2) w \, dx + \rho_2 \int_0^L (f_3 + f_4) z \, dx.\]
+
+    Esto nos permite reescribir la formulación variacional del problema como
+
+    \[a\big((w,z),(\varphi, \psi) \big) = h(w,z), \ \forall (w,z) \in H_0^1(0,L) \times H_0^1(0,L).\]
+
+    Para usar el \textcolor{green}{Teorema de Lax-Milgram} debemos probar que $a$ es una forma bilineal y coerciva. Empecemos comprobando que es coerciva. Para ello, en primer lugar, tendremos que $a\big((\varphi, \psi), (\varphi, \psi)\big)$ es:
+
+    \begin{align*}
+        a\big((\varphi, \psi), (\varphi, \psi)\big) = \rho_1 \lVert \varphi \lVert^2_{L^2} + \rho_2 \lVert \psi \lVert_{L^2}^2 + b \lVert \psi_x \lVert^2_{L^2} + k \lVert \varphi_x + \psi \lVert_{L^2}^2.
+    \end{align*}    
+
+    Ahora escribimos $\varphi_x$ como:
+
+    \[\varphi_x = (\varphi_x + \psi) - \psi,\]
+
+    y usando la desigualdad triangular se tiene que:
+
+    \[\lVert \varphi_x \lVert_{L^2} \leq \lVert \varphi_x + \psi \lVert_{L^2} + \lVert \psi \lVert_{L^2}.\]
+
+    Consideremos ahora la siguiente desigualdad:
+
+    \begin{align*}
+        0 &\leq (a - b)^2\\
+        2ab &\leq a^2 + b^2\\
+        a^2 + 2ab + b^2 &\leq a^2 + b^2\\
+        (a+b)^2 &\leq a^2 + b^2.
+    \end{align*}
+
+    Aplicándola a la desigualdad obtenida, se obtiene:
+
+    \[\lVert \varphi_x \lVert^2_{L^2} \leq 2\lVert \varphi_x + \psi \lVert^2_{L^2} + 2\lVert \psi \lVert^2_{L^2}.\]
+
+    Dicho lo anterior, y recordando ahora que las constantes $\rho_1, \rho_2, b, k$ son estrictamente mayores que cero, tomamos
+
+    \[C := \min \{\rho_1, \rho_2, b, k\} > 0.\]
+
+    Así, se tiene que
+
+    \[a\big((\varphi, \psi), (\varphi, \psi)\big) \geq C \big( \lVert \varphi \lVert^2_{L^2} + \lVert \psi \lVert_{L^2}^2 + \lVert \psi_x \lVert^2_{L^2} + \lVert \varphi_x + \psi \lVert_{L^2}^2 \big) > 0,\]
+
+    y en consecuencia, utilizando además el resultado obtenido anteriormente:
+
+    \begin{align*}
+        a\big((\varphi, \psi), (\varphi, \psi)\big) &> C \lVert \psi_x \lVert^2_{L^2},\\
+        a\big((\varphi, \psi), (\varphi, \psi)\big) &> C\big(\lVert \varphi_x + \psi \lVert_{L^2} + \lVert \psi \lVert_{L^2} \big) > \frac{1}{2}C \lVert \varphi_x \lVert^2_{L^2}.
+    \end{align*}
+
+    Así, sumando ambas desigualdades se tiene que:
+
+    \begin{align*}
+        2a\big((\varphi, \psi), (\varphi, \psi)\big) &> C \lVert \psi_x \lVert^2_{L^2} + \frac{1}{2}C \lVert \varphi_x \lVert^2_{L^2} \geq \frac{C}{2}\big( \lVert \psi_x \lVert^2_{L^2} + \lVert \varphi_x \lVert^2_{L^2} \big)\\
+        \implies a\big((\varphi, \psi), (\varphi, \psi)\big) &>\frac{C}{4}\big( \lVert \psi_x \lVert^2_{L^2} + \lVert \varphi_x \lVert^2_{L^2} \big).
+    \end{align*}
+
+    Finalmente, esto da como resultado:
+
+    \[a\big((\varphi, \psi), (\varphi, \psi)\big) >\frac{C}{4}\big( \lVert \psi \lVert^2_{H^1_0} + \lVert \varphi \lVert^2_{_{H^1_0}} \big) > \frac{C}{4}\lVert (\varphi, \psi) \lVert^2_{H_0^1 \times H_0^1},\]
+
+    lo cual prueba que $a$ es coerciva.
+
+    Utilizando la \textcolor{green}{desigualdad de Cauchy-Schwarz} y la \textcolor{green}{desigualdad de Poincaré} de manera repetida, podemos probar que tanto $a$ como $h$ son acotadas y, como consecuencia por ser lineales, continuas. Finalmente, probar que $a$ es una forma bilineal es casi inmediato, por lo que no nos detendremos en dar una prueba de ello más extensa.
+
+    Así, se tiene que $a$ y $h$ con continuas, y $a$ es una forma bilineal coerciva. Por lo tanto, invocando el \textcolor{green}{Teorema de Lax-Milgram}, se tiene que para todo funcional $h$ lineal y acotado en $H_0^1(0,L) \times H_0^1(0,L)$, existe un único vector $(\varphi_h, \psi_h)$ tal que
+
+    \[a\big((w, z), (\varphi_h, \psi_h)\big) = h(w,z), \ \forall (w,z) \in H_0^1(0,L) \times H_0^1(0,L).\]
+
+    Para concluir la prueba, queda probar que $\varphi, \psi \in H^2(0,L) \cap H^1_0(0,L)$ y que $\varphi_t, \psi_t \in H^1_0(0,L)$; es decir, debemos probar que la solución débil tiene más regularidad. 
+    
+    Para ello, empezamos considerando el par de funciones de prueba $(w,0)$, con $w \in H_0^1(0,L)$. Sabemos que para este par existe una solución $(\varphi, \psi)$ al problema variacional y, en particular, se satisface la siguiente ecuación:
+
+    \[\rho_1 \int_0^L \varphi w \, dx + k \int_0^L(\varphi_x + \psi) w_x \, dx = \displaystyle\rho_1 \int_0^L (f_1 + f_2) w \, dx.\]    
+
+    Reordenando se obtiene que:
+
+    \[\int_0^L(\varphi_x + \psi) w_x \, dx = \int_0^L \big[k^{-1}\rho_1(f_1 + f_2) - k^{-1}\rho_1\varphi \big]w \, dx,\]
+
+    lo cual significa, en un sentido distribucional:
+
+    \[(\varphi_x + \psi)_x = k^{-1}\rho_1(f_1 + f_2) - k^{-1}\rho_1\varphi,\]
+
+    y, como $f_1, \varphi \in H_0^1(0,L) \subset L^2(0,L)$ y $f_2 \in L^2(0,L)$, entonces $(\varphi_x + \psi)_x \in H_0^1(0,L)$. Esto implica, en particular, que
+
+    \[\varphi_{xx} \in L^2(0,L).\]
+
+    Por lo tanto (y dado a que $\varphi \in H_0^1(0,L)$), se tiene que
+
+    \[\varphi \in H^2(0,L) \cap H_0^1(0,L).\]
+
+    Un argumento idéntico se puede realizar tomando el par de funciones de prueba $ (0,z)$. Esto da como resultado
+
+    \[\psi \in H^2(0,L) \cap H_0^1(0,L).\]
+
+    Así, hemos conseguido probar que $\varphi, \psi \in H^2(0,L) \cap H_0^1(0,L)$. Queda probar únicamente que $\varphi_t, \psi_t \in L^2(0,L)$. Para ello, observamos que se verifican (considerando las derivadas en un sentido distribucional) las ecuaciones:
+
+    \begin{align*}
+        \varphi_t &= \varphi - f_1\\
+        \psi_t &= \psi - f_3,
+    \end{align*}
+
+    y como $\varphi, \psi \in H^2(0,L) \cap H_0^1(0,L) \subset L^2(0,L)$, y $f_1, f_3 \in H_0^1(0,L) \subset L^2(0,L)$, entonces
+
+    \[\varphi_t, \psi_t \in L^2(0,L).\]
+
+    Así, para cualquier $F \in \mathcal{H}$, existe $U \in D(A)$ tal que resuelve el sistema $(I-A)U = F$. Además, la unicidad de $U$ se deduce de la unicidad de las soluciones al problema variacional (débil). Por lo tanto el operador $(I-A)$ es sobreyectivo, tal y como queríamos probar.
+\end{proof}
+
+\begin{Teorema}{(Existencia y unicidad de soluciones)}
+\label{ch:teoriaVigas:prop:existenciaYUnicidad}
+    El problema de valor inicial \eqref{pviTimoshenkoBasico} (planteado también en \eqref{probCauchyHomTimoBasico} como un problema abstracto de Cauchy homogéneo) posee una única solución débil
+
+    \[U(t) = \big(\varphi(\cdot, t), \varphi_t(\cdot, t), \psi(\cdot, t), \psi_t(\cdot, t)\big) \in C\big([0,\infty);\mathcal{H}\big)\]
+
+    para cada dato inicial $U(0) = U_0$. Adicionalmente, si dicho dato inicial verifica que
+
+    \[U_0 \in D(A),\]
+
+    entonces la solución $U(t)$ es continuamente diferenciable; es decir,
+
+    \todo[inline]{Añadir explicación sobre por qué $C^1\big([0,\infty);\mathcal{H}\big) \cap C\big([0,\infty) ; D(A)\big)$}
+    \[U(t) \in C^1\big([0,\infty);\mathcal{H}\big) \cap C\big([0,\infty) ; D(A)\big).\]
+
+    Por último, sin importar la regularidad de la solución se tiene que esta es de la forma
+
+    \[U(T) = T(t)U_0,\]
+
+    donde $T(t)$ es el semigrupo generado por $A$.
+\end{Teorema}
+
+\begin{proof}
+    Utilizando el segundo punto del Teorema de Lumer-Phillips \eqref{ch:semigrupos:th:LumerPhillips} tenemos que, gracias a la Proposición \eqref{ch:teoriaVigas:prop:AesDisipativo} ($A$ es disipativo) y a la Proposición \eqref{ch:teoriaVigas:prop:ResolventeEsSobreyect} ($(I-A)$ es sobreyectivo), entonces $A$ es el generador infinitesimal de un semigrupo fuertemente continuo de contracciones.
+
+    Dado que $A$ es el generador de un semigrupo fuertemente continuo de contracciones, y gracias a que el sistema de Timoshenko \eqref{pviTimoshenkoBasico} se puede plantear como un problema abstracto de Cauchy homogéneo tenemos, por lo discutido en la introducción del capítulo sobre problemas abstractos de Cauchy (véase \ref{ch:cauchy:section:Hom}), que este siempre posee soluciones débiles (es decir, de clase $C\big([0,\infty);\mathcal{H}\big)$) únicas (por cada dato inicial del problema homogéneo $U_0$) de la forma 
+
+    $U(t) = T(t)U_0,$
+
+    donde $T(t)$ es el semigrupo generado por $A$. Asimismo, si $U_0 \in D(A)$, entonces el Teorema \eqref{cauchy:hom:ExistenciaYUnicidadFuerte} garantiza que existe una única solución fuerte (entiéndase, de clase $C^1\big([0,\infty);\mathcal{H}\big) \cap C\big([0,\infty) ; D(A)\big)$) por cada dato inicial. 
+\end{proof}
