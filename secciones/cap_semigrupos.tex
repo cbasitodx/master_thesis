@@ -1,6 +1,7 @@
 \chapter{Preliminares: Teoría de Semigrupos}
 \label{ch:semigrupos}
 
+\todo[inline]{PONER QUE NO SE USAN TODOS LOS RESULTADOS DE ESTE CAPÍTULO}
 \textcolor{red}{UNA PEQUEÑA INTRODUCCIÓN}
 
 \section{Definiciones y resultados básicos}
@@ -109,7 +110,7 @@ Sea $\{T(t), t \geq 0\}$ un semigrupo fuertemente continuo. Entonces:
 \begin{enumerate}
     \item Para cualquier $e \in E_0$, la aplicación $t \mapsto T(t)e$ es continua para todo $t \ge 0$.
 
-    \item La aplicación $t \mapsto ||T(t)||_{L(E_0)}$ es semicontinua inferiormente y, por tanto, medible.
+    \item La aplicación $t \mapsto ||T(t)||_L(E_0)$ es semicontinua inferiormente y, por tanto, medible.
 
     \item Sea $A$ un generador infinitesimal de $T(t)$; entonces, $A$ es densamente definido y cerrado. Para $e \in D(A)$, $t \mapsto T(t) e$ es continuamente diferenciable y
 
@@ -281,7 +282,7 @@ Sea $\{T(t), t \geq 0\}$ un semigrupo fuertemente continuo. Entonces:
     \begin{align*}
         ||R(\lambda)||_{L(E_0)} = \sup_{\substack{e \in E_0 \\ e \neq 0}} \frac{||R(\lambda)||_{E_0}}{||e||_{E_0}} &\leq \frac{\left | \left | \int_0^{\infty}\mathrm{e}^{-\lambda t}T(t)e \, dt \right | \right |_{E_0}}{||e||_{E_0}}\\
         &\leq \frac{\int_0^{\infty}|\mathrm{e}^{-\lambda t}| \, ||T(t)e||_{E_0} \, dt}{||e||_{E_0}}\\
-        \text{(Teorema \ref{ch:semigrupos:th:cotaExp})}&\leq \frac{M ||e||_{E_0} \int_0^\infty \mathrm{e}^{-(\operatorname{Re}(\lambda) - \beta)t} \, dt}{||e||_{E_0}}\\
+        \text{(Teorema \ref{ch:semigrupos:th:cotaExp})}&\leq \frac{M ||e||_{E_0} \int_0^\infty \mathrm{e}^{-(\operatorname{Re}(\lambda) - \beta)} \, dt}{||e||_{E_0}}\\
         \text{(}\operatorname{Re}(\lambda) > \beta\text{)}&\leq \frac{M}{\operatorname{Re}(\lambda) - \beta}.
     \end{align*}
 
@@ -593,7 +594,7 @@ Dada la definición anterior, estamos ya en posición de continuar con la demost
 
     \begin{align*}
         &\sup_{0 \leq t \leq t_0} ||\mathrm{e}^{tA_\lambda}e - \mathrm{e}^{tA_\mu}e||_{E_0} \leq t_0 ||A_\lambda e - A_\mu e||_{E_0}\\
-        \implies& \mathop{\left\lVert \mathrm{e}^{tA_\lambda}e - \mathrm{e}^{tA_\mu}e \right\rVert_{E_0}} \limits_{\displaystyle \forall t \in [0, t_0]} \rightarrow 0 \text{ cuando } \lambda, \mu \rightarrow \infty,
+        \implies& \mathop{\left\lVert \mathrm{e}^{tA_\lambda}e - \mathrm{e}^{tA_\mu}e \right\rVert_{E_0}} \limits_{\displaystyle \forall t \in [0, t_0]} \rightarrow 0 \text{ cuando } \lambda, \mu \rightarrow 0,
     \end{align*}
 
     es decir, $(\mathrm{e}^{tA_\lambda}e)$ es de Cauchy uniforme en $E_0$. En consecuencia, el límite
@@ -808,7 +809,7 @@ Empezamos aportando la definición de \textit{operador disipativo}:\\
 
     \[\lVert (\lambda - A)e \lVert_{E_0} \geq \lambda \lVert e \lVert_{E_0}.\]
 
-    Ahora, como $R(\lambda_0 - A) = E_0$, entonces $(\lambda_0 - A)$ es sobreyectivo. Por otro lado, como $\lVert (\lambda_0 - A)e \lVert_{E_0} \geq \lambda_0 \lVert e \lVert_{E_0}$, se tiene que, si definimos $y := (\lambda_0 -A)e \in E_0$, entonces:
+    Ahora, como $R(\lambda_0 - A) = E_0$, entonces $(\lambda_0 - A)$ es sobreyectivo. Por otro lado, como $\lVert (\lambda_0 - A)e \lVert_{E_0} \geq \lambda_0 \lVert e \lVert_{E_0}$, se tiene que, si definimos $y := (\lambda_0 -A) \in E_0$, entonces:
 
     \[\lVert (\lambda_0 - A)^{-1}y \lVert_{E_0} = \lVert e \lVert_{E_0} \leq \frac{1}{\lambda_0}\lVert (\lambda_0 - A)e \lVert_{E_0} = \frac{1}{\lambda_0} \lVert y \lVert_{E_0},\]
 
@@ -919,7 +920,7 @@ A continuación, recordamos la definición de un \textit{operador simétrico} y 
         \implies& \langle e^*, e \rangle = \langle e^*, Ae\rangle = \langle A^* e^*, e \rangle,
     \end{align*}
 
-    y así (por ser $D(A)$ denso en $E_0$) $e^* = A^* e^* \implies e^* - A^*e^* = 0$.
+    y así (por definición de operador auto-adjunto \eqref{ch:semigrupos:def:OpAutoAdj}) $e^* = A^* e^* \implies e^* - A^*e^* = 0$.
 
     Como $A^*$ también es disipativo, entonces (invocando una vez más el Lema \ref{ch:semigrupos:lemma:CondOpDisipativo}):
 
@@ -1027,7 +1028,7 @@ Dediquemos ahora un poco de tiempo a explorar, mediante un ejemplo, la utilidad 
 
 Para probar que $A$ es cerrado consideramos una sucesión $(x_n) \subset D(A)$ tal que $x_n \rightarrow x \in H$ y $Ax_n \rightarrow y \in H$. Debemos probar que $x \in D(A)$ y que $Ax = y$. Se tiene entonces que como $x_n \in D(A)$ y $D(A) = D(A^*)$, entonces $\langle x_n, Az \rangle = \langle A^* x_n, z \rangle \ \forall z \in D(A) \implies \langle x_n, Az \rangle = \langle Ax_n, z \rangle \ \forall z \in D(A)$. Tomando límites cuando $n \rightarrow \infty$ se tiene que $\langle x, Az \rangle = \langle y, z\rangle \ \forall z \in D(A)$. La veracidad de la igualdad anterior implica que $x \in D(A^*)$ y que $y = A^*x$. Una vez más, como $D(A) = D(A^*)$ y $A = A^*$, entonces $x \in D(A)$ y además $y = Ax$. Luego $A$ es cerrado.
 
-Entonces, continuando con el enunciado del ejemplo, supongamos que $A$ está acotado superiormente; esto es, existe una constante $a \in \mathbb{R}$ tal que $\langle Au, u \rangle \leq a \langle u, u \rangle$. Deseamos probar que $\mathbb{C} \setminus (-\infty, a] \subset \rho(A)$ y que existe una constante $M \geq 1$ dependiente únicamente de $\varphi$ tal que
+Entonces, continuando con el enunciado del ejemplo, supongamos que $A$ está acotado superiormente; esto es, existe una constante $a \in \mathbb{R}$ tal que $\langle Au, u \rangle = a \langle u, u \rangle$. Deseamos probar que $\mathbb{C} \setminus (-\infty, a] \subset \rho(A)$ y que existe una constante $M \geq 1$ dependiente únicamente de $\varphi$ tal que
 
 \[\lVert (\lambda - A)^{-1}\lVert_{L(H)} \leq \frac{M}{|\lambda - a|},\]
 
