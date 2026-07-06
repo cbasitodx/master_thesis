@@ -51,8 +51,8 @@ Luego, se tiene que podemos asociar el mismo funcional de energía que en el mod
 \begin{equation}
     \label{timoshenkoDosAmortig:funcionalEnergia}
     \begin{aligned}
-        E(t) \ = \  &\frac{1}{2} \Bigg[ \rho_1 \int_0^L \big(\varphi_t(x,t) \big)^2 \, dx + \rho_2 \int_0^L \big(\psi_t(x,t) \big)^2 \, dx + b\int_0^L \big(\psi_x(x,t) \big)^2 \, dx\\
-        &+ k\int_0^L \big(\varphi_x(x,t) + \psi(x,t) \big)^2 \, dx \Bigg], \quad t \geq 0.
+        E(t) \ = \  &\frac{1}{2} \Bigg[ \rho_1 \int_0^L \big(\varphi_t(x,t) \big)^2 \, \dd x + \rho_2 \int_0^L \big(\psi_t(x,t) \big)^2 \, \dd x + b\int_0^L \big(\psi_x(x,t) \big)^2 \, \dd x\\
+        &+ k\int_0^L \big(\varphi_x(x,t) + \psi(x,t) \big)^2 \, \dd x \Bigg], \quad t \geq 0.
     \end{aligned}
 \end{equation}
 
@@ -137,7 +137,7 @@ En esta sección nos dedicaremos a probar que el sistema \eqref{pviTimoshenkoDos
 
     Para el sistema \eqref{pviTimoshenkoDosDispFracc}, el funcional de energía definido en \eqref{timoshenkoDosAmortig:funcionalEnergia} verifica:
 
-    \[\frac{d}{dt}E(t) = -\alpha\int_0^L \big(\varphi_t(x, t)\big)^2 \, dx -\beta\int_0^L \big(\psi_t(x, t)\big)^2 \, dx \leq 0,\]
+    \[\frac{\dd}{\dd t}E(t) = -\alpha\int_0^L \big(\varphi_t(x, t)\big)^2 \, \dd x -\beta\int_0^L \big(\psi_t(x, t)\big)^2 \, \dd x \leq 0,\]
 
     donde $\alpha, \beta \geq 0$.
 \end{Proposicion}
@@ -149,29 +149,29 @@ Al igual que en el capítulo anterior, nos reservamos la discusión sobre la exi
     Empezamos multiplicando las dos ecuaciones del sistema \eqref{eqTimoshenkoDosDispFracc} por $\varphi_t$ y $\psi_t$ respectivamente e integramos en $(0,L)$, obteniendo así:
 
     \begin{align*}
-        \rho_1 \int_0^L \varphi_t\varphi_{tt}\, dx - k\int_0^L\varphi_t(\varphi_x + \psi)_x \, dx + \alpha\int_0^L(\varphi_t)^2 \, dx &= 0,\\
-        \rho_2 \int_0^L\psi_t\psi_{tt} \, dx - b\int_0^L \psi_t\psi_{xx} \, dx + k \int_0^L \psi_t(\varphi_x + \psi) \, dx + \beta\int_0^L (\psi_t)^2 &= 0.\\
+        \rho_1 \int_0^L \varphi_t\varphi_{tt}\, \dd x - k\int_0^L\varphi_t(\varphi_x + \psi)_x \, \dd x + \alpha\int_0^L(\varphi_t)^2 \, \dd x &= 0,\\
+        \rho_2 \int_0^L\psi_t\psi_{tt} \, \dd x - b\int_0^L \psi_t\psi_{xx} \, \dd x + k \int_0^L \psi_t(\varphi_x + \psi) \, \dd x + \beta\int_0^L (\psi_t)^2 &= 0.\\
     \end{align*}
 
     Dado que $U \in D(A)$, podemos integrar por partes los términos con derivadas espaciales. Considerando las condiciones de borde obtenemos que:
 
     \begin{align*}
-        \int_0^L\varphi_t(\varphi_x + \psi)_x \, dx &= \cancelto{0}{[\varphi_t(\varphi_x + \psi)]_0^L} - \int_0^L(\varphi_x + \psi)\varphi_{tx} \, dx,\\
-        \int_0^L \psi_t\psi_{xx} \, dx &= \cancelto{0}{[\psi_t\psi_x]_0^L} - \int_0^L \psi_x \psi_{tx} \, dx.
+        \int_0^L\varphi_t(\varphi_x + \psi)_x \, \dd x &= \cancelto{0}{[\varphi_t(\varphi_x + \psi)]_0^L} - \int_0^L(\varphi_x + \psi)\varphi_{tx} \, \dd x,\\
+        \int_0^L \psi_t\psi_{xx} \, \dd x &= \cancelto{0}{[\psi_t\psi_x]_0^L} - \int_0^L \psi_x \psi_{tx} \, \dd x.
     \end{align*}
 
     Ahora, sustituyendo estas expresiones en las dos ecuaciones anteriores:
 
     \begin{align*}
-        \rho_1 \int_0^L \varphi_t\varphi_{tt}\, dx + k\int_0^L(\varphi_x + \psi)\varphi_{tx} \, dx + \alpha\int_0^L(\varphi_t)^2 \, dx &= 0,\\
-        \rho_2 \int_0^L\psi_t\psi_{tt} \, dx + b\int_0^L \psi_x \psi_{tx} \, dx + k \int_0^L \psi_t(\varphi_x + \psi) \, dx + \beta\int_0^L (\psi_t)^2 &= 0.\\
+        \rho_1 \int_0^L \varphi_t\varphi_{tt}\, \dd x + k\int_0^L(\varphi_x + \psi)\varphi_{tx} \, \dd x + \alpha\int_0^L(\varphi_t)^2 \, \dd x &= 0,\\
+        \rho_2 \int_0^L\psi_t\psi_{tt} \, \dd x + b\int_0^L \psi_x \psi_{tx} \, \dd x + k \int_0^L \psi_t(\varphi_x + \psi) \, \dd x + \beta\int_0^L (\psi_t)^2 &= 0.\\
     \end{align*}
 
     Sumando ambas ecuaciones y agrupando términos convenientemente:
 
     \begin{align*}
-        \rho_1 \int_0^L \varphi_t\varphi_{tt}\, dx + \rho_2 \int_0^L\psi_t\psi_{tt} \, dx &+ b\int_0^L \psi_x \psi_{tx} \, dx + k \int_0^L (\varphi_x + \psi)(\varphi_{tx} + \psi_t) \, dx\\
-        &+ \alpha\int_0^L(\varphi_t)^2 \, dx + \beta\int_0^L (\psi_t)^2 = 0.
+        \rho_1 \int_0^L \varphi_t\varphi_{tt}\, \dd x + \rho_2 \int_0^L\psi_t\psi_{tt} \, \dd x &+ b\int_0^L \psi_x \psi_{tx} \, \dd x + k \int_0^L (\varphi_x + \psi)(\varphi_{tx} + \psi_t) \, \dd x\\
+        &+ \alpha\int_0^L(\varphi_t)^2 \, \dd x + \beta\int_0^L (\psi_t)^2 = 0.
     \end{align*}
 
     Recordemos ahora las igualdades planteadas en la demostración de la Proposición \ref{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasico}:
@@ -188,13 +188,13 @@ Al igual que en el capítulo anterior, nos reservamos la discusión sobre la exi
     Sustituyendo ahora en la igualdad anterior, obtenemos que:
 
     \begin{align*}
-        \frac{d}{dt}\frac{1}{2}\Bigg[\rho_1 \int_0^L (\varphi_t)^2\, dx + \rho_2 \int_0^L(\psi_t)^2 \, dx &+ b\int_0^L (\psi_x)^2 \, dx + k \int_0^L (\varphi_x + \psi)^2 \, dx\Bigg]\\
-        &= -\alpha\int_0^L(\varphi_t)^2 \, dx - \beta\int_0^L (\psi_t)^2.
+        \frac{\dd}{\dd t}\frac{1}{2}\Bigg[\rho_1 \int_0^L (\varphi_t)^2\, \dd x + \rho_2 \int_0^L(\psi_t)^2 \, \dd x &+ b\int_0^L (\psi_x)^2 \, \dd x + k \int_0^L (\varphi_x + \psi)^2 \, \dd x\Bigg]\\
+        &= -\alpha\int_0^L(\varphi_t)^2 \, \dd x - \beta\int_0^L (\psi_t)^2.
     \end{align*}
 
     Es decir,
 
-    \[\frac{d}{dt}E(t) = -\alpha\int_0^L(\varphi_t)^2 \, dx - \beta\int_0^L (\psi_t)^2 \leq 0,\]
+    \[\frac{\dd}{\dd t}E(t) = -\alpha\int_0^L(\varphi_t)^2 \, \dd x - \beta\int_0^L (\psi_t)^2 \leq 0,\]
 
     que es exactamente lo que queríamos probar.
 \end{proof}
@@ -331,7 +331,7 @@ Empezamos probando que $A$ es disipativo.
 
     \begin{align}
     \label{funcionalAuxiliarXi}
-        \xi(t) = \rho_1\int_0^L \varphi(x,t) \varphi_t(x,t) \, dx + \rho_2 \int_0^L \psi(x,t) \psi_t(x,t) \, dx, \ t \geq 0,
+        \xi(t) = \rho_1\int_0^L \varphi(x,t) \varphi_t(x,t) \, \dd x + \rho_2 \int_0^L \psi(x,t) \psi_t(x,t) \, \dd x, \ t \geq 0,
     \end{align}
 
     y, para todo $\varepsilon > 0$, definimos también el \textit{funcional de energía perturbada} como
@@ -352,20 +352,20 @@ Empezamos probando que $A$ es disipativo.
 
     \begin{align*}
         \lvert E_\varepsilon(t) - E(t)\lvert &= \lvert \varepsilon \xi(t) \lvert\\
-        &=\varepsilon\left\lvert \rho_1\int_0^L \varphi\varphi_t \, dx + \rho_2 \int_0^L \psi\psi_t \, dx \right\lvert\\
-        \text{(des. triangular)}&\leq \varepsilon\Bigg(\left\lvert \rho_1\int_0^L \varphi\varphi_t \, dx\right\lvert + \left\lvert\rho_2 \int_0^L \psi\psi_t \, dx \right\lvert\Bigg)\\
-        \text{(des. Cauchy-Schwarz)}&\leq \varepsilon\Bigg( \rho_1 \lVert \varphi \lVert_{L^2} \lVert \varphi_t \lVert_{L^2} + \rho_2 \lVert\psi\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg)\\
-        \text{(des. Poincaré)}&\leq \varepsilon\Bigg( \rho_1L \lVert \varphi_x \lVert_{L^2} \lVert \varphi_t \lVert_{L^2} + \rho_2L\lVert\psi_x\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg),
+        &=\varepsilon\left\lvert \rho_1\int_0^L \varphi\varphi_t \, \dd x + \rho_2 \int_0^L \psi\psi_t \, \dd x \right\lvert\\
+        \text{(des. triangular)}&\leq \varepsilon\Bigg(\left\lvert \rho_1\int_0^L \varphi\varphi_t \, \dd x\right\lvert + \left\lvert\rho_2 \int_0^L \psi\psi_t \, \dd x \right\lvert\Bigg)\\
+        \text{(des. Cauchy-Schwarz)}&\leq \varepsilon\Bigg( \rho_1 \lVert \varphi \rVert_{L^2} \lVert \varphi_t \rVert_{L^2} + \rho_2 \lVert\psi\rVert_{L^2} \lVert\psi_t\rVert_{L^2} \Bigg)\\
+        \text{(des. Poincaré)}&\leq \varepsilon\Bigg( \rho_1L \lVert \varphi_x \rVert_{L^2} \lVert \varphi_t \rVert_{L^2} + \rho_2L\lVert\psi_x\rVert_{L^2} \lVert\psi_t\rVert_{L^2} \Bigg),
     \end{align*}
 
-    ahora escribimos $\lVert \varphi_x\lVert_{L^2}$ como $\lVert (\varphi_x - \psi) + (-\psi)\lVert_{L^2}$ y seguimos acotando (utilizando la desigualdad triangular de la norma) la expresión que veníamos trabajando:
+    ahora escribimos $\lVert \varphi_x\rVert_{L^2}$ como $\lVert (\varphi_x - \psi) + (-\psi)\rVert_{L^2}$ y seguimos acotando (utilizando la desigualdad triangular de la norma) la expresión que veníamos trabajando:
 
     \begin{align*}
         \lvert E_\varepsilon(t) - E(t)\lvert &= \lvert \varepsilon \xi(t) \lvert\\
-        &\leq \varepsilon\Bigg( \rho_1L \lVert \varphi_x \lVert_{L^2} \lVert \varphi_t \lVert_{L^2} + \rho_2L\lVert\psi_x\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg)\\
-        \text{(des. triangular)} &\leq \varepsilon\Bigg( \rho_1 L \big(\lVert\varphi_x + \psi\lVert_{L^2} + \lVert\psi\lVert_{L^2}\big)\lVert \varphi_t\lVert_{L^2} + \rho_2L\lVert\psi_x\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg)\\
-        \text{(des. Poincaré)} &\leq \varepsilon\Bigg( \rho_1 L \big(\lVert\varphi_x + \psi\lVert_{L^2} + L\lVert\psi_x\lVert_{L^2}\big)\lVert \varphi_t\lVert_{L^2} + \rho_2L\lVert\psi_x\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg)\\
-        &\leq \varepsilon\Bigg( \rho_1 L \lVert \varphi_t\lVert_{L^2}\lVert\varphi_x + \psi\lVert_{L^2} + \rho_1L^2\lVert \varphi_t\lVert_{L^2}\lVert\psi_x\lVert_{L^2} + \rho_2L\lVert\psi_x\lVert_{L^2} \lVert\psi_t\lVert_{L^2} \Bigg).\\
+        &\leq \varepsilon\Bigg( \rho_1L \lVert \varphi_x \rVert_{L^2} \lVert \varphi_t \rVert_{L^2} + \rho_2L\lVert\psi_x\rVert_{L^2} \lVert\psi_t\rVert_{L^2} \Bigg)\\
+        \text{(des. triangular)} &\leq \varepsilon\Bigg( \rho_1 L \big(\lVert\varphi_x + \psi\rVert_{L^2} + \lVert\psi\rVert_{L^2}\big)\lVert \varphi_t\rVert_{L^2} + \rho_2L\lVert\psi_x\rVert_{L^2} \lVert\psi_t\rVert_{L^2} \Bigg)\\
+        \text{(des. Poincaré)} &\leq \varepsilon\Bigg( \rho_1 L \big(\lVert\varphi_x + \psi\rVert_{L^2} + L\lVert\psi_x\rVert_{L^2}\big)\lVert \varphi_t\rVert_{L^2} + \rho_2L\lVert\psi_x\rVert_{L^2} \lVert\psi_t\rVert_{L^2} \Bigg)\\
+        &\leq \varepsilon\Bigg( \rho_1 L \lVert \varphi_t\rVert_{L^2}\lVert\varphi_x + \psi\rVert_{L^2} + \rho_1L^2\lVert \varphi_t\rVert_{L^2}\lVert\psi_x\rVert_{L^2} + \rho_2L\lVert\psi_x\rVert_{L^2} \lVert\psi_t\rVert_{L^2} \Bigg).\\
     \end{align*}
 
     Recordemos ahora la \textcolor{green}{desigualdad de Young}. Sean $a,b\geq0$ dos números reales no negativos; entonces, si $p,q>1$ son números reales tales que $p^{-1} + q^{-1}=1$, entonces
@@ -421,16 +421,16 @@ Empezamos probando que $A$ es disipativo.
 
     \begin{align}
         \label{afirmacion2}
-        \xi^\prime(t) \leq C_1\lVert \varphi_t(t)\rVert^2_{L^2} + C_2\lVert \psi_t(t)\lVert^2_{L^2} - \frac{k}{2}\lVert \varphi_x(t) + \psi(t)\rVert^2_{L^2} - \frac{b}{2}\lVert \psi_x \rVert_{L^2}^2, \ t \geq 0.
+        \xi^\prime(t) \leq C_1\lVert \varphi_t(t)\rVert^2_{L^2} + C_2\lVert \psi_t(t)\rVert^2_{L^2} - \frac{k}{2}\lVert \varphi_x(t) + \psi(t)\rVert^2_{L^2} - \frac{b}{2}\lVert \psi_x \rVert_{L^2}^2, \ t \geq 0.
     \end{align}
 
     Para probar esto, empezando tomando la derivada de $\xi$ según como se ha definido en \eqref{funcionalAuxiliarXi}:
 
     \begin{align*}
-        \xi^\prime(t) &= \rho_1\frac{d}{dt} \int_0^L \varphi(t)\varphi_t(t) \, dx + \rho_2\frac{d}{dt}\int_0^L\psi(t) \psi_t(t) \, dx\\
-        &= \rho_1 \int_0^L \frac{d}{dt}\varphi(t)\varphi_t(t) \, dx + \rho_2\int_0^L \frac{d}{dt}\psi(t) \psi_t(t) \, dx\\
-        &= \rho_1\int_0^L \big(\varphi_t(t)\big)^2 + \varphi(t)\varphi_{tt}(t) \, dx + \rho_2\int_0^L \big(\psi_t(t)\big)^2 + \psi(t)\psi_{tt}(t) \, dx\\
-        &=\rho_1\lVert \varphi_t(t)\rVert^2_{L^2} + \rho_2\lVert \psi_t(t)\rVert^2_{L^2} + \rho_1\int_0^L\varphi(t)\varphi_{tt}(t) \, dx + \rho_2\int_0^L\psi(t)\psi_{tt}(t) \, dx.
+        \xi^\prime(t) &= \rho_1\frac{\dd}{\dd t} \int_0^L \varphi(t)\varphi_t(t) \, \dd x + \rho_2\frac{\dd}{\dd t}\int_0^L\psi(t) \psi_t(t) \, \dd x\\
+        &= \rho_1 \int_0^L \frac{\dd}{\dd t}\varphi(t)\varphi_t(t) \, \dd x + \rho_2\int_0^L \frac{\dd}{\dd t}\psi(t) \psi_t(t) \, \dd x\\
+        &= \rho_1\int_0^L \big(\varphi_t(t)\big)^2 + \varphi(t)\varphi_{tt}(t) \, \dd x + \rho_2\int_0^L \big(\psi_t(t)\big)^2 + \psi(t)\psi_{tt}(t) \, \dd x\\
+        &=\rho_1\lVert \varphi_t(t)\rVert^2_{L^2} + \rho_2\lVert \psi_t(t)\rVert^2_{L^2} + \rho_1\int_0^L\varphi(t)\varphi_{tt}(t) \, \dd x + \rho_2\int_0^L\psi(t)\psi_{tt}(t) \, \dd x.
     \end{align*}
 
     Ahora despejamos $\rho_1\varphi_{tt}$ y $\rho_2\psi_{tt}$ de las ecuaciones del sistema \eqref{eqTimoshenkoDosDispFracc} y sustituimos en la expresión anterior, obteniendo así:
@@ -438,20 +438,20 @@ Empezamos probando que $A$ es disipativo.
     \begin{align*}
         &\xi^\prime(t)\\
         &=\begin{aligned}[t]
-            &\rho_1\lVert \varphi_t(t)\rVert^2_{L^2} + \rho_2\lVert \psi_t(t)\rVert^2_{L^2} + k\int_0^L\varphi(t)\big(\varphi_x(t) + \psi(t)\big)_x \, dx + b\int_0^L\psi(t)\psi_{xx}(t) \, dx\\
-            -&k\int_0^L\psi(t)\big(\varphi_x(t) + \psi(t)\big) \, dx - \alpha\int_0^L\varphi(t)\varphi_t(t) \, dx - \beta\int_0^L\psi(t)\psi_t(t)\, dx.
+            &\rho_1\lVert \varphi_t(t)\rVert^2_{L^2} + \rho_2\lVert \psi_t(t)\rVert^2_{L^2} + k\int_0^L\varphi(t)\big(\varphi_x(t) + \psi(t)\big)_x \, \dd x + b\int_0^L\psi(t)\psi_{xx}(t) \, \dd x\\
+            -&k\int_0^L\psi(t)\big(\varphi_x(t) + \psi(t)\big) \, \dd x - \alpha\int_0^L\varphi(t)\varphi_t(t) \, \dd x - \beta\int_0^L\psi(t)\psi_t(t)\, \dd x.
         \end{aligned}
     \end{align*}
     
     Ahora integramos por partes los términos
 
-    \[\int_0^L\varphi(t)\big(\varphi_x(t) + \psi(t)\big)_x \, dx, \ \int_0^L\psi(t)\psi_{xx}(t) \, dx,\]
+    \[\int_0^L\varphi(t)\big(\varphi_x(t) + \psi(t)\big)_x \, \dd x, \ \int_0^L\psi(t)\psi_{xx}(t) \, \dd x,\]
 
     y obtenemos:
 
     \begin{align*}
-        \int_0^L\varphi(t)\big(\varphi_x(t) + \psi(t)\big)_x \, dx &= \cancelto{0}{\Big[\varphi(t)\big(\varphi_x(t) + \psi(t)\big)\Big]_0^L} - \int_0^L\big(\varphi_x(t) + \psi(t)\big)\varphi_x(t) \, dx\\
-        \int_0^L\psi(t)\psi_{xx}(t) \, dx &= \cancelto{0}{[\psi(t)\psi_x(t)]_0^L} - \int_0^L \big(\psi_x(t)\big)^2 \, dx = \lVert \psi_x(t) \rVert_{L^2}^2.
+        \int_0^L\varphi(t)\big(\varphi_x(t) + \psi(t)\big)_x \, \dd x &= \cancelto{0}{\Big[\varphi(t)\big(\varphi_x(t) + \psi(t)\big)\Big]_0^L} - \int_0^L\big(\varphi_x(t) + \psi(t)\big)\varphi_x(t) \, \dd x\\
+        \int_0^L\psi(t)\psi_{xx}(t) \, \dd x &= \cancelto{0}{[\psi(t)\psi_x(t)]_0^L} - \int_0^L \big(\psi_x(t)\big)^2 \, \dd x = \lVert \psi_x(t) \rVert_{L^2}^2.
     \end{align*}
 
     Sustituyendo en la expresión de $\xi^\prime$ que hemos estado trabajando se obtiene:
@@ -460,28 +460,28 @@ Empezamos probando que $A$ es disipativo.
         \label{funcionalXiDerivada}
         &\xi^\prime(t)\\
         =&\begin{aligned}[t]
-            &\rho_1\lVert \varphi_t(t)\rVert^2_{L^2} + \rho_2\lVert \psi_t(t)\rVert^2_{L^2} -b\lVert \psi_x(t) \rVert_{L^2}^2 -k\int_0^L\big(\varphi_x(t) + \psi(t)\big)^2 \, dx\\
-            -&\alpha\int_0^L\varphi(t)\varphi_t(t) \, dx - \beta\int_0^L\psi(t)\psi_t(t)\, dx\\
+            &\rho_1\lVert \varphi_t(t)\rVert^2_{L^2} + \rho_2\lVert \psi_t(t)\rVert^2_{L^2} -b\lVert \psi_x(t) \rVert_{L^2}^2 -k\int_0^L\big(\varphi_x(t) + \psi(t)\big)^2 \, \dd x\\
+            -&\alpha\int_0^L\varphi(t)\varphi_t(t) \, \dd x - \beta\int_0^L\psi(t)\psi_t(t)\, \dd x\\
         \end{aligned}\\      
         =&\begin{aligned}[t]
             &\rho_1\lVert \varphi_t(t)\rVert^2_{L^2} + \rho_2\lVert \psi_t(t)\rVert^2_{L^2} -b\lVert \psi_x(t) \rVert_{L^2}^2 -k\lVert\varphi_x(t) + \psi(t)\rVert^2_{L^2}\\
-        -&\alpha\int_0^L\varphi(t)\varphi_t(t) \, dx - \beta\int_0^L\psi(t)\psi_t(t)\, dx.\\
+        -&\alpha\int_0^L\varphi(t)\varphi_t(t) \, \dd x - \beta\int_0^L\psi(t)\psi_t(t)\, \dd x.\\
         \end{aligned}
     \end{align}
 
     Ahora definimos
 
-    \[I_1 := -\alpha\int_0^L\varphi_t(t)\varphi(t) \, dx \ \ \text{y} \ \ I_2 := -\beta\int_0^L\psi_t(t)\psi(t) \, dx,\]
+    \[I_1 := -\alpha\int_0^L\varphi_t(t)\varphi(t) \, \dd x \ \ \text{y} \ \ I_2 := -\beta\int_0^L\psi_t(t)\psi(t) \, \dd x,\]
 
     y tenemos que
 
     \begin{align*}
-        \lvert I_1 \rvert &= \left\lvert-\alpha\int_0^L\varphi_t\varphi \, dx\right\lvert\\
-        \text{(des. Cauchy-Schwarz)}&\leq \alpha\lVert\varphi_t\lVert_{L^2}\lVert\varphi\lVert_{L^2}\\
-        \text{(des. Poincaré)}&\leq \alpha L\lVert\varphi_t\lVert_{L^2}\lVert\varphi_x\lVert_{L^2}\\
-        \text{(des. triangular)}&\leq \alpha L \lVert\varphi_t\lVert_{L^2}\big(\lVert \varphi_x + \psi\lVert_{L^2}  + \lVert \psi \lVert_{L^2}\big)\\
-        &=\alpha L\lVert\varphi_t\lVert_{L^2}\lVert \varphi_x + \psi\lVert_{L^2} + \alpha L \lVert\varphi_t\lVert_{L^2}\lVert \psi \lVert_{L^2}\\
-        \text{(des. Poincaré)}&\leq \alpha L\lVert\varphi_t\lVert_{L^2}\lVert \varphi_x + \psi\lVert_{L^2} + \alpha L^2\lVert\varphi_t\lVert_{L^2}\lVert \psi_x \lVert_{L^2}.
+        \lvert I_1 \rvert &= \left\lvert-\alpha\int_0^L\varphi_t\varphi \, \dd x\right\lvert\\
+        \text{(des. Cauchy-Schwarz)}&\leq \alpha\lVert\varphi_t\rVert_{L^2}\lVert\varphi\rVert_{L^2}\\
+        \text{(des. Poincaré)}&\leq \alpha L\lVert\varphi_t\rVert_{L^2}\lVert\varphi_x\rVert_{L^2}\\
+        \text{(des. triangular)}&\leq \alpha L \lVert\varphi_t\rVert_{L^2}\big(\lVert \varphi_x + \psi\rVert_{L^2}  + \lVert \psi \rVert_{L^2}\big)\\
+        &=\alpha L\lVert\varphi_t\rVert_{L^2}\lVert \varphi_x + \psi\rVert_{L^2} + \alpha L \lVert\varphi_t\rVert_{L^2}\lVert \psi \rVert_{L^2}\\
+        \text{(des. Poincaré)}&\leq \alpha L\lVert\varphi_t\rVert_{L^2}\lVert \varphi_x + \psi\rVert_{L^2} + \alpha L^2\lVert\varphi_t\rVert_{L^2}\lVert \psi_x \rVert_{L^2}.
     \end{align*}
 
     Para acotar el último termino utilizamos la \textcolor{green}{desigualdad de Young generalizada}, que establece lo siguiente: para dos números reales $a,b \geq 0$ no negativos, y dos números $p,q > 0$ tales que $p^{-1} + q^{-1} = 1$, se verifica para todo $\varepsilon > 0$:
@@ -494,17 +494,17 @@ Empezamos probando que $A$ es disipativo.
 
     que es la desigualdad que estaremos usando. Entonces, considerando en el primer sumando de la última expresión a la que hemos llegado
 
-    \[a = \lVert \varphi_x + \psi\lVert_{L^2} ,\ b = \alpha L\lVert\varphi_t\lVert_{L^2},\]
+    \[a = \lVert \varphi_x + \psi\rVert_{L^2} ,\ b = \alpha L\lVert\varphi_t\rVert_{L^2},\]
 
     y en el segundo sumando
 
-    \[a = \lVert \psi_x \lVert_{L^2}, \ b= \alpha L^2\lVert\varphi_t\lVert_{L^2},\]
+    \[a = \lVert \psi_x \rVert_{L^2}, \ b= \alpha L^2\lVert\varphi_t\rVert_{L^2},\]
 
     se tiene:
 
     \begin{align*}
-        \lvert I_1 \rvert &= \left\lvert-\alpha\int_0^L\varphi_t\varphi \, dx\right\lvert\\
-        \text{(des. Young generalizada)}&\leq \eta_1\lVert \varphi_x + \psi\lVert^2_{L^2} + \frac{\alpha^2 L^2}{4\eta_1}\lVert\varphi_t\lVert^2_{L^2}  + \eta_2\lVert \psi_x \lVert^2_{L^2} + \frac{\alpha^2 L^4}{4\eta_2}\lVert\varphi_t\lVert^2_{L^2},
+        \lvert I_1 \rvert &= \left\lvert-\alpha\int_0^L\varphi_t\varphi \, \dd x\right\lvert\\
+        \text{(des. Young generalizada)}&\leq \eta_1\lVert \varphi_x + \psi\rVert^2_{L^2} + \frac{\alpha^2 L^2}{4\eta_1}\lVert\varphi_t\rVert^2_{L^2}  + \eta_2\lVert \psi_x \rVert^2_{L^2} + \frac{\alpha^2 L^4}{4\eta_2}\lVert\varphi_t\rVert^2_{L^2},
     \end{align*}
 
     donde escogemos
@@ -515,14 +515,14 @@ Empezamos probando que $A$ es disipativo.
 
     \begin{align}
         \label{cotaI1}
-        \lvert I_1 \rvert &= \left\lvert-\alpha\int_0^L\varphi_t\varphi \, dx\right\lvert\\
-        &\leq \frac{k}{2}\lVert \varphi_x + \psi\lVert^2_{L^2} + \frac{\alpha^2 L^2}{2k}\lVert\varphi_t\lVert^2_{L^2}  + \frac{b}{4}\lVert \psi_x \lVert^2_{L^2} + \frac{\alpha^2 L^4}{b}\lVert\varphi_t\lVert^2_{L^2}\\
-        &\leq \frac{k}{2}\lVert \varphi_x + \psi\lVert^2_{L^2} + \frac{b}{4}\lVert \psi_x \lVert^2_{L^2} + \left(\frac{\alpha^2 L^4}{b} + \frac{\alpha^2 L^2}{2k}\right)\lVert\varphi_t\lVert^2_{L^2}.
+        \lvert I_1 \rvert &= \left\lvert-\alpha\int_0^L\varphi_t\varphi \, \dd x\right\lvert\\
+        &\leq \frac{k}{2}\lVert \varphi_x + \psi\rVert^2_{L^2} + \frac{\alpha^2 L^2}{2k}\lVert\varphi_t\rVert^2_{L^2}  + \frac{b}{4}\lVert \psi_x \rVert^2_{L^2} + \frac{\alpha^2 L^4}{b}\lVert\varphi_t\rVert^2_{L^2}\\
+        &\leq \frac{k}{2}\lVert \varphi_x + \psi\rVert^2_{L^2} + \frac{b}{4}\lVert \psi_x \rVert^2_{L^2} + \left(\frac{\alpha^2 L^4}{b} + \frac{\alpha^2 L^2}{2k}\right)\lVert\varphi_t\rVert^2_{L^2}.
     \end{align}
 
     Análogamente, se puede deducir también que:
 
-    \[\lvert I_2 \lvert \leq \eta_3 \lVert \psi_x\lVert^2_{L^2} + \frac{\beta^2L^2}{4\eta_3}\lVert \psi_t \lVert^2_{L^2},\]
+    \[\lvert I_2 \lvert \leq \eta_3 \lVert \psi_x\rVert^2_{L^2} + \frac{\beta^2L^2}{4\eta_3}\lVert \psi_t \rVert^2_{L^2},\]
 
     donde escogiendo
 
@@ -532,7 +532,7 @@ Empezamos probando que $A$ es disipativo.
 
     \begin{align}
         \label{cotaI2}
-        \lvert I_2 \lvert \leq \frac{b}{4} \lVert \psi_x\lVert^2_{L^2} + \frac{\beta^2L^2}{b}\lVert \psi_t \lVert^2_{L^2}.
+        \lvert I_2 \lvert \leq \frac{b}{4} \lVert \psi_x\rVert^2_{L^2} + \frac{\beta^2L^2}{b}\lVert \psi_t \rVert^2_{L^2}.
     \end{align}
 
     Finalmente, sustituyendo \eqref{cotaI1} y \eqref{cotaI2} en \eqref{funcionalXiDerivada} conseguimos:
@@ -541,14 +541,14 @@ Empezamos probando que $A$ es disipativo.
         &\xi^\prime(t)\\   
         =&\begin{aligned}[t]
             &\rho_1\lVert \varphi_t\rVert^2_{L^2} + \rho_2\lVert \psi_t\rVert^2_{L^2} -b\lVert \psi_x \rVert_{L^2}^2 -k\lVert\varphi_x + \psi\rVert^2_{L^2}\\
-            -&\alpha\int_0^L\varphi\varphi_t \, dx - \beta\int_0^L\psi\psi_t\, dx.\\
+            -&\alpha\int_0^L\varphi\varphi_t \, \dd x - \beta\int_0^L\psi\psi_t\, \dd x.\\
         \end{aligned}\\
         \leq&\begin{aligned}[t]
-            &\rho_1\lVert \varphi_t\rVert^2_{L^2} + \rho_2\lVert \psi_t\rVert^2_{L^2} -b\lVert \psi_x \rVert_{L^2}^2 -k\lVert\varphi_x + \psi\rVert^2_{L^2} + \frac{k}{2}\lVert \varphi_x + \psi\lVert^2_{L^2}\\
-            +& \frac{b}{4}\lVert \psi_x \lVert^2_{L^2} + \left(\frac{\alpha^2 L^4}{b} + \frac{\alpha^2 L^2}{2k}\right)\lVert\varphi_t\lVert^2_{L^2} + \frac{b}{4} \lVert \psi_x\lVert^2_{L^2} + \frac{\beta^2L^2}{b}\lVert \psi_t \lVert^2_{L^2}\\
+            &\rho_1\lVert \varphi_t\rVert^2_{L^2} + \rho_2\lVert \psi_t\rVert^2_{L^2} -b\lVert \psi_x \rVert_{L^2}^2 -k\lVert\varphi_x + \psi\rVert^2_{L^2} + \frac{k}{2}\lVert \varphi_x + \psi\rVert^2_{L^2}\\
+            +& \frac{b}{4}\lVert \psi_x \rVert^2_{L^2} + \left(\frac{\alpha^2 L^4}{b} + \frac{\alpha^2 L^2}{2k}\right)\lVert\varphi_t\rVert^2_{L^2} + \frac{b}{4} \lVert \psi_x\rVert^2_{L^2} + \frac{\beta^2L^2}{b}\lVert \psi_t \rVert^2_{L^2}\\
         \end{aligned}\\
         \leq&\begin{aligned}[t]
-            &\left(\rho_1 + \frac{\alpha^2 L^4}{b} + \frac{\alpha^2 L^2}{2k}\right)\lVert \varphi_t\rVert^2_{L^2} + \left(\rho_2 + \frac{\beta^2L^2}{b} \right)\lVert \psi_t\rVert^2_{L^2} - \frac{k}{2}\lVert \varphi_x + \psi\lVert_{L^2}^2 - \frac{b}{2}\lVert \psi_x\lVert_{L^2}^2,\\
+            &\left(\rho_1 + \frac{\alpha^2 L^4}{b} + \frac{\alpha^2 L^2}{2k}\right)\lVert \varphi_t\rVert^2_{L^2} + \left(\rho_2 + \frac{\beta^2L^2}{b} \right)\lVert \psi_t\rVert^2_{L^2} - \frac{k}{2}\lVert \varphi_x + \psi\rVert_{L^2}^2 - \frac{b}{2}\lVert \psi_x\rVert_{L^2}^2,\\
         \end{aligned}
     \end{align*}
 
@@ -561,7 +561,7 @@ Empezamos probando que $A$ es disipativo.
 
     para concluir la segunda afirmación. Es decir, que existen constantes $C_1, C_2 > 0$ tales que
 
-    \[\xi^\prime(t) \leq C_1\lVert \varphi_t(t)\rVert^2_{L^2} + C_2\lVert \psi_t(t)\lVert^2_{L^2} - \frac{k}{2}\lVert \varphi_x(t) + \psi(t)\rVert^2_{L^2} - \frac{b}{2}\lVert \psi_x \rVert_{L^2}^2, \ t \geq 0.\]
+    \[\xi^\prime(t) \leq C_1\lVert \varphi_t(t)\rVert^2_{L^2} + C_2\lVert \psi_t(t)\rVert^2_{L^2} - \frac{k}{2}\lVert \varphi_x(t) + \psi(t)\rVert^2_{L^2} - \frac{b}{2}\lVert \psi_x \rVert_{L^2}^2, \ t \geq 0.\]
 
     El tercer y último resultado auxiliar que debemos probar el siguiente: Para $\varepsilon > 0$ lo suficientemente pequeño, existe $\gamma > 0$ dependiente de $\varepsilon$ tal que
 
@@ -572,11 +572,11 @@ Empezamos probando que $A$ es disipativo.
 
     Para probar este resultado, empecemos por recordar la Proposición \eqref{ch:timoshenkoFric:prop:DisipacionEnergia}. Esta dicta que:
 
-    \[\frac{d}{dt}E(t) = -\alpha\int_0^L \big(\varphi_t(x, t)\big)^2 \, dx -\beta\int_0^L \big(\psi_t(x, t)\big)^2 \, dx \leq 0.\]
+    \[\frac{\dd}{\dd t}E(t) = -\alpha\int_0^L \big(\varphi_t(x, t)\big)^2 \, \dd x -\beta\int_0^L \big(\psi_t(x, t)\big)^2 \, \dd x \leq 0.\]
 
     Luego, dado que $E_\varepsilon(t) = E(t) + \varepsilon\xi(t)$ por definición del funcional de energía perturbado \eqref{dosDisip:energiaPerturbada}, entonces al derivar respecto al tiempo se obtiene que:
 
-    \[E^\prime_\varepsilon(t) = \frac{d}{dt}E(t) + \varepsilon\xi^\prime(t),\]
+    \[E^\prime_\varepsilon(t) = \frac{\dd}{\dd t}E(t) + \varepsilon\xi^\prime(t),\]
 
     y, utilizando la Proposición \eqref{ch:timoshenkoFric:prop:DisipacionEnergia} y la cota dada en la afirmación anterior \eqref{afirmacion2}, se deduce:
 
@@ -631,7 +631,7 @@ Empezamos probando que $A$ es disipativo.
         E^\prime_\varepsilon(t) \leq -\gamma E(t) &\implies E^\prime_\varepsilon(t) \leq -\gamma\frac{2}{3} E_\varepsilon(t)\\
         &\implies E^\prime_\varepsilon(t) + \gamma\frac{2}{3} E_\varepsilon(t) \leq 0\\
         &\implies \mathrm{e}^{\frac{2}{3}\gamma t}E^\prime_\varepsilon(t) + \mathrm{e}^{\frac{2}{3}\gamma t}\gamma\frac{2}{3} E_\varepsilon(t) \leq 0\\
-        &\implies \frac{d}{dt}\left[\mathrm{e}^{\frac{2}{3}\gamma t}E_\varepsilon(t)\right] \leq 0\\
+        &\implies \frac{\dd}{\dd t}\left[\mathrm{e}^{\frac{2}{3}\gamma t}E_\varepsilon(t)\right] \leq 0\\
         &\implies \mathrm{e}^{\frac{2}{3}\gamma t}E_\varepsilon(t) \leq E_\varepsilon(0)\\
         &\implies E_\varepsilon(t) \leq \mathrm{e}^{-\frac{2}{3}\gamma t}E_\varepsilon(0).
     \end{align*}

@@ -1,42 +1,966 @@
 \chapter{Preliminares: Análisis funcional y medida}
 \label{ch:preliminares}
 
-\textcolor{red}{COSAS QUE HACER:}
+% Decisiones de estilo pendientes de fijar globalmente (heredadas de las notas del autor):
+%  - Referencias cruzadas: unificar \ref frente a \eqref para teoremas/proposiciones.
+%  - Mayúsculas en los títulos de los enunciados: adoptar una única convención.
+% Convenciones ya aplicadas en este capítulo: título del entorno entre paréntesis
+% seguido de salto de línea, uso de := en las definiciones, norma con \lVert\,\cdot\,\rVert,
+% sucesiones escritas como (\cdot) y una única definición por entorno.
 
-\textcolor{red}{- CAMBIAR LOS AMBIENTES PARA QUE TENGAN EL NOMBRE ENTRE PARENTESIS (DE MANERA AUTOMATICA???) Y LUEGO UN SALTO DE LINEA}
+Este capítulo reúne los resultados de análisis funcional y teoría de la medida
+que sirven de base al desarrollo de la teoría de semigrupos en los capítulos
+posteriores. No se pretende ofrecer un tratamiento exhaustivo de estas materias,
+sino fijar la notación y recopilar, con enunciados precisos, las herramientas que
+se emplearán más adelante. Las demostraciones se incluyen únicamente cuando el
+resultado se utiliza de forma directa en el texto o cuando una prueba breve
+resulta esclarecedora; en el resto de los casos se remite al lector a las
+referencias oportunas, principalmente \cite{brezis-2011-fun-ana-sob},
+\cite{conway-1990-cou-fun-ana} y \cite{pazy-1983-sem-lin-ope}.
 
-\textcolor{red}{- FORMATO!!!}
+A lo largo del capítulo, $\mathbb{K}$ denotará el cuerpo de escalares, siendo
+$\mathbb{K} = \R$ o bien $\mathbb{K} = \C$.
 
-\textcolor{red}{- PONER LEMA, TEOREMA, PROPOSICIÓN, etc CON LA PRIMERA LETRA EN MAYÚSCULA.}
+\section{Espacios normados y de Banach}
+\label{ch:preliminares:section:Banach}
 
-\textcolor{red}{- PONER := EN LAS DEFINICIONES CUANDO TOQUE.}
+Comenzamos con la estructura mínima sobre la que se articula todo el análisis
+funcional: la de espacio normado. Los objetos centrales del texto, los espacios
+de Banach y de Hilbert, se obtienen al añadir a esta estructura una hipótesis de
+completitud y, en el caso de Hilbert, un producto interno.\\
 
-\textcolor{red}{- CAMBIAR $||$ POR lVert.}
+\begin{Definicion}{(Espacio normado)}
+\label{ch:preliminares:def:espacioNormado}
 
-\textcolor{red}{- PONER EN MAYUSCULA CADA LETRA DEL TITULO DE LOS TEOREMAS, PROPOSICIONES, ETC (O NO, PERO CASARSE CON UNA DECISION). TAMBIEN PENSAR SI PONER Teorema O teorema CUANDO LO REFERENCIO... PENSAR ESTO TAMBIEN PARA LOS TITULOS DE LAS COSAS...}
+Sea $E$ un espacio vectorial sobre $\mathbb{K}$. Una \textit{norma} en $E$ es una
+aplicación $\lVert \cdot \rVert : E \rightarrow [0, \infty)$ que verifica, para
+todo $e, f \in E$ y todo $\lambda \in \mathbb{K}$:
 
-\textcolor{red}{- PONER TODAS LAS SUCESIONES COMO $( \cdot )$ EN VEZ DE COMO $\{ \cdot \}$.}
+\begin{enumerate}
+    \item $\lVert e \rVert = 0 \iff e = 0$ (separación);
+    \item $\lVert \lambda e \rVert = |\lambda| \, \lVert e \rVert$ (homogeneidad positiva);
+    \item $\lVert e + f \rVert \leq \lVert e \rVert + \lVert f \rVert$ (desigualdad triangular).
+\end{enumerate}
 
-\textcolor{red}{- HACER INTROS DE CAPITULOS.}
+Al par $(E, \lVert \cdot \rVert)$ se le denomina \textit{espacio normado}. Cuando
+la norma se sobreentienda, escribiremos simplemente $E$.
+\end{Definicion}
 
-\textcolor{red}{- ASEGURARME QUE EN LAS DEFINICIONES SOLO HAYA UNA DEFINICION, NO VARIAS.}
+Una misma estructura vectorial admite, en general, muchas normas. La siguiente
+noción identifica aquellas que inducen la misma topología y, por tanto, las
+mismas nociones de convergencia y continuidad.\\
 
-\textcolor{red}{- DECIDIR SI CUANDO CITO UN TEOREMA/PROP/COROLARIO/DEF/etc LO HAGO CON EQREF O REF...}
+\begin{Definicion}{(Normas equivalentes)}
+\label{ch:preliminares:def:normasEquivalentes}
 
-\textcolor{red}{- PONER O CITAR SEMIGRUPO DUAL}
+Dos normas $\lVert \cdot \rVert_1$ y $\lVert \cdot \rVert_2$ sobre un mismo
+espacio vectorial $E$ se dicen \textit{equivalentes} si existen constantes
+$c_1, c_2 > 0$ tales que
 
-\textcolor{red}{UNA PEQUEÑA INTRODUCCIÓN}
+\[c_1 \lVert e \rVert_1 \leq \lVert e \rVert_2 \leq c_2 \lVert e \rVert_1, \quad \forall e \in E.\]
+\end{Definicion}
 
-\textcolor{red}{USAR $\top$ PARA TRANSPOSICIÓN}
+\begin{Observacion}
+\label{ch:preliminares:obs:normasEquivalentes}
+Dos normas son equivalentes si y sólo si generan la misma topología; en
+particular, dan lugar a las mismas sucesiones convergentes y a las mismas
+sucesiones de Cauchy. En dimensión finita todas las normas son equivalentes
+(véase \cite[Teorema~III.3.1]{conway-1990-cou-fun-ana}), por lo que la elección
+de norma es irrelevante; el interés de la teoría reside, pues, en dimensión
+infinita.
+\end{Observacion}
 
-\section{Análisis funcional}
-\label{ch:preliminares:section:AnalisisFunc}
+Fijada una norma, disponemos ya de una noción de proximidad y, con ella, de
+convergencia.\\
 
-\subsection{Espacios de Hilbert}
-\label{ch:preliminares:section:AnalisisFunc:subsec:EspHilbert}
+\begin{Definicion}{(Convergencia en un espacio normado)}
+\label{ch:preliminares:def:convergencia}
 
-\section{Teoría de la medida}
-\label{ch:preliminares:section:TeoriaDeLaMedida}
+Sea $(E, \lVert \cdot \rVert)$ un espacio normado. Se dice que una sucesión
+$(e_n)_{n \in \mathbb{N}} \subset E$ \textit{converge} a $e \in E$ si
 
-\subsection{La integral de Bochner}
-\label{ch:preliminares:section:TeoriaDeLaMedida:subsec:Bochner}
+\[\lim_{n \rightarrow \infty} \lVert e_n - e \rVert = 0;\]
+
+esto es, si para todo $\varepsilon > 0$ existe $N \in \mathbb{N}$ tal que
+$\lVert e_n - e \rVert < \varepsilon$ para todo $n \geq N$. En tal caso, el
+límite $e$ es único y se escribe $e_n \rightarrow e$.
+\end{Definicion}
+
+\begin{Definicion}{(Sucesión de Cauchy)}
+\label{ch:preliminares:def:cauchy}
+
+Sea $(E, \lVert \cdot \rVert)$ un espacio normado. Una sucesión
+$(e_n)_{n \in \mathbb{N}} \subset E$ es una \textit{sucesión de Cauchy} si
+
+\[\forall \varepsilon > 0 \ \exists N \in \mathbb{N} \text{ tal que } \lVert e_n - e_m \rVert < \varepsilon \quad \forall n, m \geq N.\]
+\end{Definicion}
+
+Toda sucesión convergente es de Cauchy; el recíproco, en cambio, puede fallar. Los
+espacios en los que sí se cumple, y que resultan ser el marco adecuado para la
+teoría, reciben un nombre propio.\\
+
+\begin{Definicion}{(Espacio de Banach)}
+\label{ch:preliminares:def:banach}
+
+Un espacio normado $(E, \lVert \cdot \rVert)$ se dice \textit{completo}, o bien un
+\textit{espacio de Banach}, si toda sucesión de Cauchy en $E$ es convergente a un
+elemento de $E$.
+\end{Definicion}
+
+\begin{Observacion}
+\label{ch:preliminares:obs:KesBanach}
+El propio cuerpo $\mathbb{K}$, con la norma dada por el valor absoluto (o el
+módulo, en el caso complejo), es un espacio de Banach. Este hecho, unido a la
+completitud del espacio de llegada, es el que garantiza que los espacios de
+operadores que introduciremos en la Sección
+\ref{ch:preliminares:section:operadores} hereden a su vez la estructura de
+Banach.
+\end{Observacion}
+
+\section{Operadores lineales}
+\label{ch:preliminares:section:operadores}
+
+Los objetos que relacionan unos espacios normados con otros son las aplicaciones
+lineales. En dimensión infinita, la linealidad ya no implica la continuidad, de
+modo que ambas propiedades deben tratarse por separado.\\
+
+\begin{Definicion}{(Operador lineal)}
+\label{ch:preliminares:def:operadorLineal}
+
+Sean $E$ y $F$ dos espacios vectoriales sobre $\mathbb{K}$. Una aplicación
+$T : D(T) \subset E \rightarrow F$, definida sobre un subespacio vectorial $D(T)$
+de $E$ llamado \textit{dominio} de $T$, es un \textit{operador lineal} si
+
+\[T(\lambda e + \mu f) = \lambda \, Te + \mu \, Tf, \quad \forall e, f \in D(T), \ \forall \lambda, \mu \in \mathbb{K}.\]
+
+Cuando $D(T) = E$, se dice que $T$ está \textit{definido en todo} $E$.
+\end{Definicion}
+
+\begin{Definicion}{(Operador acotado, continuo y compacto)}
+\label{ch:preliminares:def:operadorAcotado}
+
+Sean $E$ y $F$ espacios normados y $T : E \rightarrow F$ un operador lineal. Se
+dice que $T$ es:
+
+\begin{enumerate}
+    \item \textit{acotado} si existe una constante $C \geq 0$ tal que
+    $\lVert Te \rVert_F \leq C \lVert e \rVert_E$ para todo $e \in E$;
+
+    \item \textit{continuo} si es continuo como aplicación entre los espacios
+    métricos $(E, \lVert \cdot \rVert_E)$ y $(F, \lVert \cdot \rVert_F)$;
+
+    \item \textit{compacto} si la imagen $T(B_E)$ de la bola unidad cerrada
+    $B_E = \{e \in E : \lVert e \rVert_E \leq 1\}$ tiene clausura compacta en $F$
+    (véase \cite[Cap.~6]{brezis-2011-fun-ana-sob}).
+\end{enumerate}
+\end{Definicion}
+
+El conjunto de todos los operadores lineales y acotados de $E$ en $F$ admite a su
+vez una estructura de espacio normado; esta construcción es la que sostiene, en
+particular, la teoría de semigrupos del Capítulo \ref{ch:semigrupos}.\\
+
+\begin{Definicion}{(Espacio de operadores lineales acotados)}
+\label{ch:preliminares:def:espacioOperadores}
+
+Sean $E$ y $F$ dos espacios normados sobre $\mathbb{K}$. Se denota por $L(E, F)$
+al espacio vectorial de todos los operadores lineales y acotados de $E$ en $F$,
+dotado de la \textit{norma de operador}
+
+\[\lVert T \rVert_{L(E, F)} := \sup_{\substack{e \in E \\ e \neq 0}} \frac{\lVert Te \rVert_F}{\lVert e \rVert_E} = \sup_{\lVert e \rVert_E \leq 1} \lVert Te \rVert_F.\]
+
+En el caso particular $E = F$ escribiremos $L(E) := L(E, E)$. Si $F$ es un
+espacio de Banach, entonces $L(E, F)$ es también un espacio de Banach
+(véase \cite[Cap.~2]{brezis-2011-fun-ana-sob}).
+\end{Definicion}
+
+El siguiente resultado, de uso constante, establece que para operadores lineales
+las nociones de continuidad y de acotación coinciden, y que basta comprobar la
+continuidad en el origen.\\
+
+\begin{Teorema}{(Continuidad y acotación de operadores lineales)}
+\label{ch:preliminares:th:continuoAcotado}
+
+Sean $E$ y $F$ espacios normados y $T : E \rightarrow F$ un operador lineal.
+Entonces:
+
+\begin{enumerate}
+    \item $T$ es continuo si y sólo si $T$ es acotado;
+
+    \item $T$ es continuo si y sólo si $T$ es continuo en $e = 0$.
+\end{enumerate}
+\end{Teorema}
+
+\begin{proof}
+Probamos primero el segundo apartado, del que se seguirá el primero. Es claro que
+si $T$ es continuo, entonces lo es en $e = 0$. Recíprocamente, supongamos que $T$
+es continuo en $0$ y sea $e_0 \in E$ arbitrario. Si $(e_n) \subset E$ es una
+sucesión con $e_n \rightarrow e_0$, entonces $e_n - e_0 \rightarrow 0$ y, por la
+continuidad en el origen junto con la linealidad,
+
+\[\lVert Te_n - Te_0 \rVert_F = \lVert T(e_n - e_0) \rVert_F \rightarrow \lVert T0 \rVert_F = 0,\]
+
+de modo que $Te_n \rightarrow Te_0$ y $T$ es continuo en $e_0$. Por la
+arbitrariedad de $e_0$, $T$ es continuo en todo $E$.
+
+Veamos ahora el primer apartado. Si $T$ es acotado con constante $C$, entonces
+$\lVert Te - Tf \rVert_F = \lVert T(e - f) \rVert_F \leq C \lVert e - f \rVert_E$
+para todo $e, f \in E$; esto es, $T$ es lipschitziano y, en particular, continuo.
+Recíprocamente, si $T$ es continuo, por el apartado anterior lo es en $0$, luego
+existe $\delta > 0$ tal que $\lVert Te \rVert_F \leq 1$ siempre que
+$\lVert e \rVert_E \leq \delta$. Dado $e \neq 0$, el vector
+$\delta \, e / \lVert e \rVert_E$ tiene norma $\delta$, por lo que
+
+\[\left\lVert T\!\left(\frac{\delta \, e}{\lVert e \rVert_E}\right)\right\rVert_F \leq 1 \implies \lVert Te \rVert_F \leq \frac{1}{\delta} \lVert e \rVert_E,\]
+
+y $T$ es acotado con constante $C = 1/\delta$.
+\end{proof}
+
+Cerramos la sección con la noción de inmersión, que formaliza la idea de que un
+espacio normado ``se incluye de forma continua'' en otro; será la herramienta con
+la que se enuncien más adelante las inmersiones de Sobolev
+(Sección \ref{ch:preliminares:section:sobolev}).\\
+
+\begin{Definicion}{(Inmersión continua)}
+\label{ch:preliminares:def:inmersion}
+
+Sean $(E, \lVert \cdot \rVert_E)$ y $(F, \lVert \cdot \rVert_F)$ dos espacios
+normados con $E \subseteq F$. Se dice que $E$ está \textit{continuamente inmerso}
+en $F$, y se escribe $E \hookrightarrow F$, si la inyección canónica
+$i : E \rightarrow F$, $i(e) = e$, es un operador lineal acotado; es decir, si
+existe una constante $C \geq 0$ tal que
+
+\[\lVert e \rVert_F \leq C \lVert e \rVert_E, \quad \forall e \in E.\]
+\end{Definicion}
+
+\section{Espacios duales y reflexividad}
+\label{ch:preliminares:section:dual}
+
+Un caso particular de la construcción anterior, obtenido al tomar como espacio de
+llegada el propio cuerpo de escalares, da lugar al espacio dual, cuya importancia
+en el estudio de los operadores es difícil de exagerar.\\
+
+\begin{Definicion}{(Espacio dual)}
+\label{ch:preliminares:def:dual}
+
+Sea $E$ un espacio normado sobre $\mathbb{K}$. Su \textit{dual topológico} es el
+espacio de Banach
+
+\[E^* := L(E, \mathbb{K}),\]
+
+esto es, el espacio de los funcionales lineales y continuos sobre $E$, dotado de
+la norma $\lVert e^* \rVert_{E^*} = \sup_{\lVert e \rVert_E \leq 1} |\langle e^*, e \rangle|$.
+Denotaremos por $\langle e^*, e \rangle$, o bien por $\langle e, e^* \rangle$, la
+acción de $e^* \in E^*$ sobre $e \in E$. El bidual $E^{**} := (E^*)^*$ se define
+análogamente.
+\end{Definicion}
+
+La aplicación que envía cada elemento de un espacio a su evaluación sobre los
+funcionales del dual permite comparar un espacio con su bidual.\\
+
+\begin{Definicion}{(Espacio reflexivo)}
+\label{ch:preliminares:def:reflexivo}
+
+Sea $E$ un espacio de Banach y sea $J : E \rightarrow E^{**}$ la
+\textit{inyección canónica} definida por
+$\langle J e, e^* \rangle := \langle e^*, e \rangle$ para todo $e^* \in E^*$. La
+aplicación $J$ es una isometría lineal. Se dice que $E$ es \textit{reflexivo} si
+$J$ es sobreyectiva, esto es, si $J(E) = E^{**}$
+(véase \cite[Cap.~3]{brezis-2011-fun-ana-sob}).
+\end{Definicion}
+
+Por último, recogemos la aplicación de dualidad, que asocia a cada vector el
+conjunto de funcionales que alcanzan la norma sobre él; interviene de manera
+esencial en la caracterización de los operadores disipativos
+(Definición \ref{ch:semigrupos:def:OpDisipativo}).\\
+
+\begin{Definicion}{(Aplicación de dualidad)}
+\label{ch:preliminares:def:dualidad}
+
+Sea $E$ un espacio de Banach sobre $\mathbb{K}$. La \textit{aplicación de
+dualidad} es la aplicación multívoca $J : E \rightarrow 2^{E^*}$ dada por
+
+\[J(e) := \left\{ e^* \in E^* : \operatorname{Re}\langle e^*, e \rangle = \lVert e \rVert_E^2 = \lVert e^* \rVert_{E^*}^2 \right\}.\]
+
+El teorema de Hahn-Banach (Corolario \ref{ch:preliminares:cor:hahnBanach}) garantiza
+que $J(e) \neq \varnothing$ para todo $e \in E$.
+\end{Definicion}
+
+\section{Espacios de Hilbert}
+\label{ch:preliminares:section:Hilbert}
+
+Al enriquecer un espacio vectorial con un producto interno se recupera, en
+dimensión infinita, buena parte de la geometría euclídea: ángulos, ortogonalidad
+y una noción de proyección. Los espacios de Hilbert, completos respecto de la
+norma inducida por dicho producto, constituyen el marco natural de gran parte del
+texto.\\
+
+\begin{Definicion}{(Producto interno)}
+\label{ch:preliminares:def:productoInterno}
+
+Sea $H$ un espacio vectorial sobre $\mathbb{K}$. Un \textit{producto interno} en
+$H$ es una aplicación $\langle \cdot, \cdot \rangle : H \times H \rightarrow \mathbb{K}$
+que verifica, para todo $e, f, g \in H$ y todo $\lambda \in \mathbb{K}$:
+
+\begin{enumerate}
+    \item $\langle \lambda e + f, g \rangle = \lambda \langle e, g \rangle + \langle f, g \rangle$ (linealidad en la primera variable);
+    \item $\langle e, f \rangle = \overline{\langle f, e \rangle}$ (simetría hermítica);
+    \item $\langle e, e \rangle \geq 0$, con $\langle e, e \rangle = 0 \iff e = 0$ (definición positiva).
+\end{enumerate}
+
+Al par $(H, \langle \cdot, \cdot \rangle)$ se le denomina \textit{espacio
+prehilbertiano}. La aplicación $\lVert e \rVert := \langle e, e \rangle^{1/2}$
+define una norma sobre $H$, la \textit{norma inducida} por el producto interno.
+\end{Definicion}
+
+\begin{Proposicion}{(Propiedades del producto interno)}
+\label{ch:preliminares:prop:propProductoInterno}
+
+Sea $(H, \langle \cdot, \cdot \rangle)$ un espacio prehilbertiano con norma
+inducida $\lVert \cdot \rVert$. Entonces, para todo $e, f \in H$:
+
+\begin{enumerate}
+    \item \textbf{Desigualdad de Cauchy-Schwarz:} $|\langle e, f \rangle| \leq \lVert e \rVert \, \lVert f \rVert$, con igualdad si y sólo si $e$ y $f$ son linealmente dependientes;
+
+    \item \textbf{Ley del paralelogramo:} $\lVert e + f \rVert^2 + \lVert e - f \rVert^2 = 2\lVert e \rVert^2 + 2\lVert f \rVert^2$;
+
+    \item la aplicación $\lVert \cdot \rVert$ es, en efecto, una norma sobre $H$;
+
+    \item el producto interno es continuo: si $e_n \rightarrow e$ y
+    $f_n \rightarrow f$ en $H$, entonces $\langle e_n, f_n \rangle \rightarrow \langle e, f \rangle$.
+\end{enumerate}
+\end{Proposicion}
+
+\begin{proof}
+La desigualdad de Cauchy-Schwarz y la ley del paralelogramo son clásicas; véase
+\cite[I.1.4]{conway-1990-cou-fun-ana}. Que $\lVert \cdot \rVert$ es una norma se
+sigue de la definición positiva y de la homogeneidad del producto interno, siendo
+la desigualdad triangular consecuencia de Cauchy-Schwarz:
+
+\[\lVert e + f \rVert^2 = \lVert e \rVert^2 + 2\operatorname{Re}\langle e, f \rangle + \lVert f \rVert^2 \leq \lVert e \rVert^2 + 2\lVert e \rVert \lVert f \rVert + \lVert f \rVert^2 = (\lVert e \rVert + \lVert f \rVert)^2.\]
+
+Finalmente, la continuidad se obtiene de Cauchy-Schwarz: sumando y restando
+$\langle e_n, f \rangle$,
+
+\[|\langle e_n, f_n \rangle - \langle e, f \rangle| \leq \lVert e_n \rVert \, \lVert f_n - f \rVert + \lVert e_n - e \rVert \, \lVert f \rVert \rightarrow 0,\]
+
+pues $(\lVert e_n \rVert)$ es acotada por ser convergente.
+\end{proof}
+
+\begin{Definicion}{(Espacio de Hilbert)}
+\label{ch:preliminares:def:hilbert}
+
+Un espacio prehilbertiano $(H, \langle \cdot, \cdot \rangle)$ que es completo
+respecto de la norma inducida $\lVert \cdot \rVert = \langle \cdot, \cdot \rangle^{1/2}$
+(esto es, que es un espacio de Banach con dicha norma) se denomina
+\textit{espacio de Hilbert}.
+\end{Definicion}
+
+La estructura de Hilbert se preserva al formar sumas directas, hecho que se
+empleará en el estudio de la energía de los sistemas de Timoshenko
+(Capítulo \ref{ch:teoriaVigas}).\\
+
+\begin{Proposicion}{(Suma directa de espacios de Hilbert)}
+\label{ch:preliminares:prop:sumaDirecta}
+
+Sean $H_1, H_2, \ldots$ espacios de Hilbert sobre $\mathbb{K}$. El espacio
+
+\[\bigoplus_{n \geq 1} H_n := \left\{ (h_n)_{n \geq 1} : h_n \in H_n, \ \sum_{n \geq 1} \lVert h_n \rVert_{H_n}^2 < \infty \right\},\]
+
+dotado del producto interno
+$\langle (h_n), (g_n) \rangle := \sum_{n \geq 1} \langle h_n, g_n \rangle_{H_n}$,
+es un espacio de Hilbert. En particular, la suma directa de una familia finita de
+espacios de Hilbert es un espacio de Hilbert
+(véase \cite[Proposición~I.6.2]{conway-1990-cou-fun-ana}).
+\end{Proposicion}
+
+El resultado de representación que sigue identifica un espacio de Hilbert con su
+dual y es, sin duda, uno de los pilares de la teoría; interviene, entre otros
+lugares, al justificar la notación del producto escalar mediante la dualidad
+(Capítulo \ref{ch:semigrupos}).\\
+
+\begin{Teorema}{(Representación de Riesz-Fréchet)}
+\label{ch:preliminares:th:rieszFrechet}
+
+Sea $H$ un espacio de Hilbert real y sea $\varphi \in H^*$. Entonces existe un
+único $f \in H$ tal que
+
+\[\langle \varphi, e \rangle = \langle f, e \rangle, \quad \forall e \in H,\]
+
+y además $\lVert f \rVert_H = \lVert \varphi \rVert_{H^*}$. La aplicación
+$\varphi \mapsto f$ es una isometría lineal biyectiva de $H^*$ sobre $H$, que
+permite identificar $H$ con $H^*$.
+\end{Teorema}
+
+\begin{proof}
+Véase \cite[Teorema~5.5]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
+Como aplicación inmediata de la identificación anterior, obtenemos la
+reflexividad de todo espacio de Hilbert, propiedad que se invoca al estudiar la
+disipatividad en espacios reflexivos
+(Teorema \ref{ch:semigrupos:th:DisipYReflex}).\\
+
+\begin{Teorema}{(Todo espacio de Hilbert es reflexivo)}
+\label{ch:preliminares:th:hilbertReflexivo}
+
+Todo espacio de Hilbert $H$ es reflexivo.
+\end{Teorema}
+
+\begin{proof}
+Sea $\Phi : H \rightarrow H^*$ la isometría de Riesz-Fréchet
+(Teorema \ref{ch:preliminares:th:rieszFrechet}), caracterizada por
+$\langle \Phi f, e \rangle = \langle f, e \rangle$ para todo $e \in H$. Como $H^*$
+es también un espacio de Hilbert con el producto interno
+$\langle \varphi, \psi \rangle_{H^*} := \langle \Phi^{-1}\psi, \Phi^{-1}\varphi \rangle$,
+disponemos igualmente de la isometría de Riesz-Fréchet
+$\Psi : H^* \rightarrow H^{**}$.
+
+Sea $J : H \rightarrow H^{**}$ la inyección canónica
+(Definición \ref{ch:preliminares:def:reflexivo}). Probaremos que
+$J = \Psi \circ \Phi$, de donde $J$ será sobreyectiva por serlo $\Phi$ y $\Psi$.
+En efecto, para $f \in H$ y $\varphi \in H^*$,
+
+\[\langle (\Psi \circ \Phi) f, \varphi \rangle = \langle \Phi f, \varphi \rangle_{H^*} = \langle \Phi^{-1}\varphi, \Phi^{-1}\Phi f \rangle = \langle \Phi^{-1}\varphi, f \rangle = \langle \varphi, f \rangle = \langle J f, \varphi \rangle,\]
+
+donde se ha usado la definición del producto interno en $H^*$ y la
+caracterización de $\Phi$. Por la arbitrariedad de $\varphi$, se tiene
+$(\Psi \circ \Phi)f = Jf$ para todo $f \in H$, luego $J = \Psi \circ \Phi$ es
+sobreyectiva y $H$ es reflexivo (compárese con \cite[Cap.~5]{brezis-2011-fun-ana-sob}).
+\end{proof}
+
+\section{Espacios $L^p$ y de Sobolev}
+\label{ch:preliminares:section:sobolev}
+
+En todo lo que sigue, $(\Omega, \Sigma, \mu)$ denota un espacio de medida y, salvo
+mención expresa, $\Omega$ es un abierto de $\R^N$ con la medida de Lebesgue. Los
+espacios de funciones de potencia $p$-ésima integrable, y sus refinamientos que
+incorporan derivadas débiles, son el ámbito funcional en el que se plantean las
+ecuaciones de evolución de los capítulos posteriores.
+
+\subsection{Espacios $L^p$}
+\label{ch:preliminares:subsection:Lp}
+
+\begin{Definicion}{(Exponentes conjugados)}
+\label{ch:preliminares:def:conjugados}
+
+Sea $p \in [1, \infty]$. Se llama \textit{exponente conjugado} de $p$ al único
+$p' \in [1, \infty]$ que satisface
+
+\[\frac{1}{p} + \frac{1}{p'} = 1,\]
+
+con los convenios $1' = \infty$ y $\infty' = 1$.
+\end{Definicion}
+
+\begin{Definicion}{(Espacio $L^p$)}
+\label{ch:preliminares:def:Lp}
+
+Sea $p \in [1, \infty)$. Se define $L^p(\Omega)$ como el espacio de (clases de
+equivalencia, módulo igualdad en casi todo punto, de) funciones medibles
+$f : \Omega \rightarrow \mathbb{K}$ tales que $|f|^p$ es integrable, dotado de la
+norma
+
+\[\lVert f \rVert_{L^p(\Omega)} := \left( \int_\Omega |f|^p \, \dd \mu \right)^{1/p}.\]
+
+Para $p = \infty$, $L^\infty(\Omega)$ es el espacio de las funciones medibles
+esencialmente acotadas, con la norma
+$\lVert f \rVert_{L^\infty(\Omega)} := \operatorname{ess\,sup}_{\Omega} |f|$. Para
+todo $p \in [1, \infty]$, $L^p(\Omega)$ es un espacio de Banach
+(\cite[Teorema~4.8]{brezis-2011-fun-ana-sob}), y es un espacio de Hilbert si y
+sólo si $p = 2$, con producto interno
+$\langle f, g \rangle_{L^2} = \int_\Omega f \, \overline{g} \, \dd \mu$.
+\end{Definicion}
+
+La relación entre exponentes conjugados se materializa en la desigualdad de
+Hölder, $\lVert fg \rVert_{L^1} \leq \lVert f \rVert_{L^p} \lVert g \rVert_{L^{p'}}$
+(\cite[Teorema~4.6]{brezis-2011-fun-ana-sob}), cuya demostración descansa a su vez
+en la siguiente desigualdad numérica.\\
+
+\begin{Proposicion}{(Desigualdad de Young)}
+\label{ch:preliminares:prop:young}
+
+Sean $a, b \geq 0$ y $p, p' \in (1, \infty)$ exponentes conjugados. Entonces
+
+\[ab \leq \frac{a^p}{p} + \frac{b^{p'}}{p'}.\]
+\end{Proposicion}
+
+\begin{proof}
+Si $a = 0$ o $b = 0$ la desigualdad es inmediata. En otro caso, por la concavidad
+del logaritmo y por ser $\tfrac{1}{p} + \tfrac{1}{p'} = 1$,
+
+\[\log\!\left( \frac{a^p}{p} + \frac{b^{p'}}{p'} \right) \geq \frac{1}{p}\log a^p + \frac{1}{p'}\log b^{p'} = \log a + \log b = \log(ab),\]
+
+y basta aplicar la monotonía de la exponencial.
+\end{proof}
+
+\begin{Proposicion}{(Desigualdad de Young generalizada)}
+\label{ch:preliminares:prop:youngGen}
+
+Sean $a, b \geq 0$, $p, p' \in (1, \infty)$ exponentes conjugados y
+$\varepsilon > 0$. Entonces
+
+\[ab \leq \varepsilon \, a^p + C(\varepsilon) \, b^{p'}, \quad \text{con } C(\varepsilon) = (\varepsilon p)^{-p'/p} \, \frac{1}{p'}.\]
+
+En particular, para $p = p' = 2$ se obtiene
+$ab \leq \varepsilon a^2 + \tfrac{1}{4\varepsilon} b^2$.
+\end{Proposicion}
+
+\begin{proof}
+Basta aplicar la Proposición \ref{ch:preliminares:prop:young} a
+$a' = (\varepsilon p)^{1/p} a$ y $b' = (\varepsilon p)^{-1/p} b$, cuyo producto es
+$a'b' = ab$.
+\end{proof}
+
+Un hecho de importancia capital, empleado de forma recurrente en argumentos de
+aproximación, es que las funciones regulares con soporte compacto son densas en
+$L^p$ para $p$ finito.\\
+
+\begin{Proposicion}{(Densidad de $C_c$ en $L^p$)}
+\label{ch:preliminares:prop:densidadCc}
+
+Sea $\Omega \subseteq \R^N$ un abierto y $p \in [1, \infty)$. Entonces el espacio
+$C_c(\Omega)$ de las funciones continuas con soporte compacto en $\Omega$ es denso
+en $L^p(\Omega)$.
+\end{Proposicion}
+
+\begin{proof}
+Véase \cite[Teorema~4.12]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
+\begin{Proposicion}{(Densidad de $C_c^\infty$ en $L^p$)}
+\label{ch:preliminares:prop:densidadCcInf}
+
+Sea $\Omega \subseteq \R^N$ un abierto y $p \in [1, \infty)$. Entonces el espacio
+$C_c^\infty(\Omega)$ de las funciones de clase $C^\infty$ con soporte compacto en
+$\Omega$ es denso en $L^p(\Omega)$.
+\end{Proposicion}
+
+\begin{proof}
+Véase \cite[Corolario~4.23]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
+\subsection{Espacios de Sobolev}
+\label{ch:preliminares:subsection:Sobolev}
+
+La formulación variacional de las ecuaciones en derivadas parciales exige
+sustituir la derivada clásica por una noción más débil, compatible con la
+integración por partes. Comenzamos, pues, recordando la derivada débil.\\
+
+\begin{Definicion}{(Derivada débil)}
+\label{ch:preliminares:def:derivadaDebil}
+
+Sea $\Omega \subseteq \R^N$ un abierto y $u \in L^1_{\mathrm{loc}}(\Omega)$. Se
+dice que $u$ admite \textit{derivada débil} respecto de $x_i$ si existe
+$g_i \in L^1_{\mathrm{loc}}(\Omega)$ tal que
+
+\[\int_\Omega u \, \frac{\partial \varphi}{\partial x_i} \, \dd x = -\int_\Omega g_i \, \varphi \, \dd x, \quad \forall \varphi \in C_c^\infty(\Omega).\]
+
+En tal caso $g_i$ es única salvo igualdad en casi todo punto, y se escribe
+$\partial_{x_i} u := g_i$.
+\end{Definicion}
+
+\begin{Definicion}{(Espacio de Sobolev)}
+\label{ch:preliminares:def:sobolev}
+
+Sea $\Omega \subseteq \R^N$ un abierto y $p \in [1, \infty]$. El \textit{espacio
+de Sobolev} $W^{1,p}(\Omega)$ es el espacio de las funciones
+$u \in L^p(\Omega)$ que admiten derivada débil
+$\partial_{x_i} u \in L^p(\Omega)$ para todo $i = 1, \ldots, N$, dotado de la
+norma
+
+\[\lVert u \rVert_{W^{1,p}(\Omega)} := \left( \lVert u \rVert_{L^p}^p + \sum_{i=1}^N \lVert \partial_{x_i} u \rVert_{L^p}^p \right)^{1/p}\]
+
+(con la modificación usual mediante supremos para $p = \infty$). En el caso
+$p = 2$ se escribe $H^1(\Omega) := W^{1,2}(\Omega)$.
+\end{Definicion}
+
+\begin{Proposicion}{($H^1$ es un espacio de Hilbert)}
+\label{ch:preliminares:prop:H1Hilbert}
+
+Para todo $p \in [1, \infty]$, $W^{1,p}(\Omega)$ es un espacio de Banach. Además,
+$H^1(\Omega)$ es un espacio de Hilbert separable con el producto interno
+
+\[\langle u, v \rangle_{H^1(\Omega)} := \int_\Omega u \, \overline{v} \, \dd x + \sum_{i=1}^N \int_\Omega \partial_{x_i} u \, \overline{\partial_{x_i} v} \, \dd x.\]
+\end{Proposicion}
+
+\begin{proof}
+Véase \cite[Proposición~8.1]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
+Para imponer condiciones de contorno de tipo Dirichlet se recurre al subespacio
+de funciones que se anulan, en un sentido débil, sobre la frontera.\\
+
+\begin{Definicion}{($H_0^1$ y $W_0^{1,p}$)}
+\label{ch:preliminares:def:H01}
+
+Sea $\Omega \subseteq \R^N$ un abierto y $p \in [1, \infty)$. Se define
+$W_0^{1,p}(\Omega)$ como la clausura de $C_c^\infty(\Omega)$ en
+$W^{1,p}(\Omega)$. En el caso $p = 2$ se escribe
+$H_0^1(\Omega) := W_0^{1,2}(\Omega)$.
+\end{Definicion}
+
+\begin{Lema}{(Densidad de $W_0^{1,p}$ en $L^p$)}
+\label{ch:preliminares:lema:W0denso}
+
+Sea $\Omega \subseteq \R^N$ un abierto y $p \in [1, \infty)$. Entonces
+$W_0^{1,p}(\Omega)$ es denso en $L^p(\Omega)$.
+\end{Lema}
+
+\begin{proof}
+Por definición, $C_c^\infty(\Omega) \subseteq W_0^{1,p}(\Omega) \subseteq L^p(\Omega)$,
+donde la segunda inclusión es continua. Como $C_c^\infty(\Omega)$ es denso en
+$L^p(\Omega)$ (Proposición \ref{ch:preliminares:prop:densidadCcInf}), a fortiori
+lo es el espacio mayor $W_0^{1,p}(\Omega)$.
+\end{proof}
+
+El siguiente resultado, que compara los espacios de Sobolev con espacios de
+funciones de mejor regularidad o mayor integrabilidad, es esencial en las
+estimaciones de energía del Capítulo \ref{ch:teoriaVigas}.\\
+
+\begin{Teorema}{(Inmersiones de Sobolev)}
+\label{ch:preliminares:th:inmersionesSobolev}
+
+Sea $\Omega \subseteq \R^N$ un abierto con frontera suficientemente regular
+(o bien $\Omega = \R^N$).
+
+\begin{enumerate}
+    \item Si $N = 1$ e $I \subseteq \R$ es un intervalo, entonces
+    $W^{1,p}(I) \hookrightarrow L^\infty(I)$ con inyección continua, para todo
+    $p \in [1, \infty]$; de hecho, toda $u \in W^{1,p}(I)$ admite un representante
+    continuo en $\overline{I}$ (\cite[Teorema~8.8]{brezis-2011-fun-ana-sob}).
+
+    \item Si $N \geq 2$ y $1 \leq p < N$, entonces
+    $W^{1,p}(\Omega) \hookrightarrow L^{p^*}(\Omega)$ con inyección continua,
+    donde $p^*$ viene dado por $\tfrac{1}{p^*} = \tfrac{1}{p} - \tfrac{1}{N}$
+    (\cite[Teorema~9.9]{brezis-2011-fun-ana-sob}).
+
+    \item Si $p > N$, entonces $W^{1,p}(\Omega) \hookrightarrow L^\infty(\Omega)$
+    y toda función de $W^{1,p}(\Omega)$ admite un representante continuo (teorema
+    de Morrey, \cite[Teorema~9.12]{brezis-2011-fun-ana-sob}).
+\end{enumerate}
+\end{Teorema}
+
+Cerramos la sección con la conmutatividad de las derivadas débiles, versión
+distribucional del teorema clásico de Schwarz sobre la igualdad de las derivadas
+parciales cruzadas.\\
+
+\begin{Teorema}{(Teorema de Schwarz distribucional)}
+\label{ch:preliminares:th:schwarz}
+
+Sea $\Omega \subseteq \R^N$ un abierto y $u \in L^1_{\mathrm{loc}}(\Omega)$ tal
+que existen las derivadas débiles $\partial_{x_i}\partial_{x_j} u$ y
+$\partial_{x_j}\partial_{x_i} u$. Entonces
+
+\[\partial_{x_i}\partial_{x_j} u = \partial_{x_j}\partial_{x_i} u \quad \text{en casi todo punto de } \Omega.\]
+\end{Teorema}
+
+\begin{proof}
+Para toda $\varphi \in C_c^\infty(\Omega)$, aplicando dos veces la definición de
+derivada débil y el teorema clásico de Schwarz (válido para $\varphi$ por ser de
+clase $C^\infty$),
+
+\[\int_\Omega \partial_{x_i}\partial_{x_j} u \, \varphi \, \dd x = \int_\Omega u \, \partial_{x_j}\partial_{x_i}\varphi \, \dd x = \int_\Omega u \, \partial_{x_i}\partial_{x_j}\varphi \, \dd x = \int_\Omega \partial_{x_j}\partial_{x_i} u \, \varphi \, \dd x.\]
+
+Como la igualdad se cumple para toda $\varphi \in C_c^\infty(\Omega)$, ambas
+derivadas coinciden en casi todo punto.
+\end{proof}
+
+\section{Teoremas fundamentales del análisis funcional}
+\label{ch:preliminares:section:teoremas}
+
+Reunimos en esta sección los grandes teoremas sobre los que se apoya la teoría de
+semigrupos. Se enuncian en su forma general y se remite a la bibliografía para
+las demostraciones, salvo en los resultados de prueba breve que se emplean de
+manera directa en el texto.
+
+El primero de ellos, el teorema de Hahn-Banach, garantiza la existencia de
+funcionales lineales continuos con propiedades prescritas y es el que dota de
+contenido a la teoría de la dualidad.\\
+
+\begin{Teorema}{(Teorema de Hahn-Banach, forma analítica)}
+\label{ch:preliminares:th:hahnBanach}
+
+Sea $E$ un espacio vectorial sobre $\R$ y $p : E \rightarrow \R$ una aplicación
+sublineal, esto es, $p(\lambda e) = \lambda p(e)$ para todo $\lambda > 0$ y
+$p(e + f) \leq p(e) + p(f)$. Sea $G \subseteq E$ un subespacio y
+$g : G \rightarrow \R$ lineal con $g(e) \leq p(e)$ para todo $e \in G$. Entonces
+existe un funcional lineal $f : E \rightarrow \R$ que extiende a $g$ y verifica
+$f(e) \leq p(e)$ para todo $e \in E$.
+\end{Teorema}
+
+\begin{proof}
+Véase \cite[Teorema~1.1]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
+\begin{Corolario}{(Corolario del teorema de Hahn-Banach)}
+\label{ch:preliminares:cor:hahnBanach}
+
+Sea $E$ un espacio de Banach y $F \subseteq E$ un subespacio lineal con
+$\overline{F} \neq E$. Entonces existe $e^* \in E^*$, $e^* \neq 0$, tal que
+
+\[\langle e^*, e \rangle = 0, \quad \forall e \in F.\]
+
+En consecuencia, para probar que un subespacio $F$ es denso en $E$ basta
+comprobar que todo funcional de $E^*$ que se anula sobre $F$ es el funcional nulo.
+\end{Corolario}
+
+\begin{proof}
+Véase \cite[Corolario~1.8]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
+\begin{Observacion}
+\label{ch:preliminares:obs:hahnBanachDualidad}
+Como aplicación de la forma analítica, para cada $e \in E$ existe $e^* \in E^*$
+con $\lVert e^* \rVert_{E^*} = \lVert e \rVert_E$ y
+$\langle e^*, e \rangle = \lVert e \rVert_E^2$
+(\cite[Corolario~1.3]{brezis-2011-fun-ana-sob}); esto es justamente lo que
+garantiza que la aplicación de dualidad
+(Definición \ref{ch:preliminares:def:dualidad}) tenga imágenes no vacías.
+\end{Observacion}
+
+El principio de acotación uniforme afirma que una familia de operadores acotada
+puntualmente lo está también uniformemente.\\
+
+\begin{Teorema}{(Teorema de Banach-Steinhaus)}
+\label{ch:preliminares:th:banachSteinhaus}
+
+Sean $E$ y $F$ espacios de Banach y $(T_i)_{i \in I} \subseteq L(E, F)$ una
+familia de operadores lineales y continuos. Si
+
+\[\sup_{i \in I} \lVert T_i e \rVert_F < \infty, \quad \forall e \in E,\]
+
+entonces
+
+\[\sup_{i \in I} \lVert T_i \rVert_{L(E, F)} < \infty.\]
+\end{Teorema}
+
+\begin{proof}
+Véase \cite[Teorema~2.2]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
+Los dos resultados siguientes, consecuencia ambos del teorema de Baire, relacionan
+las propiedades algebraicas de un operador con su continuidad.\\
+
+\begin{Teorema}{(Teorema de la aplicación abierta)}
+\label{ch:preliminares:th:aplicacionAbierta}
+
+Sean $E$ y $F$ espacios de Banach y $T \in L(E, F)$ un operador suprayectivo.
+Entonces $T$ es una aplicación abierta; en particular, si $T$ es biyectivo, su
+inverso $T^{-1}$ es continuo.
+\end{Teorema}
+
+\begin{proof}
+Véase \cite[Teorema~2.6]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
+Para enunciar el teorema del gráfico cerrado recordamos la noción de operador
+cerrado, central en el tratamiento de los generadores infinitesimales, que en
+general no son continuos.\\
+
+\begin{Definicion}{(Operador cerrado y operador cerrable)}
+\label{ch:preliminares:def:cerrado}
+
+Sean $E$ y $F$ espacios de Banach y $T : D(T) \subseteq E \rightarrow F$ un
+operador lineal. Su \textit{gráfico} es
+$G(T) := \{(e, Te) : e \in D(T)\} \subseteq E \times F$. Se dice que $T$ es
+\textit{cerrado} si $G(T)$ es cerrado en $E \times F$; equivalentemente, si para
+toda sucesión $(e_n) \subseteq D(T)$ con $e_n \rightarrow e$ en $E$ y
+$Te_n \rightarrow f$ en $F$ se tiene $e \in D(T)$ y $Te = f$. Se dice que $T$ es
+\textit{cerrable} si admite una extensión cerrada; en tal caso, la menor de ellas
+es su \textit{clausura} $\overline{T}$, cuyo gráfico es $\overline{G(T)}$.
+\end{Definicion}
+
+\begin{Teorema}{(Teorema del gráfico cerrado)}
+\label{ch:preliminares:th:graficoCerrado}
+
+Sean $E$ y $F$ espacios de Banach y $T : E \rightarrow F$ un operador lineal
+definido en todo $E$. Entonces $T$ es continuo si y sólo si $T$ es cerrado.
+\end{Teorema}
+
+\begin{proof}
+Véase \cite[Teorema~2.9]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
+La siguiente caracterización de la cerrabilidad, empleada al estudiar los
+operadores disipativos (Teorema \ref{ch:semigrupos:th:PropsOpDisipativos}),
+admite una prueba directa.\\
+
+\begin{Proposicion}{(Caracterización de operadores cerrables)}
+\label{ch:preliminares:prop:cerrable}
+
+Sean $E$ y $F$ espacios de Banach y $T : D(T) \subseteq E \rightarrow F$ un
+operador lineal. Entonces $T$ es cerrable si y sólo si, para toda sucesión
+$(e_n) \subseteq D(T)$ tal que $e_n \rightarrow 0$ en $E$ y $Te_n \rightarrow f$
+en $F$, se tiene $f = 0$.
+\end{Proposicion}
+
+\begin{proof}
+Si $T$ es cerrable, entonces $\overline{G(T)}$ es el gráfico de un operador
+(lineal) $\overline{T}$. Dada $(e_n) \subseteq D(T)$ con $e_n \rightarrow 0$ y
+$Te_n \rightarrow f$, el par $(0, f) = \lim_n (e_n, Te_n)$ pertenece a
+$\overline{G(T)} = G(\overline{T})$, de donde $f = \overline{T}0 = 0$.
+
+Recíprocamente, supongamos la condición sobre las sucesiones y probemos que
+$\overline{G(T)}$ es el gráfico de un operador; esto es, que si
+$(e, f), (e, f') \in \overline{G(T)}$, entonces $f = f'$. En efecto, existen
+sucesiones $(a_n), (b_n) \subseteq D(T)$ con $(a_n, Ta_n) \rightarrow (e, f)$ y
+$(b_n, Tb_n) \rightarrow (e, f')$. La sucesión $c_n := a_n - b_n \in D(T)$
+satisface $c_n \rightarrow 0$ y $Tc_n \rightarrow f - f'$, luego $f - f' = 0$ por
+hipótesis. Así $\overline{G(T)}$ define un operador cerrado $\overline{T}$ que
+extiende a $T$, y $T$ es cerrable.
+\end{proof}
+
+El teorema de Banach-Alaoglu proporciona la compacidad que suple, en dimensión
+infinita, la ausencia de compacidad de la bola unidad en la topología fuerte.\\
+
+\begin{Teorema}{(Teorema de Banach-Alaoglu)}
+\label{ch:preliminares:th:banachAlaoglu}
+
+Sea $E$ un espacio de Banach. La bola unidad cerrada
+$B_{E^*} = \{e^* \in E^* : \lVert e^* \rVert_{E^*} \leq 1\}$ de su dual es compacta
+en la topología débil-$*$ $\sigma(E^*, E)$. En particular, si $E$ es separable,
+toda sucesión acotada en $E^*$ admite una subsucesión débil-$*$ convergente; esto
+es, existen $(e_n^*)$ y $e^* \in E^*$ tales que
+$\langle e_n^*, e \rangle \rightarrow \langle e^*, e \rangle$ para todo $e \in E$.
+\end{Teorema}
+
+\begin{proof}
+Véase \cite[Teorema~3.16]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
+En el marco hilbertiano, el teorema de Lax-Milgram resuelve formas bilineales
+coercivas y es la herramienta habitual para las formulaciones variacionales.\\
+
+\begin{Teorema}{(Teorema de Lax-Milgram)}
+\label{ch:preliminares:th:laxMilgram}
+
+Sea $H$ un espacio de Hilbert real y $a : H \times H \rightarrow \R$ una forma
+bilineal continua y coerciva, esto es, tal que existen $C, \alpha > 0$ con
+
+\[|a(u, v)| \leq C \lVert u \rVert_H \lVert v \rVert_H \quad \text{y} \quad a(u, u) \geq \alpha \lVert u \rVert_H^2, \quad \forall u, v \in H.\]
+
+Entonces, para todo $\varphi \in H^*$ existe un único $u \in H$ tal que
+$a(u, v) = \langle \varphi, v \rangle$ para todo $v \in H$. Si además $a$ es
+simétrica, $u$ es el único mínimo en $H$ del funcional
+$v \mapsto \tfrac{1}{2}a(v, v) - \langle \varphi, v \rangle$.
+\end{Teorema}
+
+\begin{proof}
+Véase \cite[Corolario~5.8]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
+Finalmente, la desigualdad de Poincaré controla la norma de una función por la de
+su gradiente sobre dominios acotados, y es la que confiere coercividad a las
+formas asociadas al operador de Timoshenko.\\
+
+\begin{Teorema}{(Desigualdad de Poincaré)}
+\label{ch:preliminares:th:poincare}
+
+\begin{enumerate}
+    \item \emph{(Caso unidimensional.)} Sea $I \subseteq \R$ un intervalo
+    acotado. Entonces existe una constante $C = C(|I|) > 0$ tal que
+
+    \[\lVert u \rVert_{L^\infty(I)} \leq C \lVert u' \rVert_{L^1(I)}, \quad \forall u \in W_0^{1,1}(I);\]
+
+    en particular, $\lVert u \rVert_{L^2(I)} \leq C \lVert u' \rVert_{L^2(I)}$
+    para toda $u \in H_0^1(I)$ (\cite[Proposición~8.13]{brezis-2011-fun-ana-sob}).
+
+    \item \emph{(Caso general.)} Sea $\Omega \subseteq \R^N$ un abierto acotado y
+    $p \in [1, \infty)$. Entonces existe una constante $C = C(\Omega, p) > 0$ tal
+    que
+
+    \[\lVert u \rVert_{L^p(\Omega)} \leq C \lVert \nabla u \rVert_{L^p(\Omega)}, \quad \forall u \in W_0^{1,p}(\Omega)\]
+
+    (\cite[Corolario~9.19]{brezis-2011-fun-ana-sob}). En consecuencia,
+    $\lVert \nabla u \rVert_{L^p(\Omega)}$ es una norma sobre $W_0^{1,p}(\Omega)$
+    equivalente a la norma usual.
+\end{enumerate}
+\end{Teorema}
+
+\begin{proof}
+Véanse las referencias indicadas en cada apartado.
+\end{proof}
+
+\section{Resultados de teoría de la medida}
+\label{ch:preliminares:section:medida}
+
+Concluimos el capítulo con los resultados de integración que intervienen en el
+paso al límite bajo el signo integral, tanto para funciones escalares como para
+funciones con valores en un espacio de Banach. El primero es el clásico teorema
+de convergencia dominada; los dos siguientes trasladan la teoría de integración a
+funciones vectoriales por medio de la integral de Bochner, herramienta
+imprescindible al derivar e integrar las órbitas $t \mapsto T(t)e$ de un
+semigrupo.
+
+\begin{Teorema}{(Convergencia dominada de Lebesgue)}
+\label{ch:preliminares:th:dominada}
+
+Sea $(\Omega, \Sigma, \mu)$ un espacio de medida y $(f_n)_{n \geq 1}$ una sucesión
+de funciones medibles $f_n : \Omega \rightarrow \mathbb{K}$ tal que:
+
+\begin{enumerate}
+    \item $f_n(\omega) \rightarrow f(\omega)$ para casi todo $\omega \in \Omega$;
+    \item existe $g \in L^1(\Omega)$ tal que $|f_n(\omega)| \leq g(\omega)$ para
+    todo $n \geq 1$ y casi todo $\omega \in \Omega$.
+\end{enumerate}
+
+Entonces $f \in L^1(\Omega)$, $f_n \rightarrow f$ en $L^1(\Omega)$ y
+
+\[\lim_{n \rightarrow \infty} \int_\Omega f_n \, \dd \mu = \int_\Omega f \, \dd \mu.\]
+\end{Teorema}
+
+\begin{proof}
+Véase \cite[Teorema~4.2]{brezis-2011-fun-ana-sob} o
+\cite[Theorem~2.24]{folland_1999_real}.
+\end{proof}
+
+Para funciones con valores en un espacio de Banach $X$, la noción adecuada de
+integral es la de Bochner. El primer resultado la reduce, en la práctica, a una
+condición de integrabilidad escalar.\\
+
+\begin{Teorema}{(Integrabilidad de Bochner)}
+\label{ch:preliminares:th:bochner}
+
+Sean $(\Omega, \Sigma, \mu)$ un espacio de medida finita, $X$ un espacio de
+Banach y $f : \Omega \rightarrow X$ una función fuertemente medible. Entonces $f$
+es Bochner-integrable si y sólo si su norma
+$\omega \mapsto \lVert f(\omega) \rVert_X$ es Lebesgue-integrable; esto es,
+
+\[\int_\Omega \lVert f \rVert_X \, \dd \mu < \infty.\]
+\end{Teorema}
+
+\begin{proof}
+Véase \cite[Cap.~V, \S 5, Teorema~1]{yosida-1980-fun-ana}.
+\end{proof}
+
+Finalmente, la integral de Bochner admite un teorema de convergencia dominada
+enteramente análogo al escalar, que es el que legitima los intercambios de
+límite e integral en las órbitas de un semigrupo.\\
+
+\begin{Teorema}{(Convergencia dominada para la integral de Bochner)}
+\label{ch:preliminares:th:bochnerDominada}
+
+Sean $X$ un espacio de Banach, $f : \Omega \rightarrow X$ fuertemente medible y
+$(f_n)_{n \geq 1}$ una sucesión de funciones Bochner-integrables tal que
+$\lVert f_n(\omega) - f(\omega) \rVert_X \rightarrow 0$ para casi todo
+$\omega \in \Omega$. Si existe $g \in L^1(\Omega)$, $g \geq 0$, tal que
+$\lVert f_n(\omega) \rVert_X \leq g(\omega)$ para todo $n \geq 1$ y casi todo
+$\omega \in \Omega$, entonces $f$ es Bochner-integrable y
+
+\[\lim_{n \rightarrow \infty} \int_E f_n \, \dd \mu = \int_E f \, \dd \mu, \quad \forall E \in \Sigma.\]
+\end{Teorema}
+
+\begin{proof}
+Por hipótesis, $\lVert f_n - f \rVert_X \leq \lVert f_n \rVert_X + \lVert f \rVert_X$
+y $\lVert f_n(\omega) - f(\omega) \rVert_X \rightarrow 0$ en casi todo punto, con
+$\lVert f_n \rVert_X \leq g \in L^1(\Omega)$. Aplicando el teorema de convergencia
+dominada de Lebesgue (Teorema \ref{ch:preliminares:th:dominada}) a la sucesión
+escalar $\lVert f_n - f \rVert_X \leq 2g$, se obtiene
+$\int_\Omega \lVert f_n - f \rVert_X \, \dd \mu \rightarrow 0$. En
+particular, $\lVert f \rVert_X$ es Lebesgue-integrable, de modo que $f$ es
+Bochner-integrable por el Teorema \ref{ch:preliminares:th:bochner}. Finalmente,
+para todo $E \in \Sigma$,
+
+\[\left\lVert \int_E f_n \, \dd \mu - \int_E f \, \dd \mu \right\rVert_X = \left\lVert \int_E (f_n - f) \, \dd \mu \right\rVert_X \leq \int_E \lVert f_n - f \rVert_X \, \dd \mu \rightarrow 0,\]
+
+lo que concluye la prueba.
+\end{proof}

@@ -67,15 +67,15 @@ donde hemos hecho uso de la hipótesis de desplazamientos pequeños para obtener
 
 Recordemos ahora, con algo más de formalidad, el concepto de \textit{deformación}. En su versión más general, se entiende por deformación al cambio de un cuerpo respecto a una configuración inicial. Así, en este caso, la deformación será el cambio respecto a una longitud de arco inicial (recuérdese que, como consecuencia de nuestras hipótesis, el eje neutro no cambia su longitud. Sin embargo, las fibras en un entorno del mismo si). Entonces, si la longitud de arco inicial de una fibra es
 
-\[L_0 = (\varrho - Y)d\theta \ \text{ (la misma que la del eje neutro)},\]
+\[L_0 = (\varrho - Y)\dd\theta \ \text{ (la misma que la del eje neutro)},\]
 
 y la longitud de arco de la fibra deformado es
 
-\[L = \varrho d\theta,\]
+\[L = \varrho \dd\theta,\]
 
 entonces la deformación $\varepsilon$ será
 
-\[\varepsilon = \frac{L - L_0}{L_0} = \frac{\varrho d\theta - (\varrho - Y)d\theta}{\varrho d\theta} = \frac{Y}{\varrho}.\]
+\[\varepsilon = \frac{L - L_0}{L_0} = \frac{\varrho \dd\theta - (\varrho - Y)\dd\theta}{\varrho \dd\theta} = \frac{Y}{\varrho}.\]
 
 Este resultado es coherente con la discusión llevada a cabo hasta el momento: En primer lugar, cuando $Y = 0$, obtenemos $\varepsilon = 0$; es decir, el eje neutro no sufre un cambio de longitud, su longitud permanece la misma. Por otro lado, ese cambio relativo a una posición inicial se hace (linealmente) más ``brusco'' en el resto de fibras según mayor sea la distancia vertical (en valor absoluto) al eje neutro.
 
@@ -91,9 +91,9 @@ donde $E$ es una constante (para materiales linealmente elásticos) denominada \
 
 Calculemos ahora el momento $M$ con relación al eje de simetría producido por la fuerza de tensión:
 
-\[M = \int_A \sigma Y \, dA = \int_A E \frac{Y^2}{\varrho} \, dA = \frac{E}{\varrho} \int_A Y^2 \, dA = \frac{E I}{\varrho},\]
+\[M = \int_A \sigma Y \, \dd A = \int_A E \frac{Y^2}{\varrho} \, \dd A = \frac{E}{\varrho} \int_A Y^2 \, \dd A = \frac{E I}{\varrho},\]
 
-donde $A$ es el área de una sección transversal\footnotemark e $I = \int_A Y^2 \, dA$ es el momento de inercia. Considerando ahora la aproximación hecha de $\frac{1}{\varrho}$, se tiene que:
+donde $A$ es el área de una sección transversal\footnotemark e $I = \int_A Y^2 \, \dd A$ es el momento de inercia. Considerando ahora la aproximación hecha de $\frac{1}{\varrho}$, se tiene que:
 
 \footnotetext{A lo largo de este texto, salvo que se indique lo contrario, estaremos asumiendo que el área de las secciones transversales se mantiene constante. Sin embargo, la teoría no es limitante en este aspecto. El único objetivo de considerar el área constante es el de simplificar las ecuaciones.}
 \[\frac{E I}{\varrho} = EI \varphi^{\prime \prime}(X)\]
@@ -103,36 +103,33 @@ donde $A$ es el área de una sección transversal\footnotemark e $I = \int_A Y^2
 
 Si denotamos ahora por $S$ al esfuerzo cortante o de cizallamiento, entonces, llevando a cabo un equilibrio de fuerzas obtenemos:
 
-$(M + dM) - M - (S + dS)dX - q dX (\frac{dX}{2}) = 0.$
+$(M + \dd M) - M - (S + \dd S)\dd X - q \dd X \left(\frac{\dd X}{2}\right) = 0.$
 
 A pesar de que no estamos considerando deformaciones por cizallamiento, por simple estática es necesario tomar en consideración estos esfuerzos. Luego, despreciando los productos de diferenciales:
 
-\[dM - SdX = 0 \implies \frac{dM}{dX} = S.\]
+\[\dd M - S\dd X = 0 \implies \frac{\dd M}{\dd X} = S.\]
 
 Ahora planteamos el equilibrio de fuerzas verticales:
 
-\[S - (S + dS) + q dX = 0 \implies \frac{dS}{dX} = q.\]
+\[S - (S + \dd S) + q \dd X = 0 \implies \frac{\dd S}{\dd X} = q.\]
 
 Juntando ambas relaciones y sustituyendo por la expresión hallada de $M$ se obtiene la \textit{ecuación en estática de Euler-Bernoulli}:
 
-\begin{align*}
-    \label{eq::eulerbernoulliestatica}
-    EI \frac{d^4\varphi}{dX^4} &= q
-\end{align*}
+\[EI \frac{\dd^4\varphi}{\dd X^4} = q.\]
 
 Para el caso de una viga oscilante, en la que no se alcanza el equilibrio de las fuerzas verticales, debemos aplicar la segunda ley de Newton. En este caso consideramos $\varphi(X,t)$ y un trozo de viga de longitud $\Delta X$, donde el área de su sección transversal es $A$. Así,
 
 \begin{align*}
     \sum F_{\text{verticales}} &= m a\\
-    \implies S - (S + dS) + q\Delta X &= \int_{X}^{X + \Delta X} A \rho \frac{\partial^2 \varphi}{\partial t^2} \, dX\\
-    \implies -dS + q\Delta X &= \int_{X}^{X + \Delta X} A \rho \frac{\partial^2 \varphi}{\partial t^2} \, dX.
+    \implies S - (S + \dd S) + q\Delta X &= \int_{X}^{X + \Delta X} A \rho \frac{\partial^2 \varphi}{\partial t^2} \, \dd X\\
+    \implies -\dd S + q\Delta X &= \int_{X}^{X + \Delta X} A \rho \frac{\partial^2 \varphi}{\partial t^2} \, \dd X.
 \end{align*}
 
 Dividiendo por $\Delta X$ los dos extremos de la igualdad, y tomando el límite cuando $\Delta X \rightarrow 0$ se obtiene:
 
-\[A \rho \frac{\partial^2 \varphi}{\partial t^2} = -\frac{dS}{dX} + q,\]
+\[A \rho \frac{\partial^2 \varphi}{\partial t^2} = -\frac{\dd S}{\dd X} + q,\]
 
-e incorporando la relación $\frac{dS}{dX} = EI \frac{\partial^4 \varphi}{\partial X^4}$ derivada anteriormente, obtenemos la \textit{ecuación de evolución de Euler-Bernoulli}:
+e incorporando la relación $\frac{\dd S}{\dd X} = EI \frac{\partial^4 \varphi}{\partial X^4}$ derivada anteriormente, obtenemos la \textit{ecuación de evolución de Euler-Bernoulli}:
 
 \begin{align*}
     %\label{eq::eulerbernoullievolucion}
@@ -176,9 +173,14 @@ Por otra parte, las \textit{relaciones constitutivas elásticas} para el esfuerz
 
 y se tiene que $k^{\prime}$ es el \textit{factor de corrección por cortante}, mientras que $G$ y $E$ son el \textit{módulo de elasticidad transversal} (o bien \textit{módulo de cizalladura/cortadura}) --que caracteriza la rigidez de un material frente a esfuerzos de cizallamiento-- y el \textit{módulo de Young}, respectivamente. 
 
-El factor de corrección $k^{\prime}$ se introduce porque de las hipótesis planteadas anteriormente se deduce que el esfuerzo cortante es uniforme en toda la sección transversal (los desarrollos originales de Timoshenko \textcolor{red}{[CITA]} contemplan la deducción e implicaciones de este hecho. Dado que el interés de este texto no radica en la física, sólo hemos de mencionar los detalles más relevantes); sin embargo, esto no es cierto en general, dado que el esfuerzo por cizallamiento va decayendo desde el centro de la viga hacia los extremos. Por ejemplo, en vigas con secciones rectangulares se conoce que el esfuerzo por cortadura sigue una distribución parabólica. Entender de manera intuitiva el esfuerzo por cizallamiento como aquel que surge por la resistencia al deslizamiento de las capas (fibras) internas del material en respuesta a una fuerza puede resultar esclarecedor, pues la cara superior e inferior no tienen fibras por encima o por debajo de ellas que las ``empujen'' o ``frenen'', mientras que las fibras más centrales tienen todas las capas por encima y por debajo ``empujando'' y ``frenando'' (tracción y compresión).
+El factor de corrección $k^{\prime}$ se introduce porque de las hipótesis planteadas anteriormente se deduce que el esfuerzo cortante es uniforme en toda la sección transversal (los desarrollos originales de Timoshenko \textcolor{red}{[CITA]} contemplan la deducción e implicaciones de este hecho. Dado que el interés de este texto no radica en la física, sólo hemos de mencionar los detalles más relevantes); sin embargo, esto no es cierto en general, dado que el esfuerzo por cizallamiento va decayendo desde el centro de la viga hacia los extremos. Por ejemplo, en vigas con secciones rectangulares se conoce que el esfuerzo por cortadura sigue una distribución parabólica (véase la Figura~\ref{ch:teoriaVigas:fig:distribucionCortante}). Entender de manera intuitiva el esfuerzo por cizallamiento como aquel que surge por la resistencia al deslizamiento de las capas (fibras) internas del material en respuesta a una fuerza puede resultar esclarecedor, pues la cara superior e inferior no tienen fibras por encima o por debajo de ellas que las ``empujen'' o ``frenen'', mientras que las fibras más centrales tienen todas las capas por encima y por debajo ``empujando'' y ``frenando'' (tracción y compresión).
 
-\textcolor{red}{DIBUJO}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.62\textwidth]{imagenes/distribucion_cortante.pdf}
+    \caption{Distribución parabólica del esfuerzo cortante $\tau(y)$ sobre una sección transversal rectangular. El esfuerzo se anula en las caras superior e inferior ($y = \pm h/2$) y alcanza su valor máximo $\tau_{\max}$ en el eje neutro ($y = 0$).}
+    \label{ch:teoriaVigas:fig:distribucionCortante}
+\end{figure}
 
 Sustituyendo \eqref{timoshenkoBasico:relConstitutivasCortante}-\eqref{timoshenkoBasico:relConstitutivasFlector} en \eqref{timoshenkoBasico:equilDinamicoCortante}-\eqref{timoshenkoBasico:equilDinamicoFlector} y abreviando las constantes como
 
@@ -224,8 +226,8 @@ Al problema de valor inicial y de frontera \eqref{pviTimoshenkoBasico} visto ant
 \begin{equation}
     \label{timoshenkoBasico:funcionalEnergia}
     \begin{aligned}
-        E(t)\footnotemark \ = \  &\frac{1}{2} \Bigg[ \rho_1 \int_0^L \big(\varphi_t(x,t) \big)^2 \, dx + \rho_2 \int_0^L \big(\psi_t(x,t) \big)^2 \, dx + b\int_0^L \big(\psi_x(x,t) \big)^2 \, dx\\
-        &+ k\int_0^L \big(\varphi_x(x,t) + \psi(x,t) \big)^2 \, dx \Bigg], \quad t \geq 0
+        E(t)\footnotemark \ = \  &\frac{1}{2} \Bigg[ \rho_1 \int_0^L \big(\varphi_t(x,t) \big)^2 \, \dd x + \rho_2 \int_0^L \big(\psi_t(x,t) \big)^2 \, \dd x + b\int_0^L \big(\psi_x(x,t) \big)^2 \, \dd x\\
+        &+ k\int_0^L \big(\varphi_x(x,t) + \psi(x,t) \big)^2 \, \dd x \Bigg], \quad t \geq 0
     \end{aligned}
 \end{equation}
 
@@ -236,15 +238,15 @@ Al problema de valor inicial y de frontera \eqref{pviTimoshenkoBasico} visto ant
 Para poder describir el estado del sistema utilizaremos un vector $U$ definido de la siguiente manera:
 
 \begin{align}
-    U(t) &= \Big(\varphi(\cdot, t), \varphi_t(\cdot, t), \psi(\cdot, t), \psi_t(\cdot, t)\Big)^T,
+    U(t) &= \Big(\varphi(\cdot, t), \varphi_t(\cdot, t), \psi(\cdot, t), \psi_t(\cdot, t)\Big)^\top,
     \label{vectorEstadoTimoBasico}
 \end{align}
 
 tal que
 
 \begin{align*}
-    U_t(t) &= \Big(\varphi_t(\cdot, t), \varphi_{tt}(\cdot, t), \psi_t(\cdot, t), \psi_{tt}(\cdot, t)\Big)^T,\\
-    U(0) &= \Big(\varphi_0(\cdot), \varphi_1(\cdot), \psi_0(\cdot), \psi_1(\cdot)\Big)^T = U_0.
+    U_t(t) &= \Big(\varphi_t(\cdot, t), \varphi_{tt}(\cdot, t), \psi_t(\cdot, t), \psi_{tt}(\cdot, t)\Big)^\top,\\
+    U(0) &= \Big(\varphi_0(\cdot), \varphi_1(\cdot), \psi_0(\cdot), \psi_1(\cdot)\Big)^\top = U_0.
 \end{align*}
 
 La elección de este vector como estado del sistema no es arbitraria, y a lo largo de este texto se nos presentarán varias oportunidades para justificarla. Por adelantarnos a esto: tenemos que, desde una perspectiva física, el estado del sistema viene determinado por su configuración y sus velocidades iniciales (``funciones posición'' y sus derivadas). En efecto, en mecánica, conocer únicamente la posición no es suficiente para predecir la evolución, siendo necesario especificar también las velocidades.
@@ -260,10 +262,10 @@ Habiendo asumido el vector $U$ como vector de estado, entonces, y debido a una n
 Es decir, debemos imponer que la energía exista y sea finita. Esto nos permite motivar la elección de un \textit{espacio de fase}, que es el espacio al que pertenecerá el vector $U$. Así, se ve implicado que:
 
 \begin{align}
-    &\int_0^L \big(\varphi_t(x,t) \big)^2 \, dx < \infty,\label{varphi_tL2}\\
-    &\int_0^L \big(\psi_t(x,t) \big)^2 \, dx < \infty,\label{psi_tL2}\\
-    &\int_0^L \big(\psi_x(x,t) \big)^2 \, dx < \infty,\label{psiH01}\\
-    &\int_0^L \big(\varphi_x(x,t) + \psi(x,t) \big)^2 \, dx < \infty\label{varphiH01}.
+    &\int_0^L \big(\varphi_t(x,t) \big)^2 \, \dd x < \infty,\label{varphi_tL2}\\
+    &\int_0^L \big(\psi_t(x,t) \big)^2 \, \dd x < \infty,\label{psi_tL2}\\
+    &\int_0^L \big(\psi_x(x,t) \big)^2 \, \dd x < \infty,\label{psiH01}\\
+    &\int_0^L \big(\varphi_x(x,t) + \psi(x,t) \big)^2 \, \dd x < \infty\label{varphiH01}.
 \end{align}
 
 En consecuencia, para cada $t \geq 0$, de \eqref{varphi_tL2} y \eqref{psi_tL2} se deduce que
@@ -281,31 +283,31 @@ Además, de \eqref{psiH01} se obtiene que
 Dado que estamos manejando una única dimensión espacial, el hecho de que $\psi_x \in L^2(0,L)$, junto con la condición de contorno $\psi(0,t) = 0$, nos permite hacer el siguiente desarrollo:
 
 \begin{align*}
-    \left (\int_0^L |\psi_x(x,t)| \, dx \right )^2 &= \left (\int_0^L |1 \cdot \psi_x(x,t)| \, dx \right )^2\\
-    \text{(Cauchy–Schwarz)} &\leq \left (\int_0^L |\psi_x(x,t)|^2 \, dx \right ) \left (\int_0^L dx \right )\\
-    &= \frac{L}{2} \int_0^L |\psi_x(x,t)|^2 \, dx < \infty.
+    \left (\int_0^L |\psi_x(x,t)| \, \dd x \right )^2 &= \left (\int_0^L |1 \cdot \psi_x(x,t)| \, \dd x \right )^2\\
+    \text{(Cauchy–Schwarz)} &\leq \left (\int_0^L |\psi_x(x,t)|^2 \, \dd x \right ) \left (\int_0^L dx \right )\\
+    &= \frac{L}{2} \int_0^L |\psi_x(x,t)|^2 \, \dd x < \infty.
 \end{align*}
 
 Asimismo, por \textcolor{green}{LEMA 8.2 BREZIS} se puede definir una función $v$:
 
-\[v(x) = \int_0^x \psi_x(x,t) \, dx, \ x \in [0,L],\]
+\[v(x) = \int_0^x \psi_x(x,t) \, \dd x, \ x \in [0,L],\]
 
 y $v \in C(0,L)$. Además, 
 
-\[\int_0^L v \phi ' \, dx = - \int_0^L \psi_x \phi \, dx, \ \forall \phi \in C_0^\infty(0,L).\]
+\[\int_0^L v \phi ' \, \dd x = - \int_0^L \psi_x \phi \, \dd x, \ \forall \phi \in C_c^\infty(0,L).\]
 
-Luego, necesariamente $v = \psi$ y así se tiene entonces que $\psi \in C(0,L)$ y que $\psi(x,t) = \int_0^x \psi_x(x,t) \, dx $. 
+Luego, necesariamente $v = \psi$ y así se tiene entonces que $\psi \in C(0,L)$ y que $\psi(x,t) = \int_0^x \psi_x(x,t) \, \dd x $. 
 
 Procedemos ahora a acotar la norma de $\psi$ de la siguiente manera:
 
 \[
-|\psi(x,t)|^2 = \left| \int_0^x \psi_x(s,t) \, ds \right|^2 \leq \left( \int_0^x 1^2 \, ds \right) \left( \int_0^x |\psi_x(s,t)|^2 \, ds \right) \leq x \int_0^L |\psi_x(s,t)|^2 \, ds.
+|\psi(x,t)|^2 = \left| \int_0^x \psi_x(s,t) \, \dd s \right|^2 \leq \left( \int_0^x 1^2 \, \dd s \right) \left( \int_0^x |\psi_x(s,t)|^2 \, \dd s \right) \leq x \int_0^L |\psi_x(s,t)|^2 \, \dd s.
 \]
 
 Integrando esta expresión en $x$ sobre el intervalo $(0,L)$, obtenemos
 
 \[
-\int_0^L |\psi(x,t)|^2 \, dx \leq \frac{L^2}{2} \int_0^L |\psi_x(x,t)|^2 \, dx < \infty.
+\int_0^L |\psi(x,t)|^2 \, \dd x \leq \frac{L^2}{2} \int_0^L |\psi_x(x,t)|^2 \, \dd x < \infty.
 \]
 
 Esta es, de hecho, una demostración directa de la \textit{desigualdad de Poincaré} en dimensión uno. Por tanto, se concluye que $\psi(\cdot,t) \in L^2(0,L)$. Al tener $\psi$ y $\psi_x$ en $L^2(0,L)$ junto con las condiciones de contorno nulas, se sigue que
@@ -337,7 +339,7 @@ Originalmente, el sistema \eqref{pviTimoshenkoBasico} se deduce bajo la suposici
 Para sortear esta dificultad y garantizar la existencia de soluciones, es necesario relajar el concepto de derivada. Por lo tanto, en el marco de los espacios de Sobolev $H_0^1(0,L)$ y $L^2(0,L)$, todas las derivadas espaciales se entienden en el sentido débil o distribucional. Es decir, decimos que $\varphi_x \in L^2(0,L)$ es la derivada débil de $\varphi \in L^2(0,L)$ si satisface la fórmula de integración por partes:
 
 \[
-\int_0^L \varphi(x) \phi'(x) \, dx = - \int_0^L \varphi_x(x) \phi(x) \, dx, \quad \text{para toda función de prueba } \phi \in C_c^\infty(0,L).
+\int_0^L \varphi(x) \phi'(x) \, \dd x = - \int_0^L \varphi_x(x) \phi(x) \, \dd x, \quad \text{para toda función de prueba } \phi \in C_c^\infty(0,L).
 \]
 
 Esta formulación débil es precisamente la que fundamenta la estructura del espacio de Hilbert $\mathcal{H}$ y dota de sentido riguroso al estado del sistema, abarcando configuraciones que, aunque no sean derivables clásicamente en todo punto, son físicamente admisibles.
@@ -349,7 +351,7 @@ Dicho todo lo anterior, veamos ahora una de las propiedades más relevantes del 
 
     El funcional de energía definido en \eqref{timoshenkoBasico:funcionalEnergia} verifica:
 
-    \[\frac{d}{dt}E(t) = 0, \ \ \forall t > 0.\]
+    \[\frac{\dd}{\dd t}E(t) = 0, \ \ \forall t > 0.\]
 \end{Proposicion}
 
 \begin{proof}
@@ -357,21 +359,21 @@ Dicho todo lo anterior, veamos ahora una de las propiedades más relevantes del 
 
     \begin{equation*}
     \begin{cases}
-    \displaystyle \rho_1 \int_0^L \varphi_{tt} \varphi_t \, dx - k \int_0^L (\varphi_x + \psi)_x \varphi_t \, dx = 0\\
-    \displaystyle \rho_2 \int_0^L \psi_{tt} \psi_t \, dx - b\int_0^L \psi_{xx}\psi_t \, dx + k \int_0^L (\varphi_x + \psi) \psi_t \, dx = 0
+    \displaystyle \rho_1 \int_0^L \varphi_{tt} \varphi_t \, \dd x - k \int_0^L (\varphi_x + \psi)_x \varphi_t \, \dd x = 0\\
+    \displaystyle \rho_2 \int_0^L \psi_{tt} \psi_t \, \dd x - b\int_0^L \psi_{xx}\psi_t \, \dd x + k \int_0^L (\varphi_x + \psi) \psi_t \, \dd x = 0
     \end{cases}
     \end{equation*}
 
-    Ahora, realizamos integración por partes en los términos $\int_0^L (\varphi_x + \psi)_x \varphi_t \, dx$ y $\int_0^L \psi_{xx}\psi_t \, dx$:
+    Ahora, realizamos integración por partes en los términos $\int_0^L (\varphi_x + \psi)_x \varphi_t \, \dd x$ y $\int_0^L \psi_{xx}\psi_t \, \dd x$:
 
     \begin{align*}
-        &\int_0^L (\varphi_x + \psi)_x \varphi_t \, dx = \cancelto{0}{\varphi_t(\varphi_x + \psi)\Big|_0^L} - \int_0^L(\varphi_x + \psi) \varphi_{tx} \, dx,\\
-        &\int_0^L \psi_{xx}\psi_t \, dx = \cancelto{0}{\psi_t \psi_x\Big|_0^L} - \int_0^L \psi_x \psi_{tx} \, dx.
+        &\int_0^L (\varphi_x + \psi)_x \varphi_t \, \dd x = \cancelto{0}{\varphi_t(\varphi_x + \psi)\Big|_0^L} - \int_0^L(\varphi_x + \psi) \varphi_{tx} \, \dd x,\\
+        &\int_0^L \psi_{xx}\psi_t \, \dd x = \cancelto{0}{\psi_t \psi_x\Big|_0^L} - \int_0^L \psi_x \psi_{tx} \, \dd x.
     \end{align*}
 
     Sustituyendo lo anterior y sumando ambas ecuaciones:
 
-    \[\rho_1 \int_0^L\varphi_{tt}\varphi_t \, dx + \rho_2 \int_0^L \psi_{tt}\psi_t \, dx + b\int_0^L \psi_x \psi_{tx} \, dx + k \int_0^L (\varphi_x + \psi)(\varphi_{tx} + \psi_t) \, dx = 0.\]
+    \[\rho_1 \int_0^L\varphi_{tt}\varphi_t \, \dd x + \rho_2 \int_0^L \psi_{tt}\psi_t \, \dd x + b\int_0^L \psi_x \psi_{tx} \, \dd x + k \int_0^L (\varphi_x + \psi)(\varphi_{tx} + \psi_t) \, \dd x = 0.\]
 
     Considerando ahora las igualdades
 
@@ -387,8 +389,8 @@ Dicho todo lo anterior, veamos ahora una de las propiedades más relevantes del 
     Sustituimos estas relaciones en la expresión hallada anteriormente y obtenemos:
 
     \begin{align*}
-        &\frac{d}{dt}\frac{1}{2}\left [\rho_1 \int_0^L(\varphi_t)^2 \, dx + \rho_2 \int_0^L (\psi_t)^2 \, dx + b\int_0^L (\psi_x)^2 \, dx + k \int_0^L (\varphi_x + \psi)^2 \, dx \right] = 0\\
-        \iff&\frac{d}{dt}E(t) = 0,
+        &\frac{\dd}{\dd t}\frac{1}{2}\left [\rho_1 \int_0^L(\varphi_t)^2 \, \dd x + \rho_2 \int_0^L (\psi_t)^2 \, \dd x + b\int_0^L (\psi_x)^2 \, \dd x + k \int_0^L (\varphi_x + \psi)^2 \, \dd x \right] = 0\\
+        \iff&\frac{\dd}{\dd t}E(t) = 0,
     \end{align*}
 
     que es exactamente lo que se quería demostrar.
@@ -413,7 +415,7 @@ Para empezar a dar verdadero rigor matemático a todo lo discutido hasta el mome
 Empezamos por considerar el vector $U$ discutido en la sección anterior:
 
 \begin{align*}
-    U(t) = \Big(\varphi(\cdot, t), \varphi_t(\cdot, t), \psi(\cdot, t), \psi_t(\cdot, t)\Big)^T,
+    U(t) = \Big(\varphi(\cdot, t), \varphi_t(\cdot, t), \psi(\cdot, t), \psi_t(\cdot, t)\Big)^\top,
 \end{align*}
 
 donde dicho vector verifica que
@@ -426,11 +428,11 @@ y $\mathcal{H}$ es el espacio de Hilbert
 
 \[\mathcal{H} = H_0^1(0,L) \times L^2(0,L) \times H_0^1(0,L) \times L^2(0,L).\]
 
-con producto interno $(\cdot, \cdot)_{\mathcal{H}} : \mathcal{H}\times \mathcal{H} \rightarrow \mathbb{C}$ y norma $\lVert \, \cdot \, \lVert_{\mathcal{H}} : \mathcal{H} \rightarrow \mathbb{R}$ definidos, respectivamente, como:
+con producto interno $(\cdot, \cdot)_{\mathcal{H}} : \mathcal{H}\times \mathcal{H} \rightarrow \mathbb{C}$ y norma $\lVert \, \cdot \, \rVert_{\mathcal{H}} : \mathcal{H} \rightarrow \mathbb{R}$ definidos, respectivamente, como:
 
 \begin{align}
     (U, \hat{U})_{\mathcal{H}} &= (\varphi, \hat{\varphi})_{H_0^1} + (\varphi_t, \hat{\varphi_t})_{L^2} + (\psi, \hat{\psi})_{H_0^1} + (\psi_t, \hat{\psi_t})_{L^2},\label{prodEscalarHTimoBasico}\\
-    \lVert U \lVert_{\mathcal{H}}^2 &= \lVert \varphi \lVert_{H_0^1}^2 + \lVert \varphi_t \lVert_{L^2}^2 + \lVert \psi \lVert_{H_0^1}^2 + \lVert \psi_t \lVert_{L^2}^2.\label{normaHTimoBasico}
+    \lVert U \rVert_{\mathcal{H}}^2 &= \lVert \varphi \rVert_{H_0^1}^2 + \lVert \varphi_t \rVert_{L^2}^2 + \lVert \psi \rVert_{H_0^1}^2 + \lVert \psi_t \rVert_{L^2}^2.\label{normaHTimoBasico}
 \end{align}
 
 Así, el problema abstracto de Cauchy homogéneo se obtiene como:
@@ -531,11 +533,11 @@ Teniendo en cuenta lo anterior, finalmente el problema abstracto de Cauchy homog
     \end{cases}
 \end{align}
 
-Dado el espacio de Hilbert $(\mathcal{H}, (\cdot, \cdot)_{\mathcal{H}}, \lVert \, \cdot \, \lVert_{\mathcal{H}})$ descrito anteriormente, podemos reescribir el funcional de energía $E(t) = E(U(t)) = E(U)$ \eqref{timoshenkoBasico:funcionalEnergia} en términos de la norma del espacio como:
+Dado el espacio de Hilbert $(\mathcal{H}, (\cdot, \cdot)_{\mathcal{H}}, \lVert \, \cdot \, \rVert_{\mathcal{H}})$ descrito anteriormente, podemos reescribir el funcional de energía $E(t) = E(U(t)) = E(U)$ \eqref{timoshenkoBasico:funcionalEnergia} en términos de la norma del espacio como:
 
 \begin{align}
     \label{timoshenkoBasico:funcionalEnergiaNorma}
-    E(U) = \frac{1}{2}\left( \rho_1 \lVert \varphi_t \lVert^2_{L^2} + \rho_2 \lVert \psi_t \lVert_{L^2}^2 + b \lVert \psi \lVert_{H_0^1}^2 + k \lVert \varphi_x + \psi \lVert_{L^2}^2 \right).
+    E(U) = \frac{1}{2}\left( \rho_1 \lVert \varphi_t \rVert^2_{L^2} + \rho_2 \lVert \psi_t \rVert_{L^2}^2 + b \lVert \psi \rVert_{H_0^1}^2 + k \lVert \varphi_x + \psi \rVert_{L^2}^2 \right).
 \end{align}
 
 Esta reformulación no es una simple curiosidad matemática. En efecto, 
@@ -568,11 +570,11 @@ Veamos ahora una norma asociada al funcional de energía equivalente a la norma 
 \begin{Proposicion}{(Norma asociada al funcional de energía)}
     \label{ch:teoriaVigas:prop:NormaEnergia}
 
-    La aplicación $\lVert \, \cdot \, \lVert_{E} : \mathcal{H} \rightarrow \mathbb{R}$ definida como
+    La aplicación $\lVert \, \cdot \, \rVert_{E} : \mathcal{H} \rightarrow \mathbb{R}$ definida como
 
     \begin{align}
         \label{normaEnergiaH}
-        \lVert \, U \, \lVert^2_{E} = \rho_1 \lVert \varphi_t \lVert^2_{L^2} + \rho_2 \lVert \psi \lVert_{L^2}^2 + b \lVert \psi \lVert_{H_0^1}^2 + k \lVert \varphi_x + \psi \lVert_{L^2}^2 = 2E(U)
+        \lVert \, U \, \rVert^2_{E} = \rho_1 \lVert \varphi_t \rVert^2_{L^2} + \rho_2 \lVert \psi \rVert_{L^2}^2 + b \lVert \psi \rVert_{H_0^1}^2 + k \lVert \varphi_x + \psi \rVert_{L^2}^2 = 2E(U)
     \end{align}
     
     es una norma del espacio $\mathcal{H}$.
@@ -592,19 +594,19 @@ Por último, acabamos esta sub-sección con una observación.\\
     El producto interno discutido en la Proposición \eqref{ch:teoriaVigas:prop:ProdInternoEnergia} induce la norma asociada al funcional de energía definida en la Proposición \eqref{ch:teoriaVigas:prop:NormaEnergia}. En consecuencia, el producto interno usual de $\mathcal{H}$ y el de la Proposición \eqref{ch:teoriaVigas:prop:ProdInternoEnergia} son equivalentes.
 \end{Observacion}
 
-A partir de este momento utilizaremos el producto interno y la norma de las Proposiciones \eqref{ch:teoriaVigas:prop:ProdInternoEnergia} y \eqref{ch:teoriaVigas:prop:NormaEnergia} respectivamente. Además, la notación que usaremos para referirnos a ellos será $\lVert \, \cdot \, \lVert_{\mathcal{H}}$ y $(\cdot , \cdot)_{\mathcal{H}}$.
+A partir de este momento utilizaremos el producto interno y la norma de las Proposiciones \eqref{ch:teoriaVigas:prop:ProdInternoEnergia} y \eqref{ch:teoriaVigas:prop:NormaEnergia} respectivamente. Además, la notación que usaremos para referirnos a ellos será $\lVert \, \cdot \, \rVert_{\mathcal{H}}$ y $(\cdot , \cdot)_{\mathcal{H}}$.
 
 \subsection{Revisitando el funcional de energía}
 \label{ch:teoriaVigas:section:timoshenkoFunc:subsection:energia}
 Cuando se planteó la Proposición \eqref{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasico}, la demostración asumió que el funcional de energía es derivable respecto al tiempo, y esto no es necesariamente cierto. Por ejemplo, si quisiéramos derivar 
 
-\[\int_0^L \big(\varphi_t(x,t)\big)^2 \, dx,\]
+\[\int_0^L \big(\varphi_t(x,t)\big)^2 \, \dd x,\]
 
 podríamos esperar algo como
 
 \begin{align}
 \label{integralFuncionalEnergia}
-\frac{d}{dt}\int_0^L \big(\varphi_t(x,t)\big)^2 \, dx = 2\int_0^L \varphi_t(x,t) \varphi_{tt}(x,t) \, dx.
+\frac{\dd}{\dd t}\int_0^L \big(\varphi_t(x,t)\big)^2 \, \dd x = 2\int_0^L \varphi_t(x,t) \varphi_{tt}(x,t) \, \dd x.
 \end{align}
 
 Dicha integral sólo puede existir bajo unas condiciones de regularidad mínimas. Considerando la desigualdad de \textcolor{green}{Cauchy-Schwarz}, tenemos que la integral existirá si $\varphi_t,\varphi_{tt} \in L^2(0,L)$. 
@@ -684,7 +686,7 @@ Antes de probar la Proposición anterior, necesitamos demostrar que $A$ es densa
 
     \[C_0^{\infty} \subset H^2 \cap H_0^1 \subset H_0^1.\]
 
-    Así, como $C_0^\infty$ es denso en $H_0^1$, entonces por conservación de la densidad en la inclusión tenemos que
+    Así, como $C_c^\infty$ es denso en $H_0^1$, entonces por conservación de la densidad en la inclusión tenemos que
 
     \begin{alignat*}{3}
         &C_0^{\infty} 
@@ -708,7 +710,7 @@ Antes de probar la Proposición anterior, necesitamos demostrar que $A$ es densa
 
     Ahora tomemos un elemento $U \in \mathcal{H}$. Es decir,
 
-    \[U = (\varphi, \varphi_t, \psi, \psi_t)^T \in H_0^1 \times L^2 \times H_0^1 \times L^2.\]
+    \[U = (\varphi, \varphi_t, \psi, \psi_t)^\top \in H_0^1 \times L^2 \times H_0^1 \times L^2.\]
 
     Como $H^2 \cap H_0^1$ es denso en $H_0^1$, entonces existen $(\varphi^{(n)}), (\psi^{(n)}) \subset H^2 \cap H_0^1$ tales que
 
@@ -726,11 +728,11 @@ Antes de probar la Proposición anterior, necesitamos demostrar que $A$ es densa
 
     Considerando ahora 
     
-    \[U^{(n)} = (\varphi^{(n)}, \varphi_t^{(n)}, \psi^{(n)}, \psi_t^{(n)})^T \in D(A),\]
+    \[U^{(n)} = (\varphi^{(n)}, \varphi_t^{(n)}, \psi^{(n)}, \psi_t^{(n)})^\top \in D(A),\]
 
     tenemos que (empleando la norma usual de $\mathcal{H}$, que sabemos es equivalente a la inducida por el funcional de energía debido a la Proposición \ref{timoshenkoBasico:funcionalEnergiaNorma}):
 
-    \[\lVert U - U^{(n)}\lVert_{\mathcal{H}} = \lVert \varphi - \varphi^{(n)}\lVert_{H_0^1} + \lVert \varphi_t - \varphi_t^{(n)}\lVert_{L^2} + \lVert \psi - \psi^{(n)}\lVert_{H_0^1} + \lVert \psi_t - \psi_t^{(n)}\lVert_{H_0^1} \rightarrow 0,\]
+    \[\lVert U - U^{(n)}\rVert_{\mathcal{H}} = \lVert \varphi - \varphi^{(n)}\rVert_{H_0^1} + \lVert \varphi_t - \varphi_t^{(n)}\rVert_{L^2} + \lVert \psi - \psi^{(n)}\rVert_{H_0^1} + \lVert \psi_t - \psi_t^{(n)}\rVert_{H_0^1} \rightarrow 0,\]
 
     por lo tanto,
 
@@ -752,7 +754,7 @@ Para ello, nos tomaremos la libertad de asumir que $A$ es el generador infinites
 
     Por la Proposición \eqref{ch:teoriaVigas:prop:ConservacionEnergiaTimoshenkoBasico}, tenemos que
 
-    \[\frac{d}{dt}E\big(U^{(n)}(t)\big) = 0 \ \forall t \geq 0,\]
+    \[\frac{\dd}{\dd t}E\big(U^{(n)}(t)\big) = 0 \ \forall t \geq 0,\]
 
     lo que quiere decir que
 
@@ -760,7 +762,7 @@ Para ello, nos tomaremos la libertad de asumir que $A$ es el generador infinites
 
     Utilizando la norma asociada al funcional de energía \eqref{ch:teoriaVigas:prop:NormaEnergia}, se desprende entonces de la igualdad anterior que
 
-    \[\big\lVert U^{(n)}(t)\big)\lVert_{\mathcal{H}} = \big\lVert U^{(n)}_0\big\lVert_{\mathcal{H}} \ \forall t \geq 0.\]
+    \[\big\lVert U^{(n)}(t)\big)\rVert_{\mathcal{H}} = \big\lVert U^{(n)}_0\big\rVert_{\mathcal{H}} \ \forall t \geq 0.\]
 
     Veamos ahora que la sucesión $\big(U^{(n)}\big)$ converge a $U$. Para ello, empecemos por ver que es Cauchy: Por ser el sistema de Timoshenko \eqref{eqTimoshenkoBasico} un sistema lineal y homogéneo, tenemos que
 
@@ -772,19 +774,19 @@ Para ello, nos tomaremos la libertad de asumir que $A$ es el generador infinites
 
     Por el razonamiento anterior, la energía de $W^{(n,m)}$ también se conserva. Tal y como se vió:
 
-    \[\big \lVert W^{(n,m)}\big \lVert_{\mathcal{H}} = \big \lVert W^{(n,m)}_0 \big \lVert_{\mathcal{H}} \implies \big \lVert U^{(n)} - U^{(m)} \big \lVert_{\mathcal{H}} = \big \lVert  U^{(n)}_0 - U^{(m)}_0 \big \lVert_{\mathcal{H}}.\]
+    \[\big \lVert W^{(n,m)}\big \rVert_{\mathcal{H}} = \big \lVert W^{(n,m)}_0 \big \rVert_{\mathcal{H}} \implies \big \lVert U^{(n)} - U^{(m)} \big \rVert_{\mathcal{H}} = \big \lVert  U^{(n)}_0 - U^{(m)}_0 \big \rVert_{\mathcal{H}}.\]
 
     Como la sucesión $\big(U^{(n)}_0 \big)$ converge a $U_0$, entonces dado $\varepsilon > 0$ existe $N$ tal que para todo $n,m > N$ se verifica que
 
-    \[\big \lVert  U^{(n)}_0 - U^{(m)}_0 \big \lVert_{\mathcal{H}} < \varepsilon,\]
+    \[\big \lVert  U^{(n)}_0 - U^{(m)}_0 \big \rVert_{\mathcal{H}} < \varepsilon,\]
 
     y por lo tanto
 
-    \[\big \lVert U^{(n)}(t) - U^{(m)}(t) \big \lVert_{\mathcal{H}} < \varepsilon, \ \forall t \geq 0.\]
+    \[\big \lVert U^{(n)}(t) - U^{(m)}(t) \big \rVert_{\mathcal{H}} < \varepsilon, \ \forall t \geq 0.\]
 
     En consecuencia, $\big( U^{(n)}\big)$ es Cauchy. Luego, teniendo en cuenta que $U^{(n)}(t) = T(t)U_0^{(n)}$, se tiene que:
 
-    \[\big\lVert U^{(n)}(t) - U(t)\big\lVert_{\mathcal{H}} = \big\lVert T(t)U_0^{(n)} - U(t)\big\lVert_{\mathcal{H}} \rightarrow 0\]
+    \[\big\lVert U^{(n)}(t) - U(t)\big\rVert_{\mathcal{H}} = \big\lVert T(t)U_0^{(n)} - U(t)\big\rVert_{\mathcal{H}} \rightarrow 0\]
 
     cuando $n \rightarrow \infty$, pues $U_0^{(n)} \rightarrow U_0$ y, por unicidad de las soluciones, $T(t)U_0^{(n)} \rightarrow T(t)U_0 = U(t)$. Luego, por unicidad del límite y por ser Cauchy la sucesión, hemos logrado probar que
 
@@ -792,7 +794,7 @@ Para ello, nos tomaremos la libertad de asumir que $A$ es el generador infinites
     
     para todo instante $t$. Finalmente, tenemos (por todo lo visto anteriormente) que:
 
-    \[\big\lVert U^{(n)}(t)\big)\lVert_{\mathcal{H}} = \big\lVert U^{(n)}_0\big\lVert_{\mathcal{H}} \implies \lim_{n\rightarrow \infty}\big\lVert U^{(n)}(t)\big)\lVert_{\mathcal{H}} = \lim_{n\rightarrow \infty}\big\lVert U^{(n)}_0\big\lVert_{\mathcal{H}} \implies \big\lVert U(t)\big)\lVert_{\mathcal{H}} = \big\lVert U_0\big\lVert_{\mathcal{H}}\footnotemark \ \forall t \geq 0,\]
+    \[\big\lVert U^{(n)}(t)\big)\rVert_{\mathcal{H}} = \big\lVert U^{(n)}_0\big\rVert_{\mathcal{H}} \implies \lim_{n\rightarrow \infty}\big\lVert U^{(n)}(t)\big)\rVert_{\mathcal{H}} = \lim_{n\rightarrow \infty}\big\lVert U^{(n)}_0\big\rVert_{\mathcal{H}} \implies \big\lVert U(t)\big)\rVert_{\mathcal{H}} = \big\lVert U_0\big\rVert_{\mathcal{H}}\footnotemark \ \forall t \geq 0,\]
     \footnotetext{Esto prueba que la norma de $U$ se preserva en el tiempo. Una vez más, la matemática conspirando con la física para hablar sobre cómo este modelo intercambia, eternamente, energía cinética con energía potencial.}
     lo cual es equivalente (por la norma inducida por el funcional de energía) a que:
 
@@ -823,21 +825,21 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
 
     \[\langle x^*, x \rangle = (x, y)_{\mathcal{H}} \ \forall x \in \mathcal{H}.\]
 
-    Además, se verifica que $\lVert x^* \lVert_{\mathcal{H}^*} = \lVert y \lVert_{\mathcal{H}}$. Si ahora consideramos que $x^* \in J(x)$, tenemos:
+    Además, se verifica que $\lVert x^* \rVert_{\mathcal{H}^*} = \lVert y \rVert_{\mathcal{H}}$. Si ahora consideramos que $x^* \in J(x)$, tenemos:
 
-    \[\operatorname{Re} \langle x^*, x \rangle = \operatorname{Re} (x,y)_{\mathcal{H}} = \lVert x \lVert^2_{\mathcal{H}}.\]
+    \[\operatorname{Re} \langle x^*, x \rangle = \operatorname{Re} (x,y)_{\mathcal{H}} = \lVert x \rVert^2_{\mathcal{H}}.\]
 
     Ahora, usando la \textcolor{green}{desigualdad de Cauchy-Schwarz},
 
-    \[\operatorname{Re}(x,y)_{\mathcal{H}} \leq \lvert (x,y)_{\mathcal{H}} \lvert \leq \lVert x \lVert_{\mathcal{H}} \, \lVert y \lVert_{\mathcal{H}},\]
+    \[\operatorname{Re}(x,y)_{\mathcal{H}} \leq \lvert (x,y)_{\mathcal{H}} \lvert \leq \lVert x \rVert_{\mathcal{H}} \, \lVert y \rVert_{\mathcal{H}},\]
 
-    y como $\lVert x \lVert_{\mathcal{H}} = \lVert x^* \lVert_{\mathcal{H^*}} = \lVert y \lVert_{\mathcal{H}}$, entonces
+    y como $\lVert x \rVert_{\mathcal{H}} = \lVert x^* \rVert_{\mathcal{H^*}} = \lVert y \rVert_{\mathcal{H}}$, entonces
 
-    \[\lVert x \lVert^2_{\mathcal{H}} = \operatorname{Re}(x,y)_{\mathcal{H}} \leq \lvert (x,y)_{\mathcal{H}} \lvert \leq \lVert x \lVert^2_{\mathcal{H}},\]
+    \[\lVert x \rVert^2_{\mathcal{H}} = \operatorname{Re}(x,y)_{\mathcal{H}} \leq \lvert (x,y)_{\mathcal{H}} \lvert \leq \lVert x \rVert^2_{\mathcal{H}},\]
 
     por lo que
 
-    \[\lvert (x,y)_{\mathcal{H}}\lvert = \lVert x \lVert^2_{\mathcal{H}}.\]
+    \[\lvert (x,y)_{\mathcal{H}}\lvert = \lVert x \rVert^2_{\mathcal{H}}.\]
 
     Esto implica que $y$ es un múltiplo de $x$. Sin embargo, la condición sobre la parte real nos permite concluir que
 
@@ -869,19 +871,19 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
 
     \begin{align*}
         \operatorname{Re}(U,AU)_{\mathcal{H}} &=\\
-        &= k\int_0^L \varphi_t \varphi_{xx} \, dx + k\int_0^L\varphi_t \psi_x \, dx\\
-        &- \cancel{k\int_0^L\psi_t \varphi_x \, dx} - \cancel{k\int_0^L \psi_t \psi \, dx}\\
-        &+ b\int_0^L \psi_t \psi_{xx} \, dx + b \int_0^L \psi_x \psi_{tx} \, dx\\
-        &+ k\int_0^L \varphi_x \varphi_{tx} \, dx + \cancel{k\int_0^L\varphi_x \psi_t \, dx}\\
-        &= k\int_0^L \psi \varphi_{tx} \, dx + \cancel{k\int_0^L \psi \psi_t \, dx}.
+        &= k\int_0^L \varphi_t \varphi_{xx} \, \dd x + k\int_0^L\varphi_t \psi_x \, \dd x\\
+        &- \cancel{k\int_0^L\psi_t \varphi_x \, \dd x} - \cancel{k\int_0^L \psi_t \psi \, \dd x}\\
+        &+ b\int_0^L \psi_t \psi_{xx} \, \dd x + b \int_0^L \psi_x \psi_{tx} \, \dd x\\
+        &+ k\int_0^L \varphi_x \varphi_{tx} \, \dd x + \cancel{k\int_0^L\varphi_x \psi_t \, \dd x}\\
+        &= k\int_0^L \psi \varphi_{tx} \, \dd x + \cancel{k\int_0^L \psi \psi_t \, \dd x}.
     \end{align*}
 
     A continuación, integramos por partes los términos restantes considerando las condiciones de borde:
 
     \begin{align*}
-        \int_0^L \varphi_t \varphi_{xx} \, dx &= \cancelto{0}{[\varphi_t \varphi_x]_0^L} - \int_0^L \varphi_x \varphi_{tx} \, dx,\\
-        \int_0^L\varphi_t \psi_x \, dx &= \cancelto{0}{[\varphi_t \psi]_0^L} - \int_0^L \psi \varphi_{tx} \, dx,\\
-        \int_0^L \psi_t \psi_{xx} \, dx &= \cancelto{0}{[\psi_t \psi_x]_0^L} - \int_0^L \psi_x \psi_{tx} \, dx.
+        \int_0^L \varphi_t \varphi_{xx} \, \dd x &= \cancelto{0}{[\varphi_t \varphi_x]_0^L} - \int_0^L \varphi_x \varphi_{tx} \, \dd x,\\
+        \int_0^L\varphi_t \psi_x \, \dd x &= \cancelto{0}{[\varphi_t \psi]_0^L} - \int_0^L \psi \varphi_{tx} \, \dd x,\\
+        \int_0^L \psi_t \psi_{xx} \, \dd x &= \cancelto{0}{[\psi_t \psi_x]_0^L} - \int_0^L \psi_x \psi_{tx} \, \dd x.
     \end{align*}
 
     Sustituyendo en la expresión de $\operatorname{Re}(U,AU)_{\mathcal{H}}$ se comprueba que se anulan todos los términos. En consecuencia:
@@ -947,54 +949,54 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
 
     Hallemos ahora la formulación variacional del problema (teniendo en cuenta las condiciones de frontera originales). Para ello, consideramos las funciones de prueba
 
-    \[w, z \in C_0^\infty(0,L).\]
+    \[w, z \in C_c^\infty(0,L).\]
 
     Multiplicando la primera ecuación de \eqref{opSobreyectEq2} por $w$, la segunda por $z$ e integrando sobre $(0,L)$:
 
     \begin{equation}
         \label{opSobreyectEq3}
         \begin{cases}
-            \displaystyle \rho_1 \int_0^L \varphi w \, dx - k \int_0^L(\varphi_x + \psi)_x w \, dx &= \displaystyle\rho_1 \int_0^L (f_1 + f_2) w \, dx\\
-            \displaystyle \rho_2\int_0^L \psi z \, dx - b \int_0^L \psi_{xx} z \, dx + k \int_0^L (\varphi_x + \psi) z \, dx &= \displaystyle\rho_2 \int_0^L (f_3 + f_4) z \, dx.
+            \displaystyle \rho_1 \int_0^L \varphi w \, \dd x - k \int_0^L(\varphi_x + \psi)_x w \, \dd x &= \displaystyle\rho_1 \int_0^L (f_1 + f_2) w \, \dd x\\
+            \displaystyle \rho_2\int_0^L \psi z \, \dd x - b \int_0^L \psi_{xx} z \, \dd x + k \int_0^L (\varphi_x + \psi) z \, \dd x &= \displaystyle\rho_2 \int_0^L (f_3 + f_4) z \, \dd x.
         \end{cases}
     \end{equation}
 
     Integramos por partes los términos con derivadas espaciales:
 
     \begin{align*}
-        \int_0^L (\varphi_x + \psi)_x w \, dx &= \cancelto{0}{[w(\varphi_x + \psi)]_0^L} - \int_0^L(\varphi_x + \psi) w_x \, dx\\
-        \int_0^L\psi_{xx}z \, dx &= \cancelto{0}{[z \psi_x]_0^L} - \int_0^L \psi_x z_x \, dx. 
+        \int_0^L (\varphi_x + \psi)_x w \, \dd x &= \cancelto{0}{[w(\varphi_x + \psi)]_0^L} - \int_0^L(\varphi_x + \psi) w_x \, \dd x\\
+        \int_0^L\psi_{xx}z \, \dd x &= \cancelto{0}{[z \psi_x]_0^L} - \int_0^L \psi_x z_x \, \dd x. 
     \end{align*}
 
     Ahora sustituimos en \eqref{opSobreyectEq3}:
 
     \begin{equation*}
         \begin{cases}
-            \displaystyle \rho_1 \int_0^L \varphi w \, dx + k \int_0^L(\varphi_x + \psi) w_x \, dx &= \displaystyle\rho_1 \int_0^L (f_1 + f_2) w \, dx\\
-            \displaystyle \rho_2\int_0^L \psi z \, dx + b \int_0^L \psi_{x} z_x \, dx + k \int_0^L (\varphi_x + \psi) z \, dx &= \displaystyle\rho_2 \int_0^L (f_3 + f_4) z \, dx.
+            \displaystyle \rho_1 \int_0^L \varphi w \, \dd x + k \int_0^L(\varphi_x + \psi) w_x \, \dd x &= \displaystyle\rho_1 \int_0^L (f_1 + f_2) w \, \dd x\\
+            \displaystyle \rho_2\int_0^L \psi z \, \dd x + b \int_0^L \psi_{x} z_x \, \dd x + k \int_0^L (\varphi_x + \psi) z \, \dd x &= \displaystyle\rho_2 \int_0^L (f_3 + f_4) z \, \dd x.
         \end{cases}
     \end{equation*}
 
     Ahora, sumamos ambas ecuaciones y agrupamos de manera conveniente:
 
     \begin{align*}
-        \rho_1 \int_0^L \varphi w \, dx + \rho_2\int_0^L \psi z \, dx &+ b \int_0^L \psi_{x} z_x \, dx + k\int_0^L(\varphi_x + \psi)(w_x + z) \, dx\\ 
-        &= \rho_1\int_0^L (f_1 + f_2) w \, dx + \rho_2 \int_0^L (f_3 + f_4) z \, dx.
+        \rho_1 \int_0^L \varphi w \, \dd x + \rho_2\int_0^L \psi z \, \dd x &+ b \int_0^L \psi_{x} z_x \, \dd x + k\int_0^L(\varphi_x + \psi)(w_x + z) \, \dd x\\ 
+        &= \rho_1\int_0^L (f_1 + f_2) w \, \dd x + \rho_2 \int_0^L (f_3 + f_4) z \, \dd x.
     \end{align*}
 
     Esta es, finalmente, la formulación variacional del problema \eqref{opSobreyectEq2}. Para hallar la solución del problema variacional, usaremos el \textcolor{green}{Teorema de Lax-Milgram}. Para ello, necesitamos plantear la formulación variacional de Hilbert. Así, basándonos en los términos usados en la igualdad anterior, fijamos
 
     \[(w,z) \in H_0^1(0,L) \times H_0^1(0,L).\]
 
-    Podemos hacer esto sin alterar el hilo argumental dado hasta el momento, simplemente por la densidad de $C_0^\infty(0,L)$ en $H_0^1(0,L)$.
+    Podemos hacer esto sin alterar el hilo argumental dado hasta el momento, simplemente por la densidad de $C_c^\infty(0,L)$ en $H_0^1(0,L)$.
 
     Dicho eso, definimos el funcional $a : \big(H_0^1(0,L) \times H_0^1(0,L)\big) \times \big(H_0^1(0,L) \times H_0^1(0,L)\big) \rightarrow \mathbb{C}$ como
 
-    \[a\big((w,z),(\varphi, \psi) \big) = \rho_1 \int_0^L \varphi w \, dx + \rho_2\int_0^L \psi z \, dx + b \int_0^L \psi_{x} z_x \, dx + k\int_0^L(\varphi_x + \psi)(w_x + z) \, dx,\]
+    \[a\big((w,z),(\varphi, \psi) \big) = \rho_1 \int_0^L \varphi w \, \dd x + \rho_2\int_0^L \psi z \, \dd x + b \int_0^L \psi_{x} z_x \, \dd x + k\int_0^L(\varphi_x + \psi)(w_x + z) \, \dd x,\]
 
     y el funcional $h : H_0^1(0,L) \times H_0^1(0,L) \rightarrow \mathbb{C}$ como:
 
-    \[h(w,z) = \rho_1\int_0^L (f_1 + f_2) w \, dx + \rho_2 \int_0^L (f_3 + f_4) z \, dx.\]
+    \[h(w,z) = \rho_1\int_0^L (f_1 + f_2) w \, \dd x + \rho_2 \int_0^L (f_3 + f_4) z \, \dd x.\]
 
     Esto nos permite reescribir la formulación variacional del problema como
 
@@ -1003,7 +1005,7 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
     Para usar el \textcolor{green}{Teorema de Lax-Milgram} debemos probar que $a$ es una forma bilineal y coerciva. Empecemos comprobando que es coerciva. Para ello, en primer lugar, tendremos que $a\big((\varphi, \psi), (\varphi, \psi)\big)$ es:
 
     \begin{align*}
-        a\big((\varphi, \psi), (\varphi, \psi)\big) = \rho_1 \lVert \varphi \lVert^2_{L^2} + \rho_2 \lVert \psi \lVert_{L^2}^2 + b \lVert \psi_x \lVert^2_{L^2} + k \lVert \varphi_x + \psi \lVert_{L^2}^2.
+        a\big((\varphi, \psi), (\varphi, \psi)\big) = \rho_1 \lVert \varphi \rVert^2_{L^2} + \rho_2 \lVert \psi \rVert_{L^2}^2 + b \lVert \psi_x \rVert^2_{L^2} + k \lVert \varphi_x + \psi \rVert_{L^2}^2.
     \end{align*}    
 
     Ahora escribimos $\varphi_x$ como:
@@ -1012,7 +1014,7 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
 
     y usando la desigualdad triangular se tiene que:
 
-    \[\lVert \varphi_x \lVert_{L^2} \leq \lVert \varphi_x + \psi \lVert_{L^2} + \lVert \psi \lVert_{L^2}.\]
+    \[\lVert \varphi_x \rVert_{L^2} \leq \lVert \varphi_x + \psi \rVert_{L^2} + \lVert \psi \rVert_{L^2}.\]
 
     Consideremos ahora la siguiente desigualdad:
 
@@ -1025,7 +1027,7 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
 
     Aplicándola a la desigualdad obtenida, se obtiene:
 
-    \[\lVert \varphi_x \lVert^2_{L^2} \leq 2\lVert \varphi_x + \psi \lVert^2_{L^2} + 2\lVert \psi \lVert^2_{L^2}.\]
+    \[\lVert \varphi_x \rVert^2_{L^2} \leq 2\lVert \varphi_x + \psi \rVert^2_{L^2} + 2\lVert \psi \rVert^2_{L^2}.\]
 
     Dicho lo anterior, y recordando ahora que las constantes $\rho_1, \rho_2, b, k$ son estrictamente mayores que cero, tomamos
 
@@ -1033,25 +1035,25 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
 
     Así, se tiene que
 
-    \[a\big((\varphi, \psi), (\varphi, \psi)\big) \geq C \big( \lVert \varphi \lVert^2_{L^2} + \lVert \psi \lVert_{L^2}^2 + \lVert \psi_x \lVert^2_{L^2} + \lVert \varphi_x + \psi \lVert_{L^2}^2 \big) > 0,\]
+    \[a\big((\varphi, \psi), (\varphi, \psi)\big) \geq C \big( \lVert \varphi \rVert^2_{L^2} + \lVert \psi \rVert_{L^2}^2 + \lVert \psi_x \rVert^2_{L^2} + \lVert \varphi_x + \psi \rVert_{L^2}^2 \big) > 0,\]
 
     y en consecuencia, utilizando además el resultado obtenido anteriormente:
 
     \begin{align*}
-        a\big((\varphi, \psi), (\varphi, \psi)\big) &> C \lVert \psi_x \lVert^2_{L^2},\\
-        a\big((\varphi, \psi), (\varphi, \psi)\big) &> C\big(\lVert \varphi_x + \psi \lVert_{L^2} + \lVert \psi \lVert_{L^2} \big) > \frac{1}{2}C \lVert \varphi_x \lVert^2_{L^2}.
+        a\big((\varphi, \psi), (\varphi, \psi)\big) &> C \lVert \psi_x \rVert^2_{L^2},\\
+        a\big((\varphi, \psi), (\varphi, \psi)\big) &> C\big(\lVert \varphi_x + \psi \rVert_{L^2} + \lVert \psi \rVert_{L^2} \big) > \frac{1}{2}C \lVert \varphi_x \rVert^2_{L^2}.
     \end{align*}
 
     Así, sumando ambas desigualdades se tiene que:
 
     \begin{align*}
-        2a\big((\varphi, \psi), (\varphi, \psi)\big) &> C \lVert \psi_x \lVert^2_{L^2} + \frac{1}{2}C \lVert \varphi_x \lVert^2_{L^2} \geq \frac{C}{2}\big( \lVert \psi_x \lVert^2_{L^2} + \lVert \varphi_x \lVert^2_{L^2} \big)\\
-        \implies a\big((\varphi, \psi), (\varphi, \psi)\big) &>\frac{C}{4}\big( \lVert \psi_x \lVert^2_{L^2} + \lVert \varphi_x \lVert^2_{L^2} \big).
+        2a\big((\varphi, \psi), (\varphi, \psi)\big) &> C \lVert \psi_x \rVert^2_{L^2} + \frac{1}{2}C \lVert \varphi_x \rVert^2_{L^2} \geq \frac{C}{2}\big( \lVert \psi_x \rVert^2_{L^2} + \lVert \varphi_x \rVert^2_{L^2} \big)\\
+        \implies a\big((\varphi, \psi), (\varphi, \psi)\big) &>\frac{C}{4}\big( \lVert \psi_x \rVert^2_{L^2} + \lVert \varphi_x \rVert^2_{L^2} \big).
     \end{align*}
 
     Finalmente, esto da como resultado:
 
-    \[a\big((\varphi, \psi), (\varphi, \psi)\big) >\frac{C}{4}\big( \lVert \psi \lVert^2_{H^1_0} + \lVert \varphi \lVert^2_{_{H^1_0}} \big) > \frac{C}{4}\lVert (\varphi, \psi) \lVert^2_{H_0^1 \times H_0^1},\]
+    \[a\big((\varphi, \psi), (\varphi, \psi)\big) >\frac{C}{4}\big( \lVert \psi \rVert^2_{H^1_0} + \lVert \varphi \rVert^2_{_{H^1_0}} \big) > \frac{C}{4}\lVert (\varphi, \psi) \rVert^2_{H_0^1 \times H_0^1},\]
 
     lo cual prueba que $a$ es coerciva.
 
@@ -1065,11 +1067,11 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
     
     Para ello, empezamos considerando el par de funciones de prueba $(w,0)$, con $w \in H_0^1(0,L)$. Sabemos que para este par existe una solución $(\varphi, \psi)$ al problema variacional y, en particular, se satisface la siguiente ecuación:
 
-    \[\rho_1 \int_0^L \varphi w \, dx + k \int_0^L(\varphi_x + \psi) w_x \, dx = \displaystyle\rho_1 \int_0^L (f_1 + f_2) w \, dx.\]    
+    \[\rho_1 \int_0^L \varphi w \, \dd x + k \int_0^L(\varphi_x + \psi) w_x \, \dd x = \displaystyle\rho_1 \int_0^L (f_1 + f_2) w \, \dd x.\]    
 
     Reordenando se obtiene que:
 
-    \[\int_0^L(\varphi_x + \psi) w_x \, dx = \int_0^L \big[k^{-1}\rho_1(f_1 + f_2) - k^{-1}\rho_1\varphi \big]w \, dx,\]
+    \[\int_0^L(\varphi_x + \psi) w_x \, \dd x = \int_0^L \big[k^{-1}\rho_1(f_1 + f_2) - k^{-1}\rho_1\varphi \big]w \, \dd x,\]
 
     lo cual significa, en un sentido distribucional:
 

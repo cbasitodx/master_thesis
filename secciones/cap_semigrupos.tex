@@ -114,13 +114,13 @@ Sea $\{T(t), t \geq 0\}$ un semigrupo fuertemente continuo. Entonces:
 
     \item Sea $A$ un generador infinitesimal de $T(t)$; entonces, $A$ es densamente definido y cerrado. Para $e \in D(A)$, $t \mapsto T(t) e$ es continuamente diferenciable y
 
-    \[\frac{d}{dt}T(t)e = AT(t)e = T(t)Ae, \quad t > 0.\]
+    \[\frac{\dd}{\dd t}T(t)e = AT(t)e = T(t)Ae, \quad t > 0.\]
 
     \item $\bigcap_{m \geq 1} D(A^m)$ es denso en $E_0$.
 
     \item Para $\operatorname{Re}\lambda > \beta$ con $\beta$ dado por el Teorema \ref{ch:semigrupos:th:cotaExp}, $\lambda$ está en el resolvente $\rho(A)$ de $A$ y:
 
-    \[(\lambda - A)^{-1}e = \int_{0}^\infty \mathrm{e}^{-\lambda t}T(t) e \, dt, \quad \forall e \in E_0. \]
+    \[(\lambda - A)^{-1}e = \int_{0}^\infty \mathrm{e}^{-\lambda t}T(t) e \, \dd t, \quad \forall e \in E_0. \]
 \end{enumerate}
 \end{Teorema}
 
@@ -159,81 +159,81 @@ Sea $\{T(t), t \geq 0\}$ un semigrupo fuertemente continuo. Entonces:
 
     Seguimos a continuación con el tercer punto. Sea $e \in E_0$ y para $\varepsilon > 0$ definimos
 
-    \[e_{\varepsilon} := \frac{1}{\varepsilon}\int_0^{\varepsilon}T(t)e \, dt.\]
+    \[e_{\varepsilon} := \frac{1}{\varepsilon}\int_0^{\varepsilon}T(t)e \, \dd t.\]
 
-    Se sigue entonces que $e_{\varepsilon} \rightarrow e$ cuando $\varepsilon \rightarrow 0^+$. Esto se deduce de la siguiente manera: escribimos $e = \frac{1}{\varepsilon}\int_{0}^{\varepsilon}e \, dt$ y estudiamos la norma 
+    Se sigue entonces que $e_{\varepsilon} \rightarrow e$ cuando $\varepsilon \rightarrow 0^+$. Esto se deduce de la siguiente manera: escribimos $e = \frac{1}{\varepsilon}\int_{0}^{\varepsilon}e \, \dd t$ y estudiamos la norma 
     
-    \[||e_{\varepsilon} - e||_{E_0} = \left | \left | \frac{1}{\varepsilon}\int_0^{\varepsilon} (T(t)e -e ) \, dt \right | \right |_{E_0} \leq \frac{1}{\varepsilon} \int_0^{\varepsilon} ||(T(t)e - e)||_{E_0} \, dt.\]
+    \[||e_{\varepsilon} - e||_{E_0} = \left | \left | \frac{1}{\varepsilon}\int_0^{\varepsilon} (T(t)e -e ) \, \dd t \right | \right |_{E_0} \leq \frac{1}{\varepsilon} \int_0^{\varepsilon} ||(T(t)e - e)||_{E_0} \, \dd t.\]
 
     Consideramos ahora la función $f(t) = ||T(t)e - e||_{E_0}$, que sabemos es continua por el primer punto de este teorema y por la continuidad de la norma, y además $f(t) \rightarrow 0$ cuando $t \rightarrow 0^+$ por ser $T(t)$ un semigrupo fuertemente continuo. En particular, $f$ es continua en $[0,\varepsilon]$ y por este motivo alcanza un máximo $M(\varepsilon)$ en este intervalo tal que $M(\varepsilon) \rightarrow 0$ cuando $\varepsilon \rightarrow 0^+$. Así:
 
     \begin{align*}
-        0 \leq \frac{1}{\varepsilon} \int_0^{\varepsilon} f(t) \, dt \leq \frac{1}{\varepsilon} \int_0^{\varepsilon} M(\varepsilon) \, dt = M(\varepsilon).
+        0 \leq \frac{1}{\varepsilon} \int_0^{\varepsilon} f(t) \, \dd t \leq \frac{1}{\varepsilon} \int_0^{\varepsilon} M(\varepsilon) \, \dd t = M(\varepsilon).
     \end{align*}
 
-    Por lo tanto, cuando $\varepsilon \rightarrow 0^+$, se tiene que $\frac{1}{\varepsilon}\int_0^{\varepsilon} f(t) \, dt \rightarrow 0$, lo cual implica que $||e_{\varepsilon} - e||_{E_0} \rightarrow 0$, como queríamos mostrar.
+    Por lo tanto, cuando $\varepsilon \rightarrow 0^+$, se tiene que $\frac{1}{\varepsilon}\int_0^{\varepsilon} f(t) \, \dd t \rightarrow 0$, lo cual implica que $||e_{\varepsilon} - e||_{E_0} \rightarrow 0$, como queríamos mostrar.
 
     Luego, para $h > 0$ se verificará, atendiendo a lo anterior:
 
     \begin{align*}
-        \frac{1}{h}(T(t)e_{\varepsilon} - e_{\varepsilon}) &= \frac{1}{\varepsilon h} \left \{\int_{h}^{h + \varepsilon} T(t)e \, dt - \int_0^{\varepsilon} T(t)e \, dt \right \}\\
-        &= \frac{1}{\varepsilon h} \left \{\int_{h}^{h + \varepsilon} T(t)e \, dt - \int_0^{\varepsilon} T(t)e \, dt \right \}\\
-        &= \frac{1}{\varepsilon h} \left \{ \left ( \int_{h}^{\varepsilon} T(t)e \, dt + \int_{\varepsilon}^{h + \varepsilon} T(t)e \, dt\right ) - \left ( \int_0^{h} T(t)e \, dt + \int_h^{\varepsilon} T(t)e \, dt \right ) \right \}\\
-        &= \frac{1}{\varepsilon h} \left \{\int_{\varepsilon}^{h + \varepsilon} T(t)e \, dt - \int_0^{h} T(t)e \, dt \right \} \rightarrow \frac{1}{\varepsilon}(T(\varepsilon)e - e),
+        \frac{1}{h}(T(t)e_{\varepsilon} - e_{\varepsilon}) &= \frac{1}{\varepsilon h} \left \{\int_{h}^{h + \varepsilon} T(t)e \, \dd t - \int_0^{\varepsilon} T(t)e \, \dd t \right \}\\
+        &= \frac{1}{\varepsilon h} \left \{\int_{h}^{h + \varepsilon} T(t)e \, \dd t - \int_0^{\varepsilon} T(t)e \, \dd t \right \}\\
+        &= \frac{1}{\varepsilon h} \left \{ \left ( \int_{h}^{\varepsilon} T(t)e \, \dd t + \int_{\varepsilon}^{h + \varepsilon} T(t)e \, \dd t\right ) - \left ( \int_0^{h} T(t)e \, \dd t + \int_h^{\varepsilon} T(t)e \, \dd t \right ) \right \}\\
+        &= \frac{1}{\varepsilon h} \left \{\int_{\varepsilon}^{h + \varepsilon} T(t)e \, \dd t - \int_0^{h} T(t)e \, \dd t \right \} \rightarrow \frac{1}{\varepsilon}(T(\varepsilon)e - e),
     \end{align*}
 
     cuando $h \rightarrow 0^+$. En consecuencia, $e_{\varepsilon} \in D(A)$, lo que prueba que $A$ es densamente definido. Es decir, para un elemento arbitrario $e \in E_0$ encontramos una sucesión $(e_{\varepsilon(n)})$ contenida en $D(A)$ tal que $e_{\varepsilon(n)} \rightarrow e$; o, lo que es lo mismo, $\overline{D(A)} = E_0$. Por otra parte:
 
     \begin{align*}
-        \frac{d^+}{dt}T(t)e &= \lim_{h \rightarrow 0^+} \frac{1}{h} \Big \{T(t + h)e - T(t)e \Big \}\\
+        \frac{\dd^+}{\dd t}T(t)e &= \lim_{h \rightarrow 0^+} \frac{1}{h} \Big \{T(t + h)e - T(t)e \Big \}\\
         &= \lim_{h \rightarrow 0^+} \frac{1}{h} \Big \{T(t) (T(h)e - e)  \Big \} = T(t)Ae\\
         &= \lim_{h \rightarrow 0^+} \frac{1}{h} \Big \{T(h)T(t)e - T(t)e  \Big \} = AT(t)e,
     \end{align*}
 
     donde las dos últimas igualdades surgen de aplicar la propiedad de semigrupo sobre la primera igualdad. Resulta entonces que:
 
-    \[\frac{d^+}{dt}T(t)e = T(t)Ae = AT(t)e.\]
+    \[\frac{\dd^+}{\dd t}T(t)e = T(t)Ae = AT(t)e.\]
 
     Queda entonces probar que $A$ es cerrado. Recordemos que un operador (lineal) se dice cerrado sí y sólo si su gráfica (en este caso, la gráfica de $A$ es $\operatorname{graph}(A) = \{(x,Ax) : x \in D(A)\}$) es cerrada en la topología producto. Equivalentemente, un operador lineal $T : D(T) \subset X \rightarrow Y$ entre dos espacios de Banach se dirá cerrado si para toda sucesión $(x_n) \subset D(T)$ tal que $x_n \rightarrow x \in X$ y $Tx_n \rightarrow y \in Y$, entonces $x \in D(T)$ y $Tx = y$. Así, atendiendo al quinto punto de este teorema, tenemos que $(\lambda -A)^{-1} \in L(E_0)$. En consecuencia, como $(\lambda - A)^{-1}$ es continuo y su dominio es todo el espacio $E_0$, entonces el \textcolor{green}{teorema de la gráfica cerrada} nos asegura que este operador también es cerrado. Luego, $A$ es cerrado tal y como se pretendía demostrar.
 
     Nuestra prueba continúa entonces con el punto cuatro: Sea $\phi : \mathbb{R} \rightarrow \mathbb{R}$ una función en $C^{\infty}(\mathbb{R})$, tal que $\phi(t) = 0$ en entorno de $t = 0$ y para algún $t$ lo suficientemente grande. Sea $e \in E_0$ y
 
-    \[f = \int_0^\infty \phi(t) T(t) e \, dt.\]
+    \[f = \int_0^\infty \phi(t) T(t) e \, \dd t.\]
 
     Se sigue de
 
     \begin{align*}
-        \frac{1}{h}(T(h)f -f) &= \frac{1}{h}\left ( T(h)\int_0^\infty \phi(s) T(s) e \, ds - \int_0^\infty \phi(t) T(t) e \, dt \right )\\
-        &= \frac{1}{h}\left ( \int_0^\infty \phi(s) T(s + h) e \, ds - \int_0^\infty \phi(t) T(t) e \, dt \right )\\
-        &= \frac{1}{h}\left ( \int_0^\infty \phi(t-h) T(t) e \, dt - \int_0^\infty \phi(t) T(t) e \, dt \right )\\
-        &= \frac{1}{h} \int_0^\infty \Big( \phi(t-h) - \phi(t) \Big ) T(t) e \, dt
+        \frac{1}{h}(T(h)f -f) &= \frac{1}{h}\left ( T(h)\int_0^\infty \phi(s) T(s) e \, \dd s - \int_0^\infty \phi(t) T(t) e \, \dd t \right )\\
+        &= \frac{1}{h}\left ( \int_0^\infty \phi(s) T(s + h) e \, \dd s - \int_0^\infty \phi(t) T(t) e \, \dd t \right )\\
+        &= \frac{1}{h}\left ( \int_0^\infty \phi(t-h) T(t) e \, \dd t - \int_0^\infty \phi(t) T(t) e \, \dd t \right )\\
+        &= \frac{1}{h} \int_0^\infty \Big( \phi(t-h) - \phi(t) \Big ) T(t) e \, \dd t
     \end{align*}
 
     que $f \in D(A)$, pues
 
     \begin{align*}
-        \lim_{h \rightarrow 0^+} \frac{T(h)f - f}{h} = \lim_{h \rightarrow 0^+}\int_0^\infty \frac{\phi(t-h) - \phi(t)}{h} T(t) e \, dt = - \int_0^\infty \phi^{\prime}(t) T(t)e \, dt,
+        \lim_{h \rightarrow 0^+} \frac{T(h)f - f}{h} = \lim_{h \rightarrow 0^+}\int_0^\infty \frac{\phi(t-h) - \phi(t)}{h} T(t) e \, \dd t = - \int_0^\infty \phi^{\prime}(t) T(t)e \, \dd t,
     \end{align*}
 
     integral que existe por ser $\phi$ de clase $C^\infty(\mathbb{R})$. Además,
 
-    \[Af = - \int_0^{\infty}\phi^{\prime}(t) T(t) e \, dt.\]
+    \[Af = - \int_0^{\infty}\phi^{\prime}(t) T(t) e \, \dd t.\]
 
     Como $\phi \in C^\infty(\mathbb{R})$, podemos repetir el mismo argumento con $Af$ en vez de $f$. Iterando, obtenemos que:
 
-    \[A^mf = (-1)^m \int_0^{\infty}\phi^{(m)}(t) T(t) e \, dt,\]
+    \[A^mf = (-1)^m \int_0^{\infty}\phi^{(m)}(t) T(t) e \, \dd t,\]
 
     para todo $m \geq 1$. Adicionalmente, se verifica que $\displaystyle f \in \bigcap_{m \geq 1}D(A^m)$.
 
     Para probar que $\displaystyle \bigcap_{m \geq 1}D(A^m)$ es denso en $E_0$, tomemos $\phi$ satisfaciendo además que
 
-    \[\int_0^\infty \phi(t) dt = 1.\]
+    \[\int_0^\infty \phi(t) \, \dd t = 1.\]
 
     Entonces, si:
 
     \begin{align*}
-        f_n :&= \int_0^\infty n \phi(nt) T(t) e \, dt\\
-        &= \int_0^\infty \phi(s) T\left(\frac{s}{n}\right) e \, ds, \quad n = 1,2,\ldots
+        f_n :&= \int_0^\infty n \phi(nt) T(t) e \, \dd t\\
+        &= \int_0^\infty \phi(s) T\left(\frac{s}{n}\right) e \, \dd s, \quad n = 1,2,\ldots
     \end{align*}
 
     se tiene que $\displaystyle f_n \in \bigcap_{m \geq 1}D(A^m)$ y $f_n \rightarrow e$ cuando $n \rightarrow \infty$, lo cual basta para concluir la prueba.
@@ -241,13 +241,13 @@ Sea $\{T(t), t \geq 0\}$ un semigrupo fuertemente continuo. Entonces:
     El hecho de que $\displaystyle f_n \in \bigcap_{m \geq 1} D(A^m)$ se deduce de que $n \phi(nt)$ es también una función de clase $C^\infty(\mathbb{R})$ tal que $n \phi(nt) = 0$ en un entorno de $t = 0$ y para un $t$ lo suficientemente grande. Luego, $f_n \rightarrow e$ porque:
 
     \begin{align*}
-        ||f_n - e|| &= \left | \left |\int_0^\infty \phi(t) T\left(\frac{t}{n} \right)e \, dt - \int_0^\infty \phi(t)e \, dt \right | \right |\\
-        &\leq \int_0^\infty |\phi(t)| \left | \left |T\left(\frac{t}{n} \right)e - e\right | \right | \, dt,
+        ||f_n - e|| &= \left | \left |\int_0^\infty \phi(t) T\left(\frac{t}{n} \right)e \, \dd t - \int_0^\infty \phi(t)e \, \dd t \right | \right |\\
+        &\leq \int_0^\infty |\phi(t)| \left | \left |T\left(\frac{t}{n} \right)e - e\right | \right | \, \dd t,
     \end{align*}
 
     y así,
 
-    \[\lim_{n\rightarrow \infty} ||f_n - e|| \leq \lim_{n\rightarrow \infty} \int_0^\infty |\phi(t)| \left | \left |T\left(\frac{t}{n} \right)e - e\right | \right | \, dt.\]
+    \[\lim_{n\rightarrow \infty} ||f_n - e|| \leq \lim_{n\rightarrow \infty} \int_0^\infty |\phi(t)| \left | \left |T\left(\frac{t}{n} \right)e - e\right | \right | \, \dd t.\]
 
     Por ser $\{T(t), t \geq 0\}$ un semigrupo fuertemente continuo, se tiene que $||T(t/n)e - e||\rightarrow 0$ cuando $n \rightarrow \infty$. Luego, defino $a_n : [0,\infty) \rightarrow \mathbb{R}$ como:
 
@@ -276,38 +276,38 @@ Sea $\{T(t), t \geq 0\}$ un semigrupo fuertemente continuo. Entonces:
 
     Finalicemos entonces la demostración con la prueba del quinto y último punto. Definimos $R(\lambda) \in L(E_0)$ como:
 
-    \[R(\lambda)e = \int_0^\infty \mathrm{e}^{-\lambda t}T(t)e \, dt.\]
+    \[R(\lambda)e = \int_0^\infty \mathrm{e}^{-\lambda t}T(t)e \, \dd t.\]
 
     Probemos entonces que la norma de $R(\lambda)$ es acotada cuando $\operatorname{Re}(\lambda) > \beta$, donde $\beta$ viene dado por el Teorema \ref{ch:semigrupos:th:cotaExp}:
     \begin{align*}
-        ||R(\lambda)||_{L(E_0)} = \sup_{\substack{e \in E_0 \\ e \neq 0}} \frac{||R(\lambda)||_{E_0}}{||e||_{E_0}} &\leq \frac{\left | \left | \int_0^{\infty}\mathrm{e}^{-\lambda t}T(t)e \, dt \right | \right |_{E_0}}{||e||_{E_0}}\\
-        &\leq \frac{\int_0^{\infty}|\mathrm{e}^{-\lambda t}| \, ||T(t)e||_{E_0} \, dt}{||e||_{E_0}}\\
-        \text{(Teorema \ref{ch:semigrupos:th:cotaExp})}&\leq \frac{M ||e||_{E_0} \int_0^\infty \mathrm{e}^{-(\operatorname{Re}(\lambda) - \beta)} \, dt}{||e||_{E_0}}\\
+        ||R(\lambda)||_{L(E_0)} = \sup_{\substack{e \in E_0 \\ e \neq 0}} \frac{||R(\lambda)||_{E_0}}{||e||_{E_0}} &\leq \frac{\left | \left | \int_0^{\infty}\mathrm{e}^{-\lambda t}T(t)e \, \dd t \right | \right |_{E_0}}{||e||_{E_0}}\\
+        &\leq \frac{\int_0^{\infty}|\mathrm{e}^{-\lambda t}| \, ||T(t)e||_{E_0} \, \dd t}{||e||_{E_0}}\\
+        \text{(Teorema \ref{ch:semigrupos:th:cotaExp})}&\leq \frac{M ||e||_{E_0} \int_0^\infty \mathrm{e}^{-(\operatorname{Re}(\lambda) - \beta)} \, \dd t}{||e||_{E_0}}\\
         \text{(}\operatorname{Re}(\lambda) > \beta\text{)}&\leq \frac{M}{\operatorname{Re}(\lambda) - \beta}.
     \end{align*}
 
     Sea ahora $e \in E_0$ y $h>0$, probaremos que $R(\lambda)e \in D(A)$. Empezamos comprobando que $R(\lambda)$ y $T(h)$ conmutan:
 
-    \[R(\lambda)T(h)e = \int_0^\infty\mathrm{e}^{-\lambda t}T(t)T(h)e \, dt = \int_0^\infty\mathrm{e}^{-\lambda t}T(t + h)e \, dt = \mathrm{e}^{\lambda h} \int_h^\infty \mathrm{e}^{-\lambda t} T(t)e \, dt,\]
+    \[R(\lambda)T(h)e = \int_0^\infty\mathrm{e}^{-\lambda t}T(t)T(h)e \, \dd t = \int_0^\infty\mathrm{e}^{-\lambda t}T(t + h)e \, \dd t = \mathrm{e}^{\lambda h} \int_h^\infty \mathrm{e}^{-\lambda t} T(t)e \, \dd t,\]
 
     y por otro lado,
 
-    \[T(h)R(\lambda)e = \int_0^\infty \mathrm{e}^{-\lambda t}T(h)T(t)e \, dt = \mathrm{e}^{\lambda h} \int_h^\infty \mathrm{e}^{-\lambda t} T(t)e \, dt.\]
+    \[T(h)R(\lambda)e = \int_0^\infty \mathrm{e}^{-\lambda t}T(h)T(t)e \, \dd t = \mathrm{e}^{\lambda h} \int_h^\infty \mathrm{e}^{-\lambda t} T(t)e \, \dd t.\]
 
     Luego $R(\lambda)T(h)e = T(h)R(\lambda)e$ como queríamos comprobar. Entonces:
 
     \begin{align*}
         \frac{\big(T(h) - I\big)}{h}R(\lambda)e &= R(\lambda)\frac{T(h)e - e}{h}\\
-        &=\frac{1}{h}\left [\int_h^\infty \mathrm{e}^{\lambda(-t + h)}T(t)e \, dt - \int_0^\infty\mathrm{e}^{-\lambda t}T(t)e \, dt \right ]\\
-        &=\frac{1}{h}\left [\int_0^\infty \mathrm{e}^{\lambda(-t + h)}T(t)e \, dt - \int_0^h \mathrm{e}^{\lambda(-t + h)}T(t)e \, dt - \int_0^\infty\mathrm{e}^{-\lambda t}T(t)e \, dt \right ]\\
-        &=\frac{1}{h}\left[\int_0^\infty (\mathrm{e}^{\lambda h} - 1) \mathrm{e}^{-\lambda t}T(t)e \, dt - \int_0^h\mathrm{e}^{\lambda(-t + h)}T(t)e \, dt\right],
+        &=\frac{1}{h}\left [\int_h^\infty \mathrm{e}^{\lambda(-t + h)}T(t)e \, \dd t - \int_0^\infty\mathrm{e}^{-\lambda t}T(t)e \, \dd t \right ]\\
+        &=\frac{1}{h}\left [\int_0^\infty \mathrm{e}^{\lambda(-t + h)}T(t)e \, \dd t - \int_0^h \mathrm{e}^{\lambda(-t + h)}T(t)e \, \dd t - \int_0^\infty\mathrm{e}^{-\lambda t}T(t)e \, \dd t \right ]\\
+        &=\frac{1}{h}\left[\int_0^\infty (\mathrm{e}^{\lambda h} - 1) \mathrm{e}^{-\lambda t}T(t)e \, \dd t - \int_0^h\mathrm{e}^{\lambda(-t + h)}T(t)e \, \dd t\right],
     \end{align*}
 
     y se tiene que:
 
     \begin{align*}
-        &\lim_{h \rightarrow 0^+} \frac{\mathrm{e}^{\lambda h} - 1}{h}\int_0^\infty \mathrm{e}^{-\lambda t}T(t)e \, dt = \lambda R(\lambda) e,\\
-        &\lim_{h \rightarrow 0^+} \frac{1}{h}\int_0^h \mathrm{e}^{\lambda(-t + h)}T(t)e \, dt = e,
+        &\lim_{h \rightarrow 0^+} \frac{\mathrm{e}^{\lambda h} - 1}{h}\int_0^\infty \mathrm{e}^{-\lambda t}T(t)e \, \dd t = \lambda R(\lambda) e,\\
+        &\lim_{h \rightarrow 0^+} \frac{1}{h}\int_0^h \mathrm{e}^{\lambda(-t + h)}T(t)e \, \dd t = e,
     \end{align*}
 
     por lo tanto,
@@ -349,7 +349,7 @@ Terminamos esta sección con un resultado de unicidad:\\
     Sea $e \in D(A) = D(B)$. Del tercer punto del teorema anterior (Teorema \ref{ch:semigrupos:th:resSemiFuerteCont}) se sigue que $s \mapsto T(t-s)S(s)e$ es continuamente diferenciable, pues $S(s)e$ es un elemento de $E_0$ y consideramos $s \in [0, t]$ (con $t$ fija). Atendamos ahora al siguiente desarrollo:
 
     \begin{align*}
-        &\frac{d}{ds}T(t-s)S(s)e\\
+        &\frac{\dd}{\dd s}T(t-s)S(s)e\\
         &= \lim_{h \rightarrow 0^+} \frac{T(t-(s+h))S(s+h)e - T(t-s)S(s)e}{h}\\
         &= \lim_{h \rightarrow 0^+} \frac{T(t-(s+h))S(s+h)e - T(t - (s+h))S(s)e + T(t - (s+h))S(s)e - T(t-s)S(s)e}{h}\\
         &=\lim_{h \rightarrow 0^+} T(t-(s+h)) \Bigg ( \frac{S(s+h)e - S(s)e}{h} \Bigg ) + \Bigg(\frac{T(t-(s+h)) - T(t-s)}{h} S(s)e \Bigg )\\
@@ -358,7 +358,7 @@ Terminamos esta sección con un resultado de unicidad:\\
 
     Ahora, una vez más, invocamos el tercer punto del teorema anterior junto con la hipótesis de que $A = B$ para justificar que $T(t-s)BS(s)e = T(t-s)AS(s)e = AT(t-s)S(s)e$, lo cual nos deja como resultado:
 
-    \[\frac{d}{ds}T(t-s)S(s)e = 0.\]
+    \[\frac{\dd}{\dd s}T(t-s)S(s)e = 0.\]
 
     Por lo tanto, la aplicación $s \mapsto T(t-s)S(s)e$ es contante y, en particular (y a consecuencia de), sus valores en $s = 0$ y $s=t$ son iguales; esto es, \[T(t)e = S(t)e.\] Esto es válido para todo $e \in D(A) = D(B)$, y como $D(A)$ es denso en $E_0$ y tanto $S(t)$ como $T(t)$ son acotados (al ser operadores lineales, esto implica que son continuos, luego son secuencialmente continuos), entonces $T(t)e = S(t)e$ para todo $e \in E_0$.
 \end{proof}
@@ -399,9 +399,9 @@ Dada la definición anterior, estamos ya en posición de continuar con la demost
     La implicación $1. \implies 2.$ es inmediata por el Teorema \ref{ch:semigrupos:th:resSemiFuerteCont}. En particular,
 
     \begin{align*}
-        ||(\lambda -A)^{-1}||_{E_0} &= \left | \left | \int_0^{\infty}\mathrm{e}^{-\lambda t}T(t)e \, dt \right | \right |_{E_0}\\
-        &\leq \int_0^\infty \mathrm{e}^{-\lambda t} ||T(t)e||_{E_0} \, dt\\
-        \text{(por }1.\text{)}&\leq||e||_{E_0}\int_0^\infty \mathrm{e}^{-\lambda t} \mathrm{e}^{\omega t} \, dt\\
+        ||(\lambda -A)^{-1}||_{E_0} &= \left | \left | \int_0^{\infty}\mathrm{e}^{-\lambda t}T(t)e \, \dd t \right | \right |_{E_0}\\
+        &\leq \int_0^\infty \mathrm{e}^{-\lambda t} ||T(t)e||_{E_0} \, \dd t\\
+        \text{(por }1.\text{)}&\leq||e||_{E_0}\int_0^\infty \mathrm{e}^{-\lambda t} \mathrm{e}^{\omega t} \, \dd t\\
         &\leq ||e||_{E_0} \frac{1}{\lambda - \omega}, \text{ si } \lambda > \omega.
     \end{align*}
 
@@ -564,16 +564,16 @@ Dada la definición anterior, estamos ya en posición de continuar con la demost
     Considerando lo anterior y tomando $\lambda, \mu$ (y $t > 0$) cualesquiera:
 
     \begin{align*}
-        ||\mathrm{e}^{tA_\lambda}e - \mathrm{e}^{tA_\mu}e||_{E_0} = \left | \left | \int_0^1 \frac{d}{ds}(\mathrm{e}^{tsA_\lambda}\mathrm{e}^{t(1-s)A_\mu}e) \, ds \right | \right |_{E_0}\footnotemark ,
+        ||\mathrm{e}^{tA_\lambda}e - \mathrm{e}^{tA_\mu}e||_{E_0} = \left | \left | \int_0^1 \frac{\dd}{\dd s}(\mathrm{e}^{tsA_\lambda}\mathrm{e}^{t(1-s)A_\mu}e) \, \dd s \right | \right |_{E_0}\footnotemark ,
     \end{align*}
     \footnotetext{Definiendo $f(s) := \mathrm{e}^{tsA_\lambda}\mathrm{e}^{t(1-s)A_\mu}e$, se tiene que $f(0) = \mathrm{e}^{tA_\mu}e$ y $f(1) = \mathrm{e}^{tA_\lambda}e$, por lo que
 
-    \[f(1) - f(0) = (\mathrm{e}^{tA_\lambda} - \mathrm{e}^{tA_\mu})e = \int_0^1 f^\prime(s) \, ds\]
+    \[f(1) - f(0) = (\mathrm{e}^{tA_\lambda} - \mathrm{e}^{tA_\mu})e = \int_0^1 f^\prime(s) \, \dd s\]
     }
     nótese que:
 
     \begin{align*}
-        \frac{d}{ds} \mathrm{e}^{tsA_\lambda} &= \frac{d}{ds} \sum_{n = 0}^\infty \frac{s^n}{n!} (tA_\lambda)^n\\
+        \frac{\dd}{\dd s} \mathrm{e}^{tsA_\lambda} &= \frac{\dd}{\dd s} \sum_{n = 0}^\infty \frac{s^n}{n!} (tA_\lambda)^n\\
         &= \sum_{n = 1}^\infty n \frac{s^{n-1}}{n!} (tA_\lambda)^n\\
         &= \sum_{n = 1}^\infty \frac{s^{n-1}}{(n-1)!} (tA_\lambda)^n\\
         &= \sum_{n=0}^\infty \frac{s^n}{n!} (tA_\lambda)^{n+1}\\
@@ -583,10 +583,10 @@ Dada la definición anterior, estamos ya en posición de continuar con la demost
     y así, sustituyendo en la expresión anterior:
 
     \begin{align*}
-        \left | \left | \int_0^1 \frac{d}{ds}(\mathrm{e}^{tsA_\lambda}\mathrm{e}^{t(1-s)A_\mu}e) \, ds \right | \right |_{E_0} &= \left | \left | \int_0^1 \mathrm{e}^{tA_\mu}\frac{d}{ds}\Big(\mathrm{e}^{ts(A_\lambda - A_\mu)}e\Big) \, ds \right | \right |_{E_0}\\
-        &= \left | \left | \int_0^1 t\mathrm{e}^{tsA_\lambda}\mathrm{e}^{t(1-s)A_\mu}\Big(A_\lambda e - A_\mu e\Big) \, ds \right | \right |_{E_0}\footnotemark\\
-        &\leq\int_0^1 t \, ||\mathrm{e}^{tsA_\lambda}||_{E_0} \, ||\mathrm{e}^{t(1-s)A_\mu}||_{E_0} \, ||A_\lambda e - A_\mu e||_{E_0} \, ds\\
-        &\leq \int_0^1 t ||A_\lambda e - A_\mu e||_{E_0} \, ds\\
+        \left | \left | \int_0^1 \frac{\dd}{\dd s}(\mathrm{e}^{tsA_\lambda}\mathrm{e}^{t(1-s)A_\mu}e) \, \dd s \right | \right |_{E_0} &= \left | \left | \int_0^1 \mathrm{e}^{tA_\mu}\frac{\dd}{\dd s}\Big(\mathrm{e}^{ts(A_\lambda - A_\mu)}e\Big) \, \dd s \right | \right |_{E_0}\\
+        &= \left | \left | \int_0^1 t\mathrm{e}^{tsA_\lambda}\mathrm{e}^{t(1-s)A_\mu}\Big(A_\lambda e - A_\mu e\Big) \, \dd s \right | \right |_{E_0}\footnotemark\\
+        &\leq\int_0^1 t \, ||\mathrm{e}^{tsA_\lambda}||_{E_0} \, ||\mathrm{e}^{t(1-s)A_\mu}||_{E_0} \, ||A_\lambda e - A_\mu e||_{E_0} \, \dd s\\
+        &\leq \int_0^1 t ||A_\lambda e - A_\mu e||_{E_0} \, \dd s\\
         &\leq t ||A_\lambda e - A_\mu e||_{E_0}
     \end{align*}
     \footnotetext{Por la conmutatividad probada anteriormente, podemos reordenar la expresión}
@@ -602,19 +602,19 @@ Dada la definición anterior, estamos ya en posición de continuar con la demost
     \[T(t)e \equiv \lim_{\lambda \rightarrow \infty^+} \mathrm{e}^{tA_\lambda}e\]
 
     existe uniformemente\footnotemark para $0 \leq t \leq t_0$, siendo $t_0 > 0$ arbitrario.
-    \footnotetext{$\forall \varepsilon > 0 \ \exists \Lambda = \Lambda(\varepsilon)$ tal que $\lambda \geq \Lambda \implies \sup_{t \in [0, t_0]}\lVert \mathrm{e}^{tA_\lambda}e - T(t)e \lVert < \varepsilon$}
-    Asimismo, $t \mapsto T(t)e$ es continuo para $t \geq 0$, $T(t)e \rightarrow e$ en $E_0$ cuando $t \rightarrow 0^+$, $T(t)\big(T(s)e\big) = T(t+s)e$ para $t,s \geq 0$ y $\lVert T(t)e\lVert_{E_0} \leq \lVert e \lVert_{E_0}$. Finalmente, por unicidad del límite, podemos definir de forma única\footnotemark $T(t) \in L(E_0)$ para cada $t \geq 0$ (por arbitrariedad de $t_0$, podemos expandir el intervalo $[0, t_0]$ tanto como queramos).
+    \footnotetext{$\forall \varepsilon > 0 \ \exists \Lambda = \Lambda(\varepsilon)$ tal que $\lambda \geq \Lambda \implies \sup_{t \in [0, t_0]}\lVert \mathrm{e}^{tA_\lambda}e - T(t)e \rVert < \varepsilon$}
+    Asimismo, $t \mapsto T(t)e$ es continuo para $t \geq 0$, $T(t)e \rightarrow e$ en $E_0$ cuando $t \rightarrow 0^+$, $T(t)\big(T(s)e\big) = T(t+s)e$ para $t,s \geq 0$ y $\lVert T(t)e\rVert_{E_0} \leq \lVert e \rVert_{E_0}$. Finalmente, por unicidad del límite, podemos definir de forma única\footnotemark $T(t) \in L(E_0)$ para cada $t \geq 0$ (por arbitrariedad de $t_0$, podemos expandir el intervalo $[0, t_0]$ tanto como queramos).
     \footnotetext{$A$ es densamente definido, luego para cualquier $e \in E_0$ se puede construir $(e_n) \subset D(A)$ tal que $e_n \rightarrow e$. Así, aunque hayamos considerado $e \in D(A)$, la definición se puede extender a $E_0$.}
     
     Con todo lo anterior, tenemos que $\{T(t), t \geq 0\}$ es un semigrupo. Veamos que es un semigrupo fuertemente continuo. Para ello, sean $e \in E_0$ y $\varepsilon > 0$; entonces, existen (por densidad de $D(A)$) $e_1 \in D(A)$ y $\delta > 0$ tales que
 
-    \[\lVert e_1 -e\lVert_{E_0} \leq \frac{\varepsilon}{3} \text{ y } \lVert T(t)e_1 -T(t)e\lVert_{E_0} \leq \frac{\varepsilon}{3}, \ 0 \leq t \leq \delta.\]
+    \[\lVert e_1 -e\rVert_{E_0} \leq \frac{\varepsilon}{3} \text{ y } \lVert T(t)e_1 -T(t)e\rVert_{E_0} \leq \frac{\varepsilon}{3}, \ 0 \leq t \leq \delta.\]
 
     Se sigue entonces que, mediante desigualdad triangular:
 
     \begin{align*}
-        \lVert T(t)e - e\lVert_{E_0} &\leq \lVert T(t)(e-e_1)\lVert_{E_0} + \lVert T(t)e_1 - e_1\lVert_{E_0} + \lVert e_1 - e \lVert_{E_0}\\
-        &\leq \lVert e - e_1 \lVert_{E_0} +  \lVert T(t)e_1 - e_1\lVert_{E_0} + \lVert e_1 - e \lVert_{E_0}\\
+        \lVert T(t)e - e\rVert_{E_0} &\leq \lVert T(t)(e-e_1)\rVert_{E_0} + \lVert T(t)e_1 - e_1\rVert_{E_0} + \lVert e_1 - e \rVert_{E_0}\\
+        &\leq \lVert e - e_1 \rVert_{E_0} +  \lVert T(t)e_1 - e_1\rVert_{E_0} + \lVert e_1 - e \rVert_{E_0}\\
         &\leq \varepsilon/3 + \varepsilon/3 + \varepsilon/3 = \varepsilon.
     \end{align*}
 
@@ -624,36 +624,36 @@ Dada la definición anterior, estamos ya en posición de continuar con la demost
 
     \begin{align*}
         T(t)e - e &= \lim_{\lambda \rightarrow \infty^+}(\mathrm{e}^{tA_\lambda}e - e)\\
-        &= \lim_{\lambda \rightarrow \infty^+} \int_0^t \frac{d}{ds} (\mathrm{e}^{sA_\lambda}e) \, ds\\
-        &= \lim_{\lambda \rightarrow \infty^+} \int_0^t \mathrm{e}^{sA_\lambda}A_\lambda e \, ds,
+        &= \lim_{\lambda \rightarrow \infty^+} \int_0^t \frac{\dd}{\dd s} (\mathrm{e}^{sA_\lambda}e) \, \dd s\\
+        &= \lim_{\lambda \rightarrow \infty^+} \int_0^t \mathrm{e}^{sA_\lambda}A_\lambda e \, \dd s,
     \end{align*}
 
-    luego, como $(s \mapsto \mathrm{e}^{sA_\lambda}A_\lambda e)_{n=1}^\infty$ es una sucesión de funciones Bochner-integrables por ser su norma Lebesgue-integrable (\textcolor{green}{Teorema 2.14} \href{http://tesis.uson.mx/digital/tesis/docs/18969/Capitulo2.pdf}{recurso aquí}), $s \mapsto T(s)Ae$ es fuertemente medible por ser continua,\todo{JUSTIFICAR} $\lVert \mathrm{e}^{sA_{\lambda_n}}A_{\lambda_n}e - T(s)Ae \lVert_{E_0} \rightarrow 0$\footnotemark \text{} y
+    luego, como $(s \mapsto \mathrm{e}^{sA_\lambda}A_\lambda e)_{n=1}^\infty$ es una sucesión de funciones Bochner-integrables por ser su norma Lebesgue-integrable (\textcolor{green}{Teorema 2.14} \href{http://tesis.uson.mx/digital/tesis/docs/18969/Capitulo2.pdf}{recurso aquí}), $s \mapsto T(s)Ae$ es fuertemente medible por ser continua,\todo{JUSTIFICAR} $\lVert \mathrm{e}^{sA_{\lambda_n}}A_{\lambda_n}e - T(s)Ae \rVert_{E_0} \rightarrow 0$\footnotemark \text{} y
     \footnotetext{Para poder argumentar que $e \in D(A)$ y $Ae \in D(A)$. Por eso se pide que $e \in D(A^2)$.}
     \begin{align*}
-        \lVert \mathrm{e}^{sA_{\lambda_n}}A_{\lambda_n}e\lVert_{E_0} &\leq  \lVert \mathrm{e}^{sA_{\lambda_n}}\lVert_{L(E_0)} \, \lVert A_{\lambda_n}e\lVert_{E_0}\\
-        &\leq 1 \, \lVert A_{\lambda_n}e\lVert_{E_0}\\
-        &\leq 2\lambda_n \, \lVert e \lVert_{E_0} \quad \forall n \in \mathbb{N},
+        \lVert \mathrm{e}^{sA_{\lambda_n}}A_{\lambda_n}e\rVert_{E_0} &\leq  \lVert \mathrm{e}^{sA_{\lambda_n}}\rVert_{L(E_0)} \, \lVert A_{\lambda_n}e\rVert_{E_0}\\
+        &\leq 1 \, \lVert A_{\lambda_n}e\rVert_{E_0}\\
+        &\leq 2\lambda_n \, \lVert e \rVert_{E_0} \quad \forall n \in \mathbb{N},
     \end{align*}
 
     entonces, por \textcolor{green}{Teorema 2.15}, $s \mapsto T(s)Ae$ es Bochner-integrable y
 
-    \[\lim_{n \rightarrow \infty^+}\int_0^t \mathrm{e}^{sA_{\lambda_n}}A_{\lambda_n}e \, ds = \int_0^t T(s)Ae \, ds.\]
+    \[\lim_{n \rightarrow \infty^+}\int_0^t \mathrm{e}^{sA_{\lambda_n}}A_{\lambda_n}e \, \dd s = \int_0^t T(s)Ae \, \dd s.\]
 
     Esto es válido también para $e \in D(A)$ tomando límites (se procede de la siguiente manera: tomamos $e \in D(A)$ y $\{f_n\} \subset D(A)$ tal que $f_n \rightarrow Ae$. Entonces $D(A^2) \ni g_n = A^{-1}f_n \rightarrow e$ y $D(A^2) \ni g_n \rightarrow e$, $Ag_n \rightarrow Ae$).
 
     Ahora,
 
-    \[\frac{1}{t}\big(T(t)e - e\big) = \frac{1}{t}\int_0^t T(s) Ae \, ds \rightarrow Ae,\]
+    \[\frac{1}{t}\big(T(t)e - e\big) = \frac{1}{t}\int_0^t T(s) Ae \, \dd s \rightarrow Ae,\]
 
     cuando $t \rightarrow 0^+$, para cualquier $e \in D(A)$.
 
     Por lo tanto, se sigue que el generador $B$ de $T(t)$ debe ser una extensión de $A$ (esto es, $D(B) \supseteq D(A)$ y $Be = Ae$ cuando $e \in D(A)$). Luego, como por hipótesis $1 \in \rho(A)$ y, al ser $B$ el generador de un semigrupo de contracciones\footnotemark, $1 \in \rho(B)$; entonces, por ser $I - A: D(A) \rightarrow E_0$ e $I - B: D(B) \rightarrow E_0$ biyecciones:
-    \footnotetext{Si $B$ genera un semigrupo de contracciones, entonces $\lVert T(t)\lVert_{L(E_0)} \leq 1$. Luego:
+    \footnotetext{Si $B$ genera un semigrupo de contracciones, entonces $\lVert T(t)\rVert_{L(E_0)} \leq 1$. Luego:
     
-    \[\left \lVert \int_0^\infty \mathrm{e}^{-t}T(t)e \, dt \right \lVert_{E_0} \leq \int_0^\infty \mathrm{e}^{-t} \lVert T(t)e \lVert_{E_0} \, dt \leq \lVert e \lVert_{E_0} \int_0^\infty \mathrm{e}^{-t} \, dt \leq \lVert e \lVert_{E_0} < \infty.\]
+    \[\left \lVert \int_0^\infty \mathrm{e}^{-t}T(t)e \, \dd t \right \rVert_{E_0} \leq \int_0^\infty \mathrm{e}^{-t} \lVert T(t)e \rVert_{E_0} \, \dd t \leq \lVert e \rVert_{E_0} \int_0^\infty \mathrm{e}^{-t} \, \dd t \leq \lVert e \rVert_{E_0} < \infty.\]
     
-    Por lo tanto, $1 \in \rho(B)$ y $(I-B)^{-1}e = \int_0^\infty \mathrm{e}^{-t}T(t)e \, dt$.}
+    Por lo tanto, $1 \in \rho(B)$ y $(I-B)^{-1}e = \int_0^\infty \mathrm{e}^{-t}T(t)e \, \dd t$.}
     \[E_0 = (I-A)D(A) = (I - B)D(B),\]
 
     pues recordemos que $Ae = Be$ para todo $e \in D(A) \subseteq D(B)$.
@@ -667,11 +667,11 @@ Ambas condiciones del teorema anterior, $1.$ y $2.$, dependen de la elección de
     \label{ch:semigrupos:lemma:existeNorma}
     Sea $A$ un operador lineal cuyo conjunto resolvente contiene al intervalo $(0, \infty)$ y que satisface:
 
-    \[\lVert (\lambda - A)^{-n} \lVert_{L(E_0)} \leq M \lambda^{-n}, \quad n \geq 1, \lambda > 0.\]
+    \[\lVert (\lambda - A)^{-n} \rVert_{L(E_0)} \leq M \lambda^{-n}, \quad n \geq 1, \lambda > 0.\]
 
     Entonces existe una norma $|\cdot|_{E_0}$ en $E_0$ tal que
 
-    \[\lVert e \lVert_{E_0} \leq |e|_{E_0} \leq M \lVert e \lVert_{E_0}, \quad \forall e \in E_0\]
+    \[\lVert e \rVert_{E_0} \leq |e|_{E_0} \leq M \lVert e \rVert_{E_0}, \quad \forall e \in E_0\]
 
     y
 
@@ -704,9 +704,9 @@ Empezamos aportando la definición de \textit{operador disipativo}:\\
 
 \begin{Definicion}[Operador Disipativo]
     \label{ch:semigrupos:def:OpDisipativo}
-    Sea $E_0$ un espacio de Banach sobre un cuerpo $\mathbb{K}$ con norma $\lVert \cdot \lVert_{E_0}$, y sea $E^*_0 = L(E_0, \mathbb{K})$ su dual topológico con la norma usual $\lVert \cdot \lVert_{E^*_0}$ ($\lVert e^* \lVert_{E^*_0} = \sup \{\operatorname{Re}\langle e^*, e \rangle : \lVert e \lVert_{E_0} \leq 1 \}$). La \textit{aplicación de dualidad} $J : E_0 \rightarrow 2^{E^*_0}$ es una función multívoca definida por
+    Sea $E_0$ un espacio de Banach sobre un cuerpo $\mathbb{K}$ con norma $\lVert \cdot \rVert_{E_0}$, y sea $E^*_0 = L(E_0, \mathbb{K})$ su dual topológico con la norma usual $\lVert \cdot \rVert_{E^*_0}$ ($\lVert e^* \rVert_{E^*_0} = \sup \{\operatorname{Re}\langle e^*, e \rangle : \lVert e \rVert_{E_0} \leq 1 \}$). La \textit{aplicación de dualidad} $J : E_0 \rightarrow 2^{E^*_0}$ es una función multívoca definida por
 
-    \[J(e) = \{e^* \in E_0^* : \operatorname{Re}\langle e^*, e \rangle = \lVert e \lVert^2_{E_0}, \lVert e^* \lVert_{E_0^*} = \lVert e \lVert_{E_0}\},\]
+    \[J(e) = \{e^* \in E_0^* : \operatorname{Re}\langle e^*, e \rangle = \lVert e \rVert^2_{E_0}, \lVert e^* \rVert_{E_0^*} = \lVert e \rVert_{E_0}\},\]
 
     y $J(e) \neq \varnothing$ por el \textcolor{green}{Teorema de Hahn-Banach} \textcolor{red}{PROBAR}.
 
@@ -720,7 +720,7 @@ Empezamos aportando la definición de \textit{operador disipativo}:\\
     \leavevmode\par
     Un operador lineal $A$ es disipativo sí y sólo si
 
-    \[\lVert (\lambda - A)e\lVert_{E_0} \geq \lambda \lVert e \lVert_{E_0}\]
+    \[\lVert (\lambda - A)e\rVert_{E_0} \geq \lambda \lVert e \rVert_{E_0}\]
 
     para todo $e \in D(A)$ y $\lambda > 0$.
 \end{Lema}
@@ -730,47 +730,47 @@ Empezamos aportando la definición de \textit{operador disipativo}:\\
 
     \[|\langle\lambda e - Ae, e^* \rangle| \geq \operatorname{Re}\langle \lambda e - Ae, e^* \rangle = \lambda \operatorname{Re}\langle e, e^* \rangle - \operatorname{Re}\langle Ae, e^* \rangle\]
 
-    Ahora, veamos un resultado genérico: tomando un vector $E_0 \ni x \neq 0$ cualquiera, escribimos $x = \lVert x \lVert_{E_0} \frac{x}{\lVert x \lVert_{E_0}}$. Luego:
+    Ahora, veamos un resultado genérico: tomando un vector $E_0 \ni x \neq 0$ cualquiera, escribimos $x = \lVert x \rVert_{E_0} \frac{x}{\lVert x \rVert_{E_0}}$. Luego:
 
-    \[| \langle e^*, x\rangle| = \lVert x \lVert_{E_0} \underbrace{\left |\left \langle e^*, \underbrace{\frac{x}{\lVert x \lVert_{E_0}}}_{\text{unitario}} \right \rangle \right |}_{\leq \lVert e^* \lVert_{E_0^*}} \implies | \langle e^*, x\rangle| \leq \lVert x \lVert_{E_0} \lVert e^* \lVert_{E_0^*}.\]
+    \[| \langle e^*, x\rangle| = \lVert x \rVert_{E_0} \underbrace{\left |\left \langle e^*, \underbrace{\frac{x}{\lVert x \rVert_{E_0}}}_{\text{unitario}} \right \rangle \right |}_{\leq \lVert e^* \rVert_{E_0^*}} \implies | \langle e^*, x\rangle| \leq \lVert x \rVert_{E_0} \lVert e^* \rVert_{E_0^*}.\]
 
-    De hecho, $| \langle e^*, x\rangle| \leq \lVert x \lVert_{E_0} \lVert e \lVert_{E_0}$ si $e^* \in J(e)$. 
+    De hecho, $| \langle e^*, x\rangle| \leq \lVert x \rVert_{E_0} \lVert e \rVert_{E_0}$ si $e^* \in J(e)$. 
     
     Del resultado anterior se desprende entonces que:
 
-    \[| \langle \lambda e - Ae, e^* \rangle | \leq \lVert \lambda e - Ae \lVert_{E_0} \lVert e \lVert_{E_0}.\]
+    \[| \langle \lambda e - Ae, e^* \rangle | \leq \lVert \lambda e - Ae \rVert_{E_0} \lVert e \rVert_{E_0}.\]
 
     Uniendo todas las desigualdades halladas en una sola cadena:
 
-    \[ \lVert \lambda e - Ae \lVert_{E_0} \cancel{\lVert e \lVert_{E_0}} \geq | \langle \lambda e - Ae, e^* \rangle | \geq \operatorname{Re} \langle \lambda e - Ae, e^* \rangle = \lambda \lVert e \lVert_{E_0}^{\cancel{2}}, \]
+    \[ \lVert \lambda e - Ae \rVert_{E_0} \cancel{\lVert e \rVert_{E_0}} \geq | \langle \lambda e - Ae, e^* \rangle | \geq \operatorname{Re} \langle \lambda e - Ae, e^* \rangle = \lambda \lVert e \rVert_{E_0}^{\cancel{2}}, \]
 
     y se tiene la implicación.
 
-    Recíprocamente, sea $e \in D(A)$ y asumamos que $\lambda \lVert e \lVert_{E_0} \leq \lVert \lambda e - Ae \lVert_{E_0}$ para todo $\lambda > 0$. Si $f_\lambda^* \in J(\lambda e - Ae)$ y $g_\lambda^* := \frac{f_\lambda^*}{\lVert f_\lambda^* \lVert_{E_0^*}} $, tenemos:
+    Recíprocamente, sea $e \in D(A)$ y asumamos que $\lambda \lVert e \rVert_{E_0} \leq \lVert \lambda e - Ae \rVert_{E_0}$ para todo $\lambda > 0$. Si $f_\lambda^* \in J(\lambda e - Ae)$ y $g_\lambda^* := \frac{f_\lambda^*}{\lVert f_\lambda^* \rVert_{E_0^*}} $, tenemos:
 
-    \[\lambda \lVert e \lVert_{E_0} \leq \lVert \lambda e - Ae \lVert_{E_0} = \langle \lambda e - Ae, g_\lambda^* \rangle,\]
+    \[\lambda \lVert e \rVert_{E_0} \leq \lVert \lambda e - Ae \rVert_{E_0} = \langle \lambda e - Ae, g_\lambda^* \rangle,\]
 
     donde la última igualdad se deduce como:
 
-    \[\left \langle \lambda e - Ae, \frac{f_\lambda^*}{\lVert f_\lambda^* \lVert_{E_0^*}}\right \rangle = \left \langle \lambda e - Ae, \frac{f_\lambda^*}{\lVert \lambda e - Ae \lVert_{E_0}}\right \rangle = \frac{1}{\lVert \lambda e - Ae \lVert_{E_0}}\underbrace{\langle \lambda e - Ae, f_\lambda^* \rangle}_{\lVert \lambda e - Ae \lVert_{E_0}^2} = \lVert \lambda e - Ae \lVert_{E_0}.\]
+    \[\left \langle \lambda e - Ae, \frac{f_\lambda^*}{\lVert f_\lambda^* \rVert_{E_0^*}}\right \rangle = \left \langle \lambda e - Ae, \frac{f_\lambda^*}{\lVert \lambda e - Ae \rVert_{E_0}}\right \rangle = \frac{1}{\lVert \lambda e - Ae \rVert_{E_0}}\underbrace{\langle \lambda e - Ae, f_\lambda^* \rangle}_{\lVert \lambda e - Ae \rVert_{E_0}^2} = \lVert \lambda e - Ae \rVert_{E_0}.\]
 
     Entonces:
 
-    \[\lambda \lVert e \lVert_{E_0} \leq \lVert \lambda e - Ae \lVert_{E_0} = \langle \lambda e - Ae, g_\lambda^* \rangle = \lambda \operatorname{Re}\langle e, g_\lambda^* \rangle - \operatorname{Re}\langle Ae, g_\lambda^* \rangle \leq \lambda \lVert e \lVert_{E_0} - \operatorname{Re}\langle Ae, g_\lambda^* \rangle.\]
+    \[\lambda \lVert e \rVert_{E_0} \leq \lVert \lambda e - Ae \rVert_{E_0} = \langle \lambda e - Ae, g_\lambda^* \rangle = \lambda \operatorname{Re}\langle e, g_\lambda^* \rangle - \operatorname{Re}\langle Ae, g_\lambda^* \rangle \leq \lambda \lVert e \rVert_{E_0} - \operatorname{Re}\langle Ae, g_\lambda^* \rangle.\]
 
     La última desigualdad de la cadena anterior se puede deducir como:
 
-    \[g_\lambda^* \in E_0^*, \lVert g_\lambda^* \lVert_{E_0^*} = 1 \implies \operatorname{Re}\langle e, g_\lambda^* \rangle \leq |\langle e, g_\lambda^* \rangle| \leq \lVert e \lVert_{E_0} \cancelto{1}{\lVert g_\lambda^* \lVert_{E_0^*}} \leq \lVert e \lVert_{E_0}.\]
+    \[g_\lambda^* \in E_0^*, \lVert g_\lambda^* \rVert_{E_0^*} = 1 \implies \operatorname{Re}\langle e, g_\lambda^* \rangle \leq |\langle e, g_\lambda^* \rangle| \leq \lVert e \rVert_{E_0} \cancelto{1}{\lVert g_\lambda^* \rVert_{E_0^*}} \leq \lVert e \rVert_{E_0}.\]
 
-    Como la bola unitaria de $E_0^*$ es compacta en la topología débil-* (\textcolor{green}{Teorema de Banach-Alaoglu}), entonces podemos extraer una sub-sucesión $(g_{\lambda_n}^*)$ tal que $g_{\lambda_n}^* \xrightarrow{w^*} g^*$ (converge débil-*; es decir, $\langle x, g_{\lambda_n}^* \rangle \rightarrow \langle x, g^* \rangle \ \forall x \in E_0$) cuando $\lambda_n \rightarrow \infty$ con $g^* \in E_0^*$ y $\lVert g^* \lVert_{E_0^*} \leq 1$.
+    Como la bola unitaria de $E_0^*$ es compacta en la topología débil-* (\textcolor{green}{Teorema de Banach-Alaoglu}), entonces podemos extraer una sub-sucesión $(g_{\lambda_n}^*)$ tal que $g_{\lambda_n}^* \xrightarrow{w^*} g^*$ (converge débil-*; es decir, $\langle x, g_{\lambda_n}^* \rangle \rightarrow \langle x, g^* \rangle \ \forall x \in E_0$) cuando $\lambda_n \rightarrow \infty$ con $g^* \in E_0^*$ y $\lVert g^* \rVert_{E_0^*} \leq 1$.
 
-    Como $\lambda \lVert e \lVert_{E_0} \leq \lambda \lVert e \lVert_{E_0} - \operatorname{Re} \langle Ae, g_\lambda^* \rangle \implies \operatorname{Re}\langle Ae, g_\lambda^* \rangle \leq 0$, entonces $\operatorname{Re}\langle Ae, g^* \rangle \leq 0$. 
+    Como $\lambda \lVert e \rVert_{E_0} \leq \lambda \lVert e \rVert_{E_0} - \operatorname{Re} \langle Ae, g_\lambda^* \rangle \implies \operatorname{Re}\langle Ae, g_\lambda^* \rangle \leq 0$, entonces $\operatorname{Re}\langle Ae, g^* \rangle \leq 0$. 
 
-    Por otro lado, como $\lambda \lVert e \lVert_{E_0} \leq \lambda \operatorname{Re}\langle e, g_\lambda^* \rangle - \operatorname{Re} \langle Ae, g_\lambda^* \rangle \implies \lVert e \lVert_{E_0} \leq \operatorname{Re}\langle e, g_\lambda^* \rangle - \frac{1}{\lambda}\operatorname{Re} \langle Ae, g_\lambda^* \rangle$, entonces se tiene que $\operatorname{Re}\langle e, g^* \rangle \geq \lVert e \lVert_{E_0}$ (haciendo tender $\lambda$ a $\infty$ en la expresión anterior). Además, $\operatorname{Re}\langle e, g^* \rangle \leq | \langle e, g^* \rangle | \leq \lVert e \lVert_{E_0}$, por lo que:
+    Por otro lado, como $\lambda \lVert e \rVert_{E_0} \leq \lambda \operatorname{Re}\langle e, g_\lambda^* \rangle - \operatorname{Re} \langle Ae, g_\lambda^* \rangle \implies \lVert e \rVert_{E_0} \leq \operatorname{Re}\langle e, g_\lambda^* \rangle - \frac{1}{\lambda}\operatorname{Re} \langle Ae, g_\lambda^* \rangle$, entonces se tiene que $\operatorname{Re}\langle e, g^* \rangle \geq \lVert e \rVert_{E_0}$ (haciendo tender $\lambda$ a $\infty$ en la expresión anterior). Además, $\operatorname{Re}\langle e, g^* \rangle \leq | \langle e, g^* \rangle | \leq \lVert e \rVert_{E_0}$, por lo que:
 
-    \[\operatorname{Re}\langle e, g^* \rangle = |\langle e, g^* \rangle | = \lVert e \lVert_{E_0} \in \mathbb{R} \implies \langle e, g^* \rangle = \lVert e \lVert_{E_0}.\]
+    \[\operatorname{Re}\langle e, g^* \rangle = |\langle e, g^* \rangle | = \lVert e \rVert_{E_0} \in \mathbb{R} \implies \langle e, g^* \rangle = \lVert e \rVert_{E_0}.\]
 
-    Tomando $e^* = \lVert e \lVert_{E_0} \, g^*$, tenemos que $e^* \in J(e)$ y $\operatorname{Re}\langle Ae, e^* \rangle \leq 0.$
+    Tomando $e^* = \lVert e \rVert_{E_0} \, g^*$, tenemos que $e^* \in J(e)$ y $\operatorname{Re}\langle Ae, e^* \rangle \leq 0.$
 
     Por lo tanto, para todo $e \in D(A)$ existe $e^* \in J(e)$ tal que $\operatorname{Re}\langle Ae, e^* \rangle \leq 0$ y así $A$ es disipativo.
 \end{proof}
@@ -789,15 +789,15 @@ Empezamos aportando la definición de \textit{operador disipativo}:\\
 \end{Teorema}
 
 \begin{proof}
-    Empezamos por probar $1$. Si $A$ genera $\{T(t), t \geq 0\}$ con $\lVert T(t) \lVert_{L(E_0)} \leq 1$, entonces por el Teorema de Hille-Yosida (\ref{ch:semigrupos:th:HilleYosida}), por ser $\omega = 0$ y $M = 1$ (en la acotación exponencial de $T(t)$), se tiene que $\forall \lambda \in (\omega, \infty) = (0, \infty), \, \lambda \in \rho(A)$. En consecuencia, $(\lambda - A) : D(A) \rightarrow E_0$ es una biyección y, por lo tanto, $R(\lambda - A) = E_0$.
+    Empezamos por probar $1$. Si $A$ genera $\{T(t), t \geq 0\}$ con $\lVert T(t) \rVert_{L(E_0)} \leq 1$, entonces por el Teorema de Hille-Yosida (\ref{ch:semigrupos:th:HilleYosida}), por ser $\omega = 0$ y $M = 1$ (en la acotación exponencial de $T(t)$), se tiene que $\forall \lambda \in (\omega, \infty) = (0, \infty), \, \lambda \in \rho(A)$. En consecuencia, $(\lambda - A) : D(A) \rightarrow E_0$ es una biyección y, por lo tanto, $R(\lambda - A) = E_0$.
 
     Luego, para cualquier $e \in E_0, e^* \in J(e), t > 0$:
 
-    \[\big |\langle e^*, T(t)e \rangle \big | \leq \underbrace{\lVert T(t)e \lVert_{E_0}}_{\leq 1} \ \underbrace{\lVert e^* \lVert}_{\leq \lVert e \lVert^2_{E_0}} \leq \lVert e \lVert^2_{E_0},\]
+    \[\big |\langle e^*, T(t)e \rangle \big | \leq \underbrace{\lVert T(t)e \rVert_{E_0}}_{\leq 1} \ \underbrace{\lVert e^* \rVert}_{\leq \lVert e \rVert^2_{E_0}} \leq \lVert e \rVert^2_{E_0},\]
 
     y entonces,
 
-    \[\operatorname{Re}\left \langle e^*, \frac{T(t)e - e}{t} \right \rangle = \frac{1}{t}\big( \operatorname{Re}\langle e^*, T(t)e \rangle - \underbrace{\operatorname{Re}\langle e^*, e\rangle}_{= \lVert e \lVert^2_{E_0}} \big) = \frac{1}{t}\big( \operatorname{Re}\langle e^*, T(t)e \rangle - \lVert e \lVert^2_{E_0} \big) \leq 0.\]
+    \[\operatorname{Re}\left \langle e^*, \frac{T(t)e - e}{t} \right \rangle = \frac{1}{t}\big( \operatorname{Re}\langle e^*, T(t)e \rangle - \underbrace{\operatorname{Re}\langle e^*, e\rangle}_{= \lVert e \rVert^2_{E_0}} \big) = \frac{1}{t}\big( \operatorname{Re}\langle e^*, T(t)e \rangle - \lVert e \rVert^2_{E_0} \big) \leq 0.\]
 
     En consecuencia, si $e \in D(A)$:
 
@@ -807,26 +807,26 @@ Empezamos aportando la definición de \textit{operador disipativo}:\\
 
     Pasemos ahora a probar $2$. Si $\lambda > 0$ y $e \in D(A)$, del Lema \ref{ch:semigrupos:lemma:CondOpDisipativo} tenemos que:
 
-    \[\lVert (\lambda - A)e \lVert_{E_0} \geq \lambda \lVert e \lVert_{E_0}.\]
+    \[\lVert (\lambda - A)e \rVert_{E_0} \geq \lambda \lVert e \rVert_{E_0}.\]
 
-    Ahora, como $R(\lambda_0 - A) = E_0$, entonces $(\lambda_0 - A)$ es sobreyectivo. Por otro lado, como $\lVert (\lambda_0 - A)e \lVert_{E_0} \geq \lambda_0 \lVert e \lVert_{E_0}$, se tiene que, si definimos $y := (\lambda_0 -A) \in E_0$, entonces:
+    Ahora, como $R(\lambda_0 - A) = E_0$, entonces $(\lambda_0 - A)$ es sobreyectivo. Por otro lado, como $\lVert (\lambda_0 - A)e \rVert_{E_0} \geq \lambda_0 \lVert e \rVert_{E_0}$, se tiene que, si definimos $y := (\lambda_0 -A) \in E_0$, entonces:
 
-    \[\lVert (\lambda_0 - A)^{-1}y \lVert_{E_0} = \lVert e \lVert_{E_0} \leq \frac{1}{\lambda_0}\lVert (\lambda_0 - A)e \lVert_{E_0} = \frac{1}{\lambda_0} \lVert y \lVert_{E_0},\]
+    \[\lVert (\lambda_0 - A)^{-1}y \rVert_{E_0} = \lVert e \rVert_{E_0} \leq \frac{1}{\lambda_0}\lVert (\lambda_0 - A)e \rVert_{E_0} = \frac{1}{\lambda_0} \lVert y \rVert_{E_0},\]
 
     es decir,
 
-    \[\lVert (\lambda_0 - A)^{-1}y\lVert_{E_0} \leq \frac{1}{\lambda_0}\lVert y \lVert_{E_0} \ \forall y \in E_0\footnotemark,\]
+    \[\lVert (\lambda_0 - A)^{-1}y\rVert_{E_0} \leq \frac{1}{\lambda_0}\lVert y \rVert_{E_0} \ \forall y \in E_0\footnotemark,\]
     \footnotetext{Cualquier $y \in E_0$ se puede escribir como $y = (\lambda_0 - A)e$ para algún $e \in E_0$ por sobreyectividad de $\lambda_0 - A$.}
 
     y así 
     
-    \[\lVert (\lambda_0 - A)^{-1} \lVert_{L(E_0)} \leq \frac{1}{\lambda_0}.\]
+    \[\lVert (\lambda_0 - A)^{-1} \rVert_{L(E_0)} \leq \frac{1}{\lambda_0}.\]
 
     Asimismo, si $(\lambda_0 - A)e = 0$, entonces
 
-    \[0 = \lVert (\lambda_0 - A)e \lVert_{E_0} \geq \lambda_0 \lVert e \lVert_{E_0} \implies \lambda_0 \lVert e \lVert_{E_0} = 0,\]
+    \[0 = \lVert (\lambda_0 - A)e \rVert_{E_0} \geq \lambda_0 \lVert e \rVert_{E_0} \implies \lambda_0 \lVert e \rVert_{E_0} = 0,\]
 
-    y como $\lambda_0 > 0$, entonces $\lVert e \lVert_{E_0} = 0$, lo que implica que $e = 0$ y así $(\lambda_0 - A)$ es inyectivo. En consecuencia $(\lambda_0 - A)$ es una biyección y, por corolario del \textcolor{green}{Teorema de la función abierta}, es también un operador continuo. Luego $\lambda_0 \in \rho(A)$.
+    y como $\lambda_0 > 0$, entonces $\lVert e \rVert_{E_0} = 0$, lo que implica que $e = 0$ y así $(\lambda_0 - A)$ es inyectivo. En consecuencia $(\lambda_0 - A)$ es una biyección y, por corolario del \textcolor{green}{Teorema de la función abierta}, es también un operador continuo. Luego $\lambda_0 \in \rho(A)$.
 
     Considerando ahora $(e_n) \subset D(A)$ tal que $e_n \rightarrow e$ y $Ae_n \rightarrow f$. Entonces, por continuidad:
 
@@ -846,7 +846,7 @@ Empezamos aportando la definición de \textit{operador disipativo}:\\
 
     y así, para dicho $n$ grande:
 
-    \[\lVert (\lambda_n - \lambda)(\lambda_n - A)^{-1}\lVert_{L(E_0)} = |\lambda_n - \lambda| \ \lVert (\lambda_n - A)^{-1}\lVert_{L(E_0)} \overset{\substack{\frac{3\lambda}{4} \leq \lambda_n \leq \frac{5\lambda}{4}}}{\leq} \frac{\frac{\lambda}{4}}{\frac{3 \lambda}{4}} = \frac{1}{3} < 1.\]
+    \[\lVert (\lambda_n - \lambda)(\lambda_n - A)^{-1}\rVert_{L(E_0)} = |\lambda_n - \lambda| \ \lVert (\lambda_n - A)^{-1}\rVert_{L(E_0)} \overset{\substack{\frac{3\lambda}{4} \leq \lambda_n \leq \frac{5\lambda}{4}}}{\leq} \frac{\frac{\lambda}{4}}{\frac{3 \lambda}{4}} = \frac{1}{3} < 1.\]
 
     Luego, por \textcolor{green}{Teorema 7.3-1 Kreyszig}, $\big(I + (\lambda_n - \lambda)(\lambda_n - A)^{-1}\big)^{-1}$ es un operador lineal acotado en $E_0$. En consecuencia, $I + (\lambda_n - \lambda)(\lambda_n - A)^{-1}$ es un isomorfismo de $E_0$ en $E_0$. Por lo tanto,
 
@@ -892,11 +892,11 @@ A continuación, recordamos la definición de un \textit{operador simétrico} y 
 
     Consideramos $\lambda = 1$. Por linealidad, $R(I - A)$ es un subespacio de $E_0$. Luego, como $A$ es disipativo, entonces, por el Lema \ref{ch:semigrupos:lemma:CondOpDisipativo}:
 
-    \[\lVert (I-A)e \lVert_{E_0} \geq \lVert e \lVert_{E_0}.\]
+    \[\lVert (I-A)e \rVert_{E_0} \geq \lVert e \rVert_{E_0}.\]
 
     Así, si $(y_n) \subset R(I-A)$ es una sucesión tal que $y_n \rightarrow y \in E_0$, entonces se debe verificar que exista $(x_n) \subset D(A)$ tal que $y_n = (I - A)x_n$. Luego:
 
-    \[\lVert y_n - y_m \lVert_{E_0} = \lVert (I-A) (x_n - x_m) \lVert_{E_0} \geq \lVert x_n - x_m\lVert_{E_0}, \]
+    \[\lVert y_n - y_m \rVert_{E_0} = \lVert (I-A) (x_n - x_m) \rVert_{E_0} \geq \lVert x_n - x_m\rVert_{E_0}, \]
 
     donde la última desigualdad se obtuvo, una vez más, por el Lema \ref{ch:semigrupos:lemma:CondOpDisipativo}. El desarrollo anterior revela entonces que $(x_n)$ es Cauchy por serlo $(y_n)$, y así, por ser $E_0$ completo, se tiene que $\exists x \in E_0$ tal que $x_n \rightarrow x$. Entonces:
 
@@ -925,8 +925,8 @@ A continuación, recordamos la definición de un \textit{operador simétrico} y 
     Como $A^*$ también es disipativo, entonces (invocando una vez más el Lema \ref{ch:semigrupos:lemma:CondOpDisipativo}):
 
     \begin{align*}
-    &0 = \lVert (I - A^*)e^* \lVert_{E^*_0} \geq \lVert e^* \lVert_{E_0^*}\\
-    \implies& \lVert e^* \lVert_{E_0^*} = 0\\
+    &0 = \lVert (I - A^*)e^* \rVert_{E^*_0} \geq \lVert e^* \rVert_{E_0^*}\\
+    \implies& \lVert e^* \rVert_{E_0^*} = 0\\
     \implies& e^* = 0,
     \end{align*}
 
@@ -940,11 +940,11 @@ En mucho ejemplos, la técnica utilizada para verificar que las estimativas espe
 
     Sea $A$ un operador lineal en un espacio de Banach complejo $E_0$. Se define la imágen numérica de $A$, $W(A)$, como el conjunto:
 
-    \[W(A) := \Big \{\langle e^*, Ae \rangle : e \in D(A), \lVert e \lVert_{E_0} = 1, e^* \in E_0^*, \lVert e^* \lVert_{E_0^*} = 1, \langle e^*, e \rangle = 1  \Big \}.\]
+    \[W(A) := \Big \{\langle e^*, Ae \rangle : e \in D(A), \lVert e \rVert_{E_0} = 1, e^* \in E_0^*, \lVert e^* \rVert_{E_0^*} = 1, \langle e^*, e \rangle = 1  \Big \}.\]
 
     En el caso de que $E_0$ sea un espacio de Hilbert \textcolor{red}{PROBAR???}, entonces:
 
-    \[W(A) = \Big \{\langle Ae, e\rangle : e \in D(A), \lVert e \lVert_{E_0} = 1 \Big \}.\]
+    \[W(A) = \Big \{\langle Ae, e\rangle : e \in D(A), \lVert e \rVert_{E_0} = 1 \Big \}.\]
 \end{Definicion}
 
 \textcolor{red}{METER AQUI UN SALTO DE LINEA}\\
@@ -956,30 +956,30 @@ En mucho ejemplos, la técnica utilizada para verificar que las estimativas espe
 
     \begin{align}
         \label{ch:semigrupos:th:ImgNumerica:desIg1}
-        \lVert (\lambda - A)e \lVert_{E_0} \geq d(\lambda, W(A)) \lVert e \lVert_{E_0}.
+        \lVert (\lambda - A)e \rVert_{E_0} \geq d(\lambda, W(A)) \lVert e \rVert_{E_0}.
     \end{align}
 
     Adicionalmente, si $\rho(A) \cap \Sigma \neq \varnothing$, entonces $\rho(A) \supset \Sigma$ y
 
     \begin{align}
         \label{ch:semigrupos:th:ImgNumerica:desIg2}
-        \lVert (\lambda - A)^{-1}\lVert_{L(E_0)} \leq \frac{1}{d(\lambda, W(A))}. \quad \forall \lambda \in \Sigma
+        \lVert (\lambda - A)^{-1}\rVert_{L(E_0)} \leq \frac{1}{d(\lambda, W(A))}. \quad \forall \lambda \in \Sigma
     \end{align}
 
     donde $d(\lambda, W(A))$ es la distancia de $\lambda$ a $W(A)$.
 \end{Teorema}
 
 \begin{proof}
-    Sea $\lambda \not \in \overline{W(A)}$. Si $e \in D(A), \lVert e \lVert_{E_0} = 1, e^* \in E^*_0, \lVert e^* \lVert_{E_0^*} = 1$ y $\langle e^*, e \rangle = 1$, entonces:
+    Sea $\lambda \not \in \overline{W(A)}$. Si $e \in D(A), \lVert e \rVert_{E_0} = 1, e^* \in E^*_0, \lVert e^* \rVert_{E_0^*} = 1$ y $\langle e^*, e \rangle = 1$, entonces:
 
     \begin{align*}
     0 < d(\lambda, W(A)) &\leq \underbrace{| \lambda - \langle e^*, Ae\rangle |}_{\langle e^*, Ae\rangle \in W(A)}\\
     &= \underbrace{|\langle e^*, e\rangle \lambda - \langle e^*, Ae\rangle|}_{\langle e^*, e\rangle = 1}\\
     &= |\langle e^*, \lambda e - Ae\rangle|\\
-    &\leq \lVert \lambda e - Ae \lVert_{E_0} \cancelto{1}{\lVert e^* \lVert_{E^*_0}} = \lVert \lambda e - Ae \lVert_{E_0},
+    &\leq \lVert \lambda e - Ae \rVert_{E_0} \cancelto{1}{\lVert e^* \rVert_{E^*_0}} = \lVert \lambda e - Ae \rVert_{E_0},
     \end{align*}
 
-    lo cual prueba \eqref{ch:semigrupos:th:ImgNumerica:desIg1} (cualquier vector unitario $e$ se puede escribir en términos de uno $x$ no unitario tal que $e = \frac{x}{\lVert x \lVert_{E_0}}$). Asimismo, también se tiene que $\lambda - A$ es inyectivo pues el núcleo (\textit{kernel}) del operador es el vector $0$. Por último, como $A$ es cerrado, hacemos un argumento idéntico al del corolario anterior \eqref{ch:semigrupos:cor:CorolarioLumerPhillips} y se sigue que la imagen de $\lambda - A$, $R(\lambda - A)$, es cerrada. 
+    lo cual prueba \eqref{ch:semigrupos:th:ImgNumerica:desIg1} (cualquier vector unitario $e$ se puede escribir en términos de uno $x$ no unitario tal que $e = \frac{x}{\lVert x \rVert_{E_0}}$). Asimismo, también se tiene que $\lambda - A$ es inyectivo pues el núcleo (\textit{kernel}) del operador es el vector $0$. Por último, como $A$ es cerrado, hacemos un argumento idéntico al del corolario anterior \eqref{ch:semigrupos:cor:CorolarioLumerPhillips} y se sigue que la imagen de $\lambda - A$, $R(\lambda - A)$, es cerrada. 
     
     Si adicionalmente $\lambda \in \rho(A)$, entonces $\lambda -A$ es una biyección. Así, para cualquier $y \in E_0, \exists x \in E_0$ tal que
 
@@ -988,20 +988,20 @@ En mucho ejemplos, la técnica utilizada para verificar que las estimativas espe
     Utilizando ]\eqref{ch:semigrupos:th:ImgNumerica:desIg1} tenemos:
 
     \begin{align*}
-        \lVert x \lVert_{E_0}d(\lambda, W(A)) = \lVert (\lambda -A)^{-1}y\lVert_{E_0} d(\lambda, W(A)) &\leq \lVert (\lambda - A)x \lVert_{E_0}\\
-        &= \lVert (\lambda - A)(\lambda - A)^{-1}y \lVert_{E_0}\\
-        &= \lVert y \lVert_{E_0}.
+        \lVert x \rVert_{E_0}d(\lambda, W(A)) = \lVert (\lambda -A)^{-1}y\rVert_{E_0} d(\lambda, W(A)) &\leq \lVert (\lambda - A)x \rVert_{E_0}\\
+        &= \lVert (\lambda - A)(\lambda - A)^{-1}y \rVert_{E_0}\\
+        &= \lVert y \rVert_{E_0}.
     \end{align*}
 
     Luego, de lo anterior se deduce que
 
-    \[\frac{\lVert (\lambda -A)^{-1}y\lVert_{E_0}}{\lVert y \lVert_{E_0}} \leq \frac{1}{d(\lambda, W(A))} \implies \lVert (\lambda - A)^{-1}\lVert_{L(E_0)} \leq \frac{1}{d(\lambda, W(A))},\]
+    \[\frac{\lVert (\lambda -A)^{-1}y\rVert_{E_0}}{\lVert y \rVert_{E_0}} \leq \frac{1}{d(\lambda, W(A))} \implies \lVert (\lambda - A)^{-1}\rVert_{L(E_0)} \leq \frac{1}{d(\lambda, W(A))},\]
 
     que es exactamente \eqref{ch:semigrupos:th:ImgNumerica:desIg2}.
 
     Queda probar entonces que si $\Sigma$ intercepta a $\rho(A)$, entonces $\rho(A) \supset \Sigma$. Para ello, consideremos el conjunto $\rho(A) \cap \Sigma$, que claramente es abierto en $\Sigma$. Veamos ahora que también es cerrado. Para ello, consideremos $(\lambda_n) \subset \rho(A) \cap \Sigma$ tal que $\lambda_n \rightarrow \lambda \in \Sigma$. Luego, por definición de convergencia, para un $n$ lo suficientemente grande, se tiene que $|\lambda - \lambda_n | < d(\lambda_n, W(A))$. De \eqref{ch:semigrupos:th:ImgNumerica:desIg2} se sigue que para dicho $n$ grande se verifica que:
 
-    \[|\lambda - \lambda_n| < d(\lambda_n, W(A)) \leq  \frac{1}{\lVert(\lambda_n -A)^{-1} \lVert_{L(E_0)}} \implies |\lambda - \lambda_n| \lVert(\lambda_n -A)^{-1} \lVert_{L(E_0)} \leq 1.\]
+    \[|\lambda - \lambda_n| < d(\lambda_n, W(A)) \leq  \frac{1}{\lVert(\lambda_n -A)^{-1} \rVert_{L(E_0)}} \implies |\lambda - \lambda_n| \lVert(\lambda_n -A)^{-1} \rVert_{L(E_0)} \leq 1.\]
 
     Finalmente, por un argumento idéntico al hecho en la prueba del punto $2$ del Teorema de Lumer-Phillips \eqref{ch:semigrupos:th:LumerPhillips}, se tiene que $\lambda \in \rho(A)$ y, por lo tanto, $\rho(A) \cap \Sigma$ es cerrado en $\Sigma$. Se sigue entonces que $\rho(A) \cap \Sigma = \Sigma$; es decir, $\rho(A) \supset \Sigma$, como queríamos probar.
 \end{proof}
@@ -1030,19 +1030,19 @@ Para probar que $A$ es cerrado consideramos una sucesión $(x_n) \subset D(A)$ t
 
 Entonces, continuando con el enunciado del ejemplo, supongamos que $A$ está acotado superiormente; esto es, existe una constante $a \in \mathbb{R}$ tal que $\langle Au, u \rangle = a \langle u, u \rangle$. Deseamos probar que $\mathbb{C} \setminus (-\infty, a] \subset \rho(A)$ y que existe una constante $M \geq 1$ dependiente únicamente de $\varphi$ tal que
 
-\[\lVert (\lambda - A)^{-1}\lVert_{L(H)} \leq \frac{M}{|\lambda - a|},\]
+\[\lVert (\lambda - A)^{-1}\rVert_{L(H)} \leq \frac{M}{|\lambda - a|},\]
 
 para todo $\lambda \in \Sigma_a := \{\lambda \in \mathbb{C} : \operatorname{arg}(\lambda - a) \leq \varphi\}; \varphi < \pi$. Adicionalmente, $A$ es el generador de un semigrupo fuertemente continuo $\{T(t) : t \geq 0\}$ que satisface
 
-\[\lVert T(t) \lVert_{L(H)} \leq \mathrm{e}^{at}.\]
+\[\lVert T(t) \rVert_{L(H)} \leq \mathrm{e}^{at}.\]
 
 Para probar lo anterior, empezamos hallando la imágen numérica de $A$,
 
-\[W(A) = \{\langle Ae, e \rangle : e \in D(A), \lVert e \lVert_{H} = 1\} \subset (-\infty, a].\]
+\[W(A) = \{\langle Ae, e \rangle : e \in D(A), \lVert e \rVert_{H} = 1\} \subset (-\infty, a].\]
 
 Nótese que $\langle Au, u \rangle \leq a\langle u, u \rangle \implies \langle (A - a) u, u \rangle \leq 0 \implies \operatorname{Re}\langle (A - a) u, u \rangle \leq 0,$ por lo que $A-a = A^* - a$ son operadores disipativos. Así, por el Corolario \eqref{ch:semigrupos:cor:CorolarioLumerPhillips}, $A-a$ genera un semigrupo fuertemente continuo de contracciones. Por ser un semigrupo fuertemente continuo de contracciones y por ser $A-a$ su generador, el punto $5$ del Teorema \eqref{ch:semigrupos:th:resSemiFuerteCont} garantiza que $\rho(A-a) \supset (0, \infty)$. Esto significa que si consideramos $\mu \in (0, \infty)$, entonces $\mu - (A-a)$ es una biyección. Reorganizando y nombrando $\lambda = \mu + a$ obtenemos que el operador $\lambda - A$ es una biyección y, en consecuencia, $\rho(A) \supset (a, \infty)$. Como $(a, \infty)$ es un subconjunto abierto y conexo en $\mathbb{C} \setminus W(A)$, entonces $\mathbb{C} \setminus [a, \infty) \subset \rho(A)$ por el Teorema \eqref{ch:semigrupos:th:ImgNumerica}. Asimismo, y también por el Teorema anterior,
 
-\[\lVert (\lambda - A)^{-1} \lVert_{L(H)} \leq \frac{1}{d(\lambda, W(A))} \leq \frac{1}{d(\lambda, (-\infty, a])}.\]
+\[\lVert (\lambda - A)^{-1} \rVert_{L(H)} \leq \frac{1}{d(\lambda, W(A))} \leq \frac{1}{d(\lambda, (-\infty, a])}.\]
 
 Adicionalmente, si $\lambda \in \Sigma_a$, entonces 
 
@@ -1071,22 +1071,22 @@ Lo anterior se puede comprobar haciendo una representación gráfica de la situa
 
     Para probar la segunda afirmación procedemos de la siguiente manera: Por ser $A$ cerrable sabemos que existe un operador cerrado $\overline{A}$. Sea $e \in D(\overline{A}), f = \overline{A}e$. Entonces, existe una sucesión $(e_n) \subset D(A)$ tal que $e_n \rightarrow e$ y $Ae_n \rightarrow f = \overline{A}e$ (esta sucesión existe porque, de acuerdo a la \textcolor{green}{PROPOSICIÓN EN VIII DE METHODS OF MODERN MATHEMATICAL PHYSICS} $G(\overline{A}) = \overline{G(A)} = \{(x, y) \in E_0 : \exists \big((x_n, Ax_n)\big) \subset G(A) \text{ tal que } (x_n, Ax_n) \rightarrow (x, y)\}$). Del Lema \eqref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que
 
-    \[\lVert \lambda e_n - Ae_n \lVert_{E_0} \geq \lambda \lVert e_n \lVert_{E_0},\]
+    \[\lVert \lambda e_n - Ae_n \rVert_{E_0} \geq \lambda \lVert e_n \rVert_{E_0},\]
 
     para todo $\lambda >0 $. Ahora, haciendo tender $n \rightarrow \infty$ tenemos:
 
-    \[\lVert\lambda e - \overline{A}e \lVert_{E_0} \geq \lambda \lVert e \lVert_{E_0}, \quad \lambda > 0.\]
+    \[\lVert\lambda e - \overline{A}e \rVert_{E_0} \geq \lambda \lVert e \rVert_{E_0}, \quad \lambda > 0.\]
 
     Así, como la desigualdad anterior es válida para todo $e \in D(\overline{A})$, entonces $\overline{A}$ es disipativo por el Lema \eqref{ch:semigrupos:lemma:CondOpDisipativo}.
 
-    Para probar el tercer y último punto, procedemos por contradicción. Supongamos que $A$ no es cerrable. Entonces, existe\footnotemark una sucesión $(e_n) \subset D(A), e_n \rightarrow 0$ y $Ae_n \rightarrow f$ con $\lVert f \lVert_{E_0} = 1$ (normalizando). Del Lema \eqref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que para todo $t > 0$, $e \in D(A)$ y escogiendo $\lambda = \frac{1}{t}$:
+    Para probar el tercer y último punto, procedemos por contradicción. Supongamos que $A$ no es cerrable. Entonces, existe\footnotemark una sucesión $(e_n) \subset D(A), e_n \rightarrow 0$ y $Ae_n \rightarrow f$ con $\lVert f \rVert_{E_0} = 1$ (normalizando). Del Lema \eqref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que para todo $t > 0$, $e \in D(A)$ y escogiendo $\lambda = \frac{1}{t}$:
 
     \begin{align*}
-        &\lVert (t^{-1}-A)(e+t^{-1}e_n)\lVert_{E_0} \geq t^{-1}\lVert e+t^{-1}e_n \lVert_{E_0}\\
-        \implies& \lVert (e+t^{-1}e_n) - tA(e+t^{-1}e_n) \lVert \geq \lVert e+t^{-1}e_n \lVert_{E_0}.
+        &\lVert (t^{-1}-A)(e+t^{-1}e_n)\rVert_{E_0} \geq t^{-1}\lVert e+t^{-1}e_n \rVert_{E_0}\\
+        \implies& \lVert (e+t^{-1}e_n) - tA(e+t^{-1}e_n) \rVert \geq \lVert e+t^{-1}e_n \rVert_{E_0}.
     \end{align*}
 
-    Ahora, haciendo tender $n \rightarrow \infty$ y después $t \rightarrow 0$, se obtiene que $\lVert e - f \lVert_{E_0} \geq \lVert e \lVert_{E_0}$ para todo $e \in D(A)$. Como $D(A)$ es denso en $E_0$, podemos escoger una sucesión $(e_n) \subset D(A)$ tal que $e_n \rightarrow e = f$, y así obtendríamos que $0 \geq \lVert f\lVert_{E_0}$, lo cual es una contradicción. En consecuencia, $A$ es cerrable.
+    Ahora, haciendo tender $n \rightarrow \infty$ y después $t \rightarrow 0$, se obtiene que $\lVert e - f \rVert_{E_0} \geq \lVert e \rVert_{E_0}$ para todo $e \in D(A)$. Como $D(A)$ es denso en $E_0$, podemos escoger una sucesión $(e_n) \subset D(A)$ tal que $e_n \rightarrow e = f$, y así obtendríamos que $0 \geq \lVert f\rVert_{E_0}$, lo cual es una contradicción. En consecuencia, $A$ es cerrable.
 \end{proof}
 \footnotetext{Por un \textcolor{green}{TEOREMA (BUSCAR CITA O PROBAR YO)}, se tiene que $A$ es cerrable sí y sólo si para cualquier sucesión $(e_n) \subset D(A)$ tal que $e_n \rightarrow 0$, y $Ae_n \rightarrow f \in E_0$, entonces $f = 0$.}
 
@@ -1102,33 +1102,33 @@ Lo anterior se puede comprobar haciendo una representación gráfica de la situa
     Sabemos por un \textcolor{green}{corolario del Teorema de Hahn-Banach} que existe un elemento $0 \neq e^* \in E^*_0$ tal que $\langle e^*, e\rangle = 0 \ \ \forall e \in D(A)$ sí y sólo si $A$ no está densamente definido. En consecuencia, sea $e^* \in E_0^*$ tal que $\langle e^*, e \rangle = 0$ para todo $e \in D(A)$. Mostraremos que $e^* = 0$. Como $R(I- A) = E_0$, es suficiente probar que $\langle e^*, e - Ae \rangle = 0$ para todo $e \in D(A)$ o equivalentemente que $\langle e^*, Ae \rangle = 0$ para todo $e \in D(A)$. Sea $e \in D(A)$ entonces, por la primera parte del Teorema anterior \eqref{ch:semigrupos:th:PropsOpDisipativos}, existe (considerando $\lambda = n > 0$) un $e_n$ tal que $e = (I - \frac{1}{n}A)e_n$. Como $Ae_n = n(e_n - e) \in D(A)$, entonces $e_n \in D(A^2)$ y $Ae = Ae_n - \frac{1}{n}A^2e_n$; o, lo que es lo mismo, $Ae_n = (I - \frac{1}{n}A)^{-1}Ae$. Del Lema \eqref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que 
 
     \begin{align*}
-        &\left \lVert \left (n - A \right ) x\right \lVert_{E_0} \geq n \lVert x \lVert_{E_0}\\
-        \implies& \left \lVert \left (I - \frac{1}{n}A \right ) x\right \lVert_{E_0} \geq \lVert x \lVert_{E_0},
+        &\left \lVert \left (n - A \right ) x\right \rVert_{E_0} \geq n \lVert x \rVert_{E_0}\\
+        \implies& \left \lVert \left (I - \frac{1}{n}A \right ) x\right \rVert_{E_0} \geq \lVert x \rVert_{E_0},
     \end{align*}
 
     de lo anterior se deduce que $(I - \frac{1}{n}A)$ es inyectivo y, además, sabemos que es sobreyectivo por ser $R(n - A) = E_0$. Luego, podemos considerar $y = (I - \frac{1}{n}A)x \implies x = (I-\frac{1}{n}A)^{-1}y$ y así:
 
     \begin{align*}
-        &\left \lVert \left (I - \frac{1}{n}A \right ) x\right \lVert_{E_0} \geq \lVert x \lVert_{E_0}\\
-        \implies& \left \lVert y \right \lVert_{E_0} \geq \left \lVert \left (I - \frac{1}{n}A \right )^{-1} y\right \lVert_{E_0}\\
-        \implies& \left \lVert \left (I - \frac{1}{n}A \right )\right \lVert_{L(E_0)} \leq 1.
+        &\left \lVert \left (I - \frac{1}{n}A \right ) x\right \rVert_{E_0} \geq \lVert x \rVert_{E_0}\\
+        \implies& \left \lVert y \right \rVert_{E_0} \geq \left \lVert \left (I - \frac{1}{n}A \right )^{-1} y\right \rVert_{E_0}\\
+        \implies& \left \lVert \left (I - \frac{1}{n}A \right )\right \rVert_{L(E_0)} \leq 1.
     \end{align*}    
 
     Por lo tanto, 
 
     \begin{align*}
         &Ae_n = \left(I - \frac{1}{n}A\right)^{-1}Ae\\
-        \implies& \lVert Ae_n \lVert_{E_0} = \left \lVert \left(I - \frac{1}{n}A\right)^{-1}Ae\right \lVert_{E_0} \leq \left \lVert \left(I - \frac{1}{n}A\right)^{-1}\right \lVert_{L(E_0)} \lVert Ae \lVert_{E_0} \leq \lVert Ae \lVert_{E_0}\\
-        \implies& \lVert Ae_n \lVert_{E_0} \leq \lVert Ae \lVert_{E_0}.
+        \implies& \lVert Ae_n \rVert_{E_0} = \left \lVert \left(I - \frac{1}{n}A\right)^{-1}Ae\right \rVert_{E_0} \leq \left \lVert \left(I - \frac{1}{n}A\right)^{-1}\right \rVert_{L(E_0)} \lVert Ae \rVert_{E_0} \leq \lVert Ae \rVert_{E_0}\\
+        \implies& \lVert Ae_n \rVert_{E_0} \leq \lVert Ae \rVert_{E_0}.
     \end{align*}
 
     También,
 
     \begin{align*}
-        \lVert e_n - e\lVert_{E_0} = \left \lVert e_n - \left(I - \frac{1}{n}A\right)e_n \right \lVert_{E_0} = \frac{1}{n}\left \lVert Ae_n \right \lVert_{E_0},
+        \lVert e_n - e\rVert_{E_0} = \left \lVert e_n - \left(I - \frac{1}{n}A\right)e_n \right \rVert_{E_0} = \frac{1}{n}\left \lVert Ae_n \right \rVert_{E_0},
     \end{align*}
 
-    por lo que $e_n \rightarrow e$. Como $\lVert Ae_n \lVert_{E_0} \leq C$ y $E_0$ es reflexivo, entonces \textcolor{green}{(REFERENCIAR ESTO??)} existe una subsucesión $(Ae_{n_k})$ de $Ae_n$ tal que $Ae_{n_k} \xrightarrow{w} f$. Como $A$ es  cerrado (por el Teorema de Lumer-Phillips $2$) se sigue que $f = Ae$ \textcolor{green}{(LEMA DE MAZUR?? INVESTIGAR CERRADO + CONVERGENCIA DEBIL = CONVERGENCIA FUERTE)}. Finalmente, como $\langle e^*, x \rangle = 0$ para todo $x \in D(A)$, tenemos
+    por lo que $e_n \rightarrow e$. Como $\lVert Ae_n \rVert_{E_0} \leq C$ y $E_0$ es reflexivo, entonces \textcolor{green}{(REFERENCIAR ESTO??)} existe una subsucesión $(Ae_{n_k})$ de $Ae_n$ tal que $Ae_{n_k} \xrightarrow{w} f$. Como $A$ es  cerrado (por el Teorema de Lumer-Phillips $2$) se sigue que $f = Ae$ \textcolor{green}{(LEMA DE MAZUR?? INVESTIGAR CERRADO + CONVERGENCIA DEBIL = CONVERGENCIA FUERTE)}. Finalmente, como $\langle e^*, x \rangle = 0$ para todo $x \in D(A)$, tenemos
 
     \[0 = \langle e^*, Ae_{n_k}\rangle = n_k \langle e^*, e_{n_k} - e \rangle = n_k \langle e^*, e_{n_k}\rangle - n_k \cancelto{0}{\langle e^*, e\rangle},\]
 
