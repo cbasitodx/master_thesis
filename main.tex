@@ -129,6 +129,13 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 
+% Numera una única línea (la del \\= final) dentro de un entorno align*,
+% para etiquetar sólo la ecuación que se referencia después.
+\newcommand{\numberthis}{\addtocounter{equation}{1}\tag{\theequation}}
+
+% Diferencial recto (d de integración y de derivadas de Leibniz).
+\newcommand{\dd}{\mathrm{d}}
+
 %%-----------------------------------------------
 %% Documento:
 \begin{document}
@@ -174,10 +181,10 @@
 %% Bibliografía
 \cleardoublepage
 \phantomsection
-%\todo{ORDENAR LA BIBLIOGRAFÍA POR ORDEN ALFABÉTICO}
 \addcontentsline{toc}{chapter}{Bibliografía}
 \nocite{*}
-\bibliographystyle{IEEEtran}
+% plain ordena la bibliografía alfabéticamente por apellido del autor.
+\bibliographystyle{plain}
 \bibliography{secciones/biblio}
 
 %% -----------------------------------------------

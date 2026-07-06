@@ -73,7 +73,7 @@ En primer lugar, recordemos que un problema de Cauchy es, en teoría de ecuacion
 
 \begin{align}
     \label{ch:cauchy:section:Hom:eqBasica}
-    \frac{de}{dt} &= Ae, \quad 0 \leq t_0 < t\\
+    \frac{\dd e}{\dd t} &= Ae, \quad 0 \leq t_0 < t\\
     e(t_0) &= e_0 \in E_0,
 \end{align}
 
@@ -89,7 +89,7 @@ Damos ahora la definición de una solución del problema \eqref{ch:cauchy:sectio
 
         \item Por otro lado, \textit{solución débil} de \eqref{ch:cauchy:section:Hom:eqBasica} es una función continua $e : [0,\infty) \rightarrow E_0$ tal que $e(t_0) = e_0$ y para todo $e^* \in D(A^*)$ se verifica que
 
-        \[\frac{d^+}{dt}\langle e^*, e(t) \rangle = \langle A^*e^*, e(t)\rangle.\]
+        \[\frac{\dd^+}{\dd t}\langle e^*, e(t) \rangle = \langle A^*e^*, e(t)\rangle.\]
     \end{enumerate}
 \end{Definicion}
 
@@ -99,18 +99,18 @@ Para ello, consideramos la aplicación
 
 \[e(t) = T(t-t_0)e_0,\]
 
-donde $e_0 \in E_0$ y $T(t)$ es el semigrupo del cual $A$ es generador. Comprobemos ahora que $e(t)$ es una solución débil. Para ello, tomamos $e^* \in E_0^*$ y desarrollamos $\displaystyle\frac{d}{dt}\langle e^*, e(t)\rangle$:
+donde $e_0 \in E_0$ y $T(t)$ es el semigrupo del cual $A$ es generador. Comprobemos ahora que $e(t)$ es una solución débil. Para ello, tomamos $e^* \in E_0^*$ y desarrollamos $\displaystyle\frac{\dd}{\dd t}\langle e^*, e(t)\rangle$:
 
 \begin{align*}
-    \frac{d}{dt}\langle e^*, e(t)\rangle &= \frac{d}{dt}\langle e^*, T(t-t_0)e_0\rangle\\
-    &= \frac{d}{dt}\Big\langle \big(T(t-t_0)\big)^*e^*, e_0\Big\rangle,
+    \frac{\dd}{\dd t}\langle e^*, e(t)\rangle &= \frac{\dd}{\dd t}\langle e^*, T(t-t_0)e_0\rangle\\
+    &= \frac{\dd}{\dd t}\Big\langle \big(T(t-t_0)\big)^*e^*, e_0\Big\rangle,
 \end{align*}
 
 donde \textcolor{red}{SEMIGRUPO DUAL...} y, como $e^* \in D(A^*)$, entonces
 
 \begin{align*}
-    \frac{d}{dt}\langle e^*, e(t)\rangle &= \frac{d}{dt}\Big\langle \big(T(t-t_0)\big)^*e^*, e_0\Big\rangle\\
-    &= \left \langle\frac{d}{dt}\big(T(t-t_0)\big)^*e^*, e_0 \right\rangle\\
+    \frac{\dd}{\dd t}\langle e^*, e(t)\rangle &= \frac{\dd}{\dd t}\Big\langle \big(T(t-t_0)\big)^*e^*, e_0\Big\rangle\\
+    &= \left \langle\frac{\dd}{\dd t}\big(T(t-t_0)\big)^*e^*, e_0 \right\rangle\\
     &= \Big\langle A^*\big(T(t-t_0)\big)^*e^*, e_0\Big\rangle\\
     &= \Big\langle \big(T(t-t_0)\big)^*A^*e^*, e_0\Big\rangle\\
     &=\langle A^*e^*, T(t-t_0)e_0\rangle\\
@@ -128,32 +128,32 @@ es también una solución al problema homogéneo con dato inicial
 pues
 
 \begin{align*}
-    \frac{d^+}{dt}\langle e^*, u(t) \rangle &= \frac{d^+}{dt}\langle e^*, e_1(t)\rangle - \frac{d^+}{dt}\langle e^*, e_2(t)\rangle\\
+    \frac{\dd^+}{\dd t}\langle e^*, u(t) \rangle &= \frac{\dd^+}{\dd t}\langle e^*, e_1(t)\rangle - \frac{\dd^+}{\dd t}\langle e^*, e_2(t)\rangle\\
     &= \langle e^* Ae_1(t)\rangle - \langle e^* Ae_2(t)\rangle\\
     &= \langle e^*, u(t) \rangle.
 \end{align*}
 
 Construyamos ahora una función con más regularidad. Para ello, definimos
 
-\[U(t) = \int_{t_0}^t u(s) \, ds,\]
+\[U(t) = \int_{t_0}^t u(s) \, \dd s,\]
 
 donde $U$ es de clase $C^1$ y claramente
 
-\[\frac{d^+}{dt}U(t) = u(t).\]
+\[\frac{\dd^+}{\dd t}U(t) = u(t).\]
 
 Entonces:
 
 \begin{align*}
-    \langle e^*, u(t) \rangle &= \int_{t_0}^t \frac{d^+}{dt}\langle e^*, u(s)\rangle \, ds\\
-    &= \int_{t_0}^t \langle e^*, Au(s)\rangle \, ds\\
-    &= \int_{t_0}^t \langle A^*e^*, u(s)\rangle \, ds\\
-    &= \left \langle A^*e^*, \int_{t_0}^t u(s) \, ds\right \rangle\\
+    \langle e^*, u(t) \rangle &= \int_{t_0}^t \frac{\dd^+}{\dd t}\langle e^*, u(s)\rangle \, \dd s\\
+    &= \int_{t_0}^t \langle e^*, Au(s)\rangle \, \dd s\\
+    &= \int_{t_0}^t \langle A^*e^*, u(s)\rangle \, \dd s\\
+    &= \left \langle A^*e^*, \int_{t_0}^t u(s) \, \dd s\right \rangle\\
     &= \langle A^*e^*, U(t) \rangle,
 \end{align*}
 
 y así
 
-\[\langle e^*, u(t) \rangle = \left \langle e^*, \frac{d^+}{dt}U(t)\right \rangle = \langle A^*e^*, U(t) \rangle.\]
+\[\langle e^*, u(t) \rangle = \left \langle e^*, \frac{\dd^+}{\dd t}U(t)\right \rangle = \langle A^*e^*, U(t) \rangle.\]
 
 Construimos ahora la función auxiliar
 
@@ -162,18 +162,18 @@ Construimos ahora la función auxiliar
 donde $t_0 \leq t \leq t^*$ y $t^*$ es un instante arbitrario. Ahora derivamos la función anterior y obtenemos:
 
 \begin{align*}
-    \frac{d^+}{dt}\langle e^*, T(t^* - t)U(t) \rangle &= \frac{d^+}{dt}\Big \langle \big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle\\
-    &= \left \langle \frac{d^+}{dt} \big (T(t^* - t)\big)^*e^*, U(t) \right\rangle + \left\langle \big (T(t^* - t)\big)^*e^*, \frac{d^+}{dt}U(t) \right\rangle\\
-    &= -\Big\langle A^*\big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle + \left\langle \big (T(t^* - t)\big)^*e^*, \frac{d^+}{dt}U(t) \right\rangle.
+    \frac{\dd^+}{\dd t}\langle e^*, T(t^* - t)U(t) \rangle &= \frac{\dd^+}{\dd t}\Big \langle \big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle\\
+    &= \left \langle \frac{\dd^+}{\dd t} \big (T(t^* - t)\big)^*e^*, U(t) \right\rangle + \left\langle \big (T(t^* - t)\big)^*e^*, \frac{\dd^+}{\dd t}U(t) \right\rangle\\
+    &= -\Big\langle A^*\big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle + \left\langle \big (T(t^* - t)\big)^*e^*, \frac{\dd^+}{\dd t}U(t) \right\rangle.
 \end{align*}
 
 Para continuar, queremos usar sobre el término
 
-\[\left\langle \big (T(t^* - t)\big)^*e^*, \frac{d^+}{dt}U(t) \right\rangle\]
+\[\left\langle \big (T(t^* - t)\big)^*e^*, \frac{\dd^+}{\dd t}U(t) \right\rangle\]
 
 la igualdad
 
-\[\left \langle e^*, \frac{d^+}{dt}U(t)\right \rangle = \langle A^*e^*, U(t) \rangle.\]
+\[\left \langle e^*, \frac{\dd^+}{\dd t}U(t)\right \rangle = \langle A^*e^*, U(t) \rangle.\]
 
 Para ello, hay que probar que $\big(T(t^*-t)\big)^*e^*\in D(A^*)$, donde $e^* \in D(A^*)$. Tomando $e \in D(A)$:
 
@@ -184,7 +184,7 @@ y así, por definición de $D(A^*)$, se tiene que $\big(T(t^*-t)\big)^*e^*\in D(
 Dicho eso, aplicamos la igualdad mencionada y obtenemos:
 
 \begin{align*}
-    \frac{d^+}{dt}\langle e^*, T(t^* - t)U(t) \rangle &= -\Big\langle A^*\big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle + \left\langle \big (T(t^* - t)\big)^*e^*, \frac{d^+}{dt}U(t) \right\rangle\\
+    \frac{\dd^+}{\dd t}\langle e^*, T(t^* - t)U(t) \rangle &= -\Big\langle A^*\big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle + \left\langle \big (T(t^* - t)\big)^*e^*, \frac{\dd^+}{\dd t}U(t) \right\rangle\\
     &= -\Big\langle A^*\big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle + \Big\langle A^*\big (T(t^* - t)\big)^*e^*, U(t) \Big\rangle\\
     &= 0,
 \end{align*}
@@ -211,12 +211,12 @@ Para ello, debemos comprobar que si $e$ es una solución débil al problema, ent
 Que $e(t) \in D(A)$ para todo instante $t$ es trivial, pues sabemos por \eqref{Hom:FormaSoluciones} que $e(t) = T(t-t_0)e_0$, y como $e_0 \in D(A)$ entonces se tiene el resultado. Por otro lado, $t \mapsto e(t)$ es continua por continuidad del semigrupo $T(t)$. Veamos ahora que $e$ satisface \eqref{ch:cauchy:section:Hom:eqBasica}:
 
 \begin{align*}
-    \frac{d^+}{dt}e(t) = \frac{d^+}{dt}T(t-t_0)e_0 = AT(t-t_0)e_0 = Ae(t),
+    \frac{\dd^+}{\dd t}e(t) = \frac{\dd^+}{\dd t}T(t-t_0)e_0 = AT(t-t_0)e_0 = Ae(t),
 \end{align*}
 
 por lo que $e$ satisface \eqref{ch:cauchy:section:Hom:eqBasica}. Por último, debemos comprobar que la derivada de $e$ es continua. Para ello, usamos la conmutatividad del semigrupo con el generador y obtenemos:
 
-\[\frac{d^+}{dt}e(t) = AT(t-t_0)e_0 = T(t-t_0)Ae_0,\]
+\[\frac{\dd^+}{\dd t}e(t) = AT(t-t_0)e_0 = T(t-t_0)Ae_0,\]
 
 y como $Ae_0 \in E_0$ es un elemento del espacio cualquiera, entonces volvemos a invocar la continuidad del semigrupo y se tiene inexorablemente que la derivada es continua. En consecuencia, una solución débil con un dato inicial regular dan como resultado una solución fuerte.
 
@@ -243,7 +243,7 @@ En esta sección estudiaremos problemas de Cauchy (es decir, problemas de valor 
 
 \begin{align}
     \label{ch:cauchy:section:noHom:eqBasica}
-    \frac{de}{dt} &= Ae + f(t), \quad t_0 < t < t_1\\
+    \frac{\dd e}{\dd t} &= Ae + f(t), \quad t_0 < t < t_1\\
     e(t_0) &= e_0 \in E_0,
 \end{align}
 \footnotetext{Esto es exclusivamente notación salvo que se indique lo contrario.}
@@ -259,19 +259,19 @@ Empezamos entonces por definir los tipos de soluciones que puede tener el proble
 
         \begin{align}
         \label{ch:cauchy:section:noHom:def:soluciones:1}
-        \frac{d^+}{dt}e(t) = \lim_{h \rightarrow 0^+} \frac{e(t+h) - e(t)}{h}
+        \frac{\dd^+}{\dd t}e(t) = \lim_{h \rightarrow 0^+} \frac{e(t+h) - e(t)}{h}
         \end{align}
 
-        existe, se satisface \eqref{ch:cauchy:section:noHom:eqBasica} con $\displaystyle\frac{d}{dt}e(t)$ sustituida por $\displaystyle\frac{d^+}{dt}e(t)$ y $t \mapsto \frac{d^+}{dt}e(t)$ es continua donde lo sea $f$. Nótese que se $t \mapsto f(t)$ es una función continua y $t \mapsto e(t)$ es una solución fuerte de \eqref{ch:cauchy:section:noHom:eqBasica}, entonces $t \mapsto e(t)$ es continuamente diferenciable y \eqref{ch:cauchy:section:noHom:eqBasica} se verifica para cada $t \in (t_0, t_1)$.
+        existe, se satisface \eqref{ch:cauchy:section:noHom:eqBasica} con $\displaystyle\frac{\dd}{\dd t}e(t)$ sustituida por $\displaystyle\frac{\dd^+}{\dd t}e(t)$ y $t \mapsto \frac{\dd^+}{\dd t}e(t)$ es continua donde lo sea $f$. Nótese que se $t \mapsto f(t)$ es una función continua y $t \mapsto e(t)$ es una solución fuerte de \eqref{ch:cauchy:section:noHom:eqBasica}, entonces $t \mapsto e(t)$ es continuamente diferenciable y \eqref{ch:cauchy:section:noHom:eqBasica} se verifica para cada $t \in (t_0, t_1)$.
 
         \item Una \textit{solución débil} de \eqref{ch:cauchy:section:noHom:eqBasica} en $[t_0, t_1)$ es una función continua $e : [t_0, t_1) \rightarrow E_0$ tal que $e(t_0) = e_0$ y para todo $e^* \in D(A^*)$, $t\mapsto \langle e^*, e(t) \rangle$ tiene derivada por la derecha y
 
         \begin{align}
         \label{ch:cauchy:section:noHom:def:soluciones:2}
-        \frac{d^+}{dt}\langle e^*, e(t)\rangle = \langle A^* e^*, e(t) \rangle + \langle e^*, f(t) \rangle, \quad t_0 < t < t_1.
+        \frac{\dd^+}{\dd t}\langle e^*, e(t)\rangle = \langle A^* e^*, e(t) \rangle + \langle e^*, f(t) \rangle, \quad t_0 < t < t_1.
         \end{align}
 
-        Nótese que si $t \mapsto \langle e^*, f(t) \rangle$ es una función continua y $t \mapsto e(t)$ es una solución débil de \eqref{ch:cauchy:section:noHom:eqBasica}, entonces $t \mapsto \langle e^*, e(t) \rangle$ es continuamente diferenciable y \eqref{ch:cauchy:section:noHom:def:soluciones:2} se verifica con $\displaystyle\frac{d^+}{dt}$ sustituido por $\displaystyle\frac{d}{dt}$
+        Nótese que si $t \mapsto \langle e^*, f(t) \rangle$ es una función continua y $t \mapsto e(t)$ es una solución débil de \eqref{ch:cauchy:section:noHom:eqBasica}, entonces $t \mapsto \langle e^*, e(t) \rangle$ es continuamente diferenciable y \eqref{ch:cauchy:section:noHom:def:soluciones:2} se verifica con $\displaystyle\frac{\dd^+}{\dd t}$ sustituido por $\displaystyle\frac{\dd}{\dd t}$
     \end{enumerate}
 \end{Definicion}
 
@@ -310,16 +310,16 @@ Adentrándonos más en el terreno de las soluciones al problema de Cauchy abstra
 
         \begin{align}
             \label{ch:cauchy:section:noHom:th:solDebilYFuerteRels:2}
-            e(t) = \mathrm{e}^{A(t-t_0)}e_0 + \int_{t_0}^{t}\mathrm{e}^{A(t-s)}f(s) \, ds, \quad t_0 \leq t \leq t_1
+            e(t) = \mathrm{e}^{A(t-t_0)}e_0 + \int_{t_0}^{t}\mathrm{e}^{A(t-s)}f(s) \, \dd s, \quad t_0 \leq t \leq t_1
         \end{align}
 
         En particular, existe una única solución débil de \eqref{ch:cauchy:section:noHom:eqBasica}.
 
         \item Si $e : [t_0, t_1) \rightarrow E_0$ está definido por \eqref{ch:cauchy:section:noHom:th:solDebilYFuerteRels:2}, entonces $e : [t_0, t_1) \rightarrow E_0$ es una solución débil de \eqref{ch:cauchy:section:noHom:eqBasica}.
 
-        \item Sea $e : [t_0, t_1) \rightarrow E_0$ una solución débil de \eqref{ch:cauchy:section:noHom:eqBasica}. Si para algún instante $t \in (t_0, t_1)$ se cumple que $e(t) \in D(A)$ o bien que $\displaystyle\frac{d^+}{dt}e(t)$ existe, entonces se cumplen ambas para ese instante y además
+        \item Sea $e : [t_0, t_1) \rightarrow E_0$ una solución débil de \eqref{ch:cauchy:section:noHom:eqBasica}. Si para algún instante $t \in (t_0, t_1)$ se cumple que $e(t) \in D(A)$ o bien que $\displaystyle\frac{\dd^+}{\dd t}e(t)$ existe, entonces se cumplen ambas para ese instante y además
 
-        \[\frac{d^+}{dt}e(t) = Ae(t) + f(t).\]
+        \[\frac{\dd^+}{\dd t}e(t) = Ae(t) + f(t).\]
     \end{enumerate}
 \end{Teorema}
 
@@ -327,39 +327,39 @@ Adentrándonos más en el terreno de las soluciones al problema de Cauchy abstra
     La primera afirmación es trivial. Continuamos entonces con la prueba del tercer punto y la unicidad de soluciones, lo cual probará el segundo punto. Sea $e^* \in D(A^*)$. Para cualquier $e \in E_0$, $t \mapsto \langle e^*, \mathrm{e}^{At}e \rangle$ es diferenciable con derivada $\langle A^*e^*, \mathrm{e}^{At}e \rangle$, pues como $e^*$ es una aplicación lineal y continua, entonces
 
     \begin{align*}
-        \frac{d^+}{dt}\langle e^*, \mathrm{e}^{At}e \rangle &= \left \langle e^*, \frac{d^+}{dt}\mathrm{e}^{At}e \right \rangle\\
+        \frac{\dd^+}{\dd t}\langle e^*, \mathrm{e}^{At}e \rangle &= \left \langle e^*, \frac{\dd^+}{\dd t}\mathrm{e}^{At}e \right \rangle\\
         &= \langle e^*, A\mathrm{e}^{At}e \rangle\\
         &= \langle A^* e^*, \mathrm{e}^{At}e \rangle,
     \end{align*}
 
     donde hemos considerado $e \in D(A)$ y luego, por densidad, extendemos para un $e \in E_0$ cualquiera. Así, por el Teorema fundamental del cálculo:
 
-    \[\langle e^*, \mathrm{e}^{At}e \rangle - \langle e^*, e \rangle = \int_0^t \langle A^* e^*, \mathrm{e}^{As}e \rangle \, ds\]
+    \[\langle e^*, \mathrm{e}^{At}e \rangle - \langle e^*, e \rangle = \int_0^t \langle A^* e^*, \mathrm{e}^{As}e \rangle \, \dd s\]
 
     para $e \in D(A)$. Como $D(A)$ es denso en $E_0$, y por continuidad del semigrupo $\mathrm{e}^{At}$ y los funcionales $e^*$ y $A^*e^*$, entonces la expresión anterior es válida para $e \in E_0$.\footnotemark
     \footnotetext{Esto nos permite, en el desarrollo que ocurre en las siguientes líneas, poder derivar sin temor a que el dato inicial $e_0$ no esté en el dominio de $A$.}
 
     Asumimos ahora que
     
-    \[e(t) = \mathrm{e}^{A(t-t_0)}e_0 + \int_{t_0}^{t} \mathrm{e}^{A(t-s)}f(s)\, ds\]
+    \[e(t) = \mathrm{e}^{A(t-t_0)}e_0 + \int_{t_0}^{t} \mathrm{e}^{A(t-s)}f(s)\, \dd s\]
     
-    y usaremos los resultados anteriores para calcular $\displaystyle\frac{d^+}{dt}\langle e^*, e(t) \rangle$ y comprobar que $e : [t_0, t_1) \rightarrow E_0$ es una solución débil (de acuerdo a la definición \eqref{ch:cauchy:section:noHom:def:soluciones} de solución débil). En efecto:
+    y usaremos los resultados anteriores para calcular $\displaystyle\frac{\dd^+}{\dd t}\langle e^*, e(t) \rangle$ y comprobar que $e : [t_0, t_1) \rightarrow E_0$ es una solución débil (de acuerdo a la definición \eqref{ch:cauchy:section:noHom:def:soluciones} de solución débil). En efecto:
 
     \begin{align*}
-        \frac{d^+}{dt} \Big \langle e^*, e(t) \Big \rangle &= \frac{d^+}{dt} \left \langle e^*, \mathrm{e}^{A(t-t_0)}e_0 \right \rangle + \frac{d^+}{dt}\left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds \right \rangle\\
-        &=\frac{d^+}{dt} \left( \cancelto{0}{\langle e^*, e_0 \rangle} + \int_0^t \langle A^* e^*, \mathrm{e}^{A(s-t_0)}e_0 \rangle \, ds \right) + \frac{d^+}{dt}\left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds \right \rangle\\
-        &=\langle A^* e^*, \mathrm{e}^{A(t-t_0)}e_0 \rangle + \frac{d^+}{dt}\left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds \right \rangle.
+        \frac{\dd^+}{\dd t} \Big \langle e^*, e(t) \Big \rangle &= \frac{\dd^+}{\dd t} \left \langle e^*, \mathrm{e}^{A(t-t_0)}e_0 \right \rangle + \frac{\dd^+}{\dd t}\left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s \right \rangle\\
+        &=\frac{\dd^+}{\dd t} \left( \cancelto{0}{\langle e^*, e_0 \rangle} + \int_0^t \langle A^* e^*, \mathrm{e}^{A(s-t_0)}e_0 \rangle \, \dd s \right) + \frac{\dd^+}{\dd t}\left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s \right \rangle\\
+        &=\langle A^* e^*, \mathrm{e}^{A(t-t_0)}e_0 \rangle + \frac{\dd^+}{\dd t}\left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s \right \rangle.
     \end{align*}
 
     Vamos a centrarnos ahora en el segundo sumando de la expresión anterior. Construiremos la derivada paso a paso:
 
     \begin{align*}
-        &\left \langle e^*, \int_{t_0}^{t + h}\mathrm{e}^{A(t + h - s)}f(s) \, ds \right \rangle - \left \langle e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle\\
-        =& \left \langle e^*, \int_{t_0}^{t}\mathrm{e}^{A(t + h - s)}f(s) \, ds + \int_{t}^{t + h}\mathrm{e}^{A(t + h - s)}f(s) \, ds \right \rangle - \left \langle e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle\\
-        =& \left \langle e^*, \mathrm{e}^{Ah}\int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds + \int_{t}^{t + h}\mathrm{e}^{A(t + h - s)}f(s) \, ds \right \rangle - \left \langle e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle\\
-        =& \left \langle e^*, \int_{t}^{t + h}\mathrm{e}^{A(t + h - s)}f(s) \, ds \right \rangle + \left \langle e^*, \big(\mathrm{e}^{Ah} - I \big)\int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle\\
-        =& \langle e^*, h f(t) \rangle + \left \langle \big(\mathrm{e}^{Ah} - I \big)^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle + o(h)\\
-        =& \langle e^*, h f(t) \rangle + \left \langle \Big(\mathrm{(e^{Ah})^*} - I\Big) e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle + o(h)\\
+        &\left \langle e^*, \int_{t_0}^{t + h}\mathrm{e}^{A(t + h - s)}f(s) \, \dd s \right \rangle - \left \langle e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle\\
+        =& \left \langle e^*, \int_{t_0}^{t}\mathrm{e}^{A(t + h - s)}f(s) \, \dd s + \int_{t}^{t + h}\mathrm{e}^{A(t + h - s)}f(s) \, \dd s \right \rangle - \left \langle e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle\\
+        =& \left \langle e^*, \mathrm{e}^{Ah}\int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s + \int_{t}^{t + h}\mathrm{e}^{A(t + h - s)}f(s) \, \dd s \right \rangle - \left \langle e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle\\
+        =& \left \langle e^*, \int_{t}^{t + h}\mathrm{e}^{A(t + h - s)}f(s) \, \dd s \right \rangle + \left \langle e^*, \big(\mathrm{e}^{Ah} - I \big)\int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle\\
+        =& \langle e^*, h f(t) \rangle + \left \langle \big(\mathrm{e}^{Ah} - I \big)^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle + o(h)\\
+        =& \langle e^*, h f(t) \rangle + \left \langle \Big(\mathrm{(e^{Ah})^*} - I\Big) e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle + o(h)\\
     \end{align*}
 
     Para continuar, debemos tener en cuenta ahora que $A^*$ es el generador infinitesimal del semigrupo fuertemente continuo $\{T^\odot (t) = \big(T(t)\big)^* |_Y : t \geq 0 \}$ en $L(Y)$, con $Y = \overline{D(A^*)}^{E_0^*}$ \textcolor{red}{(CITAR)}. Luego, como $e^* \in Y$ (pues $e^* \in D(A^*)$), entonces
@@ -369,24 +369,24 @@ Adentrándonos más en el terreno de las soluciones al problema de Cauchy abstra
     y así
 
     \begin{align*}
-        &\langle e^*, h f(t) \rangle + \left \langle \Big(\mathrm{(e^{Ah})^*} - I\Big) e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle + o(h)\\
-        =&\langle e^*, h f(t) \rangle + \left \langle hA^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle + o(h)\\
-        =&h \left[ \langle e^*, f(t) \rangle + \left \langle A^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle \right] + o(h).
+        &\langle e^*, h f(t) \rangle + \left \langle \Big(\mathrm{(e^{Ah})^*} - I\Big) e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle + o(h)\\
+        =&\langle e^*, h f(t) \rangle + \left \langle hA^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle + o(h)\\
+        =&h \left[ \langle e^*, f(t) \rangle + \left \langle A^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle \right] + o(h).
     \end{align*}
 
     En consecuencia:
 
     \begin{align*}
-        &\frac{d^+}{dt} \left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds\right \rangle\\
-        =& \lim_{h \rightarrow 0^+} \frac{1}{h} h \left[ \langle e^*, f(t) \rangle + \left \langle A^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle \right] + \cancelto{0}{\frac{o(h)}{h}}\\
-        =& \langle e^*, f(t) \rangle + \left \langle A^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle.
+        &\frac{\dd^+}{\dd t} \left \langle e^*, \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s\right \rangle\\
+        =& \lim_{h \rightarrow 0^+} \frac{1}{h} h \left[ \langle e^*, f(t) \rangle + \left \langle A^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle \right] + \cancelto{0}{\frac{o(h)}{h}}\\
+        =& \langle e^*, f(t) \rangle + \left \langle A^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle.
     \end{align*}
 
-    Sustituyendo ahora en la expresión de $\frac{d^+}{dt} \Big \langle e^*, e(t) \Big \rangle$:
+    Sustituyendo ahora en la expresión de $\frac{\dd^+}{\dd t} \Big \langle e^*, e(t) \Big \rangle$:
 
     \begin{align*}
-        \frac{d^+}{dt} \Big \langle e^*, e(t) \Big \rangle &= \langle A^* e^*, \mathrm{e}^{A(t-t_0)}e_0 \rangle + \langle e^*, f(t) \rangle + \left \langle A^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle\\
-        &= \left \langle A^* e^*, \mathrm{e}^{A(t-t_0)}e_0 + \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, ds \right \rangle + \langle e^*, f(t) \rangle\\
+        \frac{\dd^+}{\dd t} \Big \langle e^*, e(t) \Big \rangle &= \langle A^* e^*, \mathrm{e}^{A(t-t_0)}e_0 \rangle + \langle e^*, f(t) \rangle + \left \langle A^* e^*, \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle\\
+        &= \left \langle A^* e^*, \mathrm{e}^{A(t-t_0)}e_0 + \int_{t_0}^{t}\mathrm{e}^{A(t - s)}f(s) \, \dd s \right \rangle + \langle e^*, f(t) \rangle\\
         &=  \left \langle A^* e^*, e(t) \right \rangle + \langle e^*, f(t) \rangle,
     \end{align*}
 
@@ -395,7 +395,7 @@ Adentrándonos más en el terreno de las soluciones al problema de Cauchy abstra
     Continuamos ahora con la prueba de unicidad. Si existen dos soluciones débiles diferentes $e_1(t)$ y $e_2(t)$ de \eqref{ch:cauchy:section:noHom:eqBasica}, entonces denotamos por $u : [t_0, t_1) \rightarrow E_0$ a la diferencia entre ellas. Naturalmente, $u$ es una función continua con $u(t_0) = 0$ y 
 
     \begin{align*}
-        \frac{d^+}{dt}\langle e^*, u(t) \rangle &= \frac{d^+}{dt} \langle e^*, e_1(t) \rangle -  \frac{d^+}{dt} \langle e^*, e_2(t) \rangle\\
+        \frac{\dd^+}{\dd t}\langle e^*, u(t) \rangle &= \frac{\dd^+}{\dd t} \langle e^*, e_1(t) \rangle -  \frac{\dd^+}{\dd t} \langle e^*, e_2(t) \rangle\\
         &= \langle A^* e^*, e_1(t) \rangle + \cancel{\langle e^*, f(t) \rangle} - \langle A^* e^*, e_2(t) \rangle - \cancel{\langle e^*, f(t) \rangle}\\
         &= \langle A^* e^*, e_1(t) - e_2(t) \rangle\\
         &= \langle A^* e^*, u(t) \rangle,
@@ -405,21 +405,21 @@ Adentrándonos más en el terreno de las soluciones al problema de Cauchy abstra
 
     Es conveniente trabajar con funciones de clase $C^1$, por lo que definimos
 
-    \[U(t) = \int_{t_0}^t u(s) \, ds.\]
+    \[U(t) = \int_{t_0}^t u(s) \, \dd s.\]
 
-    Luego, tenemos que, integrando a ambos lados de la igualdad $\displaystyle \frac{d^+}{dt}\langle e^*, u(t) \rangle = \langle A^* e^*, u(t) \rangle$:
+    Luego, tenemos que, integrando a ambos lados de la igualdad $\displaystyle \frac{\dd^+}{\dd t}\langle e^*, u(t) \rangle = \langle A^* e^*, u(t) \rangle$:
 
-    \[\langle e^*, u(t) \rangle = \int_{t_0}^t \langle A^* e^*, u(s) \rangle \, ds,\]
+    \[\langle e^*, u(t) \rangle = \int_{t_0}^t \langle A^* e^*, u(s) \rangle \, \dd s,\]
 
-    y $\displaystyle \left \langle e^* , \frac{d^+}{dt}U(t) \right \rangle = \langle A^* e^*, U(t) \rangle$. Esto último se deduce de:
+    y $\displaystyle \left \langle e^* , \frac{\dd^+}{\dd t}U(t) \right \rangle = \langle A^* e^*, U(t) \rangle$. Esto último se deduce de:
 
     \begin{align*}
-        \langle e^*, u(t) \rangle = \int_{t_0}^t \frac{d^+}{dt} \langle e^*, u(s) \rangle \, ds &= \int_{t_0}^t \langle A^* e^*, u(s) \rangle \, ds\\
-        &= \left \langle A^* e^*, \int_{t_0}^t u(s) \, ds \right \rangle\\
+        \langle e^*, u(t) \rangle = \int_{t_0}^t \frac{\dd^+}{\dd t} \langle e^*, u(s) \rangle \, \dd s &= \int_{t_0}^t \langle A^* e^*, u(s) \rangle \, \dd s\\
+        &= \left \langle A^* e^*, \int_{t_0}^t u(s) \, \dd s \right \rangle\\
         &= \langle A^* e^*, U(t) \rangle.
     \end{align*}
 
-    Asimismo, como $U(t) = \int_{t_0}^t u(s) \, ds$, entonces $\displaystyle \frac{d^+}{dt} U(t) = u(t)$. Uniendo ambas expresiones, obtenemos la igualdad deseada.
+    Asimismo, como $U(t) = \int_{t_0}^t u(s) \, \dd s$, entonces $\displaystyle \frac{\dd^+}{\dd t} U(t) = u(t)$. Uniendo ambas expresiones, obtenemos la igualdad deseada.
 
     Obsérvese ahora que $(\mathrm{e}^{At})^* D(A^*) \subset D(A^*)$ para $t \geq 0$ ya que, para $e^* \in D(A^*)$ y $e \in D(A)$:
 
@@ -427,13 +427,13 @@ Adentrándonos más en el terreno de las soluciones al problema de Cauchy abstra
 
     por lo que $(\mathrm{e}^{At})^* e^* \in D(A^*).$ Luego, para cualquier $t^* \in (t_0, t_1),$
 
-    \[\left \langle e^*, \mathrm{e}^{A(t^* - t)}\frac{d^+}{dt}U(t)\right \rangle = \langle A^* e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle.\]
+    \[\left \langle e^*, \mathrm{e}^{A(t^* - t)}\frac{\dd^+}{\dd t}U(t)\right \rangle = \langle A^* e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle.\]
 
     Armados con todas estas igualdades, tomamos la derivada de $\langle e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle$:
 
     \begin{align*}
-        \frac{d}{dt} \langle e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle &= \frac{d}{dt}\Big\langle \big(\mathrm{e}^{A(t^*-t)} \big)^*e^*,U(t)\Big\rangle \\
-        &= \left \langle \frac{d}{dt}\big(\mathrm{e}^{A(t^*-t)} \big)^*e^*, U(t) \right \rangle + \left\langle \big(\mathrm{e}^{A(t^*-t)} \big)^*e^*,\frac{d}{dt}U(t)\right\rangle\\
+        \frac{\dd}{\dd t} \langle e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle &= \frac{\dd}{\dd t}\Big\langle \big(\mathrm{e}^{A(t^*-t)} \big)^*e^*,U(t)\Big\rangle \\
+        &= \left \langle \frac{\dd}{\dd t}\big(\mathrm{e}^{A(t^*-t)} \big)^*e^*, U(t) \right \rangle + \left\langle \big(\mathrm{e}^{A(t^*-t)} \big)^*e^*,\frac{\dd}{\dd t}U(t)\right\rangle\\
         &= \left \langle - A^*\big(\mathrm{e}^{A(t^*-t)} \big)^*e^*, U(t) \right \rangle + \left\langle \big(\mathrm{e}^{A(t^*-t)} \big)^*e^*, u(t)\right\rangle \\
         &= - \langle A^* e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle + \langle e^*, \mathrm{e}^{A(t^* - t)} u(t) \rangle\\
         &= - \langle A^* e^*, \mathrm{e}^{A(t^* - t)}U(t) \rangle + \langle A^* e^*, \mathrm{e}^{A(t^* - t)} U(t) \rangle\\
@@ -454,16 +454,16 @@ Adentrándonos más en el terreno de las soluciones al problema de Cauchy abstra
 
     \begin{align*}
         &\frac{e(t+h) - e(t)}{h}\\
-        &= \frac{1}{h} \left[ \mathrm{e}^{A(t+h-t_0)}e_0 + \int_{t_0}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, ds - \mathrm{e}^{A(t-t_0)}e_0 - \int_{t_0}^{t}\mathrm{e}^{A(t-s)} f(s) \, ds \right]\\
-        &= \frac{1}{h} \left[ \mathrm{e}^{Ah}\mathrm{e}^{A(t-t_0)}e_0 + \mathrm{e}^{Ah}\int_{t_0}^{t}\mathrm{e}^{A(t-s)} f(s) \, ds + \int_{t}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, ds - \mathrm{e}^{A(t-t_0)}e_0 - \int_{t_0}^{t}\mathrm{e}^{A(t-s)} f(s) \, ds \right]\\
-        &= \frac{1}{h}\left[\int_{t}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, ds + (\mathrm{e}^{Ah} - I) \left( \mathrm{e}^{A(t-t_0)}e_0 + \int_{t_0}^{t}\mathrm{e}^{A(t-s)} f(s) \, ds \right) \right]\\
-        &= \frac{1}{h} \left[\int_{t}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, ds + (\mathrm{e}^{Ah} - I)e(t) \right]\\
-        &= \frac{1}{h} \int_{t}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, ds + \frac{1}{h}(\mathrm{e}^{Ah} - I)e(t).
+        &= \frac{1}{h} \left[ \mathrm{e}^{A(t+h-t_0)}e_0 + \int_{t_0}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, \dd s - \mathrm{e}^{A(t-t_0)}e_0 - \int_{t_0}^{t}\mathrm{e}^{A(t-s)} f(s) \, \dd s \right]\\
+        &= \frac{1}{h} \left[ \mathrm{e}^{Ah}\mathrm{e}^{A(t-t_0)}e_0 + \mathrm{e}^{Ah}\int_{t_0}^{t}\mathrm{e}^{A(t-s)} f(s) \, \dd s + \int_{t}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, \dd s - \mathrm{e}^{A(t-t_0)}e_0 - \int_{t_0}^{t}\mathrm{e}^{A(t-s)} f(s) \, \dd s \right]\\
+        &= \frac{1}{h}\left[\int_{t}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, \dd s + (\mathrm{e}^{Ah} - I) \left( \mathrm{e}^{A(t-t_0)}e_0 + \int_{t_0}^{t}\mathrm{e}^{A(t-s)} f(s) \, \dd s \right) \right]\\
+        &= \frac{1}{h} \left[\int_{t}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, \dd s + (\mathrm{e}^{Ah} - I)e(t) \right]\\
+        &= \frac{1}{h} \int_{t}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, \dd s + \frac{1}{h}(\mathrm{e}^{Ah} - I)e(t).
     \end{align*}
 
     Luego, el término
 
-    \[\frac{1}{h} \int_{t}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, ds\]
+    \[\frac{1}{h} \int_{t}^{t+h}\mathrm{e}^{A(t+h-s)} f(s) \, \dd s\]
 
     converge a $f(t^+) = f(t)$ (dicha igualdad se da por la continuidad de $f$) cuando $h \rightarrow 0^+$. Luego, si cualquiera de los otros dos términos converge, entonces el que resta también debe hacerlo, probando así el cuarto y último punto del Teorema.
 \end{proof}
@@ -478,50 +478,50 @@ A continuación, damos condiciones simples que aseguran la diferenciabilidad de 
     \begin{enumerate}
     \item $f(t) \in D(A)$ con $t \mapsto Af(t) \in E_0$ continua por la derecha en $[t_0, t_1)$, o bien
 
-    \item $\displaystyle \frac{d^+}{dt}f(t) = \dot{f}(t)$ existe y es continua por la derecha en $[t_0, t_1)$
+    \item $\displaystyle \frac{\dd^+}{\dd t}f(t) = \dot{f}(t)$ existe y es continua por la derecha en $[t_0, t_1)$
     \end{enumerate}
 
-    entonces $\displaystyle \frac{d^+}{dt}e(t)$ existe, $e(t) \in D(A)$ y $e : [t_0, t_1) \rightarrow E_0$ es una solución fuerte.
+    entonces $\displaystyle \frac{\dd^+}{\dd t}e(t)$ existe, $e(t) \in D(A)$ y $e : [t_0, t_1) \rightarrow E_0$ es una solución fuerte.
 \end{Teorema}
 
 \begin{proof}
-    Sea $\displaystyle u(t) = \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds$, luego $e(t) = \mathrm{e}^{A(t-t_0)}e_0 + u(t)$. Como $e_0 \in D(A)$, entonces $t \mapsto \mathrm{e}^{A(t-t_0)}e_0$ es de clase $C^1$. Sea entonces $t_0 \leq t < t + h < t_1$, se tiene que:
+    Sea $\displaystyle u(t) = \int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s$, luego $e(t) = \mathrm{e}^{A(t-t_0)}e_0 + u(t)$. Como $e_0 \in D(A)$, entonces $t \mapsto \mathrm{e}^{A(t-t_0)}e_0$ es de clase $C^1$. Sea entonces $t_0 \leq t < t + h < t_1$, se tiene que:
 
     \begin{align*}
-        \frac{u(t+h) - u(t)}{h} &= \frac{1}{h}\int_{t_0}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, ds - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds\\
-        &= \frac{1}{h}\mathrm{e}^{Ah}\int_{t_0}^{t} \mathrm{e}^{A(t-s)}f(s) \, ds + \frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, ds - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds\\
-        &= \frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, ds + \int_{t_0}^t \mathrm{e}^{A(t-s)}\frac{\mathrm{e}^{Ah} - I}{h}f(s) \, ds
+        \frac{u(t+h) - u(t)}{h} &= \frac{1}{h}\int_{t_0}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, \dd s - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s\\
+        &= \frac{1}{h}\mathrm{e}^{Ah}\int_{t_0}^{t} \mathrm{e}^{A(t-s)}f(s) \, \dd s + \frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, \dd s - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s\\
+        &= \frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, \dd s + \int_{t_0}^t \mathrm{e}^{A(t-s)}\frac{\mathrm{e}^{Ah} - I}{h}f(s) \, \dd s
     \end{align*}
 
     Por otro lado, también podemos desarrollar la expresión anterior como:
 
     \begin{align*}
-        \frac{u(t+h) - u(t)}{h} &= \frac{1}{h}\int_{t_0}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, ds - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds\\
-        &= \frac{1}{h}\int_{t_0}^{t} \mathrm{e}^{A(t + h -s)}f(s) \, ds + \frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, ds - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds\\
-        \text{(Ca. de var.) }&= \frac{1}{h}\int_{t_0 - h}^{t-h} \mathrm{e}^{A(t-x)}f(x + h) \, dx + \frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, ds - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds\\
-        &= \frac{1}{h}\Bigg[ \int_{t_0 - h}^{t_0} \mathrm{e}^{A(t-x)}f(x + h) \, dx + \int_{t_0}^{t} \mathrm{e}^{A(t-x)}f(x + h) \, dx\\
-        &- \int_{t - h}^{t} \mathrm{e}^{A(t-x)}f(x + h) \, dx\Bigg ] + \frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, ds - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds\\
-        \text{(Ca. de var.) }&=\frac{1}{h}\Bigg[ \int_{t_0}^{t_0 + h} \mathrm{e}^{A(t+h-s)}f(s) \, ds + \int_{t_0}^{t} \mathrm{e}^{A(t-x)}f(x + h) \, dx\\
-        &- \cancel{\int_{t}^{t+h} \mathrm{e}^{A(t+h-s)}f(s) \, ds}\Bigg ] + \cancel{\frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, ds} - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds\\
-        &= \frac{1}{h} \int_{t_0}^{t_0 + h} \mathrm{e}^{A(t+h-s)}f(s) \, ds + \frac{1}{h}\int_{t_0}^{t} \mathrm{e}^{A(t-x)}f(x + h) \, dx - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, ds\\
-        &= \frac{1}{h} \int_{t_0}^{t_0 + h} \mathrm{e}^{A(t+h-s)}f(s) \, ds + \int_{t_0}^t \mathrm{e}^{A(t-s)}\frac{f(s+h) - f(s)}{h} \, ds.
+        \frac{u(t+h) - u(t)}{h} &= \frac{1}{h}\int_{t_0}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, \dd s - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s\\
+        &= \frac{1}{h}\int_{t_0}^{t} \mathrm{e}^{A(t + h -s)}f(s) \, \dd s + \frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, \dd s - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s\\
+        \text{(Ca. de var.) }&= \frac{1}{h}\int_{t_0 - h}^{t-h} \mathrm{e}^{A(t-x)}f(x + h) \, \dd x + \frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, \dd s - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s\\
+        &= \frac{1}{h}\Bigg[ \int_{t_0 - h}^{t_0} \mathrm{e}^{A(t-x)}f(x + h) \, \dd x + \int_{t_0}^{t} \mathrm{e}^{A(t-x)}f(x + h) \, \dd x\\
+        &- \int_{t - h}^{t} \mathrm{e}^{A(t-x)}f(x + h) \, \dd x\Bigg ] + \frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, \dd s - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s\\
+        \text{(Ca. de var.) }&=\frac{1}{h}\Bigg[ \int_{t_0}^{t_0 + h} \mathrm{e}^{A(t+h-s)}f(s) \, \dd s + \int_{t_0}^{t} \mathrm{e}^{A(t-x)}f(x + h) \, \dd x\\
+        &- \cancel{\int_{t}^{t+h} \mathrm{e}^{A(t+h-s)}f(s) \, \dd s}\Bigg ] + \cancel{\frac{1}{h}\int_{t}^{t+h} \mathrm{e}^{A(t + h -s)}f(s) \, \dd s} - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s\\
+        &= \frac{1}{h} \int_{t_0}^{t_0 + h} \mathrm{e}^{A(t+h-s)}f(s) \, \dd s + \frac{1}{h}\int_{t_0}^{t} \mathrm{e}^{A(t-x)}f(x + h) \, \dd x - \frac{1}{h}\int_{t_0}^t \mathrm{e}^{A(t-s)}f(s) \, \dd s\\
+        &= \frac{1}{h} \int_{t_0}^{t_0 + h} \mathrm{e}^{A(t+h-s)}f(s) \, \dd s + \int_{t_0}^t \mathrm{e}^{A(t-s)}\frac{f(s+h) - f(s)}{h} \, \dd s.
     \end{align*}
 
     Teniendo ambas expresiones, ahora tomamos el límite cuando $h \rightarrow 0^+$ de la primera de ellas e, imponiendo la primera condición, obtenemos:
 
-    \[\frac{d^+}{dt}u(t) = f(t) + \int_{t_0}^t \mathrm{e}^{A(t-s)}Af(s) \, ds.\]
+    \[\frac{\dd^+}{\dd t}u(t) = f(t) + \int_{t_0}^t \mathrm{e}^{A(t-s)}Af(s) \, \dd s.\]
 
-    Es decir, $\displaystyle \frac{d^+}{dt}u(t)$ existe y $\displaystyle t \mapsto \frac{d^+}{dt}u(t)$ es continua.
+    Es decir, $\displaystyle \frac{\dd^+}{\dd t}u(t)$ existe y $\displaystyle t \mapsto \frac{\dd^+}{\dd t}u(t)$ es continua.
 
     Repetimos ahora con la segunda expresión. Tomamos el límite e imponemos la segunda condición, obteniendo así:
 
-    \[\frac{d^+}{dt}u(t) = \mathrm{e}^{A(t-t_0)}f(t_0) + \int_{t_0}^t \mathrm{e}^{A(t-s)}\dot{f}(s) \, ds,\]
+    \[\frac{\dd^+}{\dd t}u(t) = \mathrm{e}^{A(t-t_0)}f(t_0) + \int_{t_0}^t \mathrm{e}^{A(t-s)}\dot{f}(s) \, \dd s,\]
 
-    que, de nuevo, implica que $\displaystyle \frac{d^+}{dt}u(t)$ existe y que $\displaystyle t \mapsto \frac{d^+}{dt}u(t)$ es continua.
+    que, de nuevo, implica que $\displaystyle \frac{\dd^+}{\dd t}u(t)$ existe y que $\displaystyle t \mapsto \frac{\dd^+}{\dd t}u(t)$ es continua.
 
-    Finalmente, por lo dicho al comienzo (entiéndase: que $t \mapsto \mathrm{e}^{A(t-t_0)}e_0$ es de clase $C^1$ por ser $e_0$ un elemento de $D(A)$), se tiene que $\displaystyle \frac{d^+}{dt}e(t)$ existe (pues $\displaystyle \frac{d^+}{dt}e(t) = \frac{d^+}{dt}\Big(\mathrm{e}^{A(t_0 - t)}e_0 \Big) + \frac{d^+}{dt}u(t)$) y $\displaystyle t \mapsto \frac{d^+}{dt}e(t)$ es continua. Así, por el cuarto punto del Teorema \eqref{ch:cauchy:section:noHom:th:solDebilYFuerteRels}
+    Finalmente, por lo dicho al comienzo (entiéndase: que $t \mapsto \mathrm{e}^{A(t-t_0)}e_0$ es de clase $C^1$ por ser $e_0$ un elemento de $D(A)$), se tiene que $\displaystyle \frac{\dd^+}{\dd t}e(t)$ existe (pues $\displaystyle \frac{\dd^+}{\dd t}e(t) = \frac{\dd^+}{\dd t}\Big(\mathrm{e}^{A(t_0 - t)}e_0 \Big) + \frac{\dd^+}{\dd t}u(t)$) y $\displaystyle t \mapsto \frac{\dd^+}{\dd t}e(t)$ es continua. Así, por el cuarto punto del Teorema \eqref{ch:cauchy:section:noHom:th:solDebilYFuerteRels}
 
-    \[\frac{d^+}{dt}e(t) = Ae(t) + f(t) \ ; \ e(t) \in D(A), \]
+    \[\frac{\dd^+}{\dd t}e(t) = Ae(t) + f(t) \ ; \ e(t) \in D(A), \]
 
     y $e: [t_0, t_1) \rightarrow E_0$ es una solución fuerte.
 \end{proof}
@@ -535,7 +535,7 @@ Similar a la sección anterior, en esta sección consideraremos el problema de v
 
 \begin{align}
     \label{ch:cauchy:section:semilineal:eqBasica}
-    \frac{de}{dt} &= Ae + f(t,e)\\
+    \frac{\dd e}{\dd t} &= Ae + f(t,e)\\
     e(t_0) &= e_0 \in E_0,
 \end{align}
 
@@ -551,7 +551,7 @@ Siguiendo la misma estructura de la sección anterior, empezamos por definir los
 
         \item Una \textit{solución débil} de \eqref{ch:cauchy:section:semilineal:eqBasica} en $[t_0, t_1)$ es una función continua $e : [t_0, t_1) \rightarrow E_0$ tal que $e(t_0) = e_0$, $(t, e(t)) \in U$, para todo $e^* \in D(A^*)$ se tiene que $t \mapsto \langle e^*, e(t) \rangle$ es diferenciable y 
 
-        \[\frac{d}{dt}\langle e^*, e(t) \rangle = \langle A^* e^*, e(t) \rangle + \langle e^*, f(t, e(t)) \rangle, \quad t_0 < t < t_1.\]
+        \[\frac{\dd}{\dd t}\langle e^*, e(t) \rangle = \langle A^* e^*, e(t) \rangle + \langle e^*, f(t, e(t)) \rangle, \quad t_0 < t < t_1.\]
     \end{enumerate}
 \end{Definicion}
 
@@ -569,7 +569,7 @@ Dada la definición anterior, enunciamos un Teorema análogo al Teorema \eqref{c
 
         \begin{align}
             \label{ch:cauchy:section:semilineal:th:solDebilYFuerteRels:2}
-            e(t) = \mathrm{e}^{A(t-t_0)}e_0 + \int_{t_0}^{t}\mathrm{e}^{A(t-s)}f(s, e(s)) \, ds, \quad t_0 \leq t \leq t_1
+            e(t) = \mathrm{e}^{A(t-t_0)}e_0 + \int_{t_0}^{t}\mathrm{e}^{A(t-s)}f(s, e(s)) \, \dd s, \quad t_0 \leq t \leq t_1
         \end{align}
 
         \item Si $e : [t_0, t_1) \rightarrow E_0$ es continua con $(t,e(t)) \in U, t_0 \leq t < t_1$, y satisface \eqref{ch:cauchy:section:semilineal:eqBasica}, entonces $e : [t_0, t_1) \rightarrow E_0$ es una solución débil de \eqref{ch:cauchy:section:semilineal:eqBasica}.
@@ -579,15 +579,15 @@ Dada la definición anterior, enunciamos un Teorema análogo al Teorema \eqref{c
 \begin{proof}
     El razonamiento detrás de esta demostración se basa en reducir el problema semilineal al marco de trabajo del problema lineal estudiado previamente. En la sección anterior, el Teorema \eqref{ch:cauchy:section:noHom:th:solDebilYFuerteRels} establece las propiedades fundamentales para el problema de Cauchy lineal no homogéneo, cuya estructura es de la forma:
     
-    \[\frac{d}{dt}e(t) = Ae(t) + f(t)\]
+    \[\frac{\dd}{\dd t}e(t) = Ae(t) + f(t)\]
     
     donde el término no homogéneo $f(t)$ depende únicamente de la variable temporal $t$. Por otro lado, para el problema de Cauchy semilineal \eqref{ch:cauchy:section:semilineal:eqBasica}, la ecuación diferencial involucra una no linealidad que depende tanto del tiempo como del estado del sistema:
     
-    \[\frac{d}{dt}e(t) = Ae(t) + f(t, e(t)).\]
+    \[\frac{\dd}{\dd t}e(t) = Ae(t) + f(t, e(t)).\]
     
     El argumento central de la demostración consiste en fijar una función continua $e: [t_0, t_1) \to E_0$ y definir una nueva función $g: [t_0, t_1) \to E_0$ dada por $g(t) = f(t, e(t))$. Dado que, por hipótesis, la aplicación $t \mapsto f(t, e(t))$ es continua, la función $g(t)$ resulta ser simplemente un término fuente continuo que depende exclusivamente de $t$. Sustituyendo esta nueva función, la ecuación diferencial semilineal se reescribe como:
     
-    \[\frac{d}{dt}e(t) = Ae(t) + g(t)\]
+    \[\frac{\dd}{\dd t}e(t) = Ae(t) + g(t)\]
     
     Al realizar esta identificación, el problema semilineal adquiere exactamente la misma estructura que el problema lineal. Puesto que $g(t)$ satisface la condición de continuidad exigida sobre el término independiente en la sección anterior, todas las afirmaciones del Teorema \eqref{ch:cauchy:section:noHom:th:solDebilYFuerteRels} se heredan de manera inmediata. Esto incluye la equivalencia entre soluciones débiles y fuertes (bajo las condiciones de regularidad adecuadas) y la representación integral de la solución expresada en la ecuación \eqref{ch:cauchy:section:semilineal:th:solDebilYFuerteRels:2}, obtenida simplemente al reemplazar el término lineal por $f(s, e(s))$ en la integral.
 \end{proof}

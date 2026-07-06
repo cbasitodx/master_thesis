@@ -1,0 +1,20 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.nlo
+*.nls
+*.lof
+*.lot
+*.synctex.gz
+*.fdb_latexmk
+*.run.xml
+*.bcf
+
+# Compiled document (build artifact).
+main.pdf
