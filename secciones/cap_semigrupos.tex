@@ -64,7 +64,7 @@ En consecuencia, la sucesión $\big(T(t_n)e\big)_{n \in \mathbb{N}}$ converge a 
 
 Lo anterior se puede probar fácilmente. En efecto, si $(x_n)_{n \in \mathbb{N}}$ es una sucesión convergente a $x_0 \in X$, siendo $X$ un espacio normado, entonces se tiene que $\lim_{n \rightarrow \infty} ||x_n - x_0|| = 0$. Por la definición $\varepsilon-N$ del límite, se tiene que $\exists N \in \mathbb{N}$ tal que $\forall n \geq N, ||x_n - x_0|| < 1$. Usando la desigualdad triangular se obtiene que $||x_n|| = ||(x_n - x_0) + x_0|| \leq ||x_n - x_0|| + ||x_0|| < ||x_0|| + 1$. Es decir, $\forall n \geq N, ||x_n|| < ||x_0|| + 1$. Ahora, basta con tomar $M = \max\{||x_1||, \ldots, ||x_{N-1}||, ||x_0|| + 1\}$ y se obtiene que $\forall n \in \mathbb{N}, ||x_n|| < M < \infty$.
 
-Luego, por el teorema de Banach-Steinhaus (\textcolor{green}{Brezis Teorema 2.2}) se tiene que
+Luego, por el teorema de Banach-Steinhaus \ref{ch:preliminares:th:banachSteinhaus} se tiene que
 
 \[\sup_{n \in \mathbb{N}}||T(t_n)||_{L(E_0)} < \infty.\]
 
@@ -194,7 +194,7 @@ Sea $\{T(t), t \geq 0\}$ un semigrupo fuertemente continuo. Entonces:
 
     \[\frac{\dd^+}{\dd t}T(t)e = T(t)Ae = AT(t)e.\]
 
-    Queda entonces probar que $A$ es cerrado. Recordemos que un operador (lineal) se dice cerrado sí y sólo si su gráfica (en este caso, la gráfica de $A$ es $\operatorname{graph}(A) = \{(x,Ax) : x \in D(A)\}$) es cerrada en la topología producto. Equivalentemente, un operador lineal $T : D(T) \subset X \rightarrow Y$ entre dos espacios de Banach se dirá cerrado si para toda sucesión $(x_n) \subset D(T)$ tal que $x_n \rightarrow x \in X$ y $Tx_n \rightarrow y \in Y$, entonces $x \in D(T)$ y $Tx = y$. Así, atendiendo al quinto punto de este teorema, tenemos que $(\lambda -A)^{-1} \in L(E_0)$. En consecuencia, como $(\lambda - A)^{-1}$ es continuo y su dominio es todo el espacio $E_0$, entonces el \textcolor{green}{teorema de la gráfica cerrada} nos asegura que este operador también es cerrado. Luego, $A$ es cerrado tal y como se pretendía demostrar.
+    Queda entonces probar que $A$ es cerrado. Recordemos que un operador (lineal) se dice cerrado sí y sólo si su gráfica (en este caso, la gráfica de $A$ es $\operatorname{graph}(A) = \{(x,Ax) : x \in D(A)\}$) es cerrada en la topología producto. Equivalentemente, un operador lineal $T : D(T) \subset X \rightarrow Y$ entre dos espacios de Banach se dirá cerrado si para toda sucesión $(x_n) \subset D(T)$ tal que $x_n \rightarrow x \in X$ y $Tx_n \rightarrow y \in Y$, entonces $x \in D(T)$ y $Tx = y$. Así, atendiendo al quinto punto de este teorema, tenemos que $(\lambda -A)^{-1} \in L(E_0)$. En consecuencia, como $(\lambda - A)^{-1}$ es continuo y su dominio es todo el espacio $E_0$, entonces el Teorema de la gráfica cerrada \ref{ch:preliminares:th:graficoCerrado} nos asegura que este operador también es cerrado. Luego, $A$ es cerrado tal y como se pretendía demostrar.
 
     Nuestra prueba continúa entonces con el punto cuatro: Sea $\phi : \mathbb{R} \rightarrow \mathbb{R}$ una función en $C^{\infty}(\mathbb{R})$, tal que $\phi(t) = 0$ en entorno de $t = 0$ y para algún $t$ lo suficientemente grande. Sea $e \in E_0$ y
 
@@ -708,7 +708,7 @@ Empezamos aportando la definición de \textit{operador disipativo}:\\
 
     \[J(e) = \{e^* \in E_0^* : \operatorname{Re}\langle e^*, e \rangle = \lVert e \rVert^2_{E_0}, \lVert e^* \rVert_{E_0^*} = \lVert e \rVert_{E_0}\},\]
 
-    y $J(e) \neq \varnothing$ por el \textcolor{green}{Teorema de Hahn-Banach} \textcolor{red}{PROBAR}.
+    y $J(e) \neq \varnothing$ por el Teorema de Hahn-Banach \ref{ch:preliminares:th:hahnBanach} \textcolor{red}{PROBAR}.
 
     Así, un operador lineal $A : D(A) \subset E_0 \rightarrow E_0$ se dice disipativo si para cada $e \in D(A)$ existe $e^* \in J(e)$ tal que $\operatorname{Re}\langle e^*, Ae \rangle \leq 0$.\\
 \end{Definicion}
@@ -762,7 +762,7 @@ Empezamos aportando la definición de \textit{operador disipativo}:\\
 
     \[g_\lambda^* \in E_0^*, \lVert g_\lambda^* \rVert_{E_0^*} = 1 \implies \operatorname{Re}\langle e, g_\lambda^* \rangle \leq |\langle e, g_\lambda^* \rangle| \leq \lVert e \rVert_{E_0} \cancelto{1}{\lVert g_\lambda^* \rVert_{E_0^*}} \leq \lVert e \rVert_{E_0}.\]
 
-    Como la bola unitaria de $E_0^*$ es compacta en la topología débil-* (\textcolor{green}{Teorema de Banach-Alaoglu}), entonces podemos extraer una sub-sucesión $(g_{\lambda_n}^*)$ tal que $g_{\lambda_n}^* \xrightarrow{w^*} g^*$ (converge débil-*; es decir, $\langle x, g_{\lambda_n}^* \rangle \rightarrow \langle x, g^* \rangle \ \forall x \in E_0$) cuando $\lambda_n \rightarrow \infty$ con $g^* \in E_0^*$ y $\lVert g^* \rVert_{E_0^*} \leq 1$.
+    Como la bola unitaria de $E_0^*$ es compacta en la topología débil-* (Teorema de Banach-Alaoglu \ref{ch:preliminares:th:banachAlaoglu}), entonces podemos extraer una sub-sucesión $(g_{\lambda_n}^*)$ tal que $g_{\lambda_n}^* \xrightarrow{w^*} g^*$ (converge débil-*; es decir, $\langle x, g_{\lambda_n}^* \rangle \rightarrow \langle x, g^* \rangle \ \forall x \in E_0$) cuando $\lambda_n \rightarrow \infty$ con $g^* \in E_0^*$ y $\lVert g^* \rVert_{E_0^*} \leq 1$.
 
     Como $\lambda \lVert e \rVert_{E_0} \leq \lambda \lVert e \rVert_{E_0} - \operatorname{Re} \langle Ae, g_\lambda^* \rangle \implies \operatorname{Re}\langle Ae, g_\lambda^* \rangle \leq 0$, entonces $\operatorname{Re}\langle Ae, g^* \rangle \leq 0$. 
 
@@ -912,7 +912,7 @@ A continuación, recordamos la definición de un \textit{operador simétrico} y 
 
     se sigue que $x \in D(A)$ y $Ax = x - y$. Por lo tanto, $y = (I-A)x$, y en consecuencia $y \in R(I-A)$. Luego $R(I-A)$ es cerrado.
 
-    Prosigamos ahora por absurdo. Supongamos que $R(I-A) \neq E_0$, entonces existe $e^* \in E_0^*$ con $e^* \neq 0$ tal que $\langle e^*, (I-A)e\rangle = 0$ para todo $e \in D(A)$ (\textcolor{green}{Corolario del Teorema de Hahn-Banach}). Luego, por linealidad:
+    Prosigamos ahora por absurdo. Supongamos que $R(I-A) \neq E_0$, entonces existe $e^* \in E_0^*$ con $e^* \neq 0$ tal que $\langle e^*, (I-A)e\rangle = 0$ para todo $e \in D(A)$ (Corolario del Teorema de Hahn-Banach. Véase \ref{ch:preliminares:cor:hahnBanach}). Luego, por linealidad:
 
     \begin{align*}
         &\langle e^*, (I-A)e\rangle = 0\\
@@ -1088,7 +1088,7 @@ Lo anterior se puede comprobar haciendo una representación gráfica de la situa
 
     Ahora, haciendo tender $n \rightarrow \infty$ y después $t \rightarrow 0$, se obtiene que $\lVert e - f \rVert_{E_0} \geq \lVert e \rVert_{E_0}$ para todo $e \in D(A)$. Como $D(A)$ es denso en $E_0$, podemos escoger una sucesión $(e_n) \subset D(A)$ tal que $e_n \rightarrow e = f$, y así obtendríamos que $0 \geq \lVert f\rVert_{E_0}$, lo cual es una contradicción. En consecuencia, $A$ es cerrable.
 \end{proof}
-\footnotetext{Por un \textcolor{green}{TEOREMA (BUSCAR CITA O PROBAR YO)}, se tiene que $A$ es cerrable sí y sólo si para cualquier sucesión $(e_n) \subset D(A)$ tal que $e_n \rightarrow 0$, y $Ae_n \rightarrow f \in E_0$, entonces $f = 0$.}
+\footnotetext{Por el Teorema \ref{ch:preliminares:prop:cerrable}, se tiene que $A$ es cerrable sí y sólo si para cualquier sucesión $(e_n) \subset D(A)$ tal que $e_n \rightarrow 0$, y $Ae_n \rightarrow f \in E_0$, entonces $f = 0$.}
 
 \textcolor{red}{METER AQUI UN SALTO DE LINEA}\\
 
@@ -1099,7 +1099,7 @@ Lo anterior se puede comprobar haciendo una representación gráfica de la situa
 \end{Teorema}
 \footnotetext{\textcolor{red}{PONER DEF DE ESPACIO REFLEX}}
 \begin{proof}
-    Sabemos por un \textcolor{green}{corolario del Teorema de Hahn-Banach} que existe un elemento $0 \neq e^* \in E^*_0$ tal que $\langle e^*, e\rangle = 0 \ \ \forall e \in D(A)$ sí y sólo si $A$ no está densamente definido. En consecuencia, sea $e^* \in E_0^*$ tal que $\langle e^*, e \rangle = 0$ para todo $e \in D(A)$. Mostraremos que $e^* = 0$. Como $R(I- A) = E_0$, es suficiente probar que $\langle e^*, e - Ae \rangle = 0$ para todo $e \in D(A)$ o equivalentemente que $\langle e^*, Ae \rangle = 0$ para todo $e \in D(A)$. Sea $e \in D(A)$ entonces, por la primera parte del Teorema anterior \eqref{ch:semigrupos:th:PropsOpDisipativos}, existe (considerando $\lambda = n > 0$) un $e_n$ tal que $e = (I - \frac{1}{n}A)e_n$. Como $Ae_n = n(e_n - e) \in D(A)$, entonces $e_n \in D(A^2)$ y $Ae = Ae_n - \frac{1}{n}A^2e_n$; o, lo que es lo mismo, $Ae_n = (I - \frac{1}{n}A)^{-1}Ae$. Del Lema \eqref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que 
+    Sabemos por uno de los corolarios del Teorema de Hahn-Banach \ref{ch:preliminares:cor:hahnBanach} que existe un elemento $0 \neq e^* \in E^*_0$ tal que $\langle e^*, e\rangle = 0 \ \ \forall e \in D(A)$ sí y sólo si $A$ no está densamente definido. En consecuencia, sea $e^* \in E_0^*$ tal que $\langle e^*, e \rangle = 0$ para todo $e \in D(A)$. Mostraremos que $e^* = 0$. Como $R(I- A) = E_0$, es suficiente probar que $\langle e^*, e - Ae \rangle = 0$ para todo $e \in D(A)$ o equivalentemente que $\langle e^*, Ae \rangle = 0$ para todo $e \in D(A)$. Sea $e \in D(A)$ entonces, por la primera parte del Teorema anterior \eqref{ch:semigrupos:th:PropsOpDisipativos}, existe (considerando $\lambda = n > 0$) un $e_n$ tal que $e = (I - \frac{1}{n}A)e_n$. Como $Ae_n = n(e_n - e) \in D(A)$, entonces $e_n \in D(A^2)$ y $Ae = Ae_n - \frac{1}{n}A^2e_n$; o, lo que es lo mismo, $Ae_n = (I - \frac{1}{n}A)^{-1}Ae$. Del Lema \eqref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que 
 
     \begin{align*}
         &\left \lVert \left (n - A \right ) x\right \rVert_{E_0} \geq n \lVert x \rVert_{E_0}\\

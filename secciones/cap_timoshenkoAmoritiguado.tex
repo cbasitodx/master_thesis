@@ -183,7 +183,7 @@ Al igual que en el capítulo anterior, nos reservamos la discusión sobre la exi
         \psi_x \psi_{tx} &= \frac{1}{2}\frac{\partial}{\partial t}(\psi_x)^2,
     \end{align*}
 
-    donde en la primera igualdad se ha utilizado la conmutatividad de las derivadas distribucionales \textcolor{green}{(``Teorema de Schwarz'')}. 
+    donde en la primera igualdad se ha utilizado la conmutatividad de las derivadas distribucionales (``Teorema de Schwarz'', véase \ref{ch:preliminares:th:schwarz}). 
 
     Sustituyendo ahora en la igualdad anterior, obtenemos que:
 
@@ -215,7 +215,35 @@ Empezamos probando que $A$ es disipativo.
 \end{Proposicion}
 
 \begin{proof}
-    \textcolor{red}{ACABAR!}
+    Considerando $U = (\varphi, \varphi_t, \psi, \psi_t)^T \in D(A)$ tenemos, utilizando el producto interno inducido por el funcional de energía \eqref{prodInternoEnergiaH}, que $(U, AU)_{\mathcal{H}}$ se desarrolla como:
+
+    \begin{align*}
+        &(U, AU)_{\mathcal{H}}\\
+        = &\Bigg(\bigg(\varphi_t, \frac{k}{\rho_1}(\varphi_{x} + \psi)_x - \frac{\alpha}{\rho_1}\varphi_t, \psi_t, \frac{b}{\rho_2}\psi_{xx} -\frac{k}{\rho_2}(\varphi_x + \psi) - \frac{\beta}{\rho_2}\psi_t \bigg)^T,  (\varphi, \varphi_t, \psi, \psi_t)^T\Bigg)_{\mathcal{H}}\\
+        =&\begin{aligned}[t]
+             &k\int_0^L(\varphi_x + \psi)_x \varphi_t \, dx - \alpha\int_0^L(\varphi_t)^2 \, dx  + b\int_0^L\psi_{xx}\psi_t \, dx - k\int_0^L(\varphi_x + \psi)\psi_t \, dx\\
+            -& \beta\int_0^L(\psi_t)^2 \, dx + b\int_0^L \psi_{tx} \psi_x \, dx + k \int_0^L (\varphi_{tx} + \psi_t)(\varphi_x + \psi) \, dx
+        \end{aligned}
+    \end{align*}
+
+    Ahora integramos por partes algunos términos y aplicamos las condiciones de borde en el proceso,
+
+    \begin{align*}
+        \int_0^L(\varphi_x + \psi)_x \varphi_t \, dx &= \cancelto{0}{[(\varphi_x + \psi)\varphi_t]_0^L} - \int_0^L(\varphi_x + \psi)\varphi_{tx} \, dx,\\
+        \int_0^L\psi_{xx}\psi_t \, dx &= \cancelto{0}{[\psi_t\psi_x]_0^L} - \int_0^L \psi_x \psi_{tx} \, dx,
+    \end{align*}
+
+    y, sustituyendo:
+
+    \begin{align*}
+        &(U, AU)_{\mathcal{H}}\\
+        =&\begin{aligned}[t]
+            -&k\int_0^L(\varphi_x + \psi) (\varphi_{tx} + \psi_t) \, dx -b\int_0^L\psi_x \psi_{tx} \, dx + b\int_0^L \psi_{tx} \psi_x \, dx\\
+            +& k \int_0^L (\varphi_{tx} + \psi_t)(\varphi_x + \psi) \, dx -\alpha\lVert\varphi_t\lVert^2_{L^2} - \beta\lVert\psi_t\rVert^2_{L^2}.
+        \end{aligned}\\
+        =& -\alpha\lVert\varphi_t\lVert^2_{L^2} - \beta\lVert\psi_t\rVert^2_{L^2}
+    \end{align*}
+    
 \end{proof}
 
 \textcolor{red}{TEXTO...}
@@ -368,11 +396,11 @@ Empezamos probando que $A$ es disipativo.
         &\leq \varepsilon\Bigg( \rho_1 L \lVert \varphi_t\rVert_{L^2}\lVert\varphi_x + \psi\rVert_{L^2} + \rho_1L^2\lVert \varphi_t\rVert_{L^2}\lVert\psi_x\rVert_{L^2} + \rho_2L\lVert\psi_x\rVert_{L^2} \lVert\psi_t\rVert_{L^2} \Bigg).\\
     \end{align*}
 
-    Recordemos ahora la \textcolor{green}{desigualdad de Young}. Sean $a,b\geq0$ dos números reales no negativos; entonces, si $p,q>1$ son números reales tales que $p^{-1} + q^{-1}=1$, entonces
+    Recordemos ahora la desigualdad de Young \ref{ch:preliminares:prop:young}. Sean $a,b\geq0$ dos números reales no negativos; entonces, si $p,q>1$ son números reales tales que $p^{-1} + q^{-1}=1$, entonces
 
     \[ab \leq \frac{a^p}{p} + \frac{b^q}{q}.\]
 
-    Así, en la última desigualdad obtenida consideramos cada sumando por separado como el producto de dos números reales no negativos y tomamos $p=q=2$. Esto nos permite entonces aplicar la \textcolor{green}{desigualdad de Young} y obtener:
+    Así, en la última desigualdad obtenida consideramos cada sumando por separado como el producto de dos números reales no negativos y tomamos $p=q=2$. Esto nos permite entonces aplicar la desigualdad de Young \ref{ch:preliminares:prop:young} y obtener:
 
     \begin{align*}
         \lvert E_\varepsilon(t) - E(t)\rvert &= \lvert \varepsilon \xi(t) \rvert\\
@@ -484,7 +512,7 @@ Empezamos probando que $A$ es disipativo.
         \text{(des. Poincaré)}&\leq \alpha L\lVert\varphi_t\rVert_{L^2}\lVert \varphi_x + \psi\rVert_{L^2} + \alpha L^2\lVert\varphi_t\rVert_{L^2}\lVert \psi_x \rVert_{L^2}.
     \end{align*}
 
-    Para acotar el último termino utilizamos la \textcolor{green}{desigualdad de Young generalizada}, que establece lo siguiente: para dos números reales $a,b \geq 0$ no negativos, y dos números $p,q > 0$ tales que $p^{-1} + q^{-1} = 1$, se verifica para todo $\varepsilon > 0$:
+    Para acotar el último termino utilizamos la desigualdad de Young generalizada \ref{ch:preliminares:prop:youngGen}, que establece lo siguiente: para dos números reales $a,b \geq 0$ no negativos, y dos números $p,q > 0$ tales que $p^{-1} + q^{-1} = 1$, se verifica para todo $\varepsilon > 0$:
 
     \[ab \leq \frac{a^2}{2\varepsilon} + \frac{\varepsilon b^2}{2},\]
 

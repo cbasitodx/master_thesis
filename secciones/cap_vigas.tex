@@ -1,6 +1,5 @@
 \chapter{Teoría de vigas}
 \label{ch:teoriaVigas}
-\todo[inline]{PONER TODO CON LOS REALES. ELIMINAR CUALQUIER RASTRO DE $\mathbb{C}$}
 
 \textcolor{red}{UNA PEQUEÑA INTRODUCCIÓN}
 
@@ -325,7 +324,7 @@ Como el espacio $L^2(0,L)$ es un espacio vectorial y ya hemos demostrado que $\p
 
 Con esta caracterización, resulta natural definir el espacio de fase para el sistema de Timoshenko como el espacio de Hilbert\footnotemark:
 
-\footnotetext{Una demostración de que la suma directa de espacios de Hilbert es también un espacio de Hilbert puede ser hallada en \textcolor{green}{CONWAY: A COURSE IN FUNCTIONAL ANALYSIS. CAP 1.6}}
+\footnotetext{Una demostración de que la suma directa de espacios de Hilbert es también un espacio de Hilbert puede ser hallada en \ref{ch:preliminares:prop:sumaDirecta}}
 
 \begin{align}
     \mathcal{H} = H_0^1(0,L) \times L^2(0,L) \times H_0^1(0,L) \times L^2(0,L),\label{espacioDeFaseTimoshenko}
@@ -428,7 +427,7 @@ y $\mathcal{H}$ es el espacio de Hilbert
 
 \[\mathcal{H} = H_0^1(0,L) \times L^2(0,L) \times H_0^1(0,L) \times L^2(0,L).\]
 
-con producto interno $(\cdot, \cdot)_{\mathcal{H}} : \mathcal{H}\times \mathcal{H} \rightarrow \mathbb{C}$ y norma $\lVert \, \cdot \, \rVert_{\mathcal{H}} : \mathcal{H} \rightarrow \mathbb{R}$ definidos, respectivamente, como:
+con producto interno $(\cdot, \cdot)_{\mathcal{H}} : \mathcal{H}\times \mathcal{H} \rightarrow \mathbb{R}$ y norma $\lVert \, \cdot \, \rVert_{\mathcal{H}} : \mathcal{H} \rightarrow \mathbb{R}$ definidos, respectivamente, como:
 
 \begin{align}
     (U, \hat{U})_{\mathcal{H}} &= (\varphi, \hat{\varphi})_{H_0^1} + (\varphi_t, \hat{\varphi_t})_{L^2} + (\psi, \hat{\psi})_{H_0^1} + (\psi_t, \hat{\psi_t})_{L^2},\label{prodEscalarHTimoBasico}\\
@@ -551,7 +550,7 @@ energía facilitará los desarrollos posteriores de esta sección.\\
 \begin{Proposicion}{(Producto interno asociado al funcional de energía)}
     \label{ch:teoriaVigas:prop:ProdInternoEnergia}
 
-    La aplicación $(\cdot, \cdot)_{E} : \mathcal{H} \times \mathcal{H} \rightarrow \mathbb{C}$ definida como
+    La aplicación $(\cdot, \cdot)_{E} : \mathcal{H} \times \mathcal{H} \rightarrow \mathbb{R}$ definida como
 
     \begin{align}
         \label{prodInternoEnergiaH}
@@ -609,7 +608,7 @@ podríamos esperar algo como
 \frac{\dd}{\dd t}\int_0^L \big(\varphi_t(x,t)\big)^2 \, \dd x = 2\int_0^L \varphi_t(x,t) \varphi_{tt}(x,t) \, \dd x.
 \end{align}
 
-Dicha integral sólo puede existir bajo unas condiciones de regularidad mínimas. Considerando la desigualdad de \textcolor{green}{Cauchy-Schwarz}, tenemos que la integral existirá si $\varphi_t,\varphi_{tt} \in L^2(0,L)$. 
+Dicha integral sólo puede existir bajo unas condiciones de regularidad mínimas. Considerando la desigualdad de Cauchy-Schwarz \ref{ch:preliminares:prop:propProductoInterno}, tenemos que la integral existirá si $\varphi_t,\varphi_{tt} \in L^2(0,L)$. 
 
 Podemos satisfacer esta condición considerando el problema abstracto de Cauchy homogéneo \eqref{probCauchyHomTimoBasicoDesglosado}. En concreto, la ecuación
 
@@ -623,7 +622,7 @@ y así
 
 \[\varphi_{tt} \in L^2(0,L).\]
 
-Por otra parte, y una vez más gracias a considerar que $U \in D(A)$, se tiene que $\varphi_t \in H_0^1(0,L)$. Luego, considerando las \textcolor{green}{inmersiones de Sobolev}, se tiene que 
+Por otra parte, y una vez más gracias a considerar que $U \in D(A)$, se tiene que $\varphi_t \in H_0^1(0,L)$. Luego, considerando las inmersiones de Sobolev \ref{ch:preliminares:th:inmersionesSobolev}, se tiene que 
 
 \[\varphi_t \in L^2(0,L).\]
 
@@ -702,7 +701,7 @@ Antes de probar la Proposición anterior, necesitamos demostrar que $A$ es densa
 
     por lo que $H^2 \cap H_0^1$ es denso en $H_0^1$.
 
-    Por otro lado, sabemos también que, por las \textcolor{green}{inmersiones de Sobolev},
+    Por otro lado, sabemos también que, por las inmersiones de Sobolev \ref{ch:preliminares:th:inmersionesSobolev},
 
     \[H_0^1 \subset L^2.\]
 
@@ -821,7 +820,7 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
 
     \[\operatorname{Re}\langle U^*, AU\rangle \leq 0.\]
 
-    Por el \textcolor{green}{Teorema de representación de Riesz-Frechet}, tenemos que para cada $x^* \in \mathcal{H}^*$ se verifica que existe un vector $y \in \mathcal{H}$ tal que
+    Por el Teorema de representación de Riesz-Frechet \ref{ch:preliminares:th:rieszFrechet}, tenemos que para cada $x^* \in \mathcal{H}^*$ se verifica que existe un vector $y \in \mathcal{H}$ tal que
 
     \[\langle x^*, x \rangle = (x, y)_{\mathcal{H}} \ \forall x \in \mathcal{H}.\]
 
@@ -829,7 +828,7 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
 
     \[\operatorname{Re} \langle x^*, x \rangle = \operatorname{Re} (x,y)_{\mathcal{H}} = \lVert x \rVert^2_{\mathcal{H}}.\]
 
-    Ahora, usando la \textcolor{green}{desigualdad de Cauchy-Schwarz},
+    Ahora, usando la desigualdad de Cauchy-Schwarz \ref{ch:preliminares:prop:propProductoInterno},
 
     \[\operatorname{Re}(x,y)_{\mathcal{H}} \leq \lvert (x,y)_{\mathcal{H}} \lvert \leq \lVert x \rVert_{\mathcal{H}} \, \lVert y \rVert_{\mathcal{H}},\]
 
@@ -843,6 +842,7 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
 
     Esto implica que $y$ es un múltiplo de $x$. Sin embargo, la condición sobre la parte real nos permite concluir que
 
+    \todo[inline]{Revisar el cambio de $\mathbb{C}$}
     \[x = y.\]
 
     En consecuencia, $J(x) = \{(x, \cdot)_{\mathcal{H}}\}$; y así, la condición de disipatividad se puede reescribir como:
@@ -984,17 +984,17 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
         &= \rho_1\int_0^L (f_1 + f_2) w \, \dd x + \rho_2 \int_0^L (f_3 + f_4) z \, \dd x.
     \end{align*}
 
-    Esta es, finalmente, la formulación variacional del problema \eqref{opSobreyectEq2}. Para hallar la solución del problema variacional, usaremos el \textcolor{green}{Teorema de Lax-Milgram}. Para ello, necesitamos plantear la formulación variacional de Hilbert. Así, basándonos en los términos usados en la igualdad anterior, fijamos
+    Esta es, finalmente, la formulación variacional del problema \eqref{opSobreyectEq2}. Para hallar la solución del problema variacional, usaremos el Teorema de Lax-Milgram \ref{ch:preliminares:th:laxMilgram}. Para ello, necesitamos plantear la formulación variacional de Hilbert. Así, basándonos en los términos usados en la igualdad anterior, fijamos
 
     \[(w,z) \in H_0^1(0,L) \times H_0^1(0,L).\]
 
     Podemos hacer esto sin alterar el hilo argumental dado hasta el momento, simplemente por la densidad de $C_c^\infty(0,L)$ en $H_0^1(0,L)$.
 
-    Dicho eso, definimos el funcional $a : \big(H_0^1(0,L) \times H_0^1(0,L)\big) \times \big(H_0^1(0,L) \times H_0^1(0,L)\big) \rightarrow \mathbb{C}$ como
+    Dicho eso, definimos el funcional $a : \big(H_0^1(0,L) \times H_0^1(0,L)\big) \times \big(H_0^1(0,L) \times H_0^1(0,L)\big) \rightarrow \mathbb{R}$ como
 
     \[a\big((w,z),(\varphi, \psi) \big) = \rho_1 \int_0^L \varphi w \, \dd x + \rho_2\int_0^L \psi z \, \dd x + b \int_0^L \psi_{x} z_x \, \dd x + k\int_0^L(\varphi_x + \psi)(w_x + z) \, \dd x,\]
 
-    y el funcional $h : H_0^1(0,L) \times H_0^1(0,L) \rightarrow \mathbb{C}$ como:
+    y el funcional $h : H_0^1(0,L) \times H_0^1(0,L) \rightarrow \mathbb{R}$ como:
 
     \[h(w,z) = \rho_1\int_0^L (f_1 + f_2) w \, \dd x + \rho_2 \int_0^L (f_3 + f_4) z \, \dd x.\]
 
@@ -1002,7 +1002,7 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
 
     \[a\big((w,z),(\varphi, \psi) \big) = h(w,z), \ \forall (w,z) \in H_0^1(0,L) \times H_0^1(0,L).\]
 
-    Para usar el \textcolor{green}{Teorema de Lax-Milgram} debemos probar que $a$ es una forma bilineal y coerciva. Empecemos comprobando que es coerciva. Para ello, en primer lugar, tendremos que $a\big((\varphi, \psi), (\varphi, \psi)\big)$ es:
+    Para usar el Teorema de Lax-Milgram \ref{ch:preliminares:th:laxMilgram} debemos probar que $a$ es una forma bilineal y coerciva. Empecemos comprobando que es coerciva. Para ello, en primer lugar, tendremos que $a\big((\varphi, \psi), (\varphi, \psi)\big)$ es:
 
     \begin{align*}
         a\big((\varphi, \psi), (\varphi, \psi)\big) = \rho_1 \lVert \varphi \rVert^2_{L^2} + \rho_2 \lVert \psi \rVert_{L^2}^2 + b \lVert \psi_x \rVert^2_{L^2} + k \lVert \varphi_x + \psi \rVert_{L^2}^2.
@@ -1057,9 +1057,9 @@ En primer lugar, dado que estamos ante un problema de Cauchy abstracto homogéne
 
     lo cual prueba que $a$ es coerciva.
 
-    Utilizando la \textcolor{green}{desigualdad de Cauchy-Schwarz} y la \textcolor{green}{desigualdad de Poincaré} de manera repetida, podemos probar que tanto $a$ como $h$ son acotadas y, como consecuencia por ser lineales, continuas. Finalmente, probar que $a$ es una forma bilineal es casi inmediato, por lo que no nos detendremos en dar una prueba de ello más extensa.
+    Utilizando la desigualdad de Cauchy-Schwarz \ref{ch:preliminares:prop:propProductoInterno} y la desigualdad de Poincaré \ref{ch:preliminares:th:poincare} de manera repetida, podemos probar que tanto $a$ como $h$ son acotadas y, como consecuencia por ser lineales, continuas. Finalmente, probar que $a$ es una forma bilineal es casi inmediato, por lo que no nos detendremos en dar una prueba de ello más extensa.
 
-    Así, se tiene que $a$ y $h$ con continuas, y $a$ es una forma bilineal coerciva. Por lo tanto, invocando el \textcolor{green}{Teorema de Lax-Milgram}, se tiene que para todo funcional $h$ lineal y acotado en $H_0^1(0,L) \times H_0^1(0,L)$, existe un único vector $(\varphi_h, \psi_h)$ tal que
+    Así, se tiene que $a$ y $h$ con continuas, y $a$ es una forma bilineal coerciva. Por lo tanto, invocando el Teorema de Lax-Milgram \ref{ch:preliminares:th:laxMilgram}, se tiene que para todo funcional $h$ lineal y acotado en $H_0^1(0,L) \times H_0^1(0,L)$, existe un único vector $(\varphi_h, \psi_h)$ tal que
 
     \[a\big((w, z), (\varphi_h, \psi_h)\big) = h(w,z), \ \forall (w,z) \in H_0^1(0,L) \times H_0^1(0,L).\]
 
