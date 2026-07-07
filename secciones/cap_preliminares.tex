@@ -717,6 +717,21 @@ garantiza que la aplicación de dualidad
 (Definición \ref{ch:preliminares:def:dualidad}) tenga imágenes no vacías.
 \end{Observacion}
 
+El teorema de Baire es la herramienta común a los tres resultados que siguen.\\
+
+\begin{Teorema}{(Teorema de Baire)}
+\label{ch:preliminares:th:baire}
+
+Sea $X$ un espacio métrico completo no vacío y $(X_n)_{n \geq 1}$ una sucesión de
+subconjuntos cerrados de $X$, cada uno con interior vacío. Entonces la unión
+$\bigcup_{n \geq 1} X_n$ tiene interior vacío; en particular, $X$ no puede
+escribirse como unión numerable de cerrados con interior vacío.
+\end{Teorema}
+
+\begin{proof}
+Véase \cite[Teorema~2.1]{brezis-2011-fun-ana-sob}.
+\end{proof}
+
 El principio de acotación uniforme afirma que una familia de operadores acotada
 puntualmente lo está también uniformemente.\\
 
@@ -737,7 +752,8 @@ entonces
 Véase \cite[Teorema~2.2]{brezis-2011-fun-ana-sob}.
 \end{proof}
 
-Los dos resultados siguientes, consecuencia ambos del teorema de Baire, relacionan
+Los dos resultados siguientes, consecuencia ambos del teorema de Baire
+(Teorema \ref{ch:preliminares:th:baire}), relacionan
 las propiedades algebraicas de un operador con su continuidad.\\
 
 \begin{Teorema}{(Teorema de la aplicación abierta)}
