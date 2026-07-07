@@ -656,7 +656,7 @@ Antes de probar la Proposición anterior, necesitamos demostrar que $A$ es densa
 
 \begin{proof}
 
-    Por aligerar notación, nos referiremos a los espacios $H_0^1(0,L)$ como $H_0^1$, a $L^2(0,L)$ como $L^2$, a $H^2(0,L)$ como $H^2$ y a $C_0^{\infty}(0,L)$ como $C_0^{\infty}$.
+    Por aligerar notación, nos referiremos a los espacios $H_0^1(0,L)$ como $H_0^1$, a $L^2(0,L)$ como $L^2$, a $H^2(0,L)$ como $H^2$ y a $C_c^{\infty}(0,L)$ como $C_c^{\infty}$.
 
     Recordemos ahora la definición de nuestros espacios:
 
@@ -667,31 +667,31 @@ Antes de probar la Proposición anterior, necesitamos demostrar que $A$ es densa
     
     Nos bastará entonces con probar la densidad componente a componente. Así, en primer lugar, dado que (por definición de $H_0^1$)
 
-    \[\overline{C_0^{\infty}}^{H_0^1} = H_0^1,\]
+    \[\overline{C_c^{\infty}}^{H_0^1} = H_0^1,\]
 
     entonces
 
-    \[C_0^{\infty} \subset H_0^1.\]
+    \[C_c^{\infty} \subset H_0^1.\]
 
-    Por otro lado, si $u \in C_0^{\infty}$, entonces $u_x, u_{xx}$ también pertenecen a $C_0^{\infty}$; y, en particular, dado que (de nuevo, por definición de $L^2$)
+    Por otro lado, si $u \in C_c^{\infty}$, entonces $u_x, u_{xx}$ también pertenecen a $C_c^{\infty}$; y, en particular, dado que (de nuevo, por definición de $L^2$)
 
-    \[\overline{C_0^{\infty}}^{L^2} = L^2,\]
+    \[\overline{C_c^{\infty}}^{L^2} = L^2,\]
 
     entonces $u, u_x, u_{xx} \in L^2$. Por lo tanto, $u \in H^2$ y así
 
-    \[C_0^{\infty} \subset H^2.\]
+    \[C_c^{\infty} \subset H^2.\]
 
     Por lo tanto,
 
-    \[C_0^{\infty} \subset H^2 \cap H_0^1 \subset H_0^1.\]
+    \[C_c^{\infty} \subset H^2 \cap H_0^1 \subset H_0^1.\]
 
     Así, como $C_c^\infty$ es denso en $H_0^1$, entonces por conservación de la densidad en la inclusión tenemos que
 
     \begin{alignat*}{3}
-        &C_0^{\infty} 
+        &C_c^{\infty} 
         &&\subset{} H^2 \cap H_0^1 
         &&\subset{} H_0^1\\
-        \implies{}& \overline{C_0^{\infty}}^{H^1_0} 
+        \implies{}& \overline{C_c^{\infty}}^{H^1_0} 
         &&\subset{} \overline{H^2 \cap H_0^1}^{H^1_0} 
         &&\subset{} H_0^1\\
         \implies{}& H^1_0 

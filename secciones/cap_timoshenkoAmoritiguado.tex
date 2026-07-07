@@ -130,9 +130,9 @@ Habiendo formalizado el marco funcional en el que estaremos trabajando este prob
 \section{Energía del sistema}
 \label{ch:TimoshenkoFric:section:energia}
 
-En esta sección nos dedicaremos a probar que el sistema \eqref{pviTimoshenkoDosDispFracc} es un sistema \textit{disipativo} (contrario al del capítulo anterior, que era \textit{conservativo}). Esta es una propiedad sobre el funcional de energía, y significa que este decrece con cada instante de tiempo. Tal y como se comentaba al inicio de este capítulo, este es un comportamiento más realista y que corrige los problemas del primer modelo presentado. Así, pues, demos paso al primer gran resultado de este capítulo:
+En esta sección nos dedicaremos a probar que el sistema \eqref{pviTimoshenkoDosDispFracc} es un sistema \textit{disipativo} (contrario al del capítulo anterior, que era \textit{conservativo}). Esta es una propiedad sobre el funcional de energía, y significa que este decrece con cada instante de tiempo. Tal y como se comentaba al inicio de este capítulo, este es un comportamiento más realista y que corrige los problemas del primer modelo presentado. Así, pues, demos paso al primer gran resultado de este capítulo:\\
 
-\begin{Proposicion}[(Disipación de la energía en la viga de Timoshenko amortiguada)]
+\begin{Proposicion}[Disipación de la energía en la viga de Timoshenko amortiguada]
 \label{ch:timoshenkoFric:prop:DisipacionEnergia}
 
     Para el sistema \eqref{pviTimoshenkoDosDispFracc}, el funcional de energía definido en \eqref{timoshenkoDosAmortig:funcionalEnergia} verifica:
@@ -215,11 +215,11 @@ Empezamos probando que $A$ es disipativo.
 \end{Proposicion}
 
 \begin{proof}
-    Considerando $U = (\varphi, \varphi_t, \psi, \psi_t)^T \in D(A)$ tenemos, utilizando el producto interno inducido por el funcional de energía \eqref{prodInternoEnergiaH}, que $(U, AU)_{\mathcal{H}}$ se desarrolla como:
+    Considerando $U = (\varphi, \varphi_t, \psi, \psi_t)^\top \in D(A)$ tenemos, utilizando el producto interno inducido por el funcional de energía \eqref{prodInternoEnergiaH}, que $(U, AU)_{\mathcal{H}}$ se desarrolla como:
 
     \begin{align*}
         &(U, AU)_{\mathcal{H}}\\
-        = &\Bigg(\bigg(\varphi_t, \frac{k}{\rho_1}(\varphi_{x} + \psi)_x - \frac{\alpha}{\rho_1}\varphi_t, \psi_t, \frac{b}{\rho_2}\psi_{xx} -\frac{k}{\rho_2}(\varphi_x + \psi) - \frac{\beta}{\rho_2}\psi_t \bigg)^T,  (\varphi, \varphi_t, \psi, \psi_t)^T\Bigg)_{\mathcal{H}}\\
+        = &\Bigg(\bigg(\varphi_t, \frac{k}{\rho_1}(\varphi_{x} + \psi)_x - \frac{\alpha}{\rho_1}\varphi_t, \psi_t, \frac{b}{\rho_2}\psi_{xx} -\frac{k}{\rho_2}(\varphi_x + \psi) - \frac{\beta}{\rho_2}\psi_t \bigg)^\top,  (\varphi, \varphi_t, \psi, \psi_t)^\top\Bigg)_{\mathcal{H}}\\
         =&\begin{aligned}[t]
              &k\int_0^L(\varphi_x + \psi)_x \varphi_t \, dx - \alpha\int_0^L(\varphi_t)^2 \, dx  + b\int_0^L\psi_{xx}\psi_t \, dx - k\int_0^L(\varphi_x + \psi)\psi_t \, dx\\
             -& \beta\int_0^L(\psi_t)^2 \, dx + b\int_0^L \psi_{tx} \psi_x \, dx + k \int_0^L (\varphi_{tx} + \psi_t)(\varphi_x + \psi) \, dx
@@ -233,7 +233,7 @@ Empezamos probando que $A$ es disipativo.
         \int_0^L\psi_{xx}\psi_t \, dx &= \cancelto{0}{[\psi_t\psi_x]_0^L} - \int_0^L \psi_x \psi_{tx} \, dx,
     \end{align*}
 
-    y, sustituyendo:
+    y, sustituyendo y agrupando de manera conveniente:
 
     \begin{align*}
         &(U, AU)_{\mathcal{H}}\\
@@ -241,9 +241,14 @@ Empezamos probando que $A$ es disipativo.
             -&k\int_0^L(\varphi_x + \psi) (\varphi_{tx} + \psi_t) \, dx -b\int_0^L\psi_x \psi_{tx} \, dx + b\int_0^L \psi_{tx} \psi_x \, dx\\
             +& k \int_0^L (\varphi_{tx} + \psi_t)(\varphi_x + \psi) \, dx -\alpha\lVert\varphi_t\lVert^2_{L^2} - \beta\lVert\psi_t\rVert^2_{L^2}.
         \end{aligned}\\
-        =& -\alpha\lVert\varphi_t\lVert^2_{L^2} - \beta\lVert\psi_t\rVert^2_{L^2}
+        =& -\alpha\lVert\varphi_t\lVert^2_{L^2} - \beta\lVert\psi_t\rVert^2_{L^2}.
     \end{align*}
-    
+
+    Por lo tanto, considerando que $\alpha,\beta \geq 0$ y que la norma siempre es no negativa, se tiene que:
+
+    \[\operatorname{Re}(U,AU)_{\mathcal{H}} = -\alpha\lVert\varphi_t\lVert^2_{L^2} - \beta\lVert\psi_t\rVert^2_{L^2} \leq 0,\]
+
+    lo cual prueba que $A$ es disipativo en $\mathcal{H}$.
 \end{proof}
 
 \textcolor{red}{TEXTO...}
@@ -254,59 +259,75 @@ Empezamos probando que $A$ es disipativo.
 \end{Proposicion}
 
 \begin{proof}
-    Para probar la proposición basta con demostrar que la ecuación
+    Dado $F = (f_1, f_2, f_3, f_4) \in \mathcal{H}$, vamos a mostrar que la ecuación resolvente
 
     \[(I-A)U = F,\]
 
-    donde $U=(\varphi, \varphi_t, \psi, \psi_t) \in D(A)$ y $F = (f_1, f_2, f_3, f_4) \in \mathcal{H}$, tiene una única solución. 
+    posee una única solución $U \in D(A)$.  
 
-    En efecto, escribamos el sistema desglosado:
+    Para ello, empezamos por escribir el sistema desglosado:
 
     \begin{equation}
-        \label{opSobreyectEq1D}
+        \label{opSobreyectEq1DAmort}
         \begin{cases}
             \varphi - \varphi_t &= f_1\\
-            -\frac{k}{\rho_1}\varphi_{xx} + \varphi_t - \frac{k}{\rho_1}\psi_x &= f_2\\
+            -\frac{k}{\rho_1}\varphi_{xx} + \varphi_t - \frac{k}{\rho_1}\psi_x + \frac{\alpha}{\rho_1}\varphi_t &= f_2\\
             \psi - \psi_t &= f_2\\
-            \frac{k}{\rho_2}\varphi_x - \frac{b}{\rho_2}\psi_{xx} + \frac{k}{\rho_2}\psi + \psi_t &= f_4.
+            \frac{k}{\rho_2}\varphi_x - \frac{b}{\rho_2}\psi_{xx} + \frac{k}{\rho_2}\psi + \psi_t + \frac{\beta}{\rho_2}\psi_t &= f_4.
         \end{cases}
     \end{equation}
 
-    De la primera y tercera ecuación despejamos $\varphi_t$ y $\psi_t$ respectivamente en función de $\varphi$ y $f_1$, y en función de $\psi$ y $f_3$:
+    Despejamos ahora $\varphi_t$ y $\psi_t$ de la primera y tercera ecuación respectivamente, y lo hacemos en función de $\varphi$ y $f_1$, y en función de $\psi$ y $f_3$:
 
     \begin{align*}
         \varphi_t &= \varphi - f_1\\
         \psi_t &= \psi - f_3.
     \end{align*}
 
-    Sustituyendo en \eqref{opSobreyectEq1D}:
+    Sustituyendo en \eqref{opSobreyectEq1DAmort}:
 
     \begin{equation*}
         \begin{cases}
-            -\frac{k}{\rho_1}\varphi_{xx} + \varphi - f_1 - \frac{k}{\rho_1}\psi_x &= f_2\\
-            \frac{k}{\rho_2}\varphi_x - \frac{b}{\rho_2}\psi_{xx} + \frac{k}{\rho_2}\psi + \psi - f_3 &= f_4.
+            -\frac{k}{\rho_1}\varphi_{xx} + \varphi - f_1 - \frac{k}{\rho_1}\psi_x + \frac{\alpha}{\rho_1}(\varphi - f_1) &= f_2\\
+            \frac{k}{\rho_2}\varphi_x - \frac{b}{\rho_2}\psi_{xx} + \frac{k}{\rho_2}\psi + \psi - f_3 + \frac{\beta}{\rho_2}(\psi - f_2) &= f_4.
         \end{cases}
     \end{equation*}
 
-    Manipulamos algebráicamente el sistema anterior y obtenemos:
+    Mediante manipulaciones algebraicas del sistema anterior llegamos a:
 
     \begin{equation}
-        \label{opSobreyectEq2D}
+        \label{opSobreyectEq2DAmort}
         \begin{cases}
-            \rho_1\varphi - k(\varphi_x + \psi)_x &= \rho_1(f_1 + f_2)\\
-            \rho_2\psi - b\psi_{xx} + k(\varphi_x + \psi) &= \rho_2(f_3 + f_4).
+            (\rho_1 + \alpha)\varphi - k(\varphi_x + \psi)_x &= (\rho_1+\alpha)f_1 + \rho_1f_2\\
+            (\rho_2+\beta)\psi + k(\varphi_x + \psi) - b\psi_{xx} &= (\rho_2 + \beta)f_3 + \rho_2f_4.
         \end{cases}
     \end{equation}
 
-    Observamos entonces que en el sistema anterior no hay manifestaciones de las derivadas temporales de $\varphi$ ni de $\psi$. Así, estamos ante un sistema elíptico acoplado y, dado que $U \in D(A)$, entonces la solución $(\varphi, \psi)$ que buscamos debe satisfacer:
+    Ahora definimos:
 
-    \[(\varphi, \psi) \in H_0^1(0,L) \times H_0^1(0,L).\]
+    \[M_1 := \rho_1 + \alpha \ \text{y} \ M_2 := \rho_2 + \beta,\]
 
-    \textcolor{red}{ACABAR!}
+    y también
+
+    \[g_1 := M_1f_1 + \rho_1f_2 \ \text{y} \ g_2 := M_2f_3 + \rho_2f_4.\]
+
+    Eso nos deja entonces con el sistema:
+
+    \begin{equation*}
+        \begin{cases}
+            M_1\varphi - k(\varphi_x + \psi)_x &= g_1\\
+            M_2\psi + k(\varphi_x + \psi) - b\psi_{xx} &= g_2.
+        \end{cases}
+    \end{equation*}
+    
+    Luego, podemos observar que en el sistema anterior no hay manifestaciones de las derivadas temporales de $\varphi$ ni de $\psi$. En consecuencia, estamos ante un sistema elíptico acoplado. Adicionalmente, este sistema tiene la misma forma que el que se ha descrito en la prueba de la Proposición \ref{ch:teoriaVigas:prop:ResolventeEsSobreyect}, pues $g_1, g_2 \in L^2(0,L)$; en concreto, tiene la misma forma que el sistema \eqref{opSobreyectEq2D}. Por lo tanto, podemos repetir de manera idéntica el argumento dado en la demostración de la Proposición \ref{ch:teoriaVigas:prop:ResolventeEsSobreyect}, consiguiendo así demostrar el resultado deseado.
 \end{proof}
 
+\textcolor{red}{TEXTO}
+
 \begin{Teorema}{(Existencia y unicidad de soluciones)}
-\label{ch:TimoshenkoFric:prop:existenciaYUnicidad}
+    \label{ch:TimoshenkoFric:prop:existenciaYUnicidad}
+    
     El problema de valor inicial \eqref{pviTimoshenkoDosDispFracc} (planteado también en \eqref{probCauchyHomTimoDosAmortigDesglosado} como un problema abstracto de Cauchy homogéneo) posee una única solución débil
 
     \[U(t) = \big(\varphi(\cdot, t), \varphi_t(\cdot, t), \psi(\cdot, t), \psi_t(\cdot, t)\big) \in C\big([0,\infty);\mathcal{H}\big)\]
@@ -329,15 +350,16 @@ Empezamos probando que $A$ es disipativo.
 \end{Teorema}
 
 \begin{proof}
-    \textcolor{red}{ACABAR!}
-    Utilizando el segundo punto del Teorema de Lumer-Phillips \eqref{ch:semigrupos:th:LumerPhillips} tenemos que, gracias a la Proposición \eqref{ch:teoriaVigas:prop:AesDisipativo} ($A$ es disipativo) y a la Proposición \eqref{ch:teoriaVigas:prop:ResolventeEsSobreyect} ($(I-A)$ es sobreyectivo), entonces $A$ es el generador infinitesimal de un semigrupo fuertemente continuo de contracciones.
+    Invocando el segundo punto del Teorema de Lumer-Phillips \eqref{ch:semigrupos:th:LumerPhillips} tenemos que, gracias a la Proposición \eqref{ch:TimoshenkoFric:prop:AesDisipativo} y a la Proposición \eqref{ch:TimoshenkoFric:prop:ResolventeEsSobreyect}, entonces $A$ es el generador infinitesimal de un semigrupo fuertemente continuo de contracciones.
 
-    Dado que $A$ es el generador de un semigrupo fuertemente continuo de contracciones, y gracias a que el sistema de Timoshenko \eqref{pviTimoshenkoBasico} se puede plantear como un problema abstracto de Cauchy homogéneo tenemos, por lo discutido en la introducción del capítulo sobre problemas abstractos de Cauchy (véase \ref{ch:cauchy:section:Hom}), que este siempre posee soluciones débiles (es decir, de clase $C\big([0,\infty);\mathcal{H}\big)$) únicas (por cada dato inicial del problema homogéneo $U_0$) de la forma 
+    Dado que $A$ es el generador de un semigrupo fuertemente continuo de contracciones, y gracias a que el sistema de Timoshenko \eqref{pviTimoshenkoBasico} se puede plantear como un problema abstracto de Cauchy homogéneo tenemos que este siempre posee soluciones débiles (es decir, de clase $C\big([0,\infty);\mathcal{H}\big)$) únicas (por cada dato inicial del problema homogéneo $U_0$) de la forma 
 
     $U(t) = T(t)U_0,$
 
-    donde $T(t)$ es el semigrupo generado por $A$. Asimismo, si $U_0 \in D(A)$, entonces el Teorema \eqref{cauchy:hom:ExistenciaYUnicidadFuerte} garantiza que existe una única solución fuerte (entiéndase, de clase $C^1\big([0,\infty);\mathcal{H}\big) \cap C\big([0,\infty) ; D(A)\big)$) por cada dato inicial. 
+    donde $T(t)$ es el semigrupo generado por $A$ (véase \ref{ch:cauchy:section:Hom}). Asimismo, si $U_0 \in D(A)$, entonces el Teorema \eqref{cauchy:hom:ExistenciaYUnicidadFuerte} garantiza que existe una única solución fuerte (entiéndase, de clase $C^1\big([0,\infty);\mathcal{H}\big) \cap C\big([0,\infty) ; D(A)\big)$) por cada dato inicial. 
 \end{proof}
+
+\textcolor{red}{TEXTO}
 
 \section{Comportamiento asintótico de la solución}
 \label{ch:TimoshenkoFric:section:compAsintotico}
@@ -672,7 +694,51 @@ Empezamos probando que $A$ es disipativo.
 
     \[E(t) \leq 3E(0)\mathrm{e}^{-\frac{2}{3}\gamma t},\]
 
-    y escogiendo $\displaystyle\gamma_0 = \frac{2}{3}\gamma > 0$ se prueba el Teorema.
+    y escogiendo $\displaystyle\gamma_0 = \frac{2}{3}\gamma > 0$ se prueba el Teorema para soluciones $U$ fuertes.
     
-    \textcolor{red}{Extender a soluciones débiles.}
+    Consideremos ahora una sucesión de datos iniciales $\Big(U_0^{(n)}\Big) \subset D(A)$ del problema homogéneo \eqref{probCauchyHomTimoDosAmortigDesglosado} tal que $U_0^{(n)} \rightarrow U_0 \in \mathcal{H}$. Sabemos, por el Teorema de existencia y unicidad de soluciones \ref{ch:TimoshenkoFric:prop:existenciaYUnicidad}, que para cada $U_0^{(n)}$ existe una solución fuerte $U^{(n)} \in C^1\big([0, \infty); \mathcal{H}\big) \cap C\big([0,\infty);D(A)\big)$ tal que $U^{(n)}(0) = U_0^{(n)}$. Asimismo, también por el Teorema de existencia y unicidad, sabemos que existe una solución débil $U \in C\big([0,\infty); \mathcal{H}\big)$ para el dato inicial menos regular $U_0 \in \mathcal{H}$.
+
+    Invocando una vez más el Teorema de existencia y unicidad \ref{ch:TimoshenkoFric:prop:existenciaYUnicidad}, tenemos que si $T(t)$ es el $C_0$-semigrupo generado por $A$, entonces
+
+    \[U^{(n)}(t) = T(t)U_0^{(n)} \ \text{y} \ U(t) = T(t)U_0,\]
+
+    y en consecuencia:
+
+    \begin{alignat*}{2}
+        \left\| U^{(n)}(t) - U(t) \right\|_{\mathcal H}
+        =& \left\| T(t)U_0^{(n)} - T(t)U_0 \right\|_{\mathcal H} \\[2mm]
+        =& \left\| T(t)\bigl(U_0^{(n)} - U_0\bigr) \right\|_{\mathcal H}
+        &\qquad& \text{por linealidad de } T(t), \\[2mm]
+        \leq& \left\| U_0^{(n)} - U_0 \right\|_{\mathcal H} \\
+        \longrightarrow & 0
+        && \text{porque } U^{(n)}_0 \rightarrow U_0,
+    \end{alignat*}
+
+    para todo $t \geq 0$, y en consecuencia la sucesión $\Big(U^{(n)}(t)\Big)$ converge a $U(t)$ en $\mathcal{H}$. Nótese que la penúltima desigualdad del desarrollo anterior se deduce del hecho de que $T(t)$ es un $C_0$-semigrupo de contracciones (una vez más, por el Teorema de existencia y unicidad). En efecto,
+
+    \begin{align*}
+        1 \geq \lVert T \rVert_{L(\mathcal{H})} = \sup_{\substack{e \in \mathcal{H} \\ e \neq 0}} \frac{\lVert Te \rVert_{\mathcal{H}}}{\lVert e \rVert_{\mathcal{H}}} \geq \frac{\lVert Te \rVert_{\mathcal{H}}}{\lVert e \rVert_{\mathcal{H}}} \implies \lVert Te\rVert_{\mathcal{H}} \leq \lVert e\rVert_{\mathcal{H}}.
+    \end{align*}
+
+    Finalmente, utilizando el resultado sobre el decaimiento exponencial de la energía de las soluciones fuertes demostrado anteriormente:
+
+    \begin{align*}
+        E\Big(U^{(n)}(t)\Big) &\leq 3E\Big(U^{(n)}_0\Big)\mathrm{e}^{-\gamma_0 t}\\
+        \implies \lim_{n\rightarrow \infty}E\Big(U^{(n)}(t)\Big) &\leq \lim_{n\rightarrow \infty}3E\Big(U^{(n)}_0\Big)\mathrm{e}^{-\gamma_0 t}\\
+        \overset{\text{continuidad del funcional }E}{\implies} E(U(t)) &\leq 3E(U_0)\mathrm{e}^{-\gamma_0 t}.
+    \end{align*}
+
+    Esto demuestra entonces que la propiedad de decaimiento sobre el funcional de energía se verifica para cualquier solución, concluyendo así la prueba.
+\end{proof}
+
+\textcolor{red}{TEXTO...}
+
+\begin{Lema}[(Resolvente de $A$)]
+\label{ch:TimoshenkoFric:lemma:resolventeA}
+    
+    Suponiendo $\rho_1, \rho_2, b, k > 0$ y $\alpha,\beta > 0$, entonces $i\mathbb{R} \subset \rho(A)$. El operador $A$ es el definido en \ref{operadorATimoDosAmortig}.
+\end{Lema}
+
+\begin{proof}
+    
 \end{proof}
