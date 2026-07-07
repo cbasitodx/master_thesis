@@ -232,6 +232,17 @@ existe una constante $C \geq 0$ tal que
 \[\lVert e \rVert_F \leq C \lVert e \rVert_E, \quad \forall e \in E.\]
 \end{Definicion}
 
+Antes de finalizar la sección, refinamos ligeramente la definición anterior motivados, de nuevo, por las inmersiones de Sobolev que enunciaremos luego (Sección \ref{ch:preliminares:section:sobolev}); más específicamente, este refinamiento será útil para algunos casos concretos de las inmersiones. Así, pues, definimos la inmersión compacta:\\
+
+\begin{Definicion}{(Inmersión compacta)}
+\label{ch:preliminares:def:inmersionCompacta}
+
+Sean $(E, \lVert \cdot \rVert_E)$ y $(F, \lVert \cdot \rVert_F)$ dos espacios
+normados con $E \subseteq F$. Se dice que $E$ está \textit{inmerso de manera compacta}
+en $F$, y se escribe $E \overset{c}{\hookrightarrow} F$, si $E \hookrightarrow F$ y además la inyección canónica
+$i : E \rightarrow F$, $i(e) = e$, es un operador compacto; es decir, si toda sucesión acotada en $E$ tiene una subsucesión convergente en $F$. Equivalentemente, los conjuntos acotados en $E$ se vuelven relativamente compactos al verlos en $F$.
+\end{Definicion}
+
 \section{Espacios duales y reflexividad}
 \label{ch:preliminares:section:dual}
 
@@ -627,6 +638,12 @@ Sea $\Omega \subseteq \R^N$ un abierto con frontera suficientemente regular
     $W^{1,p}(I) \hookrightarrow L^\infty(I)$ con inyección continua, para todo
     $p \in [1, \infty]$; de hecho, toda $u \in W^{1,p}(I)$ admite un representante
     continuo en $\overline{I}$ (\cite[Teorema~8.8]{brezis-2011-fun-ana-sob}).
+
+    Adicionalmente, si $I$ es acotado entonces se tienen las siguientes inmersiones compactas (\cite[Teorema~8.8]{brezis-2011-fun-ana-sob}):
+    \begin{enumerate}
+        \item $W^{1,p}(I) \overset{c}{\hookrightarrow} C(\overline{I})$ para todo $1 < p \leq \infty$,
+        \item $W^{1,1}(I) \overset{c}{\hookrightarrow} L^q(I)$ para todo $1 \leq q < \infty$.
+    \end{enumerate}
 
     \item Si $N \geq 2$ y $1 \leq p < N$, entonces
     $W^{1,p}(\Omega) \hookrightarrow L^{p^*}(\Omega)$ con inyección continua,
