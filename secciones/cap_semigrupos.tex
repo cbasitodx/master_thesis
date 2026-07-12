@@ -888,7 +888,7 @@ A continuación, recordamos la definición de un \textit{operador simétrico} y 
 \end{Corolario}
 
 \begin{proof}
-    Por el Teorema de Lumer-Phillips \eqref{ch:semigrupos:th:LumerPhillips}, es suficiente con probar que $R(\lambda - A) = E_0$ para algún $\lambda >0$.
+    Por el Teorema de Lumer-Phillips \ref{ch:semigrupos:th:LumerPhillips}, es suficiente con probar que $R(\lambda - A) = E_0$ para algún $\lambda >0$.
 
     Consideramos $\lambda = 1$. Por linealidad, $R(I - A)$ es un subespacio de $E_0$. Luego, como $A$ es disipativo, entonces, por el Lema \ref{ch:semigrupos:lemma:CondOpDisipativo}:
 
@@ -920,7 +920,7 @@ A continuación, recordamos la definición de un \textit{operador simétrico} y 
         \implies& \langle e^*, e \rangle = \langle e^*, Ae\rangle = \langle A^* e^*, e \rangle,
     \end{align*}
 
-    y así (por definición de operador auto-adjunto \eqref{ch:semigrupos:def:OpAutoAdj}) $e^* = A^* e^* \implies e^* - A^*e^* = 0$.
+    y así (por definición de operador auto-adjunto \ref{ch:semigrupos:def:OpAutoAdj}) $e^* = A^* e^* \implies e^* - A^*e^* = 0$.
 
     Como $A^*$ también es disipativo, entonces (invocando una vez más el Lema \ref{ch:semigrupos:lemma:CondOpDisipativo}):
 
@@ -979,13 +979,13 @@ En mucho ejemplos, la técnica utilizada para verificar que las estimativas espe
     &\leq \lVert \lambda e - Ae \rVert_{E_0} \cancelto{1}{\lVert e^* \rVert_{E^*_0}} = \lVert \lambda e - Ae \rVert_{E_0},
     \end{align*}
 
-    lo cual prueba \eqref{ch:semigrupos:th:ImgNumerica:desIg1} (cualquier vector unitario $e$ se puede escribir en términos de uno $x$ no unitario tal que $e = \frac{x}{\lVert x \rVert_{E_0}}$). Asimismo, también se tiene que $\lambda - A$ es inyectivo pues el núcleo (\textit{kernel}) del operador es el vector $0$. Por último, como $A$ es cerrado, hacemos un argumento idéntico al del corolario anterior \eqref{ch:semigrupos:cor:CorolarioLumerPhillips} y se sigue que la imagen de $\lambda - A$, $R(\lambda - A)$, es cerrada. 
+    lo cual prueba \eqref{ch:semigrupos:th:ImgNumerica:desIg1} (cualquier vector unitario $e$ se puede escribir en términos de uno $x$ no unitario tal que $e = \frac{x}{\lVert x \rVert_{E_0}}$). Asimismo, también se tiene que $\lambda - A$ es inyectivo pues el núcleo (\textit{kernel}) del operador es el vector $0$. Por último, como $A$ es cerrado, hacemos un argumento idéntico al del corolario anterior \ref{ch:semigrupos:cor:CorolarioLumerPhillips} y se sigue que la imagen de $\lambda - A$, $R(\lambda - A)$, es cerrada. 
     
     Si adicionalmente $\lambda \in \rho(A)$, entonces $\lambda -A$ es una biyección. Así, para cualquier $y \in E_0, \exists x \in E_0$ tal que
 
     \[y = (\lambda - A)x \implies x = (\lambda - A)^{-1}y.\]
 
-    Utilizando ]\eqref{ch:semigrupos:th:ImgNumerica:desIg1} tenemos:
+    Utilizando \eqref{ch:semigrupos:th:ImgNumerica:desIg1} tenemos:
 
     \begin{align*}
         \lVert x \rVert_{E_0}d(\lambda, W(A)) = \lVert (\lambda -A)^{-1}y\rVert_{E_0} d(\lambda, W(A)) &\leq \lVert (\lambda - A)x \rVert_{E_0}\\
@@ -997,13 +997,13 @@ En mucho ejemplos, la técnica utilizada para verificar que las estimativas espe
 
     \[\frac{\lVert (\lambda -A)^{-1}y\rVert_{E_0}}{\lVert y \rVert_{E_0}} \leq \frac{1}{d(\lambda, W(A))} \implies \lVert (\lambda - A)^{-1}\rVert_{L(E_0)} \leq \frac{1}{d(\lambda, W(A))},\]
 
-    que es exactamente \eqref{ch:semigrupos:th:ImgNumerica:desIg2}.
+    que es exactamente \ref{ch:semigrupos:th:ImgNumerica:desIg2}.
 
-    Queda probar entonces que si $\Sigma$ intercepta a $\rho(A)$, entonces $\rho(A) \supset \Sigma$. Para ello, consideremos el conjunto $\rho(A) \cap \Sigma$, que claramente es abierto en $\Sigma$. Veamos ahora que también es cerrado. Para ello, consideremos $(\lambda_n) \subset \rho(A) \cap \Sigma$ tal que $\lambda_n \rightarrow \lambda \in \Sigma$. Luego, por definición de convergencia, para un $n$ lo suficientemente grande, se tiene que $|\lambda - \lambda_n | < d(\lambda_n, W(A))$. De \eqref{ch:semigrupos:th:ImgNumerica:desIg2} se sigue que para dicho $n$ grande se verifica que:
+    Queda probar entonces que si $\Sigma$ intercepta a $\rho(A)$, entonces $\rho(A) \supset \Sigma$. Para ello, consideremos el conjunto $\rho(A) \cap \Sigma$, que claramente es abierto en $\Sigma$. Veamos ahora que también es cerrado. Para ello, consideremos $(\lambda_n) \subset \rho(A) \cap \Sigma$ tal que $\lambda_n \rightarrow \lambda \in \Sigma$. Luego, por definición de convergencia, para un $n$ lo suficientemente grande, se tiene que $|\lambda - \lambda_n | < d(\lambda_n, W(A))$. De \ref{ch:semigrupos:th:ImgNumerica:desIg2} se sigue que para dicho $n$ grande se verifica que:
 
     \[|\lambda - \lambda_n| < d(\lambda_n, W(A)) \leq  \frac{1}{\lVert(\lambda_n -A)^{-1} \rVert_{L(E_0)}} \implies |\lambda - \lambda_n| \lVert(\lambda_n -A)^{-1} \rVert_{L(E_0)} \leq 1.\]
 
-    Finalmente, por un argumento idéntico al hecho en la prueba del punto $2$ del Teorema de Lumer-Phillips \eqref{ch:semigrupos:th:LumerPhillips}, se tiene que $\lambda \in \rho(A)$ y, por lo tanto, $\rho(A) \cap \Sigma$ es cerrado en $\Sigma$. Se sigue entonces que $\rho(A) \cap \Sigma = \Sigma$; es decir, $\rho(A) \supset \Sigma$, como queríamos probar.
+    Finalmente, por un argumento idéntico al hecho en la prueba del punto $2$ del Teorema de Lumer-Phillips \ref{ch:semigrupos:th:LumerPhillips}, se tiene que $\lambda \in \rho(A)$ y, por lo tanto, $\rho(A) \cap \Sigma$ es cerrado en $\Sigma$. Se sigue entonces que $\rho(A) \cap \Sigma = \Sigma$; es decir, $\rho(A) \supset \Sigma$, como queríamos probar.
 \end{proof}
 
 \textcolor{red}{METER AQUI UN SALTO DE LINEA}\\
@@ -1040,7 +1040,7 @@ Para probar lo anterior, empezamos hallando la imágen numérica de $A$,
 
 \[W(A) = \{\langle Ae, e \rangle : e \in D(A), \lVert e \rVert_{H} = 1\} \subset (-\infty, a].\]
 
-Nótese que $\langle Au, u \rangle \leq a\langle u, u \rangle \implies \langle (A - a) u, u \rangle \leq 0 \implies \operatorname{Re}\langle (A - a) u, u \rangle \leq 0,$ por lo que $A-a = A^* - a$ son operadores disipativos. Así, por el Corolario \eqref{ch:semigrupos:cor:CorolarioLumerPhillips}, $A-a$ genera un semigrupo fuertemente continuo de contracciones. Por ser un semigrupo fuertemente continuo de contracciones y por ser $A-a$ su generador, el punto $5$ del Teorema \eqref{ch:semigrupos:th:resSemiFuerteCont} garantiza que $\rho(A-a) \supset (0, \infty)$. Esto significa que si consideramos $\mu \in (0, \infty)$, entonces $\mu - (A-a)$ es una biyección. Reorganizando y nombrando $\lambda = \mu + a$ obtenemos que el operador $\lambda - A$ es una biyección y, en consecuencia, $\rho(A) \supset (a, \infty)$. Como $(a, \infty)$ es un subconjunto abierto y conexo en $\mathbb{C} \setminus W(A)$, entonces $\mathbb{C} \setminus [a, \infty) \subset \rho(A)$ por el Teorema \eqref{ch:semigrupos:th:ImgNumerica}. Asimismo, y también por el Teorema anterior,
+Nótese que $\langle Au, u \rangle \leq a\langle u, u \rangle \implies \langle (A - a) u, u \rangle \leq 0 \implies \operatorname{Re}\langle (A - a) u, u \rangle \leq 0,$ por lo que $A-a = A^* - a$ son operadores disipativos. Así, por el Corolario \ref{ch:semigrupos:cor:CorolarioLumerPhillips}, $A-a$ genera un semigrupo fuertemente continuo de contracciones. Por ser un semigrupo fuertemente continuo de contracciones y por ser $A-a$ su generador, el punto $5$ del Teorema \ref{ch:semigrupos:th:resSemiFuerteCont} garantiza que $\rho(A-a) \supset (0, \infty)$. Esto significa que si consideramos $\mu \in (0, \infty)$, entonces $\mu - (A-a)$ es una biyección. Reorganizando y nombrando $\lambda = \mu + a$ obtenemos que el operador $\lambda - A$ es una biyección y, en consecuencia, $\rho(A) \supset (a, \infty)$. Como $(a, \infty)$ es un subconjunto abierto y conexo en $\mathbb{C} \setminus W(A)$, entonces $\mathbb{C} \setminus [a, \infty) \subset \rho(A)$ por el Teorema \ref{ch:semigrupos:th:ImgNumerica}. Asimismo, y también por el Teorema anterior,
 
 \[\lVert (\lambda - A)^{-1} \rVert_{L(H)} \leq \frac{1}{d(\lambda, W(A))} \leq \frac{1}{d(\lambda, (-\infty, a])}.\]
 
@@ -1067,9 +1067,9 @@ Lo anterior se puede comprobar haciendo una representación gráfica de la situa
 \end{Teorema}
 \footnotetext{Decimos que un operador lineal $A : D(A) \subset E_0 \rightarrow E_0$ es \textit{cerrable} si existe otro operador lineal $\overline{A}$ tal que $G(A) \subset G(\overline{A}), \overline{A}|_{D(A)} = A, \overline{G(A)} = G(\overline{A})$, donde $G(T)$ es el grafo (también llamado el gráfico o la gráfica) de $T$.}
 \begin{proof}
-    La primera afirmación se prueba trivialmente aplicando el Teorema de Lumer-Philips \eqref{ch:semigrupos:th:LumerPhillips}. En concreto, se aplica $2$ y luego $1$, lo cual concluye la demostración de la primera afirmación.
+    La primera afirmación se prueba trivialmente aplicando el Teorema de Lumer-Philips \ref{ch:semigrupos:th:LumerPhillips}. En concreto, se aplica $2$ y luego $1$, lo cual concluye la demostración de la primera afirmación.
 
-    Para probar la segunda afirmación procedemos de la siguiente manera: Por ser $A$ cerrable sabemos que existe un operador cerrado $\overline{A}$. Sea $e \in D(\overline{A}), f = \overline{A}e$. Entonces, existe una sucesión $(e_n) \subset D(A)$ tal que $e_n \rightarrow e$ y $Ae_n \rightarrow f = \overline{A}e$ (esta sucesión existe porque, de acuerdo a la \textcolor{green}{PROPOSICIÓN EN VIII DE METHODS OF MODERN MATHEMATICAL PHYSICS} $G(\overline{A}) = \overline{G(A)} = \{(x, y) \in E_0 : \exists \big((x_n, Ax_n)\big) \subset G(A) \text{ tal que } (x_n, Ax_n) \rightarrow (x, y)\}$). Del Lema \eqref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que
+    Para probar la segunda afirmación procedemos de la siguiente manera: Por ser $A$ cerrable sabemos que existe un operador cerrado $\overline{A}$. Sea $e \in D(\overline{A}), f = \overline{A}e$. Entonces, existe una sucesión $(e_n) \subset D(A)$ tal que $e_n \rightarrow e$ y $Ae_n \rightarrow f = \overline{A}e$ (esta sucesión existe porque, de acuerdo a la \textcolor{green}{PROPOSICIÓN EN VIII DE METHODS OF MODERN MATHEMATICAL PHYSICS} $G(\overline{A}) = \overline{G(A)} = \{(x, y) \in E_0 : \exists \big((x_n, Ax_n)\big) \subset G(A) \text{ tal que } (x_n, Ax_n) \rightarrow (x, y)\}$). Del Lema \ref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que
 
     \[\lVert \lambda e_n - Ae_n \rVert_{E_0} \geq \lambda \lVert e_n \rVert_{E_0},\]
 
@@ -1077,9 +1077,9 @@ Lo anterior se puede comprobar haciendo una representación gráfica de la situa
 
     \[\lVert\lambda e - \overline{A}e \rVert_{E_0} \geq \lambda \lVert e \rVert_{E_0}, \quad \lambda > 0.\]
 
-    Así, como la desigualdad anterior es válida para todo $e \in D(\overline{A})$, entonces $\overline{A}$ es disipativo por el Lema \eqref{ch:semigrupos:lemma:CondOpDisipativo}.
+    Así, como la desigualdad anterior es válida para todo $e \in D(\overline{A})$, entonces $\overline{A}$ es disipativo por el Lema \ref{ch:semigrupos:lemma:CondOpDisipativo}.
 
-    Para probar el tercer y último punto, procedemos por contradicción. Supongamos que $A$ no es cerrable. Entonces, existe\footnotemark una sucesión $(e_n) \subset D(A), e_n \rightarrow 0$ y $Ae_n \rightarrow f$ con $\lVert f \rVert_{E_0} = 1$ (normalizando). Del Lema \eqref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que para todo $t > 0$, $e \in D(A)$ y escogiendo $\lambda = \frac{1}{t}$:
+    Para probar el tercer y último punto, procedemos por contradicción. Supongamos que $A$ no es cerrable. Entonces, existe\footnotemark una sucesión $(e_n) \subset D(A), e_n \rightarrow 0$ y $Ae_n \rightarrow f$ con $\lVert f \rVert_{E_0} = 1$ (normalizando). Del Lema \ref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que para todo $t > 0$, $e \in D(A)$ y escogiendo $\lambda = \frac{1}{t}$:
 
     \begin{align*}
         &\lVert (t^{-1}-A)(e+t^{-1}e_n)\rVert_{E_0} \geq t^{-1}\lVert e+t^{-1}e_n \rVert_{E_0}\\
@@ -1099,7 +1099,7 @@ Lo anterior se puede comprobar haciendo una representación gráfica de la situa
 \end{Teorema}
 \footnotetext{\textcolor{red}{PONER DEF DE ESPACIO REFLEX}}
 \begin{proof}
-    Sabemos por uno de los corolarios del Teorema de Hahn-Banach \ref{ch:preliminares:cor:hahnBanach} que existe un elemento $0 \neq e^* \in E^*_0$ tal que $\langle e^*, e\rangle = 0 \ \ \forall e \in D(A)$ sí y sólo si $A$ no está densamente definido. En consecuencia, sea $e^* \in E_0^*$ tal que $\langle e^*, e \rangle = 0$ para todo $e \in D(A)$. Mostraremos que $e^* = 0$. Como $R(I- A) = E_0$, es suficiente probar que $\langle e^*, e - Ae \rangle = 0$ para todo $e \in D(A)$ o equivalentemente que $\langle e^*, Ae \rangle = 0$ para todo $e \in D(A)$. Sea $e \in D(A)$ entonces, por la primera parte del Teorema anterior \eqref{ch:semigrupos:th:PropsOpDisipativos}, existe (considerando $\lambda = n > 0$) un $e_n$ tal que $e = (I - \frac{1}{n}A)e_n$. Como $Ae_n = n(e_n - e) \in D(A)$, entonces $e_n \in D(A^2)$ y $Ae = Ae_n - \frac{1}{n}A^2e_n$; o, lo que es lo mismo, $Ae_n = (I - \frac{1}{n}A)^{-1}Ae$. Del Lema \eqref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que 
+    Sabemos por uno de los corolarios del Teorema de Hahn-Banach \ref{ch:preliminares:cor:hahnBanach} que existe un elemento $0 \neq e^* \in E^*_0$ tal que $\langle e^*, e\rangle = 0 \ \ \forall e \in D(A)$ sí y sólo si $A$ no está densamente definido. En consecuencia, sea $e^* \in E_0^*$ tal que $\langle e^*, e \rangle = 0$ para todo $e \in D(A)$. Mostraremos que $e^* = 0$. Como $R(I- A) = E_0$, es suficiente probar que $\langle e^*, e - Ae \rangle = 0$ para todo $e \in D(A)$ o equivalentemente que $\langle e^*, Ae \rangle = 0$ para todo $e \in D(A)$. Sea $e \in D(A)$ entonces, por la primera parte del Teorema anterior \ref{ch:semigrupos:th:PropsOpDisipativos}, existe (considerando $\lambda = n > 0$) un $e_n$ tal que $e = (I - \frac{1}{n}A)e_n$. Como $Ae_n = n(e_n - e) \in D(A)$, entonces $e_n \in D(A^2)$ y $Ae = Ae_n - \frac{1}{n}A^2e_n$; o, lo que es lo mismo, $Ae_n = (I - \frac{1}{n}A)^{-1}Ae$. Del Lema \ref{ch:semigrupos:lemma:CondOpDisipativo} se sigue que 
 
     \begin{align*}
         &\left \lVert \left (n - A \right ) x\right \rVert_{E_0} \geq n \lVert x \rVert_{E_0}\\
@@ -1140,7 +1140,7 @@ Lo anterior se puede comprobar haciendo una representación gráfica de la situa
 \section{Semigrupo dual}
 \label{ch:semigrupos:section:dual}
 
-\textcolor{red}{PONER QUE NO DEMOSTRAREMOS TODO}
+\textcolor{red}{PONER QUE NO DEMOSTRAREMOS TODO}\\
 
 \begin{Lema}
     \label{ch:semigrupos:section:dual:lema:adjuntoLema}
@@ -1161,44 +1161,263 @@ Lo anterior se puede comprobar haciendo una representación gráfica de la situa
     \end{align*}
 \end{proof}
 
+\textcolor{red}{TEXTO}\\
+
+\begin{Lema}
+    \label{ch:semigrupos:section:dual:lema:espectroOperadorAdjunto}
+
+    Sea $A$ un operador lineal densamente definido en $E_0$. Si $\lambda \in \rho(A)$, entonces $\lambda \in \rho(A^*)$ y
+
+    \[(\lambda - A^*)^{-1} - \big((\lambda - A)^{-1} \big)^*.\]
+\end{Lema}
+
+\begin{proof}
+    De la definición de operador adjunto tenemos:
+
+    \[
+        \begin{aligned}
+            \left\langle (\lambda I - A)^* e^*, e \right\rangle
+            &= \left\langle e^*, (\lambda I - A)e \right\rangle \\
+            &= \left\langle e^*, \lambda e - Ae \right\rangle \\
+            &= \left\langle \lambda I^* e^*, e \right\rangle - \left\langle A^* e^*, e \right\rangle \\
+            &= \left\langle (\lambda I^* - A^*)e^*, e \right\rangle,
+        \end{aligned}
+    \]
+
+    por lo que $(\lambda I - A)^* = \lambda I^* - A^*$.
+
+    Como $(\lambda I - A)^{-1} \in L(E_0)$, por el Lema anterior \ref{ch:semigrupos:section:dual:lema:adjuntoLema} tenemos que $\big((\lambda I - A)^{-1}\big)^* \in L(E_0^*)$. Probaremos ahora que $(\lambda I^* - A^*)^{-1}$ existe y coincide con $\big((\lambda I - A)^{-1}\big)^*$.
+
+    Empezamos probando que $\lambda I^* - A^*$ es inyectivo. Si para algún $e^* \in E_0^*$ con $e^* \neq 0$ tenemos que  $(\lambda I^* - A^*)e^* = 0$, entonces
+
+    \begin{align*}
+        0 &= \langle (\lambda I^* - A^*)e^*, e \rangle\\
+        &= \langle (\lambda I - A)^* e^*, e \rangle\\
+        &= \langle e^*, (\lambda I - A)e \rangle
+    \end{align*}
+
+    para todo $e \in D(A)$. Sin embargo, como $\lambda \in \rho(A)$, entonces $R(\lambda I - A) = E_0$ y eso significa que $\langle e^*, e \rangle = 0$ para todo $e \in D(A)$. Como $A$ es densamente definido, el Corolario de Hahn-Banach \ref{ch:preliminares:cor:hahnBanach} nos garantiza que $e^* = 0$. Luego, $\lambda I^* - A^*$ es inyectivo.
+
+    Si ahora consideramos $e \in E_0$ y $e^* \in D(A^*)$ y tenemos en cuenta la inyectividad demostrada en el paso inmediatamente anterior, entonces:
+
+    \begin{align*}
+        \langle e^*, e \rangle &= \langle e^*, (\lambda I - A)(\lambda I - A)^{-1} e \rangle\\
+        &= \langle (\lambda I - A)^* e^*, (\lambda I - A)^{-1}e \rangle\\
+        &= \langle (\lambda I^* - A^*)e^*, (\lambda I - A)^{-1}e \rangle\\
+        &= \left \langle \big( (\lambda I - A)^{-1} \big )^*(\lambda I^* - A^*)e^*, e \right \rangle,
+    \end{align*}
+
+    y, por lo tanto,
+
+    \begin{align*}
+        \big( (\lambda I - A)^{-1} \big )^*(\lambda I^* - A^*)e^* = e^* \ \forall e^* \in D(A^*).
+    \end{align*}
+
+    Por otro lado, si $e^* \in E_0^*$ y $e \in D(A)$ y apelando nuevamente a la inyectividad, entonces:
+
+    \begin{align*}
+        \langle e^*, e \rangle &= \langle e^*, (\lambda I - A)^{-1}(\lambda I - A) e \rangle\\
+        &= \Big\langle (\lambda I - A)^* \big( (\lambda I - A)^{-1} \big)^* e^*, e \Big\rangle\\
+        &= \Big\langle (\lambda I^* - A^*) \big( (\lambda I - A)^{-1} \big)^* e^*, e \Big\rangle,
+    \end{align*}
+
+    en consecuencia,
+
+    \begin{align*}
+        (\lambda I^* - A^*)\big( (\lambda I - A)^{-1} \big )^* e^* = e^* \ \forall e^* \in E_0^*.
+    \end{align*}
+
+    Se deduce entonces que $(\lambda I^* - A^*)^{-1} = \big((\lambda I - A)^{-1}\big)^*$ y además $\lambda \in \rho(A^*)$.
+\end{proof}
+
+\textcolor{red}{TEXTO}\\
+
+\begin{Definicion}{(Semigrupo dual)}
+    \label{ch:semigrupos:section:dual:def:sgDual}
+
+    Sea $\{T(t) : t \geq 0\}$ un $C_0$-semigrupo de operadores lineales. Se define el \textit{semigrupo dual} como $\{T(t)^* : t \geq 0\}$, donde $T(t)^*$ es el operador adjunto de $T(t)$.
+\end{Definicion}
+
 \textcolor{red}{TEXTO}
 
-...
+Se tiene que $T(t)^*$ verifica los axiomas de semigrupo pues:
+
+\begin{enumerate}
+    \item $T(t)^* \in L(E_0^*)$ por el Lema \ref{ch:semigrupos:section:dual:lema:adjuntoLema}.
+
+    \item $T(0)^* = I_{E_0^*}$ pues 
+    \[\langle e^*, e \rangle = \langle e^*, T(0)e \rangle = \langle T(0)^*e^*, e \rangle ,\ \forall e \in E_0.\]
+
+    Por lo tanto, $T(0)^*e^* - e^* = 0 \ \forall e^* \in E_0^*$ y así $T(0)^* = I_{E_0^*}$.
+
+    \item $T(t+s)^* = T(t)T(s) \ \forall t ,s \geq 0$. En efecto, 
+    \begin{align*}
+        &\langle e^*, T(t+s)e \rangle = \langle T(t+s)^*e^*, e \rangle\\
+        =&\langle e^*, T(t)T(s)e \rangle\\
+        =&\langle T(s)^*T(t)^*e^*, e \rangle,
+    \end{align*}
+
+    y así $T(t+s)^* = T(s)^*T(t)^* \ \forall t,s \geq 0.$
+\end{enumerate}
+
+\textcolor{red}{TEXTO}\\
+
+\begin{Observacion}
+    \label{ObsC0Dual}
+
+    A pesar de que $T(t)^*$ es un semigrupo, no necesariamente es un $C_0$-semigrupo (\textcolor{green}{Véase 5.14 Engel \& Nagel One-Parameter Semigroups for Linear Evolution Equations}). 
+
+    Como consecuencia, es importante notar también que $A^*$ no necesariamente está densamente definido en $E_0^*$.
+\end{Observacion}
 
 \textcolor{red}{TEXTO}
+
+\begin{Definicion}{(Generador del semigrupo dual)}
+    \label{ch:semigrupos:section:dual:def:genSgDual}
+
+    A pesar de que el semigrupo dual $\{T(t)^* : t \geq 0\}$ no es necesariamente fuertemente continuo en $E_0^*$, aún así se le puede asociar un generador. En efecto, definiendo:
+
+    \[A^\sigma e^* := \sigma(E_0^*, E_0)-\lim_{h \rightarrow 0^+} \frac{1}{h}\big(T(h)^*e^* - e^* \big),\]
+
+    sobre el dominio
+
+    \[D(A^\sigma) = \left \{e^* \in E_0^* : \sigma(E_0^*, E_0)-\lim_{h \rightarrow 0^+} \frac{1}{h}\big(T(h)^*e^* - e^* \big) \text{ existe} \right \},\]
+
+    donde $\sigma(E_0^*, E_0)$ hace referencia a la topología débil-$*$.
+
+    Así, $A^\sigma$ es un operador lineal llamado el \textit{generador débil-$*$} de $\{T(t)^* : t \geq 0\}$.
+
+    Este operador es $\sigma(E_0^*, E_0)$-cerrado y $\sigma(E_0^*, E_0)$-densamente definido. Adicionalmente, coincide con el adjunto $A^*$ de $A$. Es decir,
+
+    \[A^\sigma e^* = A^*e^*.\]
+
+    Véase \textcolor{green}{[2.5] de Engel \& Nagel One-Parameter Semigroups for Linear Evolution Equations} para un estudio más riguroso.
+\end{Definicion}
+
+\textcolor{red}{TEXTO}\\
+
+\begin{Definicion}{(Parte de un operador en un subespacio)}
+    \label{ch:semigrupos:section:dual:def:parteDeSubesp}
+
+    Sea $S$ un operador lineal en $E_0$, y sea $F_0$ un subespacio de $E_0$. El operador $\overline{S}$ definido por $D(\overline{S})$, donde
+
+    \[D(\overline{S}) := \{e \in D(S) \cap F_0 : Se \in F_0\},\]
+
+    y $\overline{S}e = Se$ para $e \in D(\overline{S})$, es llamado \textit{la parte de $S$ en $F_0$}. 
+\end{Definicion}
+
+\textcolor{red}{HABLAR DE CÓMO EL TEOREMA ARREGLA LOS PROBLEMAS CON EL SEMIGRUPO DUAL...}\\
+
+\begin{Teorema}{Semigrupo sun dual}
+    \label{ch:semigrupos:section:dual:th:SunDual}
+
+    Sea $\{T(t) : t \geq 0 \}$ un semigrupo fuertemente continuo en $E_0$ con generador infinitesimal $A$ y $\{T(t)^* : t \geq 0 \}$ el semigrupo dual.
+
+    Si $A^*$ es el adjunto de $A$ y $E_0^{\odot}$ la clausura de $D(A^*)$ en $E^*_0$, entonces la restricción $\{T(t)^\odot : t \geq 0\}$ de $\{T(t)^* : t \geq 0\}$ a $E_0^\odot$ es un semigrupo fuertemente continuo en $E_0^\odot$ llamado el \textit{semigrupo sun dual}.
+
+    El generador infinitesimal $A^\odot$ de $\{T(t)^\odot : t \geq 0\}$ es la parte de $A^*$ en $E_0^\odot$.
+\end{Teorema}
+
+\begin{proof}
+    Se omite la demostración de este Teorema porque recae en el uso de herramientas de la teoría de semigrupos que no son  relevantes para nuestro estudio. Para una prueba completa véase \cite[Teorema~1.6.1]{carvalho-2001-equ-par-sem}
+\end{proof}
+
+\textcolor{red}{TEXTO}\\
+
+\textcolor{red}{TEXTO}\\
+
+\begin{Lema}
+    \label{ch:semigrupos:section:dual:lemma:densidadDelDomAdjuntoDelGenerador}
+
+    Sea $E_0$ un espacio de Banach reflexivo. Si $S : D(S) \rightarrow E_0$ es cerrado y densamente definido, entonces $D(S^*)$ es denso en $E_0^*$.
+\end{Lema}
+
+\begin{proof}
+    Por contradicción: Si $D(S^*)$ no es denso en $E_0^*$, entonces existe un elemento $e_0 \in E_0$ tal que $e_0 \neq 0$ y $\langle e^*, e_0 \rangle = 0$ para todo $e^* \in D(S^*)$ (Véase el Corolario de Hahn-Banach \ref{ch:preliminares:cor:hahnBanach}).
+
+    Luego, por un lado tenemos que el gráfico de $S$ es cerrado y por otro que $(0,e_0)$ no pertenece a dicho gráfico. Por el Teorema de Hahn-Banach \textcolor{green}{[CITAR]}, se tiene que existe un funcional $(e_1^*, e_2^*) \in \big(G(S)\big)^*$ con $e_1^*, e_2^* \in E_0^*$ tal que
+
+    \[\langle (e_1^* - e_2^*), (e, Se) \rangle = \langle e_1^*, e\rangle - \langle e_2^*, Se \rangle = 0\]
+
+    para todo $e \in D(S)$, y
+
+    \[\langle (e_1^* - e_2^*), (0,e_0)\rangle = \langle e_1^*, 0 \rangle - \langle e_2^*, e_0 \rangle \neq 0.\]
+
+    Se sigue entonces que $\langle e_2^*, e_0 \rangle \neq 0$ y que $e_2^* \in D(S^*)$, pues
+
+    \[\langle e_1^*, e \rangle = \langle e_2^*, Se \rangle \implies e_1^* = S^* e_2^*,\]
+
+    y, además, $e_2^* \neq 0$. Sin embargo, como $\langle e^*, e_0 \rangle = 0 \ \forall e^* \in D(S^*)$, entonces $\langle e_2^*, e_0 \rangle = 0$, lo cual es una contradicción.
+\end{proof}
+
+\textcolor{red}{TEXTO...}\\
+
+\begin{Corolario}{Semigrupo dual en espacio reflexivo}
+    \label{ch:semigrupos:section:dual:cor:dualReflex}
+
+    Sea $E_0$ un espacio de Banach reflexivo y $\{T(t) : t \geq 0\}$ un $C_0$-semigrupo en $E_0$ con generador infinitesimal $A$. Entonces, el semigrupo dual $\{T(t)^* : t \geq 0\}$ de $\{T(t) : t \geq 0\}$ es un $C_0$-semigrupo cuyo generador infinitesimal es $A^*$.
+\end{Corolario}
+
+\begin{proof}
+    Se deduce inmediatamente del Teorema \ref{ch:semigrupos:section:dual:th:SunDual} y del Lema \ref{ch:semigrupos:section:dual:cor:dualReflex}.
+\end{proof}
+
+\textcolor{red}{TEXTO...}\\
 
 \section{Estabilidad exponencial}
 \label{ch:semigrupos:section:estExp}
 
+\textcolor{red}{TEXTO...}\\
+
 \begin{Definicion}[Estabilidad exponencial]
     \label{ch:semigrupos:section:estExp:def:estExp}
-    
+
+    El $C_0$-semigrupo $\{T(t) : t \geq 0\}$ se dice \textit{exponencialmente estable} si existen constantes positivas $\alpha$ y $M > 1$ tales que
+
+    \[\lVert T(t) \rVert_{L(E_0)} \leq M \mathrm{e}^{-\alpha t}, \ \forall t \geq 0.\]
 \end{Definicion}
+
+\textcolor{red}{TEXTO...}\\
 
 \begin{Proposicion}[Compacidad del resolvente de un operador]
     \label{ch:semigrupos:section:estExp:prop:compRes}
-    
+
+    Sea $\big(A, D(A)\big)$ un operador lineal en un espacio de Banach $E_0$ tal que $\rho(A) \neq \varnothing$ y sea $X := \big(D(A), \lVert \, \cdot \, \rVert_{G(A)}\big)$\footnotemark. Entonces las siguientes afirmaciones son equivalentes
+
+    \begin{enumerate}
+        \item El operador $A$ posee un resolvente compacto.
+
+        \item La inyección canónica $X \hookrightarrow E_0$ es compacta.
+    \end{enumerate}
 \end{Proposicion}
+\footnotetext{\textcolor{red}{HABLAR DE CÓMO $\big(D(A), \lVert \, \cdot \, \rVert_{G(A)}\big)$ ES UN ESPACIO DE BANACH...}}
 
 \begin{proof}
-    
+    \textcolor{red}{ACABAR}\\
 \end{proof}
 
 \begin{Corolario}[Espectro de un operador con resolvente compacto]
     \label{ch:semigrupos:section:estExp:cor:espectroResComp}
 
-    
+    Si un operador $A$ tiene resolvente $\rho(A)$ compacto, entonces $\sigma(A)$ está formado exclusivamente por autovalores de $A$.
 \end{Corolario}
 
 \begin{proof}
-    
+    \textcolor{red}{ACABAR}\\
 \end{proof}
 
 \begin{Teorema}[Caracterización de la estabilidad exponencial en un espacio de Hilbert]
     \label{ch:semigrupos:section:estExp:th:estExpHilbert}
-    
+
+    Un semigrupo de contracciones $\{T(t) : t \geq 0 \}$ en un espacio de Hilbert $H$ es exponencialmente estable si y sólo si
+
+    \begin{enumerate}
+        \item El conjunto resolvente de $A$, $\rho(A)$, contiene al eje imaginario $i\mathbb{R}$.
+
+        \item $\displaystyle\lim_{\lvert \lambda \lvert \rightarrow \infty}\lVert (i\lambda I - A)^{-1}\rVert_{L(H)} < \infty$
+    \end{enumerate}
 \end{Teorema}
 
 \begin{proof}
-    
+    \textcolor{red}{ACABAR}\\
 \end{proof}
